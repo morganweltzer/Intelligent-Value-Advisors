@@ -1,0 +1,1360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Intelligent Value Advisors Sleek</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Intelligent Value Advisors helps middle-market business owners build, protect, accelerate, and monetize value through Intelligent Value Acceleration™, the 5-4-3-2-1 framework.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --navy: #15253F;
+  --navy-2: #1D3253;
+  --deep: #0C1626;
+  --ink: #16202F;
+  --gold: #C5A869;
+  --gold-2: #B5975A;
+  --accent: #7C5F25;
+  --paper: #FAF7F1;
+  --sand: #EFE6D3;
+  --pewter: #5A6270;
+  --line: rgba(21, 37, 63, .11);
+  --line-strong: rgba(21, 37, 63, .2);
+  --white: #FFFFFF;
+  --on-navy: #EEF1F6;
+  --on-navy-soft: #B3BDCE;
+  --navy-line: rgba(255, 255, 255, .14);
+  --error: #B5482A;
+  --serif: "EB Garamond", Garamond, "Times New Roman", serif;
+  --sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r-sm: 10px;
+  --r: 16px;
+  --r-lg: 24px;
+  --wrap: 1200px;
+  --gutter: clamp(20px, 4vw, 40px);
+  --header-h: 72px;
+  --ease-out: cubic-bezier(.22, .8, .24, 1);
+  /* Type scale: every font size on the page uses one of these */
+  --fs-micro: 11px;
+  --fs-label: 13px;
+  --fs-small: 15px;
+  --fs-body: 17px;
+  --fs-lead: 19px;
+  --fs-serif-sm: clamp(20px, 1.2vw + 12px, 22px);
+  --fs-serif-md: clamp(22px, 1vw + 15px, 26px);
+  --fs-h3: clamp(27px, 1.4vw + 16px, 32px);
+  --fs-statement: clamp(22px, 2.3vw, 28px);
+  --fs-quote: clamp(26px, 3vw, 36px);
+  --fs-h2: clamp(34px, 4.4vw, 52px);
+  --fs-h1: clamp(38px, 4.8vw, 60px);
+  --fs-display: clamp(44px, 5.2vw, 72px);
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+body { margin: 0; background: var(--white); color: var(--ink); font-family: var(--sans); font-size: var(--fs-body); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { color: var(--navy); }
+p { margin: 0 0 1em; }
+ul, ol, dl, dd { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, h4 { margin: 0; color: var(--navy); font-weight: 500; text-wrap: balance; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+.tm { font-size: .5em; vertical-align: super; line-height: 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: -999px; top: 8px; z-index: 100; background: var(--navy); color: var(--white); padding: 8px 14px; border-radius: var(--r-sm); }
+.skip:focus { left: 8px; }
+
+.container { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+.section { padding-block: clamp(72px, 9vw, 128px); }
+.section.paper { background: var(--paper); }
+.section.ruled > .container { position: relative; }
+.section.ruled > .container::before { content: ""; position: absolute; left: var(--gutter); right: var(--gutter); top: calc(-1 * clamp(72px, 9vw, 128px)); border-top: 1px solid var(--line); }
+
+/* Type roles */
+.kicker { display: flex; align-items: center; gap: 12px; font-size: var(--fs-label); font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+.kicker::before { content: ""; width: 28px; height: 1px; background: var(--gold); }
+.title { font-family: var(--serif); font-size: var(--fs-h2); line-height: 1.06; letter-spacing: -.012em; margin-bottom: 18px; }
+.lead { font-size: var(--fs-lead); color: var(--pewter); max-width: 60ch; }
+.statement { font-family: var(--serif); font-size: var(--fs-statement); line-height: 1.35; color: var(--ink); }
+.muted { color: var(--pewter); }
+.sec-head { max-width: 780px; margin-bottom: clamp(36px, 5vw, 64px); }
+.sec-head .lead { margin: 0; }
+@media (min-width: 960px) {
+  .sec-head.split { max-width: none; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 64px; align-items: end; }
+  .sec-head.split .title { margin: 0; }
+}
+
+/* Buttons and links */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 13px 24px; border-radius: 999px; border: 1px solid transparent; font-size: var(--fs-small); font-weight: 700; line-height: 1.2; text-decoration: none; cursor: pointer; transition: background-color .2s var(--ease-out), border-color .2s var(--ease-out), color .2s var(--ease-out), transform .2s var(--ease-out); }
+.btn:active { transform: translateY(1px); }
+.btn-gold { background: var(--gold); color: var(--navy); }
+.btn-gold:hover { background: var(--gold-2); }
+.btn-navy { background: var(--navy); color: var(--white); }
+.btn-navy:hover { background: var(--navy-2); }
+.btn-line { border-color: var(--line-strong); color: var(--navy); }
+.btn-line:hover { border-color: var(--navy); }
+.btn-line-light { border-color: rgba(255,255,255,.35); color: var(--white); }
+.btn-line-light:hover { border-color: var(--white); }
+.arrow-link { display: inline-flex; align-items: center; gap: 6px; padding-block: 8px; font-size: var(--fs-small); font-weight: 700; color: var(--navy); text-decoration: none; }
+.arrow-link::after { content: "→"; transition: transform .2s var(--ease-out); }
+.arrow-link:hover::after { transform: translateX(3px); }
+.arrow-link.light { color: var(--gold); }
+
+/* Header */
+header.site { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.86); -webkit-backdrop-filter: saturate(1.4) blur(14px); backdrop-filter: saturate(1.4) blur(14px); border-bottom: 1px solid transparent; transition: border-color .2s; }
+header.site.scrolled { border-bottom-color: var(--line); }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: var(--header-h); }
+.brand { display: flex; align-items: center; gap: 12px; color: var(--navy); text-decoration: none; }
+.brand svg { width: 52px; height: 30px; flex: none; }
+.brand-name { font-family: var(--serif); font-size: var(--fs-serif-sm); line-height: 1.05; }
+.brand-name small { display: block; margin-top: 3px; font-family: var(--sans); font-size: var(--fs-micro); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--pewter); }
+.nav-links { display: flex; align-items: center; gap: 30px; }
+.nav-links a { color: var(--ink); text-decoration: none; font-size: var(--fs-small); font-weight: 500; }
+.nav-links a:not(.btn):hover { color: var(--navy); text-decoration: underline; text-underline-offset: 6px; }
+.nav-links .btn { min-height: 42px; padding: 10px 20px; color: var(--white); }
+.menu-btn { display: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--white); color: var(--navy); cursor: pointer; align-items: center; justify-content: center; }
+.menu-btn .x { display: none; }
+.menu-btn[aria-expanded="true"] .x { display: block; }
+.menu-btn[aria-expanded="true"] .bars { display: none; }
+@media (max-width: 980px) {
+  .menu-btn { display: inline-flex; }
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; padding: 8px var(--gutter) 24px; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 24px 40px -24px rgba(12,22,38,.25); max-height: calc(100vh - var(--header-h)); max-height: calc(100dvh - var(--header-h)); overflow-y: auto; overscroll-behavior: contain; }
+  .nav-links.open { display: flex; animation: drop-in .26s var(--ease-out) both; }
+  .nav-links li a:not(.btn) { display: block; padding: 15px 0; font-size: var(--fs-lead); border-bottom: 1px solid var(--line); }
+  .nav-links li:last-child { margin-top: 18px; }
+  .nav-links .btn { width: 100%; min-height: 52px; font-size: var(--fs-body); }
+}
+@keyframes drop-in { from { opacity: 0; transform: translateY(-8px); } }
+
+/* Hero */
+.hero { padding-top: clamp(32px, 4.5vw, 56px); }
+.hero-top { display: grid; gap: 28px; }
+.hero h1 { font-family: var(--serif); font-size: var(--fs-display); line-height: 1.02; letter-spacing: -.02em; }
+.hero h1 em { display: block; font-weight: 400; color: var(--accent); }
+.hero .lead { margin-bottom: 26px; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-note { display: flex; align-items: center; gap: 8px; margin: 18px 0 0; font-size: var(--fs-small); color: var(--pewter); }
+.hero-note svg { width: 16px; height: 16px; flex: none; }
+@media (min-width: 960px) {
+  .hero-top { grid-template-columns: minmax(0, 1.35fr) minmax(0, .9fr); gap: 56px; align-items: end; }
+  .hero .lead { margin-top: 0; }
+}
+.hero-media { position: relative; margin-top: clamp(32px, 4vw, 48px); }
+.hero-photo { position: relative; overflow: hidden; border-radius: var(--r-lg); aspect-ratio: 21 / 9; background: var(--navy); }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
+.hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(12,22,38,.55), rgba(12,22,38,0) 55%); }
+.hero-card { position: absolute; left: 28px; bottom: 28px; z-index: 1; max-width: 400px; padding: 22px 24px; border-radius: var(--r); background: rgba(21,37,63,.8); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); color: var(--on-navy); border: 1px solid rgba(255,255,255,.12); }
+.hero-card blockquote { margin: 0 0 14px; font-family: var(--serif); font-style: italic; font-size: var(--fs-serif-sm); line-height: 1.35; color: var(--white); }
+.hero-card .who { display: flex; align-items: center; gap: 12px; padding-top: 14px; border-top: 1px solid var(--navy-line); }
+.hero-card .who img { width: 28px; height: auto; flex: none; }
+.hero-card .who strong { display: block; font-size: var(--fs-small); color: var(--white); line-height: 1.3; }
+.hero-card .who span { display: block; font-size: var(--fs-label); color: var(--on-navy-soft); line-height: 1.4; }
+.hero-card .arrow-link { margin-top: 6px; }
+.photo-credit { position: absolute; right: 16px; bottom: 12px; z-index: 1; font-size: var(--fs-micro); letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.75); }
+@media (max-width: 759px) {
+  .hero-media { margin-inline: calc(-1 * var(--gutter)); }
+  .hero-photo { border-radius: 0; aspect-ratio: 4 / 3; }
+  .hero-photo img { object-position: 42% 50%; }
+  .hero-card { position: relative; left: auto; bottom: auto; max-width: none; margin: -56px var(--gutter) 0; background: var(--navy); }
+  .photo-credit { bottom: 70px; }
+}
+.proof { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(28px, 4vw, 48px); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.proof div { padding: 22px 24px; border-left: 1px solid var(--line); }
+.proof div:first-child { border-left: 0; padding-left: 0; }
+.proof b { display: block; font-family: var(--serif); font-weight: 500; font-size: var(--fs-h3); line-height: 1.1; color: var(--navy); white-space: nowrap; }
+.proof div > span { display: block; margin-top: 4px; font-size: var(--fs-small); color: var(--pewter); line-height: 1.45; }
+@media (max-width: 759px) {
+  .proof { grid-template-columns: 1fr 1fr; }
+  .proof div { padding: 18px 16px 18px 0; border-left: 0; }
+  .proof div:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .proof div:nth-child(even) { padding-left: 16px; border-left: 1px solid var(--line); }
+}
+
+/* Master-detail: list beside a detail panel on desktop; the panel opens under the chosen item on phones */
+.md { display: grid; gap: 40px; align-items: start; }
+@media (min-width: 960px) { .md { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 56px; } }
+.md-list { border-top: 1px solid var(--line); }
+.md-item { display: flex; gap: 16px; align-items: flex-start; width: 100%; padding: 20px 0; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--line); cursor: pointer; color: var(--pewter); transition: color .2s var(--ease-out); }
+.md-item:hover, .md-item[aria-expanded="true"] { color: var(--navy); }
+.md-item .dot { flex: none; width: 20px; height: 20px; margin-top: 5px; border-radius: 50%; border: 1.5px solid var(--line-strong); transition: border-color .2s var(--ease-out), box-shadow .2s var(--ease-out), background-color .2s var(--ease-out); }
+.md-item[aria-expanded="true"] .dot { border-color: var(--navy); background: var(--navy); box-shadow: inset 0 0 0 4px var(--white); }
+.md-item .q { font-family: var(--serif); font-size: var(--fs-serif-sm); line-height: 1.35; }
+.md-host { position: sticky; top: calc(var(--header-h) + 24px); }
+.md-panel[hidden] { display: none; }
+@media (max-width: 959px) {
+  .md-host { position: static; margin: 4px 0 16px; }
+}
+.anim-in { animation: panel-in .36s var(--ease-out) both; }
+@keyframes panel-in { from { opacity: 0; transform: translate(var(--dx, 0px), var(--dy, 10px)); } }
+
+/* Situation answers */
+.answer { background: var(--navy); color: var(--on-navy-soft); border-radius: var(--r-lg); padding: clamp(24px, 3.4vw, 44px); }
+.answer h3 { font-family: var(--serif); font-size: var(--fs-h3); line-height: 1.15; color: var(--white); margin-bottom: 14px; }
+.answer ul { display: grid; gap: 12px; margin: 22px 0 26px; }
+.answer li { display: flex; gap: 12px; font-size: var(--fs-small); line-height: 1.55; color: var(--on-navy); }
+.answer li svg { flex: none; width: 18px; height: 18px; margin-top: 2px; color: var(--gold); }
+.answer-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; padding-top: 22px; border-top: 1px solid var(--navy-line); }
+
+/* Next chapter */
+.chapter { display: grid; gap: 40px; }
+@media (min-width: 960px) { .chapter { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 88px; } }
+.chapter blockquote { margin: 28px 0 0; padding-left: 22px; border-left: 2px solid var(--gold); font-family: var(--serif); font-style: italic; font-size: var(--fs-quote); line-height: 1.22; color: var(--navy); }
+.chapter .lead { margin-bottom: 18px; }
+.chapter .paths { color: var(--pewter); }
+.chapter .paths strong { color: var(--ink); font-weight: 600; }
+.focus { display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; margin-top: 30px; }
+.focus li { padding: 16px 0; border-top: 1px solid var(--line); }
+.focus strong { display: block; font-family: var(--serif); font-weight: 500; font-size: var(--fs-serif-sm); color: var(--navy); line-height: 1.2; }
+.focus span { display: block; margin-top: 2px; font-size: var(--fs-small); color: var(--pewter); line-height: 1.45; }
+
+/* Philosophy */
+.philo-statement p { margin: 0; }
+.philo-statement p + p { margin-top: 10px; color: var(--pewter); }
+.qs-label { margin: clamp(48px, 6vw, 72px) 0 8px; font-size: var(--fs-label); font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+.qs li { display: grid; grid-template-columns: 56px 150px minmax(0, 1fr); align-items: baseline; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.qs .n { font-family: var(--serif); font-size: var(--fs-serif-sm); color: var(--accent); }
+.qs .k { font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--pewter); }
+.qs q { font-family: var(--serif); font-size: var(--fs-serif-sm); line-height: 1.3; color: var(--navy); }
+@media (max-width: 759px) {
+  .qs li { grid-template-columns: 36px minmax(0, 1fr); gap: 2px 8px; }
+  .qs q { grid-column: 2; }
+}
+.ways { display: grid; gap: 28px; margin-top: clamp(40px, 5vw, 64px); }
+@media (min-width: 760px) { .ways { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; } }
+.ways h3 { font-family: var(--sans); font-weight: 700; font-size: var(--fs-body); color: var(--ink); margin-bottom: 6px; }
+.ways p { margin: 0; font-size: var(--fs-small); color: var(--pewter); }
+.philo-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; margin-top: clamp(40px, 5vw, 56px); padding-top: 24px; border-top: 1px solid var(--line); }
+.philo-foot strong { font-family: var(--serif); font-weight: 500; font-size: var(--fs-serif-md); color: var(--navy); }
+.philo-foot strong small { display: block; font-family: var(--sans); font-size: var(--fs-label); font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: 2px; }
+
+/* Introducing IVA */
+.verbs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+.verbs li { padding: 24px 20px 4px 0; }
+.verbs .i { display: block; font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; color: var(--accent); margin-bottom: 8px; }
+.verbs .v { font-family: var(--serif); font-size: var(--fs-serif-md); line-height: 1.15; color: var(--navy); }
+.verbs .v em { display: block; color: var(--accent); }
+@media (max-width: 959px) {
+  .verbs { grid-template-columns: 1fr; }
+  .verbs li { display: flex; align-items: baseline; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .verbs .i { margin: 0; width: 24px; flex: none; }
+  .verbs .v em { display: inline; }
+}
+
+/* Framework tabs */
+.seg { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; padding: 6px; border-radius: var(--r); background: var(--paper); border: 1px solid var(--line); }
+.seg a { display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; border-radius: 12px; color: var(--pewter); text-decoration: none; transition: background-color .25s var(--ease-out), color .25s var(--ease-out), box-shadow .25s var(--ease-out); }
+.seg a:hover { color: var(--navy); }
+.seg .n { font-family: var(--serif); font-size: var(--fs-h3); line-height: 1; color: var(--navy); transition: color .25s var(--ease-out); }
+.seg .t { font-size: var(--fs-small); font-weight: 600; line-height: 1.3; }
+.seg .s { display: none; }
+.seg a[aria-selected="true"] { background: var(--navy); color: var(--white); box-shadow: 0 10px 24px -14px rgba(12,22,38,.6); }
+.seg a[aria-selected="true"] .n { color: var(--gold); }
+.fw-caption { display: none; }
+.fw-panel { padding-top: clamp(28px, 4vw, 48px); }
+.fw-panel[hidden] { display: none; }
+.fw-intro { font-family: var(--serif); font-size: var(--fs-statement); line-height: 1.35; color: var(--ink); max-width: 46ch; margin: 0 0 8px; }
+.items { display: grid; gap: 0 32px; margin-top: 18px; }
+.items.c5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.items.c4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.items li { padding: 18px 0; border-top: 1px solid var(--line); }
+.items strong { display: block; font-family: var(--serif); font-weight: 500; font-size: var(--fs-serif-sm); line-height: 1.2; color: var(--navy); }
+.items span { display: block; margin-top: 6px; font-size: var(--fs-small); color: var(--pewter); line-height: 1.5; }
+@media (max-width: 1080px) { .items.c5 { grid-template-columns: repeat(3, minmax(0, 1fr)); } .items.c4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .items.c5, .items.c4 { grid-template-columns: 1fr; } .items li { padding: 14px 0; } }
+.scores { display: grid; gap: 32px; margin-top: 18px; align-items: start; }
+@media (min-width: 960px) { .scores { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 56px; } }
+.scores .items { margin-top: 0; }
+.scorecard { margin: 0; padding: 24px 26px; border-radius: var(--r); background: var(--paper); border: 1px solid var(--line); }
+.scorecard-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 6px; font-size: var(--fs-small); font-weight: 700; color: var(--ink); }
+.scorecard-head span { font-size: var(--fs-micro); letter-spacing: .14em; text-transform: uppercase; color: var(--accent); background: var(--sand); padding: 4px 9px; border-radius: 999px; }
+.meter { padding: 14px 0; border-bottom: 1px solid var(--line); }
+.meter:last-of-type { border-bottom: 0; }
+.meter-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 8px; font-size: var(--fs-small); font-weight: 600; }
+.meter-top b { font-family: var(--serif); font-weight: 500; font-size: var(--fs-serif-md); color: var(--navy); font-variant-numeric: tabular-nums; }
+.bar { height: 6px; border-radius: 3px; background: var(--sand); overflow: hidden; }
+.bar i { display: block; height: 100%; border-radius: 3px; background: var(--navy); }
+.scorecard figcaption { margin-top: 10px; font-size: var(--fs-label); color: var(--pewter); }
+.assets { display: grid; gap: 0 48px; margin-top: 18px; }
+@media (min-width: 760px) { .assets { grid-template-columns: 1fr 1fr; } }
+.assets > div { padding: 22px 0; border-top: 1px solid var(--line); }
+.assets h3 { font-family: var(--serif); font-size: var(--fs-h3); line-height: 1.1; }
+.assets .muted { font-family: var(--serif); font-style: italic; font-size: var(--fs-serif-sm); margin: 4px 0 14px; }
+.assets li { position: relative; padding: 4px 0 4px 22px; font-size: var(--fs-small); }
+.assets li::before { content: ""; position: absolute; left: 0; top: 15px; width: 10px; height: 1.5px; background: var(--gold); }
+.assets-foot { margin: 8px 0 0; font-family: var(--serif); font-size: var(--fs-serif-md); color: var(--navy); }
+.goal { text-align: center; padding: clamp(24px, 5vw, 56px) 0 8px; }
+.goal h3 { font-family: var(--serif); font-size: var(--fs-h1); line-height: 1.04; letter-spacing: -.015em; }
+.goal h3 em { display: block; font-weight: 400; color: var(--accent); }
+.goal p { max-width: 54ch; margin: 22px auto 0; font-size: var(--fs-lead); color: var(--pewter); }
+.fw-nav { display: flex; justify-content: space-between; gap: 16px; margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line); }
+.fw-nav button { background: none; border: 0; padding: 8px 0; font-size: var(--fs-small); font-weight: 700; color: var(--navy); cursor: pointer; }
+.fw-nav button[data-dir="prev"] { color: var(--pewter); font-weight: 600; }
+.fw-nav button:hover { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 759px) {
+  .seg { gap: 4px; padding: 4px; }
+  .seg a { align-items: center; justify-content: center; gap: 6px; padding: 10px 0 9px; min-height: 64px; text-align: center; }
+  .seg .n { font-size: 28px; }
+  .seg .t { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .seg .s { display: block; font-size: var(--fs-micro); font-weight: 600; line-height: 1.1; white-space: nowrap; }
+  .fw-caption { display: block; margin: 14px 2px 0; font-weight: 700; font-size: var(--fs-small); color: var(--navy); }
+}
+@media (max-width: 369px) { .seg .s { display: none; } }
+
+/* Engagement stages */
+.stage-item { align-items: center; }
+.stage-item .num { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: var(--sand); color: var(--navy); font-size: var(--fs-label); font-weight: 700; transition: background-color .25s var(--ease-out), color .25s var(--ease-out); }
+.stage-item[aria-expanded="true"] .num { background: var(--navy); color: var(--white); }
+.stage-item .nm { display: block; font-family: var(--serif); font-size: var(--fs-serif-md); line-height: 1.15; }
+.stage-item .sub { display: block; font-size: var(--fs-small); color: var(--pewter); }
+.stage { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg); padding: clamp(24px, 3.4vw, 44px); }
+.stage h3 { font-family: var(--serif); font-size: var(--fs-h3); line-height: 1.15; margin-bottom: 12px; }
+.stage p { color: var(--pewter); }
+.stage h4 { margin: 22px 0 12px; padding-top: 20px; border-top: 1px solid var(--line); font-family: var(--sans); font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.stage ul { display: grid; gap: 10px; }
+.stage li { display: flex; gap: 10px; font-size: var(--fs-small); font-weight: 500; }
+.stage li svg { flex: none; width: 16px; height: 16px; margin-top: 4px; color: var(--navy); }
+.stage .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { display: inline-block; padding: 6px 14px; border-radius: 999px; background: var(--white); border: 1px solid var(--line); font-size: var(--fs-small); font-weight: 600; color: var(--navy); }
+
+/* Compare and team */
+.compare { width: 100%; border-collapse: collapse; font-size: var(--fs-small); }
+.compare th, .compare td { text-align: left; vertical-align: top; padding: 18px 20px; border-bottom: 1px solid var(--line); }
+.compare thead th { font-size: var(--fs-label); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--pewter); border-bottom-color: var(--line-strong); }
+.compare tbody th { width: 20%; padding-left: 0; font-weight: 700; color: var(--ink); }
+.compare .us { background: var(--paper); color: var(--ink); }
+.compare thead th.us { color: var(--navy); background: var(--sand); border-radius: 12px 12px 0 0; }
+.compare-note { margin-top: 18px; font-size: var(--fs-small); color: var(--pewter); }
+.compare-simple, .compare-toggle { display: none; }
+.compare-simple h3 { font-family: var(--sans); font-weight: 700; font-size: var(--fs-lead); color: var(--ink); margin-bottom: 6px; }
+.compare-simple div { padding: 14px 0; border-bottom: 1px solid var(--line); }
+.compare-simple dt { font-size: var(--fs-label); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--pewter); }
+.compare-simple dd { margin-top: 2px; }
+.compare-toggle { margin-top: 12px; background: none; border: 0; padding: 10px 0; font-size: var(--fs-small); font-weight: 700; color: var(--navy); cursor: pointer; }
+.compare-toggle::after { content: " ↓"; }
+.compare-toggle[aria-expanded="true"]::after { content: " ↑"; }
+@media (max-width: 759px) {
+  .compare-simple { display: block; }
+  .compare-toggle { display: inline-block; }
+  .compare-full { display: none; margin-top: 8px; }
+  .compare-full.show { display: block; }
+  .compare, .compare thead, .compare tbody, .compare tr, .compare th, .compare td { display: block; }
+  .compare thead { display: none; }
+  .compare tbody tr { padding: 6px 0 10px; border-bottom: 1px solid var(--line); }
+  .compare tbody th { width: auto; padding: 12px 0 4px; border: 0; }
+  .compare td { padding: 6px 12px; border: 0; }
+  .compare td::before { content: attr(data-label); display: block; font-size: var(--fs-micro); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--pewter); }
+  .compare td.us { border-radius: var(--r-sm); }
+}
+.team { display: grid; gap: 36px; align-items: center; margin-top: clamp(64px, 8vw, 104px); padding-top: clamp(48px, 6vw, 72px); border-top: 1px solid var(--line); }
+@media (min-width: 960px) { .team { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; } }
+.team .title { margin-bottom: 16px; }
+.orbit { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; padding: clamp(24px, 4vw, 44px); border-radius: var(--r-lg); background: var(--paper); border: 1px solid var(--line); }
+.orbit li { padding: 9px 16px; border-radius: 999px; background: var(--white); border: 1px solid var(--line); font-size: var(--fs-small); font-weight: 600; color: var(--ink); }
+.orbit .core { order: 0; flex-basis: 100%; display: flex; justify-content: center; padding: 0; margin: 6px 0; background: none; border: 0; }
+.orbit .core span { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; width: 132px; height: 132px; border-radius: 50%; background: var(--navy); color: var(--white); font-family: var(--serif); font-size: var(--fs-serif-md); box-shadow: 0 0 0 8px var(--white), 0 0 0 9px var(--gold); }
+.orbit .core small { font-family: var(--sans); font-size: var(--fs-micro); font-weight: 700; letter-spacing: .16em; color: var(--gold); margin-top: 4px; }
+.orbit .top { order: -1; }
+.orbit .bottom { order: 1; }
+@media (max-width: 520px) {
+  .orbit { gap: 8px; padding: 22px 12px; }
+  .orbit li { padding: 7px 12px; font-size: var(--fs-label); }
+  .orbit .core span { width: 116px; height: 116px; }
+}
+
+/* About Ron */
+.ron { display: grid; gap: 40px; align-items: start; }
+@media (min-width: 960px) { .ron { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 80px; } }
+.ron-photo { overflow: hidden; border-radius: var(--r-lg); aspect-ratio: 4 / 5; background: var(--sand); }
+.ron-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
+.facts { margin-top: 24px; }
+.facts li { padding: 14px 0; border-bottom: 1px solid var(--line); }
+.facts li:first-child { display: flex; gap: 14px; align-items: center; }
+.facts img { width: 36px; height: auto; flex: none; }
+.facts strong { display: block; font-size: var(--fs-small); line-height: 1.35; color: var(--ink); }
+.facts span { display: block; font-size: var(--fs-small); color: var(--pewter); line-height: 1.45; }
+.letter p:not(.kicker) { font-family: var(--serif); font-size: var(--fs-serif-sm); line-height: 1.6; color: var(--ink); }
+.letter .sign { font-style: italic; font-size: var(--fs-serif-md); color: var(--navy); margin: 4px 0 26px; }
+.letter-more { display: none; background: none; border: 0; padding: 8px 0 16px; font-size: var(--fs-small); font-weight: 700; color: var(--navy); cursor: pointer; }
+@media (max-width: 959px) {
+  /* Phones read photo, then letter, then credentials */
+  .ron-side { display: contents; }
+  .ron-photo { order: 0; }
+  .letter { order: 1; }
+  .facts { order: 2; margin-top: 0; }
+  .ron-photo { aspect-ratio: 4 / 3; max-width: 520px; }
+  .ron-photo img { object-position: 50% 14%; }
+  .letter.clamped p:not(.sign):not(.kicker):nth-of-type(n+4) { display: none; }
+  .letter.clamped .letter-more { display: inline-block; }
+}
+
+/* Fees */
+.fees { display: grid; gap: 0 40px; }
+@media (min-width: 860px) { .fees { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.fees li { padding: 24px 0; border-top: 1px solid var(--line); }
+.fees .num { font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; color: var(--accent); }
+.fees h3 { margin: 10px 0 2px; font-family: var(--sans); font-weight: 700; font-size: var(--fs-lead); color: var(--ink); }
+.fees .how { font-family: var(--serif); font-size: var(--fs-serif-md); color: var(--navy); margin-bottom: 10px; }
+.fees p { margin: 0; font-size: var(--fs-small); color: var(--pewter); }
+.calc { display: grid; gap: 28px; margin-top: clamp(32px, 4vw, 48px); padding: clamp(22px, 3.4vw, 44px); border-radius: var(--r-lg); background: var(--paper); border: 1px solid var(--line); }
+@media (min-width: 860px) { .calc { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: center; } }
+.calc h3 { font-family: var(--serif); font-size: var(--fs-h3); line-height: 1.15; margin-bottom: 8px; }
+.calc .muted { font-size: var(--fs-small); margin: 0; }
+.field { margin-top: 22px; }
+.field label { display: flex; justify-content: space-between; align-items: baseline; font-size: var(--fs-small); font-weight: 600; }
+.field output { font-family: var(--serif); font-size: var(--fs-serif-md); color: var(--accent); font-variant-numeric: tabular-nums; }
+input[type=range] { -webkit-appearance: none; appearance: none; display: block; width: 100%; height: 36px; margin: 0; background: transparent; cursor: pointer; touch-action: pan-y; }
+input[type=range]::-webkit-slider-runnable-track { height: 4px; border-radius: 2px; background: var(--sand); }
+input[type=range]::-moz-range-track { height: 4px; border-radius: 2px; background: var(--sand); }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 26px; height: 26px; margin-top: -11px; border-radius: 50%; background: var(--navy); border: 4px solid var(--white); box-shadow: 0 2px 8px rgba(12,22,38,.3); }
+input[type=range]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--navy); border: 4px solid var(--white); box-shadow: 0 2px 8px rgba(12,22,38,.3); }
+.calc-out { padding: 22px 24px; border-radius: var(--r); background: var(--white); border: 1px solid var(--line); }
+.calc-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 12px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: var(--fs-small); }
+.calc-row b { font-family: var(--serif); font-weight: 500; font-size: var(--fs-serif-md); color: var(--navy); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.calc-row.big { border: 0; padding-top: 14px; }
+.calc-row.big span { font-weight: 700; color: var(--ink); }
+.calc-row.big b { font-size: var(--fs-h3); }
+.split { display: flex; height: 8px; margin: 12px 0 8px; border-radius: 4px; overflow: hidden; background: var(--sand); }
+.split .keep { background: var(--navy); }
+.split .fee-part { background: var(--gold); }
+.legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: var(--fs-label); color: var(--pewter); }
+.legend i { display: inline-block; width: 10px; height: 10px; margin-right: 6px; border-radius: 2px; vertical-align: -1px; }
+.calc-fine { margin: 12px 0 0; font-size: var(--fs-label); color: var(--pewter); line-height: 1.5; }
+
+/* FAQ */
+.faq-grid { display: grid; gap: 28px; }
+@media (min-width: 960px) { .faq-grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 80px; } .faq-side { position: sticky; top: calc(var(--header-h) + 24px); align-self: start; } }
+.faq { border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 0; list-style: none; cursor: pointer; font-weight: 600; font-size: var(--fs-body); color: var(--ink); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; flex: none; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line-strong); font-size: var(--fs-lead); font-weight: 400; color: var(--navy); transition: transform .3s var(--ease-out), background-color .2s; }
+.faq details[open] summary::after { transform: rotate(45deg); background: var(--paper); }
+.faq summary:hover { color: var(--navy); }
+.faq .ans { padding: 0 48px 22px 0; font-size: var(--fs-small); color: var(--pewter); }
+.faq details[open] .ans { --dy: -6px; animation: panel-in .3s var(--ease-out) both; }
+.faq .ans p:last-child { margin: 0; }
+
+/* Contact */
+.contact { position: relative; color: var(--on-navy-soft); background: var(--deep); overflow: hidden; }
+.contact::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,22,38,.9), rgba(12,22,38,.96)), url("cincinnati.jpg") center 40% / cover no-repeat; }
+.contact > .container { position: relative; }
+.contact-grid { display: grid; gap: 40px; align-items: start; }
+@media (min-width: 960px) { .contact-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; } }
+.contact .kicker { color: var(--gold); }
+.contact h2 { font-family: var(--serif); font-size: var(--fs-h1); line-height: 1.04; letter-spacing: -.015em; color: var(--white); }
+.contact h2 em { display: block; font-weight: 400; color: var(--gold); }
+.contact .lead { color: var(--on-navy-soft); margin-top: 22px; }
+.expect { display: grid; gap: 16px; margin-top: 28px; }
+.expect li { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 14px; }
+.expect .n { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--navy-line); color: var(--white); font-size: var(--fs-label); font-weight: 700; }
+.expect strong { display: block; color: var(--white); font-size: var(--fs-small); }
+.expect span { font-size: var(--fs-small); }
+.form { padding: clamp(22px, 3vw, 36px); border-radius: var(--r-lg); background: var(--white); color: var(--ink); box-shadow: 0 40px 80px -40px rgba(0,0,0,.6); }
+.form h3 { font-family: var(--serif); font-size: var(--fs-h3); line-height: 1.15; margin-bottom: 4px; }
+.form .muted { font-size: var(--fs-small); margin-bottom: 18px; }
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 520px) { .f-row { grid-template-columns: 1fr; gap: 0; } }
+.f { margin-bottom: 14px; min-width: 0; }
+.f label { display: block; margin-bottom: 6px; font-size: var(--fs-small); font-weight: 600; }
+.f label .opt { font-weight: 400; color: var(--pewter); }
+.f input, .f select, .f textarea { width: 100%; padding: 13px 14px; border: 1px solid var(--line-strong); border-radius: 12px; background: var(--white); font: inherit; font-size: var(--fs-body); color: var(--ink); transition: border-color .2s, box-shadow .2s; }
+.f input:focus, .f select:focus, .f textarea:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 4px var(--sand); }
+.f input[aria-invalid="true"] { border-color: var(--error); }
+.form .btn { width: 100%; margin-top: 6px; }
+.privacy { display: flex; gap: 8px; margin: 14px 0 0; font-size: var(--fs-label); color: var(--pewter); line-height: 1.5; }
+.privacy svg { width: 16px; height: 16px; flex: none; margin-top: 1px; }
+.thanks { text-align: center; padding: 28px 8px; }
+.thanks .check { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; margin-bottom: 16px; border-radius: 50%; background: var(--sand); color: var(--navy); }
+.thanks .check svg { width: 28px; height: 28px; }
+.thanks h3 { margin-bottom: 8px; }
+.thanks p { color: var(--pewter); font-size: var(--fs-small); }
+
+/* Footer */
+footer { background: var(--deep); color: var(--on-navy-soft); padding-block: 56px 32px; font-size: var(--fs-small); border-top: 1px solid var(--navy-line); }
+.foot { display: grid; gap: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--navy-line); }
+@media (min-width: 860px) { .foot { grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; } }
+footer .brand { color: var(--white); }
+footer .brand-name small { color: var(--on-navy-soft); }
+.foot-tag { margin: 18px 0 6px; font-family: var(--serif); font-size: var(--fs-serif-sm); color: var(--white); }
+.foot-cepa { display: flex; align-items: center; gap: 12px; margin-top: 16px; font-size: var(--fs-label); }
+.foot-cepa img { width: 30px; height: auto; }
+footer h4 { margin-bottom: 8px; font-family: var(--sans); font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--white); }
+footer li a { display: inline-block; padding-block: 7px; color: var(--on-navy-soft); text-decoration: none; }
+footer li a:hover { color: var(--white); }
+.legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 22px; font-size: var(--fs-label); }
+
+/* Scroll reveal: content is visible without script; with script it eases up into place once */
+.js [data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity .7s var(--ease-out), transform .7s var(--ease-out); }
+.js [data-reveal].in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .js [data-reveal] { opacity: 1; transform: none; } }
+</style>
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 20 20"><rect x="4" y="9" width="12" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M7 9V6.5a3 3 0 016 0V9" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+  <symbol id="i-mark" viewBox="2 11 120 68"><path fill="currentColor" d="M23.24 54.98V56H4.85V54.98L9.49 53.6V17.59L4.85 16.24V15.21H23.24V16.24L18.6 17.59V53.6ZM31.29 17.69 26.83 16.23V15.21H46.17V16.23L41.12 17.63L54.78 48.91L53.24 49.35L64.47 17.66L59.45 16.21V15.21H71.53V16.21L67.12 17.72L52.92 56.33H48.5ZM83.75 41.64V39.25H103.96V41.64ZM114.58 53.51 119.04 54.98V56H99.84V54.98L104.86 53.57L91.35 22.29L92.79 21.86L80.51 53.55L85.63 55V56H73.39V55L77.83 53.49L93.19 14.87H97.61Z"/><rect x="5" y="64" width="114" height="6" fill="currentColor"/><rect x="5" y="74" width="114" height="2.5" fill="#C5A869"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site" id="top">
+  <div class="container nav">
+    <a class="brand" href="#top" aria-label="Intelligent Value Advisors, home">
+      <svg aria-hidden="true"><use href="#i-mark"/></svg>
+      <span class="brand-name">Intelligent Value Advisors<small>Ron DeLyons, CEPA®</small></span>
+    </a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+      <svg class="bars" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 7h14M3 13h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <svg class="x" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#framework">Framework</a></li>
+      <li><a href="#ron">About Ron</a></li>
+      <li><a href="#fees">Fees</a></li>
+      <li><a href="#faq">Questions</a></li>
+      <li><a class="btn btn-navy" href="#contact">Talk with Ron</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container">
+    <div class="hero-top">
+      <div>
+        <p class="kicker">Value growth &amp; exit planning for middle-market business owners</p>
+        <h1 id="hero-title">Build a more valuable business <em>and the freedom it should give you.</em></h1>
+      </div>
+      <div>
+        <p class="lead">We help owners grow what they've built, make it run without them, and plan for what comes next, whether that's a sale, a family transition, or simply more time for the things that matter to you.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-navy" href="#contact">Schedule a confidential conversation</a>
+          <a class="btn btn-line" href="#framework">See the 5-4-3-2-1 framework</a>
+        </div>
+        <p class="hero-note"><svg aria-hidden="true"><use href="#i-lock"/></svg> Private, no-obligation, and owner to owner.</p>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="hero-photo">
+        <img src="cincinnati.jpg" alt="Downtown Cincinnati and the Ohio River at sunset, with the Roebling Suspension Bridge" width="832" height="360" fetchpriority="high">
+        <span class="photo-credit" aria-hidden="true">Cincinnati, Ohio</span>
+      </div>
+      <aside class="hero-card" aria-label="About Ron DeLyons">
+        <blockquote>"I've founded, grown, and exited three businesses. I've sat where you're sitting."</blockquote>
+        <div class="who">
+          <img src="cepa.webp" alt="Certified Exit Planning Advisor (CEPA) seal" width="28" height="30">
+          <div><strong>Ron DeLyons, CEPA®</strong><span>Founder · Certified Exit Planning Advisor</span></div>
+        </div>
+        <a class="arrow-link light" href="#ron">Meet Ron</a>
+      </aside>
+    </div>
+    <div class="proof" aria-label="Credentials at a glance">
+      <div><b>40</b><span>years as a business owner and entrepreneur</span></div>
+      <div><b>3</b><span>businesses founded, grown, and exited by Ron</span></div>
+      <div><b>CEPA<span class="tm">®</span></b><span>Certified Exit Planning Advisor, Value Acceleration Methodology</span></div>
+      <div><b>5-4-3-2-1</b><span>our proprietary Intelligent Value Acceleration™ framework</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- START WHERE YOU ARE -->
+<section class="section" id="situation" aria-labelledby="sit-title">
+  <div class="container">
+    <div class="sec-head" data-reveal>
+      <p class="kicker">Start where you are</p>
+      <h2 class="title" id="sit-title">Which of these sounds most like you?</h2>
+      <p class="lead">Every owner arrives with a different question. Pick the one closest to yours, and you'll see where we'd begin.</p>
+    </div>
+    <div class="md" data-md>
+      <div class="md-list">
+        <button class="md-item" aria-expanded="true" aria-controls="p-worth"><span class="dot" aria-hidden="true"></span><span class="q">"Honestly, I don't know what my business is worth."</span></button>
+        <button class="md-item" aria-expanded="false" aria-controls="p-offers"><span class="dot" aria-hidden="true"></span><span class="q">"Buyers keep calling, and I can't tell if the offers are any good."</span></button>
+        <button class="md-item" aria-expanded="false" aria-controls="p-grow"><span class="dot" aria-hidden="true"></span><span class="q">"I'm not selling anytime soon. I want to build the most valuable company I can."</span></button>
+        <button class="md-item" aria-expanded="false" aria-controls="p-family"><span class="dot" aria-hidden="true"></span><span class="q">"We want to pass it to the next generation without dividing the family."</span></button>
+        <button class="md-item" aria-expanded="false" aria-controls="p-after"><span class="dot" aria-hidden="true"></span><span class="q">"The money's fine. I'm just not sure who I'll be after."</span></button>
+      </div>
+      <div class="md-host">
+        <div class="md-panel answer" id="p-worth" role="region" aria-label="Where we'd start">
+          <h3>Get a straight, defensible number first.</h3>
+          <p>Most owners have a figure in their head. Few have one a buyer would agree with. We start with a baseline valuation and your Intelligent Value Score™, an honest look at what's raising or lowering your value.</p>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>A baseline valuation, explained in plain language</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>The handful of factors holding your value down</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Your Owner Freedom Index™: how much the business depends on you</li>
+          </ul>
+          <div class="answer-foot"><a class="btn btn-gold" href="#contact">Find out what it's worth</a><a class="arrow-link light" href="#scores">See the 3 Core Scores</a></div>
+        </div>
+        <div class="md-panel answer" id="p-offers" role="region" aria-label="Where we'd start" hidden>
+          <h3>Don't negotiate without knowing what you have.</h3>
+          <p>An unsolicited offer can be great or badly low, and you can't tell which until you know your real value range and all your options. Selling is only one of them.</p>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Your realistic value range, and what a buyer will scrutinize</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Your options side by side: sell, recapitalize, or keep growing</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Fixes for key-person or partner risks before they cost you</li>
+          </ul>
+          <div class="answer-foot"><a class="btn btn-gold" href="#contact">Talk through an offer</a><a class="arrow-link light" href="#how" data-stage="3">See stage 4: Realize</a></div>
+        </div>
+        <div class="md-panel answer" id="p-grow" role="region" aria-label="Where we'd start" hidden>
+          <h3>This is an ownership strategy, not an exit plan.</h3>
+          <p>The best time to build transferable value is years before you need it. We build a 36-month plan with measurable targets and review it with you every quarter.</p>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>A 36-month value acceleration plan with clear priorities</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Scorecards that show whether value is actually moving</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>A leadership team that doesn't need you in every meeting</li>
+          </ul>
+          <div class="answer-foot"><a class="btn btn-gold" href="#contact">Build a growth plan</a><a class="arrow-link light" href="#outcomes">See the 4 Strategic Outcomes</a></div>
+        </div>
+        <div class="md-panel answer" id="p-family" role="region" aria-label="Where we'd start" hidden>
+          <h3>Protect the family and the business together.</h3>
+          <p>Family transitions involve fairness, readiness, taxes, and feelings, often all at once. We help you weigh the options and bring your attorney, CPA, and wealth advisor onto one plan.</p>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Family transfer, ESOP, and recapitalization options compared</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Leadership and succession planning for the next generation</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>One coordinated plan instead of conflicting advice</li>
+          </ul>
+          <div class="answer-foot"><a class="btn btn-gold" href="#contact">Plan a family transition</a><a class="arrow-link light" href="#advisors">How we coordinate advisors</a></div>
+        </div>
+        <div class="md-panel answer" id="p-after" role="region" aria-label="Where we'd start" hidden>
+          <h3>Plan who you'll become, not just what you'll leave.</h3>
+          <p>For many owners the hardest part isn't the deal. It's imagining life after it. That's a normal part of the process, and it deserves the same care you gave to building the company.</p>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Your Destiny Readiness Score™ and what would raise it</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Making sure your people and culture are protected</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>A transition that moves you toward something new</li>
+          </ul>
+          <div class="answer-foot"><a class="btn btn-gold" href="#contact">Start that conversation</a><a class="arrow-link light" href="#goal">See the 1 Goal</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PART MOST ADVISORS SKIP -->
+<section class="section paper" id="chapter" aria-labelledby="chapter-title">
+  <div class="container chapter">
+    <div data-reveal>
+      <p class="kicker">The part most advisors skip</p>
+      <h2 class="title" id="chapter-title">Life after ownership deserves a plan, too.</h2>
+      <blockquote>"The business is not the destination. It's the vehicle."</blockquote>
+    </div>
+    <div data-reveal>
+      <p class="lead">Many owners close a great deal and then find that money alone doesn't bring purpose or direction. A good transition isn't just leaving something behind. It's moving deliberately toward something new.</p>
+      <p class="paths">Whatever path you choose, it's on the table: <strong>a sale, family transfer, ESOP, recapitalization, or management buyout.</strong></p>
+      <ul class="focus">
+        <li><strong>Identity</strong><span>Who you are beyond "the owner"</span></li>
+        <li><strong>Purpose</strong><span>Work that still matters to you</span></li>
+        <li><strong>Legacy</strong><span>What your name stands for</span></li>
+        <li><strong>Family</strong><span>Time, fairness, and harmony</span></li>
+        <li><strong>Impact</strong><span>Your people and community</span></li>
+        <li><strong>Contribution</strong><span>Generosity and giving back</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- OUR PHILOSOPHY -->
+<section class="section" id="philosophy" aria-labelledby="philo-title">
+  <div class="container">
+    <div class="sec-head split" data-reveal>
+      <div>
+        <p class="kicker">Our philosophy</p>
+        <h2 class="title" id="philo-title">Better Intelligence Creates Better Value</h2>
+      </div>
+      <div class="philo-statement statement">
+        <p>Most business owners don't lack effort.</p>
+        <p>They lack the time, perspective, and strategic intelligence necessary to consistently make the best decisions.</p>
+      </div>
+    </div>
+    <p class="qs-label" id="iq-label">Five questions behind every decision we make</p>
+    <ol class="qs" aria-labelledby="iq-label" data-reveal>
+      <li><span class="n">01</span><span class="k">Enterprise</span><q>What is my business really worth, and why?</q></li>
+      <li><span class="n">02</span><span class="k">Market</span><q>What's changing around me?</q></li>
+      <li><span class="n">03</span><span class="k">Decision</span><q>What are my real options?</q></li>
+      <li><span class="n">04</span><span class="k">Owner</span><q>What do I actually want?</q></li>
+      <li><span class="n">05</span><span class="k">Future</span><q>Where do today's choices lead?</q></li>
+    </ol>
+    <ul class="ways" aria-label="How the intelligence reaches you" data-reveal>
+      <li><h3>AI-assisted research, reviewed by Ron</h3><p>Technology does the heavy lifting on benchmarks, market trends, and risk patterns. Ron interprets it with you.</p></li>
+      <li><h3>Quarterly intelligence reports</h3><p>A plain-English update on what moved your value, what's at risk, and the next decisions worth making.</p></li>
+      <li><h3>Better decisions, not more dashboards</h3><p>Every hire, acquisition, or capital decision affects value. You'll see how before you decide.</p></li>
+    </ul>
+    <div class="philo-foot">
+      <strong><small>Together, they create</small>Intelligent Value Acceleration™</strong>
+      <a class="arrow-link" href="#dimensions">See the 5 Dimensions in our framework</a>
+    </div>
+  </div>
+</section>
+
+<!-- INTRODUCING IVA -->
+<section class="section ruled" id="iva" aria-labelledby="iva-title">
+  <div class="container">
+    <div class="sec-head split" data-reveal>
+      <div>
+        <p class="kicker">Introducing</p>
+        <h2 class="title" id="iva-title">Intelligent Value Acceleration™</h2>
+      </div>
+      <div>
+        <p class="lead">Intelligent Value Acceleration™ is our proprietary framework for helping business owners:</p>
+        <a class="arrow-link" href="#framework">How the framework works</a>
+      </div>
+    </div>
+    <ol class="verbs" aria-label="What the framework helps owners do" data-reveal>
+      <li><span class="i">01</span><span class="v">Build Value</span></li>
+      <li><span class="i">02</span><span class="v">Protect Value</span></li>
+      <li><span class="i">03</span><span class="v">Accelerate Value</span></li>
+      <li><span class="i">04</span><span class="v">Monetize Value</span></li>
+      <li><span class="i">05</span><span class="v">Transform Value <em>into Freedom and Opportunity</em></span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- FRAMEWORK 5-4-3-2-1 -->
+<section class="section paper" id="framework" aria-labelledby="fw-title">
+  <div class="container">
+    <div class="sec-head split" data-reveal>
+      <div>
+        <p class="kicker">Our process · The 5-4-3-2-1 methodology</p>
+        <h2 class="title" id="fw-title">The Intelligent Value Acceleration™ Framework</h2>
+      </div>
+      <p class="lead">Five dimensions of intelligence lead to four strategic outcomes, measured by three core scores, across the two assets every owner manages, all in service of one goal.</p>
+    </div>
+    <nav class="seg" aria-label="Framework levels">
+      <a href="#dimensions"><span class="n">5</span><span class="t">Dimensions of Intelligence</span><span class="s" aria-hidden="true">Dimensions</span></a>
+      <a href="#outcomes"><span class="n">4</span><span class="t">Strategic Outcomes</span><span class="s" aria-hidden="true">Outcomes</span></a>
+      <a href="#scores"><span class="n">3</span><span class="t">Core Scores</span><span class="s" aria-hidden="true">Scores</span></a>
+      <a href="#assets"><span class="n">2</span><span class="t">Assets</span><span class="s" aria-hidden="true">Assets</span></a>
+      <a href="#goal"><span class="n">1</span><span class="t">Goal</span><span class="s" aria-hidden="true">Goal</span></a>
+    </nav>
+    <p class="fw-caption" aria-hidden="true"></p>
+
+    <div class="fw-panel" id="dimensions">
+      <h3 class="sr-only">5 Dimensions of Intelligence</h3>
+      <p class="fw-intro">We begin by understanding five critical areas that influence both enterprise value and personal outcomes.</p>
+      <ul class="items c5">
+        <li><strong>Enterprise Intelligence™</strong><span>Understanding the business.</span></li>
+        <li><strong>Market Intelligence™</strong><span>Understanding the marketplace.</span></li>
+        <li><strong>Decision Intelligence™</strong><span>Improving decision quality.</span></li>
+        <li><strong>Owner Intelligence™</strong><span>Understanding goals, motivations, and aspirations.</span></li>
+        <li><strong>Future Intelligence™</strong><span>Creating greater future opportunities.</span></li>
+      </ul>
+    </div>
+
+    <div class="fw-panel" id="outcomes">
+      <h3 class="sr-only">4 Strategic Outcomes</h3>
+      <p class="fw-intro">Every engagement focuses on four outcomes:</p>
+      <ul class="items c4">
+        <li><strong>Increase Enterprise Value</strong><span>Build a stronger, more valuable company.</span></li>
+        <li><strong>Improve Transferability</strong><span>Reduce owner dependence and increase business attractiveness.</span></li>
+        <li><strong>Expand Owner Freedom</strong><span>Create flexibility, options, and independence.</span></li>
+        <li><strong>Prepare for the Future</strong><span>Help owners define and prepare for what comes next.</span></li>
+      </ul>
+    </div>
+
+    <div class="fw-panel" id="scores">
+      <h3 class="sr-only">3 Core Scores</h3>
+      <p class="fw-intro">Our assessments continuously measure progress.</p>
+      <div class="scores">
+        <ul class="items">
+          <li><strong>Intelligent Value Score™</strong><span>How valuable is the business?</span></li>
+          <li><strong>Owner Freedom Index™</strong><span>How dependent is the owner?</span></li>
+          <li><strong>Destiny Readiness Score™</strong><span>How prepared is the owner for the next chapter?</span></li>
+        </ul>
+        <figure class="scorecard" aria-label="Sample owner scorecard">
+          <div class="scorecard-head">Owner Scorecard · Baseline <span>Sample only</span></div>
+          <div class="meter"><div class="meter-top">Intelligent Value Score™ <b>64</b></div><div class="bar"><i style="width:64%"></i></div></div>
+          <div class="meter"><div class="meter-top">Owner Freedom Index™ <b>31</b></div><div class="bar"><i style="width:31%"></i></div></div>
+          <div class="meter"><div class="meter-top">Destiny Readiness Score™ <b>42</b></div><div class="bar"><i style="width:42%"></i></div></div>
+          <figcaption>Illustrative example, scored out of 100. Your scores come from your own assessment.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="fw-panel" id="assets">
+      <h3 class="sr-only">2 Assets</h3>
+      <p class="fw-intro">Every business owner manages:</p>
+      <div class="assets">
+        <div>
+          <h3>A Company</h3>
+          <p class="muted">The financial engine.</p>
+          <ul>
+            <li>Grow its value on purpose, not by accident</li>
+            <li>Reduce how much it depends on you</li>
+            <li>Make it attractive and transferable to buyers or successors</li>
+          </ul>
+        </div>
+        <div>
+          <h3>A Life</h3>
+          <p class="muted">The reason the company exists.</p>
+          <ul>
+            <li>Create real options for you and your family</li>
+            <li>Define what you want your success to make possible</li>
+            <li>Be ready for the next chapter, and excited about it</li>
+          </ul>
+        </div>
+      </div>
+      <p class="assets-foot">Our work is focused on maximizing both.</p>
+    </div>
+
+    <div class="fw-panel" id="goal">
+      <div class="goal">
+        <p class="kicker" style="justify-content:center">The one goal</p>
+        <h3>Transform Enterprise Value <em>Into Life Value™</em></h3>
+        <p>When enterprise value creates freedom, opportunity, purpose, and impact, business success becomes life success.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW AN ENGAGEMENT UNFOLDS -->
+<section class="section" id="how" aria-labelledby="how-title">
+  <div class="container">
+    <div class="sec-head split" data-reveal>
+      <div>
+        <p class="kicker">How an engagement unfolds</p>
+        <h2 class="title" id="how-title">From first conversation to next chapter.</h2>
+      </div>
+      <p class="lead">The 5-4-3-2-1 framework defines what we measure and what we aim for. These five stages are how the work happens, built on the CEPA® Value Acceleration Methodology, so you always know where you are and what comes next.</p>
+    </div>
+    <div class="md" data-md data-stages>
+      <div class="md-list">
+        <button class="md-item stage-item" aria-expanded="true" aria-controls="st-1"><span class="num">1</span><span><span class="nm">Discover</span><span class="sub">Know where you stand</span></span></button>
+        <button class="md-item stage-item" aria-expanded="false" aria-controls="st-2"><span class="num">2</span><span><span class="nm">Design</span><span class="sub">Build the roadmap</span></span></button>
+        <button class="md-item stage-item" aria-expanded="false" aria-controls="st-3"><span class="num">3</span><span><span class="nm">Accelerate</span><span class="sub">Do the work, track it</span></span></button>
+        <button class="md-item stage-item" aria-expanded="false" aria-controls="st-4"><span class="num">4</span><span><span class="nm">Realize</span><span class="sub">Turn value into options</span></span></button>
+        <button class="md-item stage-item" aria-expanded="false" aria-controls="st-5"><span class="num">5</span><span><span class="nm">Thrive</span><span class="sub">Design what's next</span></span></button>
+      </div>
+      <div class="md-host">
+        <div class="md-panel stage" id="st-1" role="region" aria-label="Stage 1: Discover">
+          <h3>Understand where you stand today.</h3>
+          <p>We start with an honest picture of the business and of you: what it's worth, what drives and suppresses that value, how dependent it is on you, and what you want from the years ahead.</p>
+          <h4>What you walk away with</h4>
+          <ul><li><svg aria-hidden="true"><use href="#i-check"/></svg>Baseline valuation</li><li><svg aria-hidden="true"><use href="#i-check"/></svg>Starting Intelligent Value Score™</li><li><svg aria-hidden="true"><use href="#i-check"/></svg>Starting Owner Freedom Index™</li><li><svg aria-hidden="true"><use href="#i-check"/></svg>Starting Destiny Readiness Score™</li></ul>
+        </div>
+        <div class="md-panel stage" id="st-2" role="region" aria-label="Stage 2: Design" hidden>
+          <h3>Build a roadmap you believe in.</h3>
+          <p>Together we turn what we learned into a focused plan: the few priorities that will raise value the most, a path to make the business less dependent on you, and a clear picture of the future you're working toward.</p>
+          <h4>What you walk away with</h4>
+          <ul><li><svg aria-hidden="true"><use href="#i-check"/></svg>36-month value acceleration plan</li><li><svg aria-hidden="true"><use href="#i-check"/></svg>Priorities tied to the 4 Strategic Outcomes</li><li><svg aria-hidden="true"><use href="#i-check"/></svg>Freedom roadmap</li><li><svg aria-hidden="true"><use href="#i-check"/></svg>Future vision framework</li></ul>
+        </div>
+        <div class="md-panel stage" id="st-3" role="region" aria-label="Stage 3: Accelerate" hidden>
+          <h3>Do the work, and watch the numbers move.</h3>
+          <p>This is where value gets built. Ron meets with you monthly, reviews progress quarterly, and keeps your advisors coordinated, so the plan doesn't sit in a drawer.</p>
+          <h4>What you get along the way</h4>
+          <ul><li><svg aria-hidden="true"><use href="#i-check"/></svg>Monthly advisory sessions</li><li><svg aria-hidden="true"><use href="#i-check"/></svg>Quarterly strategic reviews</li><li><svg aria-hidden="true"><use href="#i-check"/></svg>AI-assisted intelligence reports</li><li><svg aria-hidden="true"><use href="#i-check"/></svg>Updated 3 Core Scores each quarter</li></ul>
+        </div>
+        <div class="md-panel stage" id="st-4" role="region" aria-label="Stage 4: Realize" hidden>
+          <h3>Turn value into real options.</h3>
+          <p>When the time is right, on your schedule, we prepare for the transition that fits your goals. A sale is one option, not the only one. Ron works alongside your bankers, attorneys, and CPA so you go in prepared.</p>
+          <h4>Paths we prepare you for</h4>
+          <ul class="chips"><li>Sale</li><li>Family transfer</li><li>ESOP</li><li>Recapitalization</li><li>Management buyout</li></ul>
+        </div>
+        <div class="md-panel stage" id="st-5" role="region" aria-label="Stage 5: Thrive" hidden>
+          <h3>Design what comes next.</h3>
+          <p>The deal isn't the finish line. We help you plan a next chapter that is as intentional as the company you built, so you leave excited about where you're going.</p>
+          <h4>What we focus on</h4>
+          <ul class="chips"><li>Identity</li><li>Purpose</li><li>Legacy</li><li>Family</li><li>Impact</li><li>Contribution</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BROKER, BANKER, OR ADVISOR + TEAM -->
+<section class="section paper" id="team" aria-labelledby="compare-title">
+  <div class="container">
+    <div class="sec-head split" data-reveal>
+      <div>
+        <p class="kicker">Straight answers</p>
+        <h2 class="title" id="compare-title">Broker, banker, or advisor? Here's the difference.</h2>
+      </div>
+      <p class="lead">Owners are rarely told who does what. Each plays a role. What matters is knowing which one you need, and when.</p>
+    </div>
+    <div class="compare-simple">
+      <h3>How an exit planning advisor is different</h3>
+      <dl>
+        <div><dt>Main job</dt><dd>Grow value, reduce owner dependence, and prepare you for every option</dd></div>
+        <div><dt>When they start</dt><dd>Ideally years before, while there's time to build value</dd></div>
+        <div><dt>Assumes a sale?</dt><dd>No. Family transfer, ESOP, recapitalization, or simply keep growing</dd></div>
+        <div><dt>Your life after</dt><dd>Part of the plan from day one</dd></div>
+      </dl>
+    </div>
+    <button type="button" class="compare-toggle" aria-expanded="false" aria-controls="compare-full">Compare with brokers and bankers</button>
+    <div class="compare-full" id="compare-full">
+      <table class="compare">
+        <thead><tr><th scope="col"><span class="sr-only">Question</span></th><th scope="col">Business broker</th><th scope="col">Investment banker</th><th scope="col" class="us">Exit planning advisor (Ron)</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Main job</th><td data-label="Business broker">Find a buyer and close a sale</td><td data-label="Investment banker">Run a competitive sale process for larger deals</td><td class="us" data-label="Exit planning advisor (Ron)">Grow value, reduce owner dependence, and prepare you for every option</td></tr>
+          <tr><th scope="row">When they start</th><td data-label="Business broker">When you're ready to sell</td><td data-label="Investment banker">When you're ready to sell</td><td class="us" data-label="Exit planning advisor (Ron)">Ideally years before, while there's time to build value</td></tr>
+          <tr><th scope="row">Assumes a sale?</th><td data-label="Business broker">Yes</td><td data-label="Investment banker">Yes</td><td class="us" data-label="Exit planning advisor (Ron)">No. Family transfer, ESOP, recapitalization, or simply keep growing</td></tr>
+          <tr><th scope="row">Your life after</th><td data-label="Business broker">Outside their scope</td><td data-label="Investment banker">Outside their scope</td><td class="us" data-label="Exit planning advisor (Ron)">Part of the plan from day one</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="compare-note">When it's time to transact, Ron works alongside the right broker or banker for you, so you go into the deal prepared.</p>
+
+    <div class="team" id="advisors" data-reveal>
+      <div>
+        <p class="kicker">Your strategic quarterback</p>
+        <h2 class="title">Your advisors, finally on the same page.</h2>
+        <p class="lead">Your CPA focuses on taxes. Your attorney on legal matters. Your wealth advisor on your portfolio. Each is good at their job, but nobody is connecting the dots.</p>
+        <p class="muted">Ron keeps the whole picture in view and aligns your existing advisors around one plan built on your goals. You don't have to replace anyone.</p>
+      </div>
+      <ul class="orbit" aria-label="You and Ron at the center of your CPA, attorney, wealth advisor, banker or broker, insurance advisor, and family">
+        <li class="top">CPA</li><li class="top">Attorney</li><li class="top">Wealth advisor</li>
+        <li class="core" aria-hidden="true"><span>You + Ron<small>ONE PLAN</small></span></li>
+        <li class="bottom">Banker / broker</li><li class="bottom">Insurance</li><li class="bottom">Family</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT RON -->
+<section class="section" id="ron" aria-labelledby="ron-title">
+  <div class="container ron">
+    <div class="ron-side" data-reveal>
+      <div class="ron-photo"><img src="ron.webp" alt="Ron DeLyons" width="2391" height="3189" loading="lazy"></div>
+      <ul class="facts" aria-label="Ron's background">
+        <li><img src="cepa.webp" alt="CEPA seal" width="36" height="38"><div><strong>Certified Exit Planning Advisor (CEPA®)</strong><span>Trained in the Value Acceleration Methodology</span></div></li>
+        <li><strong>Three-time founder</strong><span>Built, grew, and exited three businesses over 40 years</span></li>
+        <li><strong>Life after ownership</strong><span>Guided by the principles of Christopher Snider's <em>Walking to Destiny</em></span></li>
+        <li><strong>Middle-market focus</strong><span>Founders, family businesses, and private owners of middle-market companies</span></li>
+      </ul>
+    </div>
+    <article class="letter" data-reveal>
+      <p class="kicker">A note from Ron DeLyons</p>
+      <h2 class="title" id="ron-title">I've sat where you're sitting.</h2>
+      <p>Over the last forty years, I've founded, grown, and exited three businesses. Along the way I faced the same challenges you're facing: growth, leadership, succession, building real value, and finally letting go.</p>
+      <p>Like most entrepreneurs, I learned many of those lessons the hard way. I didn't always have someone beside me who had already walked the path.</p>
+      <p>That's why I started Intelligent Value Advisors. I believe every owner deserves an experienced guide, one who understands the numbers <em>and</em> what this business means to you, your family, and your people.</p>
+      <p>If you're wondering what your company is really worth, or what you'd do without it, let's talk. No pitch, no pressure. Just a conversation between owners.</p>
+      <p class="sign">Ron DeLyons</p>
+      <a class="btn btn-navy" href="#contact">Schedule time with Ron</a>
+    </article>
+  </div>
+</section>
+
+<!-- FEES -->
+<section class="section paper" id="fees" aria-labelledby="fees-title">
+  <div class="container">
+    <div class="sec-head split" data-reveal>
+      <div>
+        <p class="kicker">How Ron is paid</p>
+        <h2 class="title" id="fees-title">Simple fees, tied to your results.</h2>
+      </div>
+      <p class="lead">Most advisors get paid whether your business grows or not. Our biggest fee depends on the value we help you create, so we only do well when you do.</p>
+    </div>
+    <ol class="fees" data-reveal>
+      <li><span class="num">01</span><h3>Discovery</h3><div class="how">One fixed fee</div><p>Valuation, your 3 Core Scores, and your value acceleration blueprint. Quoted up front, before any work begins.</p></li>
+      <li><span class="num">02</span><h3>Ongoing advisory</h3><div class="how">Monthly fee</div><p>Monthly sessions, quarterly reviews, intelligence reports, and accountability to keep the plan moving.</p></li>
+      <li><span class="num">03</span><h3>Value Acceleration Fee™</h3><div class="how">2.5%–5% of value created</div><p>A share of the growth only, calculated on the increase in your company's value, never on what it was already worth.</p></li>
+    </ol>
+    <div class="calc">
+      <div>
+        <h3>See it with your own numbers.</h3>
+        <p class="muted">Move the sliders to estimate the performance fee. You'll see most of the value created stays with you.</p>
+        <div class="field">
+          <label for="c-start">Value today <output id="o-start" for="c-start">$5.0M</output></label>
+          <input type="range" id="c-start" min="2" max="100" step="0.5" value="5">
+        </div>
+        <div class="field">
+          <label for="c-end">Value after 36 months <output id="o-end" for="c-end">$15.0M</output></label>
+          <input type="range" id="c-end" min="2" max="200" step="0.5" value="15">
+        </div>
+      </div>
+      <div class="calc-out" aria-live="polite">
+        <div class="calc-row"><span>Value created</span><b id="r-created">$10M</b></div>
+        <div class="calc-row"><span>Performance fee (2.5%–5%)</span><b id="r-fee">$250K–$500K</b></div>
+        <div class="calc-row big"><span>You keep</span><b id="r-keep">$9.5M–$9.75M</b></div>
+        <div class="split" aria-hidden="true"><div class="keep" style="width:95%"></div><div class="fee-part" style="width:5%"></div></div>
+        <div class="legend"><span><i style="background:var(--navy)"></i>Yours (95%+)</span><span><i style="background:var(--gold)"></i>Fee, at most 5%</span></div>
+        <p class="calc-fine">Illustration of the performance fee only, at the high and low end of the range. Discovery and monthly advisory fees are separate. Exact terms are agreed in writing before an engagement begins.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq" aria-labelledby="faq-title">
+  <div class="container faq-grid">
+    <div class="faq-side" data-reveal>
+      <p class="kicker">Questions owners ask</p>
+      <h2 class="title" id="faq-title">Good questions deserve plain answers.</h2>
+      <p class="muted">Don't see yours? Ask Ron directly. That's what the first conversation is for.</p>
+      <a class="arrow-link" href="#contact">Ask a question</a>
+    </div>
+    <div class="faq">
+      <details><summary>What is the 5-4-3-2-1 methodology?</summary><div class="ans"><p>It's the structure of Intelligent Value Acceleration™. We look at your business through 5 Dimensions of Intelligence, work toward 4 Strategic Outcomes, track progress with 3 Core Scores, and care for the 2 Assets you manage, your company and your life, toward 1 Goal: transforming enterprise value into life value.</p></div></details>
+      <details><summary>Do I have to be planning to sell?</summary><div class="ans"><p>No. Many clients have no plans to sell for years. They want a more valuable company with more options. Everything that makes a business easier to sell also makes it better to own.</p></div></details>
+      <details><summary>Is it too late if I want to transition within a year?</summary><div class="ans"><p>It's not too late. A shorter timeline changes the focus. We concentrate on the improvements that matter most to a buyer, on protecting your people, and on preparing you personally for what comes after.</p></div></details>
+      <details><summary>Will you work with my CPA, attorney, and wealth advisor?</summary><div class="ans"><p>Yes, and that's a big part of the value. Ron coordinates your existing advisors around one plan, so you stop getting conflicting advice. You don't need to replace anyone.</p></div></details>
+      <details><summary>What does "AI-powered" actually mean here?</summary><div class="ans"><p>We use modern analytical tools to gather benchmarks, track market changes, and spot risks and opportunities faster than manual research allows. Ron reviews it all and turns it into clear recommendations in your quarterly reports.</p></div></details>
+      <details><summary>How does the performance fee work if value doesn't grow?</summary><div class="ans"><p>The Value Acceleration Fee™ is a percentage of the <em>increase</em> in your company's value, so it's tied directly to growth. The fixed Discovery fee and monthly advisory fee are agreed up front, so you'll know every cost before you begin.</p></div></details>
+      <details><summary>Is our conversation confidential?</summary><div class="ans"><p>Completely. Your employees, customers, and competitors won't know we've spoken. Discretion is the starting point for every conversation.</p></div></details>
+      <details><summary>What size businesses do you work with?</summary><div class="ans"><p>Founders, family-owned businesses, and private company owners in the middle market.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact" aria-labelledby="contact-title">
+  <div class="container contact-grid">
+    <div>
+      <p class="kicker">Start with a conversation</p>
+      <h2 id="contact-title">What is your business really worth? <em>More importantly, what could it become?</em></h2>
+      <p class="lead">Schedule a confidential conversation with Ron. There's no cost, no obligation, and no sales pitch, just an honest look at where you stand.</p>
+      <ol class="expect" aria-label="What happens next">
+        <li><span class="n">1</span><div><strong>Tell us a little about you</strong><span>Two minutes. Only what you're comfortable sharing.</span></div></li>
+        <li><span class="n">2</span><div><strong>Ron reaches out personally</strong><span>To find a time that works for you.</span></div></li>
+        <li><span class="n">3</span><div><strong>A straightforward conversation</strong><span>About your business, your goals, and whether we're a good fit.</span></div></li>
+      </ol>
+    </div>
+    <form class="form" id="contact-form" novalidate>
+      <div id="form-fields">
+        <h3>Request a conversation</h3>
+        <p class="muted">Everything you share stays between you and Ron.</p>
+        <div class="f-row">
+          <div class="f"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
+          <div class="f"><label for="f-company">Company</label><input id="f-company" name="company" autocomplete="organization"></div>
+        </div>
+        <div class="f-row">
+          <div class="f"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="f"><label for="f-phone">Phone <span class="opt">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="f">
+          <label for="f-topic">What's on your mind?</label>
+          <select id="f-topic" name="topic">
+            <option>What my business is worth</option>
+            <option>Growing the value of my business</option>
+            <option>Responding to an offer or buyer interest</option>
+            <option>Passing the business to family or my team</option>
+            <option>Life after ownership</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="f"><label for="f-msg">Anything else? <span class="opt">(optional)</span></label><textarea id="f-msg" name="message" rows="3" placeholder="e.g. We're a 60-person manufacturer and I'm thinking about the next five years."></textarea></div>
+        <button class="btn btn-gold" type="submit">Request my conversation</button>
+        <p class="privacy"><svg aria-hidden="true"><use href="#i-lock"/></svg>Confidential. We never share or sell your information.</p>
+      </div>
+      <div class="thanks" id="form-thanks" hidden tabindex="-1">
+        <span class="check"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
+        <h3>Thank you. Ron will be in touch.</h3>
+        <p>He'll reach out personally to find a time that suits you. In the meantime, there's nothing you need to prepare.</p>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top"><svg aria-hidden="true"><use href="#i-mark"/></svg><span class="brand-name">Intelligent Value Advisors®<small>Creators of Intelligent Value Acceleration™</small></span></a>
+        <p class="foot-tag">Transform Enterprise Value Into Life Value™</p>
+        <p>Value growth and exit planning for middle-market business owners. Cincinnati, Ohio.</p>
+        <div class="foot-cepa"><img src="cepa.webp" alt="" width="30" height="32"><span>Ron DeLyons is a Certified Exit Planning Advisor (CEPA®)</span></div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#philosophy">Our philosophy</a></li>
+          <li><a href="#framework">The 5-4-3-2-1 framework</a></li>
+          <li><a href="#how">How an engagement unfolds</a></li>
+          <li><a href="#ron">About Ron</a></li>
+          <li><a href="#fees">Fees</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get started</h4>
+        <ul>
+          <li><a href="#contact">Schedule a confidential conversation</a></li>
+          <li><a href="#situation">Find where you are</a></li>
+          <li><a href="#faq">Questions owners ask</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Intelligent Value Advisors. All rights reserved.</span>
+      <span>CEPA® is a registered mark of the Exit Planning Institute.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var header = document.querySelector('header.site');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var narrow = window.matchMedia('(max-width: 959px)');
+  function headerH() { return header.getBoundingClientRect().bottom; }
+  function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+
+  window.addEventListener('scroll', function () { header.classList.toggle('scrolled', window.scrollY > 8); }, { passive: true });
+
+  // Landing: a section's first content settles just below the sticky header at every screen size
+  // The container, not its first child: children may be mid fade-in, and transforms would skew the measurement
+  function landingEl(t) {
+    if (t.tagName !== 'SECTION') return t;
+    return t.querySelector('.container') || t;
+  }
+  function targetY(t) {
+    if (t === header) return 0;
+    var gap = window.innerWidth < 600 || window.innerHeight < 500 ? 16 : 28;
+    var maxY = document.documentElement.scrollHeight - window.innerHeight;
+    return Math.round(Math.min(maxY, Math.max(0, landingEl(t).getBoundingClientRect().top + window.scrollY - headerH() - gap)));
+  }
+  // Late font swaps or content resizing during a smooth scroll can move the target; once the scroll finishes, re-measure and correct
+  var hasScrollEnd = 'onscrollend' in window;
+  var settleTarget = null, settleTimer, settleExpiry;
+  function cancelSettle() { settleTarget = null; clearTimeout(settleTimer); clearTimeout(settleExpiry); }
+  function scrollToTarget(t, instant) {
+    cancelSettle();
+    var y = targetY(t);
+    if (Math.abs(window.scrollY - y) <= 2) return;
+    window.scrollTo({ top: y, behavior: instant || reduceMotion.matches ? 'instant' : 'smooth' });
+    settleTarget = t;
+    if (!hasScrollEnd) settleTimer = setTimeout(settle, 300);
+    settleExpiry = setTimeout(cancelSettle, 4000);
+  }
+  function settle() {
+    if (!settleTarget) return;
+    var y = targetY(settleTarget);
+    cancelSettle();
+    if (Math.abs(window.scrollY - y) > 2) window.scrollTo({ top: y, behavior: 'instant' });
+  }
+  if (hasScrollEnd) window.addEventListener('scrollend', settle);
+  else window.addEventListener('scroll', function () { if (!settleTarget) return; clearTimeout(settleTimer); settleTimer = setTimeout(settle, 300); }, { passive: true });
+  ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach(function (ev) { window.addEventListener(ev, cancelSettle, { passive: true }); });
+
+  // Entrance animation for switched-in panels; dir -1/1 slides from the left/right, 0 rises in
+  var animReady = false;
+  function animateIn(el, dir) {
+    if (!animReady || reduceMotion.matches) return;
+    el.style.setProperty('--dx', (dir || 0) * 18 + 'px');
+    el.style.setProperty('--dy', dir ? '0px' : '10px');
+    el.classList.remove('anim-in'); void el.offsetWidth; el.classList.add('anim-in');
+  }
+  document.addEventListener('animationend', function (e) { if (e.target.classList) e.target.classList.remove('anim-in'); });
+
+  // Menu
+  var menuBtn = document.querySelector('.menu-btn'), nav = document.getElementById('nav-links');
+  function setMenu(open) { nav.classList.toggle('open', open); menuBtn.setAttribute('aria-expanded', open); menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); }
+  menuBtn.addEventListener('click', function () { setMenu(!nav.classList.contains('open')); });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && nav.classList.contains('open')) { setMenu(false); menuBtn.focus(); } });
+
+  // Master-detail lists: one panel at a time; on phones the panel sits right under its item
+  var mdSelectors = [];
+  document.querySelectorAll('[data-md]').forEach(function (md) {
+    var items = Array.prototype.slice.call(md.querySelectorAll('.md-item'));
+    var host = md.querySelector('.md-host');
+    var cur = 0;
+    function place() {
+      if (narrow.matches) items[cur].insertAdjacentElement('afterend', host);
+      else if (host.parentNode !== md) md.appendChild(host);
+    }
+    function select(i, scroll) {
+      if (i === cur) { place(); return; }
+      var dir = i > cur ? 1 : -1;
+      items.forEach(function (b, k) {
+        b.setAttribute('aria-expanded', k === i);
+        document.getElementById(b.getAttribute('aria-controls')).hidden = k !== i;
+      });
+      cur = i;
+      place();
+      var panel = document.getElementById(items[i].getAttribute('aria-controls'));
+      animateIn(panel, narrow.matches ? 0 : dir);
+      // On phones keep the chosen item in view once its panel opens beneath it
+      if (scroll !== false && narrow.matches) {
+        var top = items[i].getBoundingClientRect().top;
+        if (top < headerH() || top > window.innerHeight * .5) scrollToTarget(items[i]);
+      }
+    }
+    items.forEach(function (b, i) {
+      b.addEventListener('click', function () { select(i); });
+      b.addEventListener('keydown', function (e) {
+        var j = null;
+        if (e.key === 'ArrowDown') j = Math.min(items.length - 1, i + 1);
+        if (e.key === 'ArrowUp') j = Math.max(0, i - 1);
+        if (j !== null) { e.preventDefault(); items[j].focus(); }
+      });
+    });
+    narrow.addEventListener('change', place);
+    place();
+    mdSelectors.push({ el: md, select: select });
+  });
+  var stages = mdSelectors.find(function (m) { return m.el.hasAttribute('data-stages'); });
+  document.querySelectorAll('[data-stage]').forEach(function (a) {
+    a.addEventListener('click', function () { stages.select(+a.getAttribute('data-stage'), false); });
+  });
+
+  // Framework: the 5-4-3-2-1 segments are tabs; one level shows at a time
+  var fwSec = document.getElementById('framework');
+  var seg = fwSec.querySelector('.seg');
+  var fwTabs = Array.prototype.slice.call(seg.querySelectorAll('a'));
+  var fwPanels = fwTabs.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  var fwCaption = fwSec.querySelector('.fw-caption');
+  seg.setAttribute('role', 'tablist');
+  fwTabs.forEach(function (t, i) {
+    var pnl = fwPanels[i];
+    t.setAttribute('role', 'tab'); t.id = 'fwt-' + pnl.id; t.setAttribute('aria-controls', pnl.id);
+    pnl.setAttribute('role', 'tabpanel'); pnl.setAttribute('aria-labelledby', t.id); pnl.tabIndex = -1;
+    var label = function (k) { return fwTabs[k].querySelector('.n').textContent + ' ' + fwTabs[k].querySelector('.t').textContent; };
+    var nav = document.createElement('div');
+    nav.className = 'fw-nav';
+    nav.innerHTML = (i > 0 ? '<button type="button" data-dir="prev">← ' + esc(label(i - 1)) + '</button>' : '<span></span>') +
+      (i < fwTabs.length - 1 ? '<button type="button" data-dir="next">Next: ' + esc(label(i + 1)) + ' →</button>' : '<button type="button" data-dir="first">Back to 5 Dimensions ↑</button>');
+    pnl.appendChild(nav);
+  });
+  function selectFw(i) {
+    var prev = fwTabs.findIndex(function (t) { return t.getAttribute('aria-selected') === 'true'; });
+    if (prev > -1 && prev !== i) animateIn(fwPanels[i], i > prev ? 1 : -1);
+    fwTabs.forEach(function (t, k) {
+      var on = k === i;
+      t.setAttribute('aria-selected', on);
+      t.tabIndex = on ? 0 : -1;
+      fwPanels[k].hidden = !on;
+    });
+    fwCaption.textContent = fwTabs[i].querySelector('.t').textContent;
+  }
+  function showFw(i) { selectFw(i); scrollToTarget(seg); }
+  fwSec.addEventListener('click', function (e) {
+    var b = e.target.closest('.fw-nav button'); if (!b) return;
+    var cur = fwTabs.findIndex(function (t) { return t.getAttribute('aria-selected') === 'true'; });
+    var d = b.getAttribute('data-dir');
+    var j = d === 'first' ? 0 : cur + (d === 'next' ? 1 : -1);
+    showFw(j);
+    fwTabs[j].focus({ preventScroll: true });
+  });
+  fwTabs.forEach(function (t, i) {
+    t.addEventListener('keydown', function (e) {
+      var j = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') j = (i + 1) % fwTabs.length;
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') j = (i - 1 + fwTabs.length) % fwTabs.length;
+      if (e.key === 'Home') j = 0;
+      if (e.key === 'End') j = fwTabs.length - 1;
+      if (j !== null) { e.preventDefault(); selectFw(j); fwTabs[j].focus(); }
+    });
+  });
+  // Any link to a framework level (tabs, situation answers, philosophy) opens that tab
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="#"]'); if (!a) return;
+    var idx = fwPanels.findIndex(function (p) { return '#' + p.id === a.getAttribute('href'); });
+    if (idx < 0) return;
+    e.preventDefault();
+    if (seg.contains(a)) {
+      selectFw(idx);
+      var pTop = fwPanels[idx].getBoundingClientRect().top;
+      if (pTop > window.innerHeight * 0.6 || pTop < headerH()) scrollToTarget(seg);
+    } else showFw(idx);
+    history.replaceState(null, '', a.getAttribute('href'));
+  });
+  var startFw = fwPanels.findIndex(function (p) { return '#' + p.id === location.hash; });
+  selectFw(startFw > -1 ? startFw : 0);
+
+  // Every other in-page link uses the same landing rule
+  document.addEventListener('click', function (e) {
+    if (e.defaultPrevented) return;
+    var a = e.target.closest('a[href^="#"]');
+    if (!a || a.classList.contains('skip')) return;
+    var t = document.getElementById(a.getAttribute('href').slice(1));
+    if (!t) return;
+    e.preventDefault();
+    scrollToTarget(t);
+    history.pushState(null, '', a.getAttribute('href'));
+  });
+  function goToHash(instant) {
+    var id = decodeURIComponent(location.hash.slice(1));
+    var t = id && document.getElementById(id);
+    if (!t || t.id === 'main') return false;
+    var idx = fwPanels.indexOf(t);
+    if (idx > -1) selectFw(idx);
+    scrollToTarget(idx > -1 ? seg : t, instant);
+    return true;
+  }
+  window.addEventListener('popstate', function () {
+    setMenu(false);
+    requestAnimationFrame(function () { goToHash(true); });
+  });
+  window.addEventListener('load', function () { goToHash(true); });
+
+  // Comparison table on phones: summary first, full table on request
+  var cmpBtn = document.querySelector('.compare-toggle'), cmpFull = document.getElementById('compare-full');
+  cmpBtn.addEventListener('click', function () {
+    var open = cmpFull.classList.toggle('show');
+    cmpBtn.setAttribute('aria-expanded', open);
+    cmpBtn.textContent = open ? 'Hide the full comparison' : 'Compare with brokers and bankers';
+  });
+
+  // Ron's letter opens with two paragraphs on smaller screens
+  var letter = document.querySelector('.letter');
+  var more = document.createElement('button');
+  more.type = 'button'; more.className = 'letter-more'; more.textContent = "Read Ron's full note ↓";
+  letter.querySelectorAll('p:not(.kicker)')[1].insertAdjacentElement('afterend', more);
+  letter.classList.add('clamped');
+  more.addEventListener('click', function () { letter.classList.remove('clamped'); });
+
+  // Scroll reveal, once per element
+  var pending = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+  var revealQueued = false;
+  function reveal() {
+    revealQueued = false;
+    var limit = window.innerHeight * .92;
+    pending = pending.filter(function (el) {
+      if (el.getBoundingClientRect().top < limit) { el.classList.add('in'); return false; }
+      return true;
+    });
+    if (!pending.length) window.removeEventListener('scroll', queueReveal);
+  }
+  function queueReveal() { if (!revealQueued) { revealQueued = true; requestAnimationFrame(reveal); } }
+  if (reduceMotion.matches) pending.forEach(function (el) { el.classList.add('in'); });
+  else { window.addEventListener('scroll', queueReveal, { passive: true }); window.addEventListener('resize', queueReveal); reveal(); }
+
+  animReady = true;
+
+  // Fee calculator
+  var cStart = document.getElementById('c-start'), cEnd = document.getElementById('c-end');
+  function money(m) {
+    if (m >= 1) return '$' + (m >= 100 ? Math.round(m) : m.toFixed(m >= 10 ? 1 : 2).replace(/\.?0+$/, '')) + 'M';
+    return '$' + Math.round(m * 1000) + 'K';
+  }
+  function calc(e) {
+    var s = +cStart.value, v = +cEnd.value;
+    if (v < s) { if (e && e.target === cStart) { cEnd.value = s; v = s; } else { cStart.value = v; s = v; } }
+    var created = v - s, lo = created * 0.025, hi = created * 0.05;
+    document.getElementById('o-start').textContent = '$' + s.toFixed(1) + 'M';
+    document.getElementById('o-end').textContent = '$' + v.toFixed(1) + 'M';
+    document.getElementById('r-created').textContent = created > 0 ? money(created) : '$0';
+    document.getElementById('r-fee').textContent = created > 0 ? money(lo) + '–' + money(hi) : '$0';
+    document.getElementById('r-keep').textContent = created > 0 ? money(created - hi) + '–' + money(created - lo) : '$0';
+  }
+  cStart.addEventListener('input', calc); cEnd.addEventListener('input', calc); calc();
+
+  // Contact form (front-end only; connect to a form service before launch)
+  var form = document.getElementById('contact-form');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ok = true;
+    [document.getElementById('f-name'), document.getElementById('f-email')].forEach(function (el) {
+      var valid = el.value.trim() && (el.type !== 'email' || /.+@.+\..+/.test(el.value));
+      el.setAttribute('aria-invalid', !valid);
+      if (!valid && ok) { el.focus(); ok = false; }
+    });
+    if (!ok) return;
+    document.getElementById('form-fields').hidden = true;
+    var t = document.getElementById('form-thanks'); t.hidden = false; t.focus();
+  });
+})();
+</script>
+</body>
+</html>
