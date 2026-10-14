@@ -701,6 +701,10 @@ main > .section + .section { border-top: 0; }
 .field output { color: var(--gold); }
 input[type=range]::-webkit-slider-runnable-track { background: rgba(255,255,255,.22); }
 input[type=range]::-moz-range-track { background: rgba(255,255,255,.22); }
+
+/* Comparison table: the header row reads as a header, not as the section background */
+.compare thead th { background: #DFE5EE; color: var(--navy); border-bottom: 1px solid #C3CCDA; }
+.compare thead th.us { background: var(--navy); color: var(--white); border-bottom-color: var(--navy); }
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
