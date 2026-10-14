@@ -715,20 +715,31 @@ html[data-tint="mist3"] { --fog: #E6EBF2; --sand-soft: #DBE2EC; --sand: #CBD4E1;
 html[data-tint="slate"] { --fog: #E8EBEF; --sand-soft: #DDE1E7; --sand: #CCD2DB; --line: #D5DAE1; --field: #AEB5C0; --head: #D5DAE1; --head-line: #B7BFCA; }
 html[data-tint="stone"] { --fog: #F5F4F1; --sand-soft: #ECEAE5; --sand: #DDDAD3; --line: #E4E2DD; --field: #C4C0B8; --head: #E8E6E0; --head-line: #CFCBC2; }
 
-html[data-break] main > section.section, html[data-break] main > section.contact { position: relative; }
-/* Gold accent: a short centered gold line at the top of each section */
-html[data-break="gold"] main > section.section::before, html[data-break="gold"] main > section.contact::before { content: ""; position: absolute; z-index: 3; top: 0; left: 50%; width: 56px; height: 3px; transform: translateX(-50%); background: var(--gold); border-radius: 0 0 2px 2px; }
-/* Ornament: a fine rule with a gold diamond at its center, sitting on the seam */
-html[data-break="ornament"] main > section.section::before, html[data-break="ornament"] main > section.contact::before { content: ""; position: absolute; z-index: 3; top: -.5px; left: 50%; width: min(1132px, calc(100% - 32px)); height: 1px; transform: translateX(-50%); background: linear-gradient(90deg, transparent, rgba(21,37,63,.22) 18%, rgba(21,37,63,.22) 47%, transparent 47%, transparent 53%, rgba(21,37,63,.22) 53%, rgba(21,37,63,.22) 82%, transparent); }
-html[data-break="ornament"] main > section.section::after, html[data-break="ornament"] main > section.contact::after { content: ""; position: absolute; z-index: 3; top: -5px; left: 50%; width: 10px; height: 10px; transform: translateX(-50%) rotate(45deg); background: var(--gold); }
-html[data-break="ornament"] #chapter::before, html[data-break="ornament"] main > section.contact::before { background: linear-gradient(90deg, transparent, rgba(197,168,105,.45) 18%, rgba(197,168,105,.45) 47%, transparent 47%, transparent 53%, rgba(197,168,105,.45) 53%, rgba(197,168,105,.45) 82%, transparent); }
+html[data-break] { --pad: 104px; --r: 32px; }
+@media (max-width: 760px) { html[data-break] { --pad: 56px; --r: 24px; } }
+main > section.section, main > section.contact { position: relative; }
+
 /* Soft shadow: tinted sections read as a gently recessed band */
-html[data-break="shadow"] #framework, html[data-break="shadow"] #team, html[data-break="shadow"] #ron, html[data-break="shadow"] #faq { box-shadow: inset 0 14px 18px -14px rgba(21,37,63,.16), inset 0 -14px 18px -14px rgba(21,37,63,.16); }
+html[data-break="shadow"] #framework, html[data-break="shadow"] #team, html[data-break="shadow"] #ron, html[data-break="shadow"] #faq, html[data-break="sheets-shadow"] #framework, html[data-break="sheets-shadow"] #team, html[data-break="sheets-shadow"] #ron, html[data-break="sheets-shadow"] #faq, html[data-break="tucked"] #framework, html[data-break="tucked"] #team, html[data-break="tucked"] #ron, html[data-break="tucked"] #faq { box-shadow: inset 0 14px 18px -14px rgba(21,37,63,.16), inset 0 -14px 18px -14px rgba(21,37,63,.16); }
 html[data-break="shadow"] #chapter, html[data-break="shadow"] main > section.contact { box-shadow: inset 0 14px 18px -14px rgba(0,0,0,.45); }
+
 /* Stacked sheets: each section's rounded top edge rests over the one above */
-html[data-break="sheets"] main > section.section, html[data-break="sheets"] main > section.contact { margin-top: -32px; padding-top: calc(var(--sheet-pad, 104px) + 32px); border-radius: 32px 32px 0 0; box-shadow: 0 -12px 28px -20px rgba(12,22,38,.35); }
-html[data-break="sheets"] #situation { margin-top: 0; border-radius: 0; box-shadow: none; padding-top: var(--sheet-pad, 104px); }
-@media (max-width: 760px) { html[data-break="sheets"] { --sheet-pad: 56px; } html[data-break="sheets"] main > section.section, html[data-break="sheets"] main > section.contact { margin-top: -24px; padding-top: calc(var(--sheet-pad) + 24px); border-radius: 24px 24px 0 0; } html[data-break="sheets"] #situation { margin-top: 0; padding-top: var(--sheet-pad); } }
+html[data-break="sheets"] main > section.section, html[data-break="sheets"] main > section.contact, html[data-break="sheets-shadow"] main > section.section, html[data-break="sheets-shadow"] main > section.contact, html[data-break="living"] main > section.section, html[data-break="living"] main > section.contact { margin-top: calc(-1 * var(--r)); padding-top: calc(var(--pad) + var(--r)); border-radius: var(--r) var(--r) 0 0; }
+html[data-break="sheets"] main > section.section, html[data-break="sheets"] main > section.contact, html[data-break="sheets-shadow"] main > section.section, html[data-break="sheets-shadow"] main > section.contact { box-shadow: 0 -12px 28px -20px rgba(12,22,38,.35); }
+html[data-break="sheets-shadow"] #framework, html[data-break="sheets-shadow"] #team, html[data-break="sheets-shadow"] #ron, html[data-break="sheets-shadow"] #faq { box-shadow: 0 -12px 28px -20px rgba(12,22,38,.35), inset 0 16px 20px -16px rgba(21,37,63,.16); }
+html[data-break="sheets"] #situation, html[data-break="sheets-shadow"] #situation, html[data-break="living"] #situation { margin-top: 0; padding-top: var(--pad); border-radius: 0; box-shadow: none; }
+
+/* Tucked sheets: white and navy sections are raised sheets; tinted sections sit recessed */
+html[data-break="tucked"] #chapter, html[data-break="tucked"] #philosophy, html[data-break="tucked"] #how, html[data-break="tucked"] #advisors, html[data-break="tucked"] #fees, html[data-break="tucked"] main > section.contact { margin-top: calc(-1 * var(--r)); padding-top: calc(var(--pad) + var(--r)); border-radius: var(--r) var(--r) 0 0; box-shadow: 0 -14px 30px -18px rgba(12,22,38,.38); }
+
+/* Floating panels: each section is its own rounded card on a slightly deeper ground */
+html[data-break="floating"] body { background: color-mix(in srgb, var(--fog) 70%, #C9D1DD); }
+html[data-break="floating"] main > section.section, html[data-break="floating"] main > section.contact { margin: 14px clamp(8px, 1.4vw, 20px); border-radius: calc(var(--r) - 4px); box-shadow: 0 18px 40px -30px rgba(12,22,38,.45), 0 1px 0 rgba(255,255,255,.6) inset; }
+html[data-break="floating"] main > section.proof { background: transparent; border-bottom: 0; }
+html[data-break="floating"] footer { margin-top: 14px; }
+
+/* Living sheets: corners and shadow ease from deep to flat as each sheet reaches the top (--p runs 0 to 1, set by script) */
+html[data-break="living"] main > section.section, html[data-break="living"] main > section.contact { --p: 1; border-radius: calc(var(--r) * 1.5 * (1 - var(--p))) calc(var(--r) * 1.5 * (1 - var(--p))) 0 0; box-shadow: 0 -16px 34px -20px rgba(12,22,38, calc(.42 * (1 - var(--p)))); }
 
 .opt-switch { position: fixed; z-index: 90; left: 50%; bottom: 14px; transform: translateX(-50%); display: grid; gap: 6px; width: max-content; max-width: calc(100vw - 24px); padding: 10px 12px; border-radius: 18px; background: rgba(12,22,38,.93); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 12px 30px -10px rgba(0,0,0,.5); font-family: var(--sans); }
 .opt-row { display: flex; align-items: center; gap: 4px; overflow-x: auto; scrollbar-width: none; }
@@ -1386,18 +1397,38 @@ footer { padding-bottom: 130px; }
 </footer>
 
 
-<div class="opt-switch" role="group" aria-label="Design options"><div class="opt-row"><span class="lbl">Tint</span><button type="button" data-tint="mist" aria-pressed="false"><i style="background:#F2F5F9"></i>Mist</button><button type="button" data-tint="mist2" aria-pressed="false"><i style="background:#ECF0F6"></i>Mist+</button><button type="button" data-tint="mist3" aria-pressed="false"><i style="background:#E6EBF2"></i>Mist++</button><button type="button" data-tint="slate" aria-pressed="false"><i style="background:#E8EBEF"></i>Slate</button><button type="button" data-tint="stone" aria-pressed="false"><i style="background:#F5F4F1"></i>Stone</button></div><div class="opt-row"><span class="lbl">Breaks</span><button type="button" data-break="none" aria-pressed="false">None</button><button type="button" data-break="gold" aria-pressed="false">Gold accent</button><button type="button" data-break="ornament" aria-pressed="false">Ornament</button><button type="button" data-break="shadow" aria-pressed="false">Soft shadow</button><button type="button" data-break="sheets" aria-pressed="false">Stacked sheets</button></div></div>
+<div class="opt-switch" role="group" aria-label="Design options"><div class="opt-row"><span class="lbl">Tint</span><button type="button" data-tint="mist" aria-pressed="false"><i style="background:#F2F5F9"></i>Mist</button><button type="button" data-tint="mist2" aria-pressed="false"><i style="background:#ECF0F6"></i>Mist+</button><button type="button" data-tint="mist3" aria-pressed="false"><i style="background:#E6EBF2"></i>Mist++</button><button type="button" data-tint="slate" aria-pressed="false"><i style="background:#E8EBEF"></i>Slate</button><button type="button" data-tint="stone" aria-pressed="false"><i style="background:#F5F4F1"></i>Stone</button></div><div class="opt-row"><span class="lbl">Breaks</span><button type="button" data-break="none" aria-pressed="false">None</button><button type="button" data-break="shadow" aria-pressed="false">Soft shadow</button><button type="button" data-break="sheets" aria-pressed="false">Stacked sheets</button><button type="button" data-break="sheets-shadow" aria-pressed="false">Sheets + shadow</button><button type="button" data-break="tucked" aria-pressed="false">Tucked sheets</button><button type="button" data-break="floating" aria-pressed="false">Floating panels</button><button type="button" data-break="living" aria-pressed="false">Living sheets</button></div></div>
 <script>
 (function () {
   var root = document.documentElement;
-  var groups = { tint: ["mist", "mist2", "mist3", "slate", "stone"], break: ["none", "gold", "ornament", "shadow", "sheets"] };
-  // Later sections stack above earlier ones (used by the stacked-sheets option)
-  Array.prototype.forEach.call(document.querySelectorAll('main > section'), function (sec, i) { sec.style.zIndex = i + 1; });
+  var groups = { tint: ["mist", "mist2", "mist3", "slate", "stone"], break: ["none", "shadow", "sheets", "sheets-shadow", "tucked", "floating", "living"] };
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var sections = Array.prototype.slice.call(document.querySelectorAll('main > section'));
+  // Later sections stack above earlier ones
+  sections.forEach(function (sec, i) { sec.style.zIndex = i + 1; });
+  var sheets = sections.filter(function (s) { return s.classList.contains('section') || s.classList.contains('contact'); });
+
+  // Living sheets: each sheet's --p goes 0 to 1 as its top travels from the bottom of the screen to near the top
+  var queued = false;
+  function live() {
+    queued = false;
+    var h = window.innerHeight;
+    sheets.forEach(function (s) {
+      var top = s.getBoundingClientRect().top;
+      var p = reduce.matches ? 1 : Math.min(1, Math.max(0, (h - top) / (h * .75)));
+      s.style.setProperty('--p', p.toFixed(3));
+    });
+  }
+  function queue() { if (!queued) { queued = true; requestAnimationFrame(live); } }
+  window.addEventListener('scroll', queue, { passive: true });
+  window.addEventListener('resize', queue);
+
   function set(group, k) {
     if (groups[group].indexOf(k) < 0) k = groups[group][0];
     root.setAttribute('data-' + group, k);
     document.querySelectorAll('.opt-switch [data-' + group + ']').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-' + group) === k); });
     var u = new URL(location.href); u.searchParams.set(group, k); history.replaceState(history.state, '', u);
+    queue();
   }
   document.querySelectorAll('.opt-switch button').forEach(function (b) {
     b.addEventListener('click', function () { b.hasAttribute('data-tint') ? set('tint', b.getAttribute('data-tint')) : set('break', b.getAttribute('data-break')); });
