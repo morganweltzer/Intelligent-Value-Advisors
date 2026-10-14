@@ -1,4 +1,23 @@
-<title>Intelligent Value Advisors Calm</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Intelligent Value Advisors | Value Growth &amp; Exit Planning in Cincinnati</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#15253F">
+<!-- Link previews need absolute URLs: update these to the real domain at launch -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Intelligent Value Advisors">
+<meta property="og:title" content="Intelligent Value Advisors | Value Growth &amp; Exit Planning in Cincinnati">
+<meta property="og:description" content="Value growth and exit planning for middle-market business owners. Ron DeLyons, CEPA®, helps you build a more valuable business and the freedom it should give you.">
+<meta property="og:url" content="https://morganweltzer.github.io/Intelligent-Value-Advisors/calm.html">
+<meta property="og:image" content="https://morganweltzer.github.io/Intelligent-Value-Advisors/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Intelligent Value Advisors over the Cincinnati skyline: Build a more valuable business and the freedom it should give you.">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="Intelligent Value Advisors helps middle-market business owners build, protect, accelerate, and monetize value through Intelligent Value Acceleration™, the 5-4-3-2-1 framework.">
@@ -534,6 +553,18 @@ form.card-form .muted { font-size: var(--fs-small); margin-bottom: 18px; }
 .f input, .f select, .f textarea { width: 100%; font: inherit; font-size: var(--fs-body); color: var(--ink); padding: 13px 14px; border: 1px solid var(--field); border-radius: var(--radius-sm); background: var(--white); }
 .f input:focus, .f select:focus, .f textarea:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px var(--sand); }
 .f input[aria-invalid="true"] { border-color: var(--error); }
+.f-error { margin: 6px 0 0; font-size: var(--fs-label); font-weight: 600; color: var(--error); }
+.form-status { margin: 14px 0 0; padding: 10px 14px; border-radius: var(--radius-sm); background: #FBEDE8; color: #7A2E18; font-size: var(--fs-small); line-height: 1.5; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+form.card-form .btn[disabled] { opacity: .7; cursor: progress; }
+.privacy a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+/* Text inside the white form card: the contact section's light-on-navy paragraph style must not reach it */
+form.card-form .muted, form.card-form .privacy, form.card-form .thanks p { color: var(--pewter); }
+form.card-form .muted { font-size: var(--fs-small); }
+form.card-form .privacy { font-size: var(--fs-label); }
+form.card-form .thanks p { font-size: var(--fs-body); }
+form.card-form .f-error { color: var(--error); font-size: var(--fs-label); }
+form.card-form .form-status { color: #7A2E18; font-size: var(--fs-small); }
 .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 form.card-form .btn { width: 100%; margin-top: 6px; }
 .privacy { display: flex; gap: 8px; font-size: var(--fs-label); color: var(--pewter); margin: 14px 0 0; line-height: 1.5; }
@@ -740,6 +771,8 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
 }
 </style>
 
+</head>
+<body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-lock" viewBox="0 0 20 20"><rect x="4" y="9" width="12" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M7 9V6.5a3 3 0 016 0V9" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
@@ -1311,16 +1344,17 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
         <li><span class="n">3</span><div><strong>A straightforward conversation</strong><span>About your business, your goals, and whether we're a good fit.</span></div></li>
       </ul>
     </div>
-    <form class="card-form" id="contact-form" novalidate>
+    <!-- To deliver requests, set data-endpoint to the form service URL (for example https://formspree.io/f/xxxxxxx) -->
+    <form class="card-form" id="contact-form" novalidate data-endpoint="">
       <div id="form-fields">
         <h3>Request a conversation</h3>
         <p class="muted">Everything you share stays between you and Ron.</p>
         <div class="f-row">
-          <div class="f"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
+          <div class="f"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required aria-required="true" aria-describedby="f-name-err"><p class="f-error" id="f-name-err" hidden>Please enter your name.</p></div>
           <div class="f"><label for="f-company">Company</label><input id="f-company" name="company" autocomplete="organization"></div>
         </div>
         <div class="f-row">
-          <div class="f"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="f"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required aria-required="true" aria-describedby="f-email-err"><p class="f-error" id="f-email-err" hidden>Please enter a valid email address.</p></div>
           <div class="f"><label for="f-phone">Phone <span class="opt">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
         </div>
         <div class="f">
@@ -1335,8 +1369,11 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
           </select>
         </div>
         <div class="f"><label for="f-msg">Anything else? <span class="opt">(optional)</span></label><textarea id="f-msg" name="message" rows="3" placeholder="e.g. We're a 60-person manufacturer and I'm thinking about the next five years."></textarea></div>
+        <div class="hp" aria-hidden="true"><label for="f-website">Leave this field empty</label><input id="f-website" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+        <input type="hidden" name="_subject" value="New conversation request from the website">
         <button class="btn btn-primary" type="submit">Request my conversation</button>
-        <p class="privacy"><svg aria-hidden="true"><use href="#i-lock"/></svg>Confidential. We never share or sell your information.</p>
+        <p class="form-status" id="form-status" role="status" hidden></p>
+        <p class="privacy"><svg aria-hidden="true"><use href="#i-lock"/></svg><span>Confidential. We never share or sell your information. <a href="privacy.html">Privacy policy</a></span></p>
       </div>
       <div class="thanks" id="form-thanks" hidden tabindex="-1">
         <span class="check"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
@@ -1378,7 +1415,7 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
     </div>
     <div class="legal">
       <span>© 2026 Intelligent Value Advisors. All rights reserved.</span>
-      <span>CEPA® is a registered mark of the Exit Planning Institute.</span>
+      <span>CEPA® is a registered mark of the Exit Planning Institute. · <a href="privacy.html">Privacy policy</a></span>
     </div>
   </div>
 </footer>
@@ -1773,19 +1810,46 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
   }
   cStart.addEventListener('input', calc); cEnd.addEventListener('input', calc); calc();
 
-  // Contact form (front-end only; connect to a form service before launch)
+  // Contact form: validates, then posts to the form service named in data-endpoint. Until that is set, it says so plainly.
   var form = document.getElementById('contact-form');
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var ok = true;
-    [document.getElementById('f-name'), document.getElementById('f-email')].forEach(function (el) {
-      var valid = el.value.trim() && (el.type !== 'email' || /.+@.+\..+/.test(el.value));
-      el.setAttribute('aria-invalid', !valid);
-      if (!valid && ok) { el.focus(); ok = false; }
-    });
-    if (!ok) return;
+  var statusEl = document.getElementById('form-status');
+  var submitBtn = form.querySelector('[type="submit"]');
+  var checks = [
+    { el: document.getElementById('f-name'), test: function (v) { return v.trim().length > 0; } },
+    { el: document.getElementById('f-email'), test: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); } }
+  ];
+  function validate(c) {
+    var ok = c.test(c.el.value);
+    c.el.setAttribute('aria-invalid', !ok);
+    document.getElementById(c.el.id + '-err').hidden = ok;
+    return ok;
+  }
+  checks.forEach(function (c) {
+    c.el.addEventListener('blur', function () { if (c.el.value) validate(c); });
+    c.el.addEventListener('input', function () { if (c.el.getAttribute('aria-invalid') === 'true') validate(c); });
+  });
+  function showStatus(msg) { statusEl.textContent = msg; statusEl.hidden = !msg; }
+  function showThanks() {
     document.getElementById('form-fields').hidden = true;
     var t = document.getElementById('form-thanks'); t.hidden = false; t.focus();
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    showStatus('');
+    var bad = checks.filter(function (c) { return !validate(c); });
+    if (bad.length) { bad[0].el.focus(); return; }
+    if (document.getElementById('f-website').value) { showThanks(); return; }
+    var endpoint = form.getAttribute('data-endpoint');
+    if (!endpoint) { showStatus("This form isn't connected yet, so your request was not sent."); return; }
+    var label = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); showThanks(); })
+      .catch(function () { showStatus("Something went wrong and your request was not sent. Please try again in a moment."); })
+      .then(function () { submitBtn.disabled = false; submitBtn.textContent = label; });
   });
 })();
 </script>
+</body>
+</html>
