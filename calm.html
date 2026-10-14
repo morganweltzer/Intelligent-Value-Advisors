@@ -655,6 +655,8 @@ main > .section + .section { border-top: 1px solid var(--line); }
   --sand: #D9E0EB;
   --line: #DEE3EB;
   --field: #B9C2D0;
+  --head: #DFE5EE;
+  --head-line: #C3CCDA;
 }
 /* Light sections alternate white and pale navy mist; navy anchors the page at the hero, the next chapter, and contact */
 main > .section + .section { border-top: 0; }
@@ -691,7 +693,7 @@ main > .section + .section { border-top: 0; }
 }
 
 /* Comparison table: the header row reads as a header, not as the section background */
-.compare thead th { background: #DFE5EE; color: var(--navy); border-bottom: 1px solid #C3CCDA; }
+.compare thead th { background: var(--head); color: var(--navy); border-bottom: 1px solid var(--head-line); }
 .compare thead th.us { background: var(--navy); color: var(--white); border-bottom-color: var(--navy); }
 
 /* Straight answers: Ron's column reads as the clear choice */
@@ -1132,18 +1134,18 @@ main > .section + .section { border-top: 0; }
       </div>
       <div class="team-diagram">
         <svg viewBox="0 0 440 440" role="img" aria-label="Diagram: you and Ron at the center, connected to your CPA, attorney, wealth advisor, banker or broker, insurance advisor, and family">
-          <g stroke="#D3DAE5" stroke-width="1.5">
+          <g style="stroke: var(--line)" stroke-width="1.5">
             <line x1="220" y1="220" x2="220" y2="58"/><line x1="220" y1="220" x2="360" y2="139"/><line x1="220" y1="220" x2="360" y2="301"/>
             <line x1="220" y1="220" x2="220" y2="382"/><line x1="220" y1="220" x2="80" y2="301"/><line x1="220" y1="220" x2="80" y2="139"/>
           </g>
           <circle cx="220" cy="220" r="150" fill="none" stroke="#C5A869" stroke-opacity=".6" stroke-dasharray="3 6"/>
           <g font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="600" fill="#16202F" text-anchor="middle">
-            <g><rect x="160" y="36" width="120" height="44" rx="4" fill="#FFFFFF" stroke="#D3DAE5"/><text x="220" y="63">CPA</text></g>
-            <g><rect x="296" y="117" width="128" height="44" rx="4" fill="#FFFFFF" stroke="#D3DAE5"/><text x="360" y="144">Attorney</text></g>
-            <g><rect x="296" y="279" width="128" height="44" rx="4" fill="#FFFFFF" stroke="#D3DAE5"/><text x="360" y="306">Wealth advisor</text></g>
-            <g><rect x="156" y="360" width="128" height="44" rx="4" fill="#FFFFFF" stroke="#D3DAE5"/><text x="220" y="387">Banker / broker</text></g>
-            <g><rect x="16" y="279" width="128" height="44" rx="4" fill="#FFFFFF" stroke="#D3DAE5"/><text x="80" y="306">Insurance</text></g>
-            <g><rect x="16" y="117" width="128" height="44" rx="4" fill="#FFFFFF" stroke="#D3DAE5"/><text x="80" y="144">Family</text></g>
+            <g><rect x="160" y="36" width="120" height="44" rx="4" fill="#FFFFFF" style="stroke: var(--line)"/><text x="220" y="63">CPA</text></g>
+            <g><rect x="296" y="117" width="128" height="44" rx="4" fill="#FFFFFF" style="stroke: var(--line)"/><text x="360" y="144">Attorney</text></g>
+            <g><rect x="296" y="279" width="128" height="44" rx="4" fill="#FFFFFF" style="stroke: var(--line)"/><text x="360" y="306">Wealth advisor</text></g>
+            <g><rect x="156" y="360" width="128" height="44" rx="4" fill="#FFFFFF" style="stroke: var(--line)"/><text x="220" y="387">Banker / broker</text></g>
+            <g><rect x="16" y="279" width="128" height="44" rx="4" fill="#FFFFFF" style="stroke: var(--line)"/><text x="80" y="306">Insurance</text></g>
+            <g><rect x="16" y="117" width="128" height="44" rx="4" fill="#FFFFFF" style="stroke: var(--line)"/><text x="80" y="144">Family</text></g>
           </g>
           <circle cx="220" cy="220" r="66" fill="#15253F"/>
           <circle cx="220" cy="220" r="59" fill="none" stroke="#C5A869" stroke-opacity=".5"/>
