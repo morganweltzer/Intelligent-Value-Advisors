@@ -82,7 +82,9 @@ h1, h2, h3, h4 { margin: 0; color: var(--navy); text-wrap: balance; }
 @media (max-width: 700px) { .section { padding-block: 72px; } .section-head { margin-bottom: 36px; } }
 
 /* Buttons */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--sans); font-weight: 700; font-size: var(--fs-body); line-height: 1.2; padding: 16px 26px; border-radius: var(--radius-sm); text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: background .15s, border-color .15s, color .15s; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--sans); font-weight: 700; font-size: var(--fs-body); line-height: 1.2; padding: 16px 26px; border-radius: var(--radius-sm); text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: background .15s, border-color .15s, color .15s, transform .2s var(--ease-out), box-shadow .2s var(--ease-out); }
+@media (hover: hover) { .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 18px -10px rgba(12,22,38,.45); } }
+.btn:active { transform: none; box-shadow: none; }
 .btn-primary { background: var(--gold); color: var(--navy); }
 .btn-primary:hover { background: var(--gold-hover); }
 .btn-navy { background: var(--navy); color: var(--white); }
@@ -590,6 +592,20 @@ input[type=range]::-moz-range-track { background: var(--sand); }
 .iva-steps li { font-family: var(--serif); font-size: var(--fs-serif-sm); line-height: 1.3; color: var(--navy); }
 .iva-steps li:not(:last-child)::after { content: "→"; margin: 0 12px; font-family: var(--sans); font-size: var(--fs-small); color: var(--gold); }
 .iva-steps li.final em { font-style: italic; color: var(--accent); }
+
+/* Quiet motion: blocks ease up once as they arrive; the hero settles on load. Reduced-motion turns all of it off. */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s var(--ease-out), transform .7s var(--ease-out); }
+.reveal.in { opacity: 1; transform: none; }
+@keyframes rise-in { from { opacity: 0; transform: translateY(12px); } }
+@keyframes photo-settle { from { transform: scale(1.06); } }
+.hero-bg img { animation: photo-settle 2.4s var(--ease-out) both; }
+.hero-grid > div > *, .cred-card { animation: rise-in .8s var(--ease-out) both; }
+.hero-grid > div > :nth-child(2) { animation-delay: .08s; }
+.hero-grid > div > :nth-child(3) { animation-delay: .16s; }
+.hero-grid > div > :nth-child(4) { animation-delay: .24s; }
+.hero-grid > div > :nth-child(5) { animation-delay: .3s; }
+.cred-card { animation-delay: .34s; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
 
 /* Compact comparison summary, shown on phones in place of the full table */
 .compare-simple { display: none; }
@@ -1299,10 +1315,10 @@ input[type=range]::-moz-range-track { background: var(--sand); }
   function setHeaderVar() { document.documentElement.style.setProperty('--header-h', Math.round(headerH()) + 'px'); }
   setHeaderVar();
   window.addEventListener('resize', setHeaderVar);
+  // The section's container, not its first child: children may be mid fade-in, and transforms would skew the measurement
   function landingEl(t) {
     if (t.tagName !== 'SECTION') return t;
-    var wrap = t.querySelector('.wrap');
-    return (wrap && wrap.firstElementChild) || t;
+    return t.querySelector('.wrap') || t;
   }
   function targetY(t) {
     if (t === header) return 0;
@@ -1425,12 +1441,17 @@ input[type=range]::-moz-range-track { background: var(--sand); }
   more.type = 'button'; more.className = 'letter-more'; more.textContent = "Read Ron's full note ↓";
   letter.querySelectorAll('p')[1].insertAdjacentElement('afterend', more);
   letter.classList.add('clamped');
-  more.addEventListener('click', function () { letter.classList.remove('clamped'); });
+  more.addEventListener('click', function () {
+    var hidden = Array.prototype.filter.call(letter.querySelectorAll('p'), function (p) { return !p.offsetParent; });
+    letter.classList.remove('clamped');
+    hidden.forEach(function (p) { animateIn(p, 0); });
+  });
 
   var cmpBtn = document.querySelector('.compare-toggle'), cmpFull = document.getElementById('compare-full');
   cmpBtn.addEventListener('click', function () {
     var open = cmpFull.classList.toggle('show');
     cmpBtn.setAttribute('aria-expanded', open);
+    if (open) animateIn(cmpFull, 0);
   });
 
   // Engagement stepper
@@ -1585,6 +1606,26 @@ input[type=range]::-moz-range-track { background: var(--sand); }
   window.addEventListener('load', function () { goToHash(true); });
 
   animReady = true;
+
+  var revealSel = 'main .section-head, .proof-grid, .picker, .chapter > *, .philo, .intel-q, .iva-band, .how-intel, .steps-scroll, .step-panel, .compare-simple, .compare-wrap, .team > *, .letter-grid > *, .fee-cards, .calc, .faq-grid > *, .contact-grid > *';
+  var pending = reduceMotion.matches ? [] : Array.prototype.slice.call(document.querySelectorAll(revealSel));
+  var revealQueued = false;
+  function reveal() {
+    revealQueued = false;
+    var limit = window.innerHeight * .92;
+    pending = pending.filter(function (el) {
+      if (el.getBoundingClientRect().top < limit) { el.classList.add('in'); return false; }
+      return true;
+    });
+    if (!pending.length) window.removeEventListener('scroll', queueReveal);
+  }
+  function queueReveal() { if (!revealQueued) { revealQueued = true; requestAnimationFrame(reveal); } }
+  pending.forEach(function (el) { el.classList.add('reveal'); });
+  if (pending.length) {
+    window.addEventListener('scroll', queueReveal, { passive: true });
+    window.addEventListener('resize', queueReveal);
+    requestAnimationFrame(reveal);
+  }
 
   // Fee calculator
   var cStart = document.getElementById('c-start'), cEnd = document.getElementById('c-end');
