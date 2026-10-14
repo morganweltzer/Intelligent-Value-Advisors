@@ -700,6 +700,14 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
   .compare-toggle { color: var(--gold); }
 }
 
+/* Phones: choosing a situation folds the old answer closed and unfolds the new one, both over half a second */
+@media (max-width: 900px) {
+  .answers.unfolding { overflow: hidden; transition: height .5s cubic-bezier(.4, 0, .2, 1), margin-bottom .5s cubic-bezier(.4, 0, .2, 1); }
+  .answers.unfolding .anim-in { animation-duration: .55s; animation-delay: .08s; }
+  .answers-ghost { overflow: hidden; pointer-events: none; transition: height .5s cubic-bezier(.4, 0, .2, 1), margin-bottom .5s cubic-bezier(.4, 0, .2, 1), opacity .3s ease; }
+  .answers-ghost.folding { height: 0 !important; margin-bottom: -10px; opacity: 0; }
+}
+
 /* Comparison table: the header row reads as a header, not as the section background */
 .compare thead th { background: var(--head); color: var(--navy); border-bottom: 1px solid var(--head-line); }
 .compare thead th.us { background: var(--navy); color: var(--white); border-bottom-color: var(--navy); }
@@ -1469,13 +1477,51 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
   var picks = Array.prototype.slice.call(document.querySelectorAll('.pick'));
   function selectPick(i) {
     var changed = picks[i].getAttribute('aria-selected') !== 'true';
+    // Phones: the old answer folds away where it was while the new one unfolds under the tapped choice
+    var fold = changed && animReady && !reduceMotion.matches && narrow.matches && answers.parentNode !== pickerEl;
+    var ghost = null;
+    if (fold) {
+      ghost = answers.cloneNode(true);
+      ghost.className = 'answers-ghost';
+      ghost.setAttribute('aria-hidden', 'true');
+      ghost.inert = true;
+      ghost.querySelectorAll('[id]').forEach(function (el) { el.removeAttribute('id'); });
+      ghost.querySelectorAll('.anim-in').forEach(function (el) { el.classList.remove('anim-in'); });
+      ghost.style.height = answers.offsetHeight + 'px';
+      answers.parentNode.insertBefore(ghost, answers);
+    }
     picks.forEach(function (p, k) {
       var on = k === i;
       p.setAttribute('aria-selected', on);
       p.tabIndex = on ? 0 : -1;
       document.getElementById(p.getAttribute('aria-controls')).hidden = !on;
     });
-    if (changed) animateIn(document.getElementById(picks[i].getAttribute('aria-controls')), 0);
+    var panel = document.getElementById(picks[i].getAttribute('aria-controls'));
+    if (!fold) { if (changed) animateIn(panel, 0); return; }
+    picks[i].insertAdjacentElement('afterend', answers);
+    var h = answers.offsetHeight;
+    answers.classList.add('unfolding');
+    answers.style.height = '0px';
+    answers.style.marginBottom = '-10px';
+    animateIn(panel, 0);
+    void answers.offsetHeight;
+    ghost.classList.add('folding');
+    answers.style.height = h + 'px';
+    answers.style.marginBottom = '0px';
+    var done = false;
+    function finish() {
+      if (done) return;
+      done = true;
+      if (ghost.parentNode) ghost.parentNode.removeChild(ghost);
+      answers.classList.remove('unfolding');
+      answers.style.height = '';
+      answers.style.marginBottom = '';
+      // Keep the tapped choice in view once the motion settles
+      var top = picks[i].getBoundingClientRect().top;
+      if (top < headerH() + 8) scrollToTarget(picks[i]);
+    }
+    answers.addEventListener('transitionend', function te(e) { if (e.target === answers && e.propertyName === 'height') { answers.removeEventListener('transitionend', te); finish(); } });
+    setTimeout(finish, 700);
   }
   wireTabs(picks, selectPick, true);
   // On phones the selected answer opens directly under its choice instead of after the whole list
@@ -1483,7 +1529,7 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
   var narrow = window.matchMedia('(max-width: 900px)');
   function placeAnswer() {
     var sel = picks.find(function (p) { return p.getAttribute('aria-selected') === 'true'; }) || picks[0];
-    if (narrow.matches) sel.insertAdjacentElement('afterend', answers);
+    if (narrow.matches) { if (sel.nextElementSibling !== answers) sel.insertAdjacentElement('afterend', answers); }
     else if (answers.parentNode !== pickerEl) pickerEl.appendChild(answers);
   }
   picks.forEach(function (p) { p.addEventListener('click', placeAnswer); p.addEventListener('keyup', placeAnswer); });
