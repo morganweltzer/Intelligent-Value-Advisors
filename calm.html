@@ -566,7 +566,6 @@ main > .section + .section { border-top: 1px solid var(--line); }
 /* In-panel labels that repeat what the heading or tabs already say */
 .answer > .eyebrow, .step-panel .label, .two-card .tag { display: none; }
 
-.letter-more { display: none; }
 /* The value path (formerly its own "Introducing" section) introduces the framework */
 .iva-path { margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--line); }
 .iva-path-k { margin: 0 0 8px; font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
@@ -642,11 +641,6 @@ main > .section + .section { border-top: 1px solid var(--line); }
   .field label { margin-bottom: 4px; }
   .calc-out { padding: 16px; }
   .calc-row { padding: 8px 0; }
-
-  /* Ron's letter opens with two paragraphs; the rest is one tap away */
-  .letter.clamped p:not(.sign):nth-of-type(n+3) { display: none; }
-  .letter-more { display: inline-block; background: none; border: 0; padding: 8px 0; font: inherit; font-size: var(--fs-small); font-weight: 700; color: var(--navy); cursor: pointer; }
-  .letter:not(.clamped) .letter-more { display: none; }
 }
 /* ===== Navy-led palette: navy, warm stone neutrals, white, and a touch of gold ===== */
 :root {
@@ -1533,17 +1527,6 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
   picks.forEach(function (p) { p.addEventListener('click', placeAnswer); p.addEventListener('keyup', placeAnswer); });
   narrow.addEventListener('change', placeAnswer);
   placeAnswer();
-
-  var letter = document.querySelector('.letter');
-  var more = document.createElement('button');
-  more.type = 'button'; more.className = 'letter-more'; more.textContent = "Read Ron's full note ↓";
-  letter.querySelectorAll('p')[1].insertAdjacentElement('afterend', more);
-  letter.classList.add('clamped');
-  more.addEventListener('click', function () {
-    var hidden = Array.prototype.filter.call(letter.querySelectorAll('p'), function (p) { return !p.offsetParent; });
-    letter.classList.remove('clamped');
-    hidden.forEach(function (p) { animateIn(p, 0); });
-  });
 
   var cmpBtn = document.querySelector('.compare-toggle'), cmpFull = document.getElementById('compare-full');
   cmpBtn.addEventListener('click', function () {

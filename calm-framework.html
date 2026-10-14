@@ -1,0 +1,1825 @@
+<title>IVA Framework Intro Options</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Intelligent Value Advisors helps middle-market business owners build, protect, accelerate, and monetize value through Intelligent Value Acceleration™, the 5-4-3-2-1 framework.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: Mock-up #1 (Meridian) structure and components: white header, two-column hero, light sections with rounded cards. Cincinnati navy/gold palette, Garamond voice, and the skyline hero. Single light look by design. */
+:root {
+  --navy: #15253F;
+  --navy-deep: #0F1C30;
+  --navy-2: #1D3253;
+  --ink: #16202F;
+  --gold: #C5A869;
+  --gold-hover: #B5975A;
+  --accent: #7C5F25;
+  --sand: #EADFC8;
+  --sand-soft: #F5EFE2;
+  --pewter: #5A6270;
+  --fog: #F7F4EE;
+  --line: #E6E0D4;
+  --field: #C9C1B2;
+  --white: #FFFFFF;
+  --on-navy: #EEF1F6;
+  --on-navy-soft: #B3BDCE;
+  --navy-line: rgba(255,255,255,.14);
+  --deep: #0C1626;
+  --error: #B5482A;
+  --serif: "EB Garamond", Garamond, "Times New Roman", serif;
+  --sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius: 8px;
+  --radius-sm: 6px;
+  --wrap: 1180px;
+  /* Type scale: every font size on the page uses one of these */
+  --fs-micro: 11px;
+  --fs-label: 13px;
+  --fs-small: 15px;
+  --fs-body: 17px;
+  --fs-lead: 19px;
+  --fs-serif-sm: clamp(20px, 1.2vw + 12px, 22px);
+  --fs-serif-md: clamp(22px, 1vw + 15px, 26px);
+  --fs-h3: clamp(27px, 1.4vw + 16px, 32px);
+  --fs-statement: clamp(22px, 2.3vw, 28px);
+  --fs-quote: clamp(26px, 3vw, 36px);
+  --fs-h2: clamp(34px, 4.4vw, 50px);
+  --fs-h1: clamp(38px, 4.8vw, 58px);
+  --fs-display: clamp(42px, 5.6vw, 70px);
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h, 77px) + 20px); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+/* Motion: switched-in panels ease in, sliding from the side they were stepped toward (--dx set by script) */
+:root { --ease-out: cubic-bezier(.22, .8, .24, 1); }
+@keyframes panel-in { from { opacity: 0; transform: translate(var(--dx, 0px), var(--dy, 8px)); } }
+.anim-in { animation: panel-in .34s var(--ease-out) both; }
+body { margin: 0; background: var(--white); color: var(--ink); font-family: var(--sans); font-size: var(--fs-body); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { color: var(--navy); }
+p { margin: 0 0 1em; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, h4 { margin: 0; color: var(--navy); text-wrap: balance; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-inline: 24px; }
+@media (max-width: 600px) { .wrap { padding-inline: 16px; } }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--navy); color: var(--white); padding: 8px 14px; border-radius: var(--radius-sm); z-index: 100; }
+.skip:focus { left: 8px; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.tm { font-size: .5em; vertical-align: super; line-height: 0; }
+
+/* Type */
+.display { font-family: var(--serif); font-weight: 500; letter-spacing: -0.01em; line-height: 1.06; }
+.h2 { font-family: var(--serif); font-weight: 500; font-size: var(--fs-h2); line-height: 1.08; letter-spacing: -0.005em; }
+.eyebrow { font-size: var(--fs-label); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; display: block; }
+.lede { font-size: var(--fs-lead); color: var(--pewter); max-width: 640px; }
+.muted { color: var(--pewter); }
+.section { padding-block: 104px; }
+.section.fog { background: var(--fog); }
+.section-head { max-width: 740px; margin-bottom: 52px; }
+.section-head .h2 { margin-bottom: 18px; }
+@media (max-width: 700px) { .section { padding-block: 72px; } .section-head { margin-bottom: 36px; } }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--sans); font-weight: 700; font-size: var(--fs-body); line-height: 1.2; padding: 16px 26px; border-radius: var(--radius-sm); text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: background .15s, border-color .15s, color .15s, transform .2s var(--ease-out), box-shadow .2s var(--ease-out); }
+@media (hover: hover) { .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 18px -10px rgba(12,22,38,.45); } }
+.btn:active { transform: none; box-shadow: none; }
+.btn-primary { background: var(--gold); color: var(--navy); }
+.btn-primary:hover { background: var(--gold-hover); }
+.btn-navy { background: var(--navy); color: var(--white); }
+.btn-navy:hover { background: var(--navy-2); }
+.btn-ghost-light { background: transparent; color: var(--on-navy); border-color: rgba(255,255,255,.3); }
+.btn-ghost-light:hover { border-color: var(--on-navy); }
+.btn-sm { padding: 12px 18px; font-size: var(--fs-small); }
+.link-arrow { font-weight: 700; color: var(--navy); text-decoration: none; display: inline-flex; gap: 6px; align-items: center; }
+.link-arrow:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* Header (Mock-up #1: white, sticky) */
+header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: rgba(255,255,255,.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.nav { display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 24px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--navy); }
+.brand-mark { width: 60px; height: 34px; flex: none; }
+.brand-name { font-family: var(--serif); font-weight: 500; font-size: 21px; line-height: 1.1; }
+.brand-name small { display: block; font-family: var(--sans); font-size: var(--fs-micro); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--pewter); margin-top: 3px; }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a { text-decoration: none; color: var(--ink); font-weight: 500; font-size: var(--fs-small); }
+.nav-links a:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 6px; }
+.nav-links .btn { color: var(--white); }
+.nav-links .btn:hover { text-decoration: none; }
+.menu-btn { display: none; background: none; border: 1px solid var(--line); border-radius: var(--radius-sm); width: 44px; height: 44px; cursor: pointer; color: var(--navy); }
+@media (max-width: 980px) {
+  .menu-btn { display: inline-flex; align-items: center; justify-content: center; }
+  .nav-links { display: none; position: absolute; top: 76px; left: 0; right: 0; background: var(--white); flex-direction: column; align-items: stretch; gap: 0; padding: 8px 16px 20px; border-bottom: 1px solid var(--line); max-height: calc(100vh - var(--header-h, 77px)); max-height: calc(100dvh - var(--header-h, 77px)); overflow-y: auto; overscroll-behavior: contain; }
+  .nav-links.open { display: flex; --dy: -8px; animation: panel-in .24s var(--ease-out) both; }
+  .nav-links li a { display: block; padding: 14px 4px; border-bottom: 1px solid var(--fog); font-size: var(--fs-body); }
+  .nav-links li:last-child a { border: 0; margin-top: 12px; text-align: center; }
+}
+
+/* Hero: Mock-up #1 two-column grid over the Cincinnati photo */
+.hero { position: relative; background: var(--navy); color: var(--on-navy); padding-block: clamp(64px, 8vw, 112px); overflow: hidden; }
+/* Cincinnati photo under a navy wash: heavier behind the headline, lighter toward the skyline side */
+.hero-bg { position: absolute; inset: 0; z-index: 0; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 58%; }
+.hero-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(21,37,63,.94) 0%, rgba(21,37,63,.9) 52%, rgba(21,37,63,.74) 64%, rgba(21,37,63,.5) 82%, rgba(21,37,63,.4) 100%), linear-gradient(0deg, rgba(12,22,38,.45), rgba(12,22,38,0) 40%); }
+/* Phones and tablets: the panorama runs as a wide band across the top, close to its natural shape, so it is shown sharp rather than cropped to a sliver and magnified */
+@media (max-width: 900px) {
+  .hero { --band: clamp(260px, 84vw, 520px); padding-top: calc(var(--band) * .74); }
+  .hero-bg { inset: 0 0 auto 0; height: var(--band); }
+  .hero-bg img { object-position: 50% 62%; }
+  .hero-bg::after { background: linear-gradient(180deg, rgba(21,37,63,.3) 0%, rgba(21,37,63,.38) 45%, rgba(21,37,63,.84) 74%, rgba(21,37,63,1) 100%); }
+}
+.hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.2fr .8fr; gap: 64px; align-items: center; }
+.hero .eyebrow { color: var(--gold); }
+.hero h1 { color: var(--white); font-size: var(--fs-display); margin-bottom: 26px; }
+.hero h1 em { display: block; font-style: italic; font-weight: 400; color: var(--gold); }
+.hero .lede { font-size: var(--fs-lead); color: var(--on-navy-soft); margin-bottom: 34px; }
+.hero .lede strong { color: var(--on-navy); font-weight: 600; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 18px; }
+.hero-note { font-size: var(--fs-small); color: var(--on-navy-soft); display: flex; align-items: center; gap: 8px; margin: 0; }
+.hero-note svg { flex: none; width: 16px; height: 16px; }
+.cred-card { background: rgba(21,37,63,.82); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 30px 60px -30px rgba(0,0,0,.6); border-radius: var(--radius); overflow: hidden; max-width: 360px; width: 100%; justify-self: end; color: var(--on-navy); }
+.cred-body { padding: 34px 32px 28px; position: relative; }
+.cred-body::before { content: ""; position: absolute; top: 0; left: 32px; width: 48px; height: 3px; background: var(--gold); border-radius: 0 0 2px 2px; }
+.cred-quote { margin: 0 0 24px; font-family: var(--serif); font-style: italic; font-size: var(--fs-serif-md); line-height: 1.3; color: var(--white); }
+.cred-quote::before { content: "\201C"; display: block; font-style: normal; font-size: 56px; line-height: .6; color: var(--gold); margin-bottom: 10px; }
+.cred-card h2 { color: var(--white); font-family: var(--sans); font-weight: 700; font-size: var(--fs-body); line-height: 1.3; margin: 0 0 2px; }
+.cred-card .role { font-size: var(--fs-small); color: var(--on-navy-soft); margin: 0; }
+.cred-seal { display: flex; align-items: center; gap: 12px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--navy-line); }
+.cred-seal img { width: 34px; height: auto; flex: none; }
+.cred-seal .k { display: block; font-size: var(--fs-micro); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); line-height: 1.4; }
+.cred-seal .s { display: block; font-size: var(--fs-label); color: var(--on-navy-soft); line-height: 1.4; }
+.cred-card .meet { display: inline-flex; margin-top: 18px; font-weight: 700; font-size: var(--fs-small); color: var(--gold); text-decoration: none; }
+.cred-card .meet:hover { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .cred-card { justify-self: start; max-width: 520px; }
+  .cred-body { padding: 28px 22px 22px; }
+  .cred-body::before { left: 22px; }
+}
+
+/* Proof strip */
+.proof { border-bottom: 1px solid var(--line); background: var(--white); }
+.proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.proof-item { padding: 28px 24px; border-left: 1px solid var(--line); }
+.proof-item:first-child { border-left: 0; padding-left: 0; }
+.proof-num { font-family: var(--serif); font-size: 38px; white-space: nowrap; font-weight: 500; color: var(--navy); line-height: 1; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+.proof-label { font-size: var(--fs-small); color: var(--pewter); line-height: 1.45; }
+@media (max-width: 800px) {
+  .proof-grid { grid-template-columns: 1fr 1fr; }
+  .proof-num { font-size: 30px; }
+  .proof-item { padding: 22px 16px; border-left: 0; border-top: 1px solid var(--line); }
+  .proof-item:nth-child(-n+2) { border-top: 0; }
+  .proof-item:nth-child(odd) { padding-left: 0; }
+}
+@media (max-width: 420px) { .proof-num { white-space: normal; } }
+
+/* Situation picker */
+.picker { display: grid; grid-template-columns: .95fr 1.05fr; gap: 28px; align-items: start; }
+.picker-list { display: flex; flex-direction: column; gap: 10px; }
+.pick { text-align: left; width: 100%; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px 18px 52px; font-family: var(--serif); font-size: var(--fs-serif-sm); line-height: 1.35; color: var(--ink); cursor: pointer; position: relative; transition: border-color .15s, background .15s; }
+.pick::before { content: ""; position: absolute; left: 20px; top: 24px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--line); background: var(--white); transition: background-color .2s var(--ease-out), border-color .2s var(--ease-out), box-shadow .2s var(--ease-out); }
+.pick:hover { border-color: var(--navy); }
+.pick[aria-selected="true"] { border-color: var(--navy); background: var(--sand-soft); }
+.pick[aria-selected="true"]::before { border-color: var(--navy); background: var(--navy); box-shadow: inset 0 0 0 3px var(--sand-soft); }
+.answer { background: var(--navy); color: var(--white); border-radius: var(--radius); padding: 40px; position: sticky; top: 100px; }
+.answer .eyebrow { color: var(--gold); }
+.answer h3 { color: var(--white); font-family: var(--serif); font-weight: 500; font-size: var(--fs-h3); line-height: 1.15; margin-bottom: 16px; }
+.answer p { color: var(--on-navy-soft); }
+.answer ul { margin: 22px 0 28px; display: grid; gap: 12px; }
+.answer li { display: flex; gap: 12px; font-size: var(--fs-body); line-height: 1.5; }
+.answer li svg { flex: none; width: 18px; height: 18px; margin-top: 3px; color: var(--gold); }
+.answer-foot { border-top: 1px solid var(--navy-line); padding-top: 22px; display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; }
+.answer-foot a.text { color: var(--gold); font-weight: 600; text-decoration: none; font-size: var(--fs-small); }
+.answer-foot a.text:hover { text-decoration: underline; }
+@media (max-width: 900px) { .picker { grid-template-columns: 1fr; } .answer { position: static; padding: 28px 22px; } }
+
+/* Philosophy */
+.philo { display: grid; grid-template-columns: .85fr 1.15fr; gap: 24px 64px; align-items: end; }
+.philo .h2 { margin: 0; }
+.philo .big { font-family: var(--serif); font-size: var(--fs-statement); line-height: 1.35; color: var(--ink); margin: 0; }
+.philo .big + .big { margin-top: 10px; color: var(--pewter); }
+.leverages { font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin: 56px 0 16px; }
+.intel-q { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; counter-reset: iq; }
+.intel-q li { background: var(--fog); border-radius: var(--radius); padding: 18px 18px 20px; border-top: 3px solid var(--gold); }
+.intel-q .iq-k { display: flex; align-items: baseline; gap: 8px; font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--pewter); }
+.intel-q .iq-k b { font-family: var(--serif); font-size: var(--fs-serif-sm); font-weight: 500; letter-spacing: 0; color: var(--accent); }
+.intel-q q { display: block; margin-top: 10px; font-family: var(--serif); font-size: var(--fs-serif-sm); line-height: 1.28; color: var(--navy); quotes: "\201C" "\201D"; }
+.converge { display: block; width: 100%; height: 56px; }
+.converge path { fill: none; stroke: var(--gold); stroke-width: 1.5; vector-effect: non-scaling-stroke; opacity: .75; }
+.iva-band { background: var(--navy); border-radius: var(--radius); padding: 26px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 32px; }
+.iva-band .k { display: block; font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+.iva-band strong { display: block; font-family: var(--serif); font-weight: 500; font-size: var(--fs-quote); line-height: 1.1; color: var(--white); }
+.iva-band a { color: var(--gold); font-weight: 700; font-size: var(--fs-small); text-decoration: none; white-space: nowrap; }
+.iva-band a:hover { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 1000px) {
+  .intel-q { grid-template-columns: 1fr; gap: 8px; }
+  .intel-q li { display: grid; grid-template-columns: 120px minmax(0, 1fr); align-items: baseline; gap: 4px 16px; border-top: 0; border-left: 3px solid var(--gold); padding: 14px 18px; }
+  .intel-q q { margin-top: 0; }
+  .converge { display: none; }
+  .iva-band { margin-top: 12px; }
+}
+@media (max-width: 560px) {
+  .intel-q li { grid-template-columns: 1fr; }
+  .intel-q q { margin-top: 4px; }
+  .iva-band { padding: 22px; }
+  .iva-band a { white-space: normal; }
+}
+.how-intel { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
+.how-intel li { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 24px; }
+.how-intel h3 { font-family: var(--sans); font-weight: 700; font-size: var(--fs-lead); color: var(--ink); margin-bottom: 6px; }
+.how-intel p { color: var(--pewter); font-size: var(--fs-body); margin: 0; }
+@media (max-width: 900px) { .philo { grid-template-columns: 1fr; gap: 36px; } .how-intel { grid-template-columns: 1fr; margin-top: 44px; } }
+
+/* Framework: 5-4-3-2-1 */
+.ladder { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-bottom: 24px; }
+.ladder a { display: block; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 18px 16px; text-decoration: none; color: var(--ink); transition: background-color .25s var(--ease-out), border-color .25s var(--ease-out), color .25s var(--ease-out); }
+.ladder .n, .ladder .t, .ladder .s { transition: color .25s var(--ease-out); }
+.ladder a:hover { border-color: var(--navy); }
+.ladder .n { display: block; font-family: var(--serif); font-size: 58px; line-height: .9; color: var(--navy); }
+.ladder .t { display: block; font-weight: 700; font-size: var(--fs-small); line-height: 1.35; margin-top: 10px; }
+.ladder .s, .fw-caption { display: none; }
+.pips { display: flex; gap: 5px; margin-top: 12px; }
+.pips i { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+@media (max-width: 800px) {
+  .ladder { grid-template-columns: 1fr; gap: 8px; }
+  .ladder a { display: grid; grid-template-columns: 52px minmax(0, 1fr); align-items: center; padding: 12px 16px; }
+  .ladder .n { font-size: 44px; }
+  .ladder .t { margin-top: 0; }
+  .pips { margin-top: 6px; }
+}
+/* Tabbed framework (progressive enhancement: JS adds .fw-tabs) */
+.fw-tabs .ladder { gap: 8px; margin-bottom: 14px; }
+.fw-tabs .ladder a { padding: 14px 16px 12px; cursor: pointer; }
+.fw-tabs .ladder .n { font-size: 40px; }
+.fw-tabs .ladder .t { font-size: var(--fs-small); margin-top: 6px; }
+.fw-tabs .ladder .pips { margin-top: 8px; }
+.fw-tabs .ladder a[aria-selected="true"] { background: var(--navy); border-color: var(--navy); color: var(--white); }
+.fw-tabs .ladder a[aria-selected="true"] .n { color: var(--gold); }
+.fw-tabs .ladder a[aria-selected="true"] .t { color: var(--white); }
+.fw-tabs .fw-row { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 34px 38px 26px; margin-top: 0; }
+.fw-tabs .fw-row[hidden] { display: none; }
+.fw-tabs .fw-num { display: none; }
+.fw-tabs .fw-intro { font-size: var(--fs-statement); max-width: none; }
+.fw-tabs .cards { margin-top: 20px; }
+.fw-tabs .fw-row.goal-row { padding: 0; border: 0; background: none; }
+.fw-step { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--line); }
+.fw-row.goal-row .fw-step { margin-top: 24px; border-top-color: var(--navy-line); }
+.goal .fw-step button { color: var(--gold); }
+.goal .fw-step button[data-dir="prev"] { color: var(--on-navy-soft); }
+.fw-step button { background: none; border: 0; padding: 6px 0; font: inherit; font-size: var(--fs-small); font-weight: 700; color: var(--navy); cursor: pointer; }
+.fw-step button:hover { text-decoration: underline; text-underline-offset: 4px; }
+.fw-step button[data-dir="prev"] { color: var(--pewter); font-weight: 600; }
+.fw-step .sp { flex: 1; }
+@media (max-width: 800px) {
+  /* All five levels stay on screen as one row of tiles; the selected level's full name sits under the row */
+  .fw-tabs .ladder { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; margin-bottom: 10px; }
+  .fw-tabs .ladder a { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; min-height: 66px; padding: 10px 0 9px; text-align: center; }
+  .fw-tabs .ladder .n { font-size: 28px; }
+  .fw-tabs .ladder .pips { display: none; }
+  .fw-tabs .ladder .t { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .fw-tabs .ladder .s { display: block; font-size: var(--fs-micro); font-weight: 600; line-height: 1.1; color: var(--pewter); white-space: nowrap; }
+  .fw-tabs .ladder a[aria-selected="true"] .s { color: var(--white); }
+  .fw-caption { display: block; margin: 0 2px 14px; font-weight: 700; font-size: var(--fs-small); color: var(--navy); }
+  .fw-tabs .fw-row { padding: 24px 18px 18px; }
+}
+@media (max-width: 369px) {
+  .fw-tabs .ladder .s { display: none; }
+  .fw-tabs .ladder .pips { display: flex; gap: 3px; margin-top: 0; }
+  .fw-tabs .ladder .pips i { width: 5px; height: 5px; }
+}
+.fw-row { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 56px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 44px; margin-top: 16px; }
+.fw-num { position: sticky; top: 100px; align-self: start; }
+.fw-num .n { display: block; font-family: var(--serif); font-size: 132px; line-height: .8; color: var(--navy); }
+.fw-num h3 { font-family: var(--sans); font-weight: 700; font-size: var(--fs-lead); color: var(--ink); margin-top: 18px; }
+.fw-intro { font-family: var(--serif); font-size: var(--fs-statement); line-height: 1.35; color: var(--ink); max-width: 40ch; margin: 0; }
+.cards { display: grid; gap: 12px; margin-top: 26px; }
+.cards.c5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.cards.c4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.card { background: var(--fog); border-radius: var(--radius); padding: 20px 18px; }
+.card strong { display: block; font-family: var(--serif); font-weight: 500; font-size: var(--fs-serif-sm); line-height: 1.2; color: var(--navy); }
+.card span { display: block; font-size: var(--fs-small); color: var(--pewter); margin-top: 8px; line-height: 1.5; }
+@media (max-width: 1080px) {
+  .fw-row { grid-template-columns: 1fr; gap: 22px; padding: 32px; }
+  .fw-num { position: static; display: flex; align-items: baseline; gap: 16px; }
+  .fw-num .n { font-size: 80px; }
+  .fw-num h3 { margin-top: 0; }
+}
+@media (max-width: 900px) {
+  .cards.c5 { grid-template-columns: 1fr; }
+  .cards.c5 .card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4px 20px; align-items: baseline; padding: 16px 18px; }
+  .cards.c5 .card span { margin-top: 0; }
+  .cards.c4 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .fw-row { padding: 24px 18px; }
+  .cards.c4, .cards.c5 .card { grid-template-columns: 1fr; }
+}
+
+/* 3 Core Scores */
+.scores-pair { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 24px; margin-top: 26px; align-items: start; }
+.score-defs { display: grid; gap: 12px; }
+.report { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin: 0; }
+.report-head { background: var(--navy); color: var(--white); padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.report-head strong { font-size: var(--fs-small); font-weight: 600; }
+.report-head span { font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 5px 9px; border-radius: 4px; white-space: nowrap; }
+.report-body { padding: 4px 24px 20px; }
+.meter { padding: 18px 0; border-bottom: 1px solid var(--line); }
+.meter-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 10px; }
+.meter-name { font-weight: 700; font-size: var(--fs-body); }
+.meter-val { font-family: var(--serif); font-size: var(--fs-h3); color: var(--navy); line-height: 1; font-variant-numeric: tabular-nums; }
+.meter-val small { font-family: var(--sans); font-size: var(--fs-small); color: var(--pewter); }
+.bar { height: 10px; background: var(--sand); border-radius: 5px; overflow: hidden; }
+.bar span { display: block; height: 100%; background: var(--navy); border-radius: 5px; }
+.flags { padding-top: 18px; }
+.flags h4 { font-family: var(--sans); font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--pewter); margin-bottom: 12px; }
+.flag { display: flex; gap: 12px; padding: 12px 14px; background: var(--fog); border-radius: var(--radius-sm); font-size: var(--fs-small); line-height: 1.5; margin-bottom: 8px; }
+.flag b { color: var(--navy); }
+.flag .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--navy); flex: none; margin-top: 8px; }
+.flag .dot.hollow { background: transparent; border: 2px solid var(--navy); }
+.report figcaption { font-size: var(--fs-label); color: var(--pewter); padding: 0 24px 20px; }
+@media (max-width: 900px) { .scores-pair { grid-template-columns: 1fr; } .report-body { padding: 4px 18px 18px; } }
+
+/* 2 Assets */
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 26px; }
+.two-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; background: var(--white); }
+.two-card .tag { display: inline-block; font-size: var(--fs-label); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; background: var(--sand-soft); color: var(--accent); padding: 6px 10px; border-radius: 4px; margin-bottom: 16px; }
+.two-card h3 { font-family: var(--serif); font-weight: 500; font-size: var(--fs-h3); margin-bottom: 6px; }
+.two-card .muted { font-family: var(--serif); font-style: italic; font-size: var(--fs-serif-sm); margin: 0; }
+.two-card ul { margin-top: 18px; display: grid; gap: 10px; }
+.two-card li { padding-left: 22px; position: relative; font-size: var(--fs-body); }
+.two-card li::before { content: ""; position: absolute; left: 0; top: 11px; width: 10px; height: 2px; background: var(--gold); }
+.two-foot { margin: 24px 0 0; font-family: var(--serif); font-size: var(--fs-serif-md); color: var(--navy); }
+@media (max-width: 800px) { .two { grid-template-columns: 1fr; } .two-card { padding: 26px 22px; } }
+
+/* 1 Goal */
+.goal { background: var(--navy); border-radius: var(--radius); padding: clamp(28px, 5vw, 52px); }
+.goal .eyebrow { color: var(--gold); }
+.goal h3 { color: var(--white); font-family: var(--serif); font-weight: 500; font-size: var(--fs-h1); line-height: 1.04; }
+.goal h3 em { display: block; font-style: italic; font-weight: 400; color: var(--gold); }
+.goal p { color: var(--on-navy-soft); font-size: var(--fs-lead); margin: 20px 0 0; max-width: 56ch; }
+
+/* Engagement stepper */
+.steps-scroll { overflow-x: auto; scrollbar-width: none; }
+.steps-scroll::-webkit-scrollbar { display: none; }
+.steps-nav { display: grid; grid-template-columns: repeat(5, minmax(120px, 1fr)); gap: 8px; }
+.step-tab { background: none; border: 0; text-align: left; padding: 0 0 18px; cursor: pointer; font-family: var(--sans); color: var(--pewter); }
+.step-tab .num { display: inline-flex; width: 30px; height: 30px; border-radius: 50%; align-items: center; justify-content: center; font-weight: 700; font-size: var(--fs-label); background: var(--sand); color: var(--navy); margin-bottom: 10px; transition: background-color .25s var(--ease-out), color .25s var(--ease-out); }
+.step-tab .nm { display: block; font-family: var(--serif); font-size: var(--fs-serif-md); color: var(--pewter); line-height: 1.1; transition: color .25s var(--ease-out); }
+.step-tab .sub { display: block; font-size: var(--fs-small); margin-top: 4px; }
+.step-tab[aria-selected="true"] .num { background: var(--navy); color: var(--white); }
+.step-tab[aria-selected="true"] .nm, .step-tab:hover .nm { color: var(--navy); }
+.progress { height: 6px; background: var(--sand); border-radius: 3px; overflow: hidden; margin-bottom: 32px; }
+.progress span { display: block; height: 100%; background: var(--navy); border-radius: 3px; width: 20%; transition: width .4s var(--ease-out); }
+.step-panel { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 40px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; }
+.step-panel .label { font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--pewter); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+.step-panel .label .num { width: 26px; height: 26px; border-radius: 50%; background: var(--navy); color: var(--white); display: inline-flex; align-items: center; justify-content: center; font-size: var(--fs-label); letter-spacing: 0; }
+.step-panel h3 { font-family: var(--serif); font-weight: 500; font-size: var(--fs-h3); line-height: 1.15; margin-bottom: 14px; }
+.deliver { background: var(--fog); border-radius: var(--radius); padding: 26px 28px; }
+.deliver h4 { font-family: var(--sans); font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--pewter); margin-bottom: 14px; }
+.deliver ul { display: grid; gap: 10px; }
+.deliver li { display: flex; gap: 10px; font-weight: 500; }
+.deliver li svg { flex: none; width: 16px; height: 16px; margin-top: 5px; color: var(--navy); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-size: var(--fs-small); font-weight: 600; background: var(--sand-soft); color: var(--navy); padding: 7px 12px; border-radius: 4px; }
+.step-controls { display: flex; justify-content: space-between; margin-top: 20px; }
+.step-controls button { background: none; border: 0; font-family: var(--sans); font-weight: 700; color: var(--navy); cursor: pointer; font-size: var(--fs-small); padding: 8px 0; }
+.step-controls button:disabled { color: var(--field); cursor: default; }
+/* The swipeable stage strip fades at whichever edge has more tabs hidden past it */
+.steps-scroll.more-right { -webkit-mask-image: linear-gradient(to right, #000 82%, transparent); mask-image: linear-gradient(to right, #000 82%, transparent); }
+.steps-scroll.more-left { -webkit-mask-image: linear-gradient(to left, #000 82%, transparent); mask-image: linear-gradient(to left, #000 82%, transparent); }
+.steps-scroll.more-left.more-right { -webkit-mask-image: linear-gradient(to right, transparent, #000 14%, #000 82%, transparent); mask-image: linear-gradient(to right, transparent, #000 14%, #000 82%, transparent); }
+@media (max-width: 900px) {
+  .step-tab .sub { display: none; }
+  .step-panel { grid-template-columns: 1fr; gap: 28px; padding: 28px 22px; }
+}
+
+/* Compare + team */
+.compare-wrap { overflow-x: auto; border-radius: var(--radius); }
+.compare { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; font-size: var(--fs-body); }
+.compare th, .compare td { text-align: left; padding: 18px 22px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.compare thead th { font-size: var(--fs-label); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--pewter); background: var(--fog); }
+.compare tbody th { font-weight: 700; color: var(--ink); width: 22%; }
+.compare tbody tr:last-child th, .compare tbody tr:last-child td { border-bottom: 0; }
+.compare .us { background: var(--sand-soft); }
+.compare thead th.us { background: var(--navy); color: var(--white); }
+.compare-note { font-size: var(--fs-small); color: var(--pewter); margin-top: 16px; }
+@media (max-width: 760px) {
+  .compare, .compare thead, .compare tbody, .compare tr, .compare th, .compare td { display: block; }
+  .compare thead { display: none; }
+  .compare { border: 0; background: none; }
+  .compare tbody tr { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 12px; overflow: hidden; }
+  .compare tbody th { width: auto; background: var(--fog); padding: 14px 18px; }
+  .compare td { padding: 12px 18px; border-bottom: 1px solid var(--line); }
+  .compare td::before { content: attr(data-label); display: block; font-size: var(--fs-label); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--pewter); margin-bottom: 2px; }
+  .compare td:last-child { border-bottom: 0; }
+}
+.team { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.team .h2 { margin-bottom: 18px; }
+.team-diagram { aspect-ratio: 1 / 1; max-width: min(440px, 100%); width: 100%; margin: 0 auto; }
+.team-diagram svg { width: 100%; height: 100%; }
+@media (max-width: 900px) { .team { grid-template-columns: 1fr; gap: 32px; } }
+
+/* Letter from Ron */
+.letter-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 64px; align-items: start; }
+.letter { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 52px 56px; }
+.letter-top { display: flex; align-items: center; gap: 16px; margin-bottom: 30px; }
+.avatar { width: 64px; height: 64px; border-radius: 50%; overflow: hidden; background: var(--sand); flex: none; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+.letter-top strong { display: block; font-size: var(--fs-body); }
+.letter-top span { font-size: var(--fs-small); color: var(--pewter); }
+.letter h2 { font-size: var(--fs-h2); margin-bottom: 24px; }
+.letter p { font-family: var(--serif); font-size: var(--fs-serif-sm); line-height: 1.55; color: var(--ink); }
+.letter .sign { font-style: italic; font-size: var(--fs-serif-md); color: var(--navy); margin: 8px 0 0; }
+.facts { display: grid; gap: 14px; position: sticky; top: 100px; }
+.fact-cepa { display: grid; grid-template-columns: 40px 1fr; gap: 16px; align-items: center; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; margin-bottom: 6px; }
+.fact-cepa img { width: 40px; height: auto; }
+.fact-cepa strong { display: block; font-size: var(--fs-body); line-height: 1.35; }
+.fact-cepa span { font-size: var(--fs-small); color: var(--pewter); }
+.fact { border-left: 3px solid var(--gold); padding: 6px 0 6px 18px; }
+.fact strong { display: block; font-size: var(--fs-body); }
+.fact span { font-size: var(--fs-small); color: var(--pewter); }
+.facts .btn { margin-top: 14px; justify-self: start; }
+@media (max-width: 900px) { .letter-grid { grid-template-columns: 1fr; gap: 40px; } .letter { padding: 32px 22px; } .facts { position: static; } }
+
+/* Next chapter */
+.chapter { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.chapter .h2 { margin-bottom: 22px; }
+.chapter blockquote { margin: 0 0 24px; font-family: var(--serif); font-style: italic; font-size: var(--fs-quote); line-height: 1.25; color: var(--navy); }
+.focus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.focus { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 18px; }
+.focus strong { display: block; font-family: var(--serif); font-weight: 500; font-size: var(--fs-serif-md); color: var(--navy); margin-bottom: 4px; }
+.focus span { font-size: var(--fs-small); color: var(--pewter); line-height: 1.45; display: block; }
+@media (max-width: 900px) { .chapter { grid-template-columns: 1fr; gap: 36px; } .focus-grid { grid-template-columns: 1fr 1fr; } }
+
+/* Fees */
+.fee-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
+.fee { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px 28px; }
+.fee .num { width: 30px; height: 30px; border-radius: 50%; background: var(--navy); color: var(--white); display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: var(--fs-label); margin-bottom: 16px; }
+.fee h3 { font-family: var(--sans); font-weight: 700; font-size: var(--fs-lead); color: var(--ink); margin-bottom: 4px; }
+.fee .how { font-family: var(--serif); font-size: var(--fs-serif-md); color: var(--navy); margin-bottom: 12px; }
+.fee p { font-size: var(--fs-body); color: var(--pewter); margin: 0; }
+.calc { background: var(--navy); color: var(--white); border-radius: var(--radius); padding: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.calc h3 { color: var(--white); font-family: var(--serif); font-weight: 500; font-size: var(--fs-h3); line-height: 1.15; margin-bottom: 8px; }
+.calc .muted { color: var(--on-navy-soft); font-size: var(--fs-body); }
+.field { margin-top: 26px; }
+.field label { display: flex; justify-content: space-between; font-weight: 600; font-size: var(--fs-small); margin-bottom: 12px; color: var(--white); }
+.field output { font-family: var(--serif); font-size: var(--fs-serif-md); color: var(--gold); font-weight: 500; font-variant-numeric: tabular-nums; }
+input[type=range] { -webkit-appearance: none; appearance: none; display: block; width: 100%; height: 36px; margin: 0; background: transparent; outline: none; cursor: pointer; touch-action: pan-y; }
+input[type=range]::-webkit-slider-runnable-track { height: 6px; border-radius: 3px; background: rgba(255,255,255,.22); }
+input[type=range]::-moz-range-track { height: 6px; border-radius: 3px; background: rgba(255,255,255,.22); }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 28px; height: 28px; margin-top: -11px; border-radius: 50%; background: var(--gold); border: 3px solid var(--white); cursor: pointer; }
+input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--gold); border: 3px solid var(--white); cursor: pointer; }
+input[type=range]:focus-visible { outline: 3px solid var(--gold); outline-offset: 6px; }
+.calc-out { background: var(--white); color: var(--ink); border-radius: var(--radius); padding: 30px; }
+.calc-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: var(--fs-body); }
+.calc-row b { font-family: var(--serif); font-size: var(--fs-serif-md); font-weight: 500; color: var(--navy); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.calc-row.big { border: 0; padding-top: 18px; }
+.calc-row.big span { font-weight: 700; }
+.calc-row.big b { font-size: var(--fs-h3); }
+.split { height: 14px; border-radius: 7px; background: var(--sand); overflow: hidden; display: flex; margin: 18px 0 8px; }
+.split .keep { background: var(--navy); height: 100%; }
+.split .fee-part { background: var(--gold); height: 100%; }
+.legend { display: flex; gap: 18px; font-size: var(--fs-label); color: var(--pewter); flex-wrap: wrap; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.calc-fine { font-size: var(--fs-label); color: var(--pewter); margin: 16px 0 0; line-height: 1.5; }
+@media (max-width: 900px) { .fee-cards { grid-template-columns: 1fr; } .calc { grid-template-columns: minmax(0, 1fr); padding: 28px 22px; gap: 28px; } .calc-out { padding: 22px 18px; } }
+@media (max-width: 360px) { .calc { padding-inline: 16px; } .calc-row { flex-wrap: wrap; row-gap: 2px; } }
+
+/* FAQ */
+.faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; }
+.faq-grid .h2 { margin-bottom: 18px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq details:first-child { border-top: 1px solid var(--line); }
+.faq summary { list-style: none; cursor: pointer; padding: 22px 44px 22px 0; font-weight: 700; font-size: var(--fs-lead); position: relative; color: var(--ink); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: ""; position: absolute; right: 6px; top: 50%; width: 12px; height: 12px; border-right: 2px solid var(--navy); border-bottom: 2px solid var(--navy); transform: translateY(-70%) rotate(45deg); transition: transform .3s var(--ease-out); }
+.faq details[open] summary::after { transform: translateY(-30%) rotate(-135deg); }
+.faq summary:hover { color: var(--navy); }
+.faq .ans { padding: 0 0 24px; color: var(--pewter); max-width: 640px; }
+.faq details[open] .ans { --dy: -6px; animation: panel-in .3s var(--ease-out) both; }
+.faq .ans p:last-child { margin: 0; }
+@media (max-width: 900px) { .faq-grid { grid-template-columns: 1fr; gap: 28px; } .faq summary { font-size: var(--fs-body); } }
+
+/* Contact */
+.contact { background: var(--navy); color: var(--white); padding-block: 104px; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.contact .eyebrow { color: var(--gold); }
+.contact h2 { color: var(--white); font-size: var(--fs-h1); margin-bottom: 8px; }
+.contact h2 + h2 { color: var(--gold); font-style: italic; font-weight: 400; margin-bottom: 26px; }
+.contact p { color: var(--on-navy-soft); font-size: var(--fs-lead); }
+.expect { margin: 32px 0 0; display: grid; gap: 18px; }
+.expect li { display: grid; grid-template-columns: 32px 1fr; gap: 14px; }
+.expect .n { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,.12); color: var(--white); font-weight: 700; font-size: var(--fs-label); display: flex; align-items: center; justify-content: center; }
+.expect strong { display: block; color: var(--white); }
+.expect span { color: var(--on-navy-soft); font-size: var(--fs-small); }
+form.card-form { background: var(--white); color: var(--ink); border-radius: var(--radius); padding: 36px; }
+form.card-form h3 { font-family: var(--serif); font-weight: 500; font-size: var(--fs-h3); margin-bottom: 4px; }
+form.card-form .muted { font-size: var(--fs-small); margin-bottom: 18px; }
+.f { margin-bottom: 16px; min-width: 0; }
+.f label { display: block; font-weight: 600; font-size: var(--fs-small); margin-bottom: 6px; }
+.f label .opt { font-weight: 400; color: var(--pewter); }
+.f input, .f select, .f textarea { width: 100%; font: inherit; font-size: var(--fs-body); color: var(--ink); padding: 13px 14px; border: 1px solid var(--field); border-radius: var(--radius-sm); background: var(--white); }
+.f input:focus, .f select:focus, .f textarea:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px var(--sand); }
+.f input[aria-invalid="true"] { border-color: var(--error); }
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+form.card-form .btn { width: 100%; margin-top: 6px; }
+.privacy { display: flex; gap: 8px; font-size: var(--fs-label); color: var(--pewter); margin: 14px 0 0; line-height: 1.5; }
+.privacy svg { flex: none; width: 16px; height: 16px; margin-top: 2px; }
+.thanks { text-align: center; padding: 30px 8px; }
+.thanks .check { width: 56px; height: 56px; border-radius: 50%; background: var(--sand); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 18px; color: var(--navy); }
+.thanks .check svg { width: 28px; height: 28px; }
+.thanks h3 { margin-bottom: 10px; }
+.thanks p { color: var(--pewter); font-size: var(--fs-body); }
+@media (max-width: 900px) { .contact { padding-block: 72px; } .contact-grid { grid-template-columns: 1fr; gap: 40px; } form.card-form { padding: 26px 20px; } }
+@media (max-width: 480px) { .f-row { grid-template-columns: 1fr; gap: 0; } }
+
+/* Footer */
+footer { background: var(--deep); color: var(--on-navy-soft); padding-block: 64px 36px; font-size: var(--fs-small); }
+.foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--navy-line); }
+footer .brand { color: var(--white); }
+footer .brand-name small { color: var(--on-navy-soft); }
+.foot-tag { font-family: var(--serif); font-size: var(--fs-serif-sm); color: var(--white); margin: 18px 0 4px; }
+.foot-cepa { display: flex; align-items: center; gap: 12px; margin-top: 20px; font-size: var(--fs-label); line-height: 1.4; }
+.foot-cepa img { width: 32px; height: auto; }
+footer h4 { font-family: var(--sans); color: var(--white); font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 14px; }
+footer ul { display: grid; gap: 8px; }
+@media (pointer: coarse) {
+  footer ul { gap: 0; }
+  footer li a { display: inline-block; padding-block: 11px; }
+  .link-arrow { padding-block: 9px; }
+  .cred-card .meet { margin-top: 9px; padding-block: 9px; }
+  .answer-foot a.text { display: inline-block; padding-block: 9px; }
+}
+footer a { color: var(--on-navy-soft); text-decoration: none; }
+footer a:hover { color: var(--white); text-decoration: underline; }
+.legal { padding-top: 24px; font-size: var(--fs-label); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+@media (max-width: 800px) { .foot-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+/* ===== Calm variant: fewer boxes, labels, and color bands; compact phone layouts ===== */
+/* One quiet background for most sections, separated by hairlines; the next-chapter section stays warm as a single accent */
+.section.fog { background: var(--white); }
+main > .section + .section { border-top: 1px solid var(--line); }
+#chapter.section { background: var(--fog); border-top: 0; }
+#chapter + .section { border-top: 0; }
+
+/* In-panel labels that repeat what the heading or tabs already say */
+.answer > .eyebrow, .step-panel .label, .two-card .tag { display: none; }
+
+/* The value path (formerly its own "Introducing" section) introduces the framework */
+.iva-path { margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--line); }
+.iva-path-k { margin: 0 0 8px; font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.iva-steps { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 0; }
+.iva-steps li { font-family: var(--serif); font-size: var(--fs-serif-sm); line-height: 1.3; color: var(--navy); }
+.iva-steps li:not(:last-child)::after { content: "→"; margin: 0 12px; font-family: var(--sans); font-size: var(--fs-small); color: var(--gold); }
+.iva-steps li.final em { font-style: italic; color: var(--accent); }
+
+/* Quiet motion: blocks ease up once as they arrive; the hero settles on load. Reduced-motion turns all of it off. */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s var(--ease-out), transform .7s var(--ease-out); }
+.reveal.in { opacity: 1; transform: none; }
+@keyframes rise-in { from { opacity: 0; transform: translateY(12px); } }
+@keyframes photo-settle { from { transform: scale(1.06); } }
+.hero-bg img { animation: photo-settle 2.4s var(--ease-out) both; }
+.hero-grid > div > *, .cred-card { animation: rise-in .8s var(--ease-out) both; }
+.hero-grid > div > :nth-child(2) { animation-delay: .08s; }
+.hero-grid > div > :nth-child(3) { animation-delay: .16s; }
+.hero-grid > div > :nth-child(4) { animation-delay: .24s; }
+.hero-grid > div > :nth-child(5) { animation-delay: .3s; }
+.cred-card { animation-delay: .34s; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+
+/* Compact comparison summary, shown on phones in place of the full table */
+.compare-simple { display: none; }
+.compare-simple h3 { font-family: var(--sans); font-weight: 700; font-size: var(--fs-lead); color: var(--ink); margin-bottom: 4px; }
+.compare-simple dl { margin: 0; }
+.compare-simple dl > div { padding: 14px 0; border-bottom: 1px solid var(--line); }
+.compare-simple dt { font-size: var(--fs-label); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--pewter); }
+.compare-simple dd { margin: 2px 0 0; }
+.compare-toggle { margin-top: 16px; background: none; border: 0; padding: 10px 0; font: inherit; font-size: var(--fs-small); font-weight: 700; color: var(--navy); cursor: pointer; }
+.compare-toggle::after { content: " ↓"; }
+.compare-toggle[aria-expanded="true"]::after { content: " ↑"; }
+
+@media (max-width: 760px) {
+  /* Lists read as lists: dividers and whitespace instead of a box around every item */
+  .intel-q { gap: 0; }
+  .intel-q li { background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 14px 0; }
+  .focus-grid { gap: 0 20px; }
+  .focus { background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 14px 0; }
+  .fee-cards { gap: 0; margin-bottom: 28px; }
+  .fee { background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 22px 0; }
+  .fee .num { margin-bottom: 10px; }
+  .cards { gap: 0; }
+  .cards.c4 { grid-template-columns: 1fr; }
+  .card { background: none; border-top: 1px solid var(--line); border-radius: 0; padding: 14px 0; }
+  .two { gap: 0; }
+  .two-card { background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 20px 0; }
+
+  /* No boxes inside boxes */
+  .fw-tabs .fw-row:not(.goal-row) { background: none; border: 0; padding: 6px 0 0; }
+  .step-panel { background: none; border: 0; padding: 0; }
+  .deliver { background: none; border-top: 1px solid var(--line); border-radius: 0; padding: 18px 0 0; }
+  .letter { background: none; border: 0; padding: 0; }
+  .fact-cepa { background: none; border: 0; padding: 0; }
+
+  /* Supporting pieces the surrounding text already covers */
+  .how-intel, .team-diagram, .flags { display: none; }
+
+  /* Comparison: short summary first, full table on request */
+  .compare-simple { display: block; }
+  .compare-wrap { display: none; margin-top: 8px; }
+  .compare-wrap.show { display: block; }
+  .compare-note { margin-top: 20px; }
+
+  /* Tighter rhythm: hairlines already separate sections */
+  .section { padding-block: 56px; }
+  .section-head { margin-bottom: 28px; }
+  .contact { padding-block: 56px; }
+
+  /* Fee calculator: same controls, less padding */
+  .calc { padding: 24px 18px; gap: 20px; }
+  .field { margin-top: 18px; }
+  .field label { margin-bottom: 4px; }
+  .calc-out { padding: 16px; }
+  .calc-row { padding: 8px 0; }
+}
+/* ===== Navy-led palette: navy, warm stone neutrals, white, and a touch of gold ===== */
+:root {
+  --fog: #F5F4F1;
+  --sand-soft: #ECEAE5;
+  --sand: #DDDAD3;
+  --line: #E4E2DD;
+  --field: #C4C0B8;
+  --head: #E8E6E0;
+  --head-line: #CFCBC2;
+}
+/* Light sections alternate white and pale navy mist; navy anchors the page at the hero, the next chapter, and contact */
+main > .section + .section { border-top: 0; }
+#situation, #philosophy, #how, #advisors, #fees { background: var(--white); }
+#framework, #team, #ron, #faq { background: var(--fog); }
+
+/* Tucked sheets: white and navy sections are raised sheets resting over the recessed stone sections */
+:root { --sheet-r: 32px; }
+main > section.section, main > section.contact { position: relative; --pad: 104px; }
+@media (max-width: 900px) { main > section.contact { --pad: 72px; } }
+@media (max-width: 760px) { :root { --sheet-r: 24px; } main > section.section, main > section.contact { --pad: 56px; } }
+#framework, #team, #ron, #faq { box-shadow: inset 0 14px 18px -14px rgba(21,37,63,.16), inset 0 -14px 18px -14px rgba(21,37,63,.16); }
+#chapter, #philosophy, #how, #advisors, #fees, main > section.contact { margin-top: calc(-1 * var(--sheet-r)); padding-top: calc(var(--pad) + var(--sheet-r)); border-radius: var(--sheet-r) var(--sheet-r) 0 0; box-shadow: 0 -14px 30px -18px rgba(12,22,38,.38); }
+
+#chapter.section { background: var(--navy); color: var(--on-navy-soft); }
+#chapter .eyebrow { color: var(--gold); }
+#chapter .h2 { color: var(--white); }
+#chapter blockquote { color: var(--gold); }
+#chapter .lede, #chapter .muted { color: var(--on-navy-soft); }
+#chapter .muted strong { color: var(--white); font-weight: 600; }
+#chapter .focus { background: rgba(255,255,255,.04); border-color: var(--navy-line); }
+#chapter .focus strong { color: var(--white); }
+#chapter .focus span { color: var(--on-navy-soft); }
+@media (max-width: 760px) { #chapter .focus { background: none; border-top-color: var(--navy-line); } }
+
+/* Navy focal points: one per light section, each on something worth noticing */
+.deliver { background: var(--navy); color: var(--on-navy); }
+.deliver h4 { color: var(--gold); }
+.deliver li svg { color: var(--gold); }
+.deliver .chip { background: rgba(255,255,255,.08); color: var(--white); }
+.faq-side .link-arrow { margin-top: 6px; padding: 12px 20px; border-radius: var(--radius-sm); background: var(--navy); color: var(--white); font-size: var(--fs-small); transition: background-color .15s, transform .2s var(--ease-out), box-shadow .2s var(--ease-out); }
+.faq-side .link-arrow:hover { background: var(--navy-2); text-decoration: none; }
+@media (hover: hover) { .faq-side .link-arrow:hover { transform: translateY(-1px); box-shadow: 0 8px 18px -10px rgba(12,22,38,.45); } }
+@media (max-width: 760px) {
+  .deliver { background: var(--navy); border-top: 0; border-radius: var(--radius); padding: 22px 20px; }
+  .compare-simple { background: var(--navy); color: var(--on-navy); border-radius: var(--radius); padding: 22px 20px 8px; }
+  .compare-simple h3 { color: var(--white); }
+  .compare-simple dl > div { border-bottom-color: var(--navy-line); }
+  .compare-simple dl > div:last-child { border-bottom: 0; }
+  .compare-simple dt { color: var(--gold); }
+  .compare-toggle { color: var(--gold); }
+}
+
+/* Phones: choosing a situation folds the old answer closed and unfolds the new one, both over half a second */
+@media (max-width: 900px) {
+  .answers.unfolding { overflow: hidden; transition: height .5s cubic-bezier(.4, 0, .2, 1), margin-bottom .5s cubic-bezier(.4, 0, .2, 1); }
+  .answers.unfolding .anim-in { animation-duration: .55s; animation-delay: .08s; }
+  .answers-ghost { overflow: hidden; pointer-events: none; transition: height .5s cubic-bezier(.4, 0, .2, 1), margin-bottom .5s cubic-bezier(.4, 0, .2, 1), opacity .3s ease; }
+  .answers-ghost.folding { height: 0 !important; margin-bottom: -10px; opacity: 0; }
+}
+
+/* Comparison table: the header row reads as a header, not as the section background */
+.compare thead th { background: var(--navy); color: var(--on-navy); border-bottom: 1px solid var(--navy); }
+.compare thead th.us { background: var(--navy-2); color: var(--gold); border-bottom-color: var(--navy-2); }
+
+/* Straight answers: Ron's column reads as the clear choice */
+@media (min-width: 761px) {
+  .compare td.us { padding-left: 54px; color: var(--navy); font-weight: 600; background: var(--sand-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='10' fill='%23C5A869'/%3E%3Cpath d='M5.5 10.4l3 3 6-6.4' fill='none' stroke='%2315253F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat 22px 20px / 20px 20px; }
+  .compare tbody td:not(.us) { color: var(--pewter); }
+}
+.compare-note { padding: 4px 0 4px 16px; border-left: 3px solid var(--gold); color: var(--ink); }
+@media (max-width: 760px) {
+  .compare-simple dd { padding-left: 28px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='10' fill='%23C5A869'/%3E%3Cpath d='M5.5 10.4l3 3 6-6.4' fill='none' stroke='%2315253F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat 0 3px / 18px 18px; color: var(--white); }
+}
+
+/* ===== Review only: phone alternatives for the framework introduction ===== */
+.iva-sentence, .iva-toggle { display: none; }
+@media (max-width: 760px) {
+  html:not([data-fw="current"]) .iva-path-k { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* A, D (opened): a short vertical list joined by a gold line */
+  html[data-fw="ladder"] .iva-steps, html[data-fw="reveal"] .iva-path.open .iva-steps { display: block; position: relative; }
+  html[data-fw="ladder"] .iva-steps::before, html[data-fw="reveal"] .iva-path.open .iva-steps::before { content: ""; position: absolute; left: 5px; top: 18px; bottom: 18px; width: 1px; background: var(--gold); opacity: .6; }
+  html[data-fw="ladder"] .iva-steps li, html[data-fw="reveal"] .iva-path.open .iva-steps li { position: relative; padding: 5px 0 5px 26px; }
+  html[data-fw="ladder"] .iva-steps li::after, html[data-fw="reveal"] .iva-path.open .iva-steps li::after { content: none; }
+  html[data-fw="ladder"] .iva-steps li::before, html[data-fw="reveal"] .iva-path.open .iva-steps li::before { content: ""; position: absolute; left: 1px; top: calc(5px + .65em - 4px); width: 9px; height: 9px; border-radius: 50%; background: var(--fog); border: 1.5px solid var(--gold); }
+  html[data-fw="ladder"] .iva-steps li.final::before, html[data-fw="reveal"] .iva-path.open .iva-steps li.final::before { background: var(--gold); }
+  html[data-fw="ladder"] .iva-path { margin-top: 22px; padding-top: 16px; }
+
+  /* B: one swipeable row of pills */
+  html[data-fw="pills"] .iva-path { margin-top: 20px; padding-top: 0; border-top: 0; }
+  html[data-fw="pills"] .iva-steps { flex-wrap: nowrap; gap: 8px; overflow-x: auto; scrollbar-width: none; margin-inline: -16px; padding: 2px 16px 4px; -webkit-mask-image: linear-gradient(to right, #000 85%, transparent); mask-image: linear-gradient(to right, #000 85%, transparent); }
+  html[data-fw="pills"] .iva-steps::-webkit-scrollbar { display: none; }
+  html[data-fw="pills"] .iva-steps li { flex: none; padding: 8px 14px; border-radius: 999px; background: var(--white); border: 1px solid var(--line); font-family: var(--sans); font-size: var(--fs-small); font-weight: 600; color: var(--navy); }
+  html[data-fw="pills"] .iva-steps li::after { content: none; }
+  html[data-fw="pills"] .iva-steps li.final { background: var(--navy); border-color: var(--navy); color: var(--white); }
+  html[data-fw="pills"] .iva-steps li.final em { color: var(--gold); }
+
+  /* C: the steps live in the navy "Together, they create" card above */
+  html[data-fw="band"] .iva-band .iva-path { margin: 14px 0 6px; padding-top: 14px; border-top: 1px solid var(--navy-line); width: 100%; }
+  html[data-fw="band"] .iva-band .iva-steps { display: grid; gap: 6px; }
+  html[data-fw="band"] .iva-band .iva-steps li { color: var(--white); font-size: var(--fs-body); }
+  html[data-fw="band"] .iva-band .iva-steps li::after { content: none; }
+  html[data-fw="band"] .iva-band .iva-steps li::before { content: "→"; margin-right: 10px; font-family: var(--sans); font-size: var(--fs-small); color: var(--gold); }
+  html[data-fw="band"] .iva-band .iva-steps li.final em { color: var(--gold); }
+
+  /* D: a small link opens the ladder */
+  html[data-fw="reveal"] .iva-path { margin-top: 18px; padding-top: 0; border-top: 0; }
+  html[data-fw="reveal"] .iva-toggle { display: inline-block; background: none; border: 0; padding: 8px 0; font: inherit; font-size: var(--fs-small); font-weight: 700; color: var(--navy); cursor: pointer; }
+  html[data-fw="reveal"] .iva-path:not(.open) .iva-steps { display: none; }
+  html[data-fw="reveal"] .iva-path.open .iva-steps { margin-top: 8px; animation: panel-in .4s var(--ease-out) both; }
+
+  /* E: one serif line instead of the list */
+  html[data-fw="sentence"] .iva-path { margin-top: 22px; padding: 2px 0 2px 16px; border-top: 0; border-left: 2px solid var(--gold); }
+  html[data-fw="sentence"] .iva-steps { display: none; }
+  html[data-fw="sentence"] .iva-sentence { display: block; margin: 0; font-family: var(--serif); font-style: italic; font-size: var(--fs-serif-sm); line-height: 1.4; color: var(--navy); }
+}
+.opt-switch { position: fixed; z-index: 90; left: 50%; bottom: 14px; transform: translateX(-50%); display: flex; align-items: center; gap: 4px; max-width: calc(100vw - 24px); padding: 8px 10px; border-radius: 999px; background: rgba(12,22,38,.93); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 12px 30px -10px rgba(0,0,0,.5); overflow-x: auto; scrollbar-width: none; font-family: var(--sans); }
+.opt-switch::-webkit-scrollbar { display: none; }
+.opt-switch button { flex: none; padding: 7px 12px; border: 1px solid transparent; border-radius: 999px; background: none; color: var(--white); font: inherit; font-size: var(--fs-label); font-weight: 600; cursor: pointer; }
+.opt-switch button[aria-pressed="true"] { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.32); }
+footer { padding-bottom: 110px; }
+@media (max-width: 600px) { .opt-switch { left: 10px; right: 10px; transform: none; border-radius: 16px; } }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 20 20"><rect x="4" y="9" width="12" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M7 9V6.5a3 3 0 016 0V9" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 20 20"><path d="M4 10h11M11 5.5l4.5 4.5-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-mark" viewBox="2 11 120 68"><path fill="currentColor" d="M23.24 54.98V56H4.85V54.98L9.49 53.6V17.59L4.85 16.24V15.21H23.24V16.24L18.6 17.59V53.6ZM31.29 17.69 26.83 16.23V15.21H46.17V16.23L41.12 17.63L54.78 48.91L53.24 49.35L64.47 17.66L59.45 16.21V15.21H71.53V16.21L67.12 17.72L52.92 56.33H48.5ZM83.75 41.64V39.25H103.96V41.64ZM114.58 53.51 119.04 54.98V56H99.84V54.98L104.86 53.57L91.35 22.29L92.79 21.86L80.51 53.55L85.63 55V56H73.39V55L77.83 53.49L93.19 14.87H97.61Z"/><rect x="5" y="64" width="114" height="6" fill="currentColor"/><rect x="5" y="74" width="114" height="2.5" fill="#C5A869"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site" id="top">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Intelligent Value Advisors, home">
+      <svg class="brand-mark" aria-hidden="true"><use href="#i-mark"/></svg>
+      <span class="brand-name">Intelligent Value Advisors<small>Ron DeLyons, CEPA®</small></span>
+    </a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+      <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#framework">Framework</a></li>
+      <li><a href="#ron">About Ron</a></li>
+      <li><a href="#fees">Fees</a></li>
+      <li><a href="#faq">Questions</a></li>
+      <li><a class="btn btn-navy btn-sm" href="#contact">Talk with Ron</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO: Mock-up #1 layout over the Cincinnati photo -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Value growth &amp; exit planning for middle-market business owners</span>
+      <h1 id="hero-title" class="display">Build a more valuable business <em>and the freedom it should give you.</em></h1>
+      <p class="lede">We help owners grow what they've built, make it run without them, and plan for what comes next, whether that's a sale, a family transition, or simply more time for the things that matter to you.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#contact">Schedule a confidential conversation</a>
+        <a class="btn btn-ghost-light" href="#framework">See the 5-4-3-2-1 framework</a>
+      </div>
+      <p class="hero-note"><svg aria-hidden="true"><use href="#i-lock"/></svg> Private, no-obligation, and owner to owner.</p>
+    </div>
+    <aside class="cred-card" aria-label="About Ron DeLyons">
+      <div class="cred-body">
+        <blockquote class="cred-quote">I've founded, grown, and exited three businesses. I've sat where you're sitting.</blockquote>
+        <h2>Ron DeLyons, CEPA®</h2>
+        <p class="role">Founder, Intelligent Value Advisors</p>
+        <div class="cred-seal">
+          <img src="cepa.webp" alt="Certified Exit Planning Advisor (CEPA) seal" width="34" height="36">
+          <div><span class="k">Certified Exit Planning Advisor</span><span class="s">Value Acceleration Methodology</span></div>
+        </div>
+        <a class="meet" href="#ron">Meet Ron →</a>
+      </div>
+    </aside>
+  </div>
+  <div class="hero-bg" aria-hidden="true"><img src="cincinnati-hd.webp" alt="" width="3328" height="1440" fetchpriority="high"></div>
+</section>
+
+<!-- PROOF STRIP -->
+<section class="proof" aria-label="Credentials at a glance">
+  <div class="wrap proof-grid">
+    <div class="proof-item"><div class="proof-num">40</div><div class="proof-label">years as a business owner and entrepreneur</div></div>
+    <div class="proof-item"><div class="proof-num">3</div><div class="proof-label">businesses founded, grown, and exited by Ron</div></div>
+    <div class="proof-item"><div class="proof-num">CEPA<span class="tm">®</span></div><div class="proof-label">Certified Exit Planning Advisor, Value Acceleration Methodology</div></div>
+    <div class="proof-item"><div class="proof-num">5-4-3-2-1</div><div class="proof-label">our proprietary Intelligent Value Acceleration™ framework</div></div>
+  </div>
+</section>
+
+<!-- SITUATION PICKER (Mock-up 1) -->
+<section class="section" id="situation" aria-labelledby="sit-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Start where you are</span>
+      <h2 class="h2" id="sit-title">Which of these sounds most like you?</h2>
+      <p class="lede">Every owner arrives with a different question. Pick the one closest to yours, and you'll see where we'd begin.</p>
+    </div>
+    <div class="picker">
+      <div class="picker-list" role="tablist" aria-label="Owner situations" aria-orientation="vertical">
+        <button class="pick" role="tab" id="t-worth" aria-controls="p-worth" aria-selected="true">"Honestly, I don't know what my business is worth."</button>
+        <button class="pick" role="tab" id="t-offers" aria-controls="p-offers" aria-selected="false" tabindex="-1">"Buyers keep calling, and I can't tell if the offers are any good."</button>
+        <button class="pick" role="tab" id="t-grow" aria-controls="p-grow" aria-selected="false" tabindex="-1">"I'm not selling anytime soon. I want to build the most valuable company I can."</button>
+        <button class="pick" role="tab" id="t-family" aria-controls="p-family" aria-selected="false" tabindex="-1">"We want to pass it to the next generation without dividing the family."</button>
+        <button class="pick" role="tab" id="t-after" aria-controls="p-after" aria-selected="false" tabindex="-1">"The money's fine. I'm just not sure who I'll be after."</button>
+      </div>
+      <div class="answers">
+        <div class="answer" role="tabpanel" id="p-worth" aria-labelledby="t-worth">
+          <span class="eyebrow">Where we'd start</span>
+          <h3>Get a straight, defensible number first.</h3>
+          <p>Most owners have a figure in their head. Few have one a buyer would agree with. We start with a baseline valuation and your Intelligent Value Score™, an honest look at what's raising or lowering your value.</p>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>A baseline valuation, explained in plain language</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>The handful of factors holding your value down</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Your Owner Freedom Index™: how much the business depends on you</li>
+          </ul>
+          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Find out what it's worth</a><a class="text" href="#scores">See the 3 Core Scores →</a></div>
+        </div>
+        <div class="answer" role="tabpanel" id="p-offers" aria-labelledby="t-offers" hidden>
+          <span class="eyebrow">Where we'd start</span>
+          <h3>Don't negotiate without knowing what you have.</h3>
+          <p>An unsolicited offer can be great or badly low, and you can't tell which until you know your real value range and all your options. Selling is only one of them.</p>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Your realistic value range, and what a buyer will scrutinize</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Your options side by side: sell, recapitalize, or keep growing</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Fixes for key-person or partner risks before they cost you</li>
+          </ul>
+          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Talk through an offer</a><a class="text" href="#how" data-step="3">See stage 4: Realize →</a></div>
+        </div>
+        <div class="answer" role="tabpanel" id="p-grow" aria-labelledby="t-grow" hidden>
+          <span class="eyebrow">Where we'd start</span>
+          <h3>This is an ownership strategy, not an exit plan.</h3>
+          <p>The best time to build transferable value is years before you need it. We build a 36-month plan with measurable targets and review it with you every quarter.</p>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>A 36-month value acceleration plan with clear priorities</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Scorecards that show whether value is actually moving</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>A leadership team that doesn't need you in every meeting</li>
+          </ul>
+          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Build a growth plan</a><a class="text" href="#outcomes">See the 4 Strategic Outcomes →</a></div>
+        </div>
+        <div class="answer" role="tabpanel" id="p-family" aria-labelledby="t-family" hidden>
+          <span class="eyebrow">Where we'd start</span>
+          <h3>Protect the family and the business together.</h3>
+          <p>Family transitions involve fairness, readiness, taxes, and feelings, often all at once. We help you weigh the options and bring your attorney, CPA, and wealth advisor onto one plan.</p>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Family transfer, ESOP, and recapitalization options compared</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Leadership and succession planning for the next generation</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>One coordinated plan instead of conflicting advice</li>
+          </ul>
+          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Plan a family transition</a><a class="text" href="#advisors">How we coordinate advisors →</a></div>
+        </div>
+        <div class="answer" role="tabpanel" id="p-after" aria-labelledby="t-after" hidden>
+          <span class="eyebrow">Where we'd start</span>
+          <h3>Plan who you'll become, not just what you'll leave.</h3>
+          <p>For many owners the hardest part isn't the deal. It's imagining life after it. That's a normal part of the process, and it deserves the same care you gave to building the company.</p>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Your Destiny Readiness Score™ and what would raise it</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Making sure your people and culture are protected</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>A transition that moves you toward something new</li>
+          </ul>
+          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Start that conversation</a><a class="text" href="#goal">See the 1 Goal →</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT CHAPTER -->
+<section class="section fog" id="chapter" aria-labelledby="chapter-title">
+  <div class="wrap chapter">
+    <div>
+      <span class="eyebrow">The part most advisors skip</span>
+      <h2 class="h2" id="chapter-title">Life after ownership deserves a plan, too.</h2>
+      <blockquote>"The business is not the destination. It's the vehicle."</blockquote>
+      <p class="lede">Many owners close a great deal and then find that money alone doesn't bring purpose or direction. A good transition isn't just leaving something behind. It's moving deliberately toward something new.</p>
+      <p class="muted">Whatever path you choose, it's on the table: <strong>a sale, family transfer, ESOP, recapitalization, or management buyout.</strong></p>
+    </div>
+    <div class="focus-grid">
+      <div class="focus"><strong>Identity</strong><span>Who you are beyond "the owner"</span></div>
+      <div class="focus"><strong>Purpose</strong><span>Work that still matters to you</span></div>
+      <div class="focus"><strong>Legacy</strong><span>What your name stands for</span></div>
+      <div class="focus"><strong>Family</strong><span>Time, fairness, and harmony</span></div>
+      <div class="focus"><strong>Impact</strong><span>Your people and community</span></div>
+      <div class="focus"><strong>Contribution</strong><span>Generosity and giving back</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR PHILOSOPHY -->
+<section class="section" id="philosophy" aria-labelledby="philo-title">
+  <div class="wrap">
+    <div class="philo">
+      <div>
+        <span class="eyebrow">Our philosophy</span>
+        <h2 class="h2" id="philo-title">Better Intelligence Creates Better Value</h2>
+      </div>
+      <div>
+        <p class="big">Most business owners don't lack effort.</p>
+        <p class="big">They lack the time, perspective, and strategic intelligence necessary to consistently make the best decisions.</p>
+      </div>
+    </div>
+    <p class="leverages" id="iq-label">Five questions behind every decision we make</p>
+    <ol class="intel-q" aria-labelledby="iq-label">
+      <li><span class="iq-k"><b>1</b>Enterprise</span><q>What is my business really worth, and why?</q></li>
+      <li><span class="iq-k"><b>2</b>Market</span><q>What's changing around me?</q></li>
+      <li><span class="iq-k"><b>3</b>Decision</span><q>What are my real options?</q></li>
+      <li><span class="iq-k"><b>4</b>Owner</span><q>What do I actually want?</q></li>
+      <li><span class="iq-k"><b>5</b>Future</span><q>Where do today's choices lead?</q></li>
+    </ol>
+    <svg class="converge" viewBox="0 0 1000 56" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M100 0 C100 34 440 26 440 56"/><path d="M300 0 C300 34 470 26 470 56"/><path d="M500 0 L500 56"/><path d="M700 0 C700 34 530 26 530 56"/><path d="M900 0 C900 34 560 26 560 56"/>
+    </svg>
+    <div class="iva-band">
+      <div><span class="k">Together, they create</span><strong>Intelligent Value Acceleration™</strong></div>
+      <a href="#dimensions">See the 5 Dimensions in our framework →</a>
+    </div>
+    <ul class="how-intel" aria-label="How the intelligence reaches you">
+      <li><h3>AI-assisted research, reviewed by Ron</h3><p>Technology does the heavy lifting on benchmarks, market trends, and risk patterns. Ron interprets it with you.</p></li>
+      <li><h3>Quarterly intelligence reports</h3><p>A plain-English update on what moved your value, what's at risk, and the next decisions worth making.</p></li>
+      <li><h3>Better decisions, not more dashboards</h3><p>Every hire, acquisition, or capital decision affects value. You'll see how before you decide.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- OUR PROCESS: 5-4-3-2-1 -->
+<section class="section" id="framework" aria-labelledby="fw-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Our process · The 5-4-3-2-1 methodology</span>
+      <h2 class="h2" id="fw-title">The Intelligent Value Acceleration™ Framework</h2>
+      <p class="lede">Five dimensions of intelligence lead to four strategic outcomes, measured by three core scores, across the two assets every owner manages, all in service of one goal.</p>
+      <div class="iva-path">
+        <p class="iva-path-k" id="iva-path-k">Our proprietary framework for helping business owners</p>
+        <button type="button" class="iva-toggle" aria-expanded="false">What the framework helps owners do ↓</button>
+        <p class="iva-sentence">Built to help owners build, protect, accelerate, and monetize value, then transform it into freedom and opportunity.</p>
+        <ol class="iva-steps" aria-labelledby="iva-path-k">
+          <li>Build Value</li>
+          <li>Protect Value</li>
+          <li>Accelerate Value</li>
+          <li>Monetize Value</li>
+          <li class="final">Transform Value <em>into Freedom and Opportunity</em></li>
+        </ol>
+      </div>
+    </div>
+    <nav class="ladder" aria-label="Framework levels">
+        <a href="#dimensions"><span class="n">5</span><span><span class="t">Dimensions of Intelligence</span><span class="s" aria-hidden="true">Dimensions</span><span class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></span></a>
+        <a href="#outcomes"><span class="n">4</span><span><span class="t">Strategic Outcomes</span><span class="s" aria-hidden="true">Outcomes</span><span class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i></span></span></a>
+        <a href="#scores"><span class="n">3</span><span><span class="t">Core Scores</span><span class="s" aria-hidden="true">Scores</span><span class="pips" aria-hidden="true"><i></i><i></i><i></i></span></span></a>
+        <a href="#assets"><span class="n">2</span><span><span class="t">Assets</span><span class="s" aria-hidden="true">Assets</span><span class="pips" aria-hidden="true"><i></i><i></i></span></span></a>
+        <a href="#goal"><span class="n">1</span><span><span class="t">Goal</span><span class="s" aria-hidden="true">Goal</span><span class="pips" aria-hidden="true"><i></i></span></span></a>
+      </nav>
+
+    <!-- 5 -->
+    <div class="fw-row" id="dimensions">
+      <div class="fw-num"><span class="n">5</span><h3>Dimensions of Intelligence</h3></div>
+      <div>
+        <p class="fw-intro">We begin by understanding five critical areas that influence both enterprise value and personal outcomes.</p>
+        <div class="cards c5">
+          <div class="card"><strong>Enterprise Intelligence™</strong><span>Understanding the business.</span></div>
+          <div class="card"><strong>Market Intelligence™</strong><span>Understanding the marketplace.</span></div>
+          <div class="card"><strong>Decision Intelligence™</strong><span>Improving decision quality.</span></div>
+          <div class="card"><strong>Owner Intelligence™</strong><span>Understanding goals, motivations, and aspirations.</span></div>
+          <div class="card"><strong>Future Intelligence™</strong><span>Creating greater future opportunities.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="fw-row" id="outcomes">
+      <div class="fw-num"><span class="n">4</span><h3>Strategic Outcomes</h3></div>
+      <div>
+        <p class="fw-intro">Every engagement focuses on four outcomes:</p>
+        <div class="cards c4">
+          <div class="card"><strong>Increase Enterprise Value</strong><span>Build a stronger, more valuable company.</span></div>
+          <div class="card"><strong>Improve Transferability</strong><span>Reduce owner dependence and increase business attractiveness.</span></div>
+          <div class="card"><strong>Expand Owner Freedom</strong><span>Create flexibility, options, and independence.</span></div>
+          <div class="card"><strong>Prepare for the Future</strong><span>Help owners define and prepare for what comes next.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="fw-row" id="scores">
+      <div class="fw-num"><span class="n">3</span><h3>Core Scores</h3></div>
+      <div>
+        <p class="fw-intro">Our assessments continuously measure progress.</p>
+        <div class="scores-pair">
+          <div class="score-defs">
+            <div class="card"><strong>Intelligent Value Score™</strong><span>How valuable is the business?</span></div>
+            <div class="card"><strong>Owner Freedom Index™</strong><span>How dependent is the owner?</span></div>
+            <div class="card"><strong>Destiny Readiness Score™</strong><span>How prepared is the owner for the next chapter?</span></div>
+          </div>
+          <figure class="report" aria-label="Sample owner scorecard">
+            <div class="report-head"><strong>Owner Scorecard · Baseline</strong><span>Sample only</span></div>
+            <div class="report-body">
+              <div class="meter">
+                <div class="meter-top"><span class="meter-name">Intelligent Value Score™</span><span class="meter-val">64<small> /100</small></span></div>
+                <div class="bar"><span style="width:64%"></span></div>
+              </div>
+              <div class="meter">
+                <div class="meter-top"><span class="meter-name">Owner Freedom Index™</span><span class="meter-val">31<small> /100</small></span></div>
+                <div class="bar"><span style="width:31%"></span></div>
+              </div>
+              <div class="meter">
+                <div class="meter-top"><span class="meter-name">Destiny Readiness Score™</span><span class="meter-val">42<small> /100</small></span></div>
+                <div class="bar"><span style="width:42%"></span></div>
+              </div>
+              <div class="flags">
+                <h4>What the report flags</h4>
+                <div class="flag"><span class="dot"></span><div><b>Risk:</b> Two customers make up 40% of revenue. Buyers will discount for this.</div></div>
+                <div class="flag"><span class="dot"></span><div><b>Risk:</b> Key customer relationships run through the owner.</div></div>
+                <div class="flag"><span class="dot hollow"></span><div><b>Opportunity:</b> Shift service work to recurring contracts to strengthen your multiple.</div></div>
+              </div>
+            </div>
+            <figcaption>Illustrative example. Your scores and findings come from your own assessment.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="fw-row" id="assets">
+      <div class="fw-num"><span class="n">2</span><h3>Assets</h3></div>
+      <div>
+        <p class="fw-intro">Every business owner manages:</p>
+        <div class="two">
+          <div class="two-card">
+            <span class="tag">Asset one</span>
+            <h3>A Company</h3>
+            <p class="muted">The financial engine.</p>
+            <ul>
+              <li>Grow its value on purpose, not by accident</li>
+              <li>Reduce how much it depends on you</li>
+              <li>Make it attractive and transferable to buyers or successors</li>
+            </ul>
+          </div>
+          <div class="two-card">
+            <span class="tag">Asset two</span>
+            <h3>A Life</h3>
+            <p class="muted">The reason the company exists.</p>
+            <ul>
+              <li>Create real options for you and your family</li>
+              <li>Define what you want your success to make possible</li>
+              <li>Be ready for the next chapter, and excited about it</li>
+            </ul>
+          </div>
+        </div>
+        <p class="two-foot">Our work is focused on maximizing both.</p>
+      </div>
+    </div>
+
+    <!-- 1 -->
+    <div class="fw-row goal-row" id="goal">
+      <div class="fw-num"><span class="n">1</span><h3>Goal</h3></div>
+      <div class="goal">
+        <span class="eyebrow">The one goal</span>
+        <h3>Transform Enterprise Value <em>Into Life Value™</em></h3>
+        <p>When enterprise value creates freedom, opportunity, purpose, and impact, business success becomes life success.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW AN ENGAGEMENT UNFOLDS (Mock-up 1 stepper) -->
+<section class="section fog" id="how" aria-labelledby="how-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How an engagement unfolds</span>
+      <h2 class="h2" id="how-title">From first conversation to next chapter.</h2>
+      <p class="lede">The 5-4-3-2-1 framework defines what we measure and what we aim for. These five stages are how the work happens, built on the CEPA® Value Acceleration Methodology, so you always know where you are and what comes next.</p>
+    </div>
+    <div class="steps-scroll">
+      <div class="steps-nav" role="tablist" aria-label="Engagement stages">
+        <button class="step-tab" role="tab" aria-selected="true" aria-controls="step-panel"><span class="num">1</span><span class="nm">Discover</span><span class="sub">Know where you stand</span></button>
+        <button class="step-tab" role="tab" aria-selected="false" aria-controls="step-panel" tabindex="-1"><span class="num">2</span><span class="nm">Design</span><span class="sub">Build the roadmap</span></button>
+        <button class="step-tab" role="tab" aria-selected="false" aria-controls="step-panel" tabindex="-1"><span class="num">3</span><span class="nm">Accelerate</span><span class="sub">Do the work, track it</span></button>
+        <button class="step-tab" role="tab" aria-selected="false" aria-controls="step-panel" tabindex="-1"><span class="num">4</span><span class="nm">Realize</span><span class="sub">Turn value into options</span></button>
+        <button class="step-tab" role="tab" aria-selected="false" aria-controls="step-panel" tabindex="-1"><span class="num">5</span><span class="nm">Thrive</span><span class="sub">Design what's next</span></button>
+      </div>
+    </div>
+    <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+    <div class="step-panel" id="step-panel" role="tabpanel" aria-live="polite">
+      <div>
+        <div class="label"><span class="num" id="sp-num">1</span><span id="sp-count">Stage one of five</span></div>
+        <h3 id="sp-title">Understand where you stand today.</h3>
+        <p id="sp-body" class="muted">We start with an honest picture of the business and of you: what it's worth, what drives and suppresses that value, how dependent it is on you, and what you want from the years ahead.</p>
+      </div>
+      <div class="deliver">
+        <h4 id="sp-dhead">What you walk away with</h4>
+        <div id="sp-list"></div>
+      </div>
+    </div>
+    <div class="step-controls">
+      <button type="button" id="step-prev">← Previous</button>
+      <button type="button" id="step-next">Next stage →</button>
+    </div>
+  </div>
+</section>
+
+<!-- WHO DOES WHAT + TEAM -->
+<section class="section" id="team" aria-labelledby="compare-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Straight answers</span>
+      <h2 class="h2" id="compare-title">Broker, banker, or advisor? Here's the difference.</h2>
+      <p class="lede">Owners are rarely told who does what. Each plays a role. What matters is knowing which one you need, and when.</p>
+    </div>
+    <div class="compare-simple">
+      <h3>How an exit planning advisor is different</h3>
+      <dl>
+        <div><dt>Main job</dt><dd>Grow value, reduce owner dependence, and prepare you for every option</dd></div>
+        <div><dt>When they start</dt><dd>Ideally years before, while there's time to build value</dd></div>
+        <div><dt>Assumes a sale?</dt><dd>No. Family transfer, ESOP, recapitalization, or simply keep growing</dd></div>
+        <div><dt>Your life after</dt><dd>Part of the plan from day one</dd></div>
+      </dl>
+      <button type="button" class="compare-toggle" aria-expanded="false" aria-controls="compare-full">Compare with brokers and bankers</button>
+    </div>
+    <div class="compare-wrap" id="compare-full">
+      <table class="compare">
+        <thead>
+          <tr><th scope="col">&nbsp;</th><th scope="col">Business broker</th><th scope="col">Investment banker</th><th scope="col" class="us">Exit planning advisor (Ron)</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Main job</th><td data-label="Business broker">Find a buyer and close a sale</td><td data-label="Investment banker">Run a competitive sale process for larger deals</td><td class="us" data-label="Exit planning advisor (Ron)">Grow value, reduce owner dependence, and prepare you for every option</td></tr>
+          <tr><th scope="row">When they start</th><td data-label="Business broker">When you're ready to sell</td><td data-label="Investment banker">When you're ready to sell</td><td class="us" data-label="Exit planning advisor (Ron)">Ideally years before, while there's time to build value</td></tr>
+          <tr><th scope="row">Assumes a sale?</th><td data-label="Business broker">Yes</td><td data-label="Investment banker">Yes</td><td class="us" data-label="Exit planning advisor (Ron)">No. Family transfer, ESOP, recapitalization, or simply keep growing</td></tr>
+          <tr><th scope="row">Your life after</th><td data-label="Business broker">Outside their scope</td><td data-label="Investment banker">Outside their scope</td><td class="us" data-label="Exit planning advisor (Ron)">Part of the plan from day one</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="compare-note">When it's time to transact, Ron works alongside the right broker or banker for you, so you go into the deal prepared.</p>
+
+  </div>
+</section>
+
+<!-- YOUR STRATEGIC QUARTERBACK -->
+<section class="section" id="advisors" aria-labelledby="advisors-title">
+  <div class="wrap">
+    <div class="team">
+      <div>
+        <span class="eyebrow">Your strategic quarterback</span>
+        <h2 class="h2" id="advisors-title">Your advisors, finally on the same page.</h2>
+        <p class="lede">Your CPA focuses on taxes. Your attorney on legal matters. Your wealth advisor on your portfolio. Each is good at their job, but nobody is connecting the dots.</p>
+        <p class="muted">Ron keeps the whole picture in view and aligns your existing advisors around one plan built on your goals. You don't have to replace anyone.</p>
+      </div>
+      <div class="team-diagram">
+        <svg viewBox="0 0 440 440" role="img" aria-label="Diagram: you and Ron at the center, connected to your CPA, attorney, wealth advisor, banker or broker, insurance advisor, and family">
+          <g style="stroke: var(--line)" stroke-width="1.5">
+            <line x1="220" y1="220" x2="220" y2="58"/><line x1="220" y1="220" x2="360" y2="139"/><line x1="220" y1="220" x2="360" y2="301"/>
+            <line x1="220" y1="220" x2="220" y2="382"/><line x1="220" y1="220" x2="80" y2="301"/><line x1="220" y1="220" x2="80" y2="139"/>
+          </g>
+          <circle cx="220" cy="220" r="150" fill="none" stroke="#C5A869" stroke-opacity=".6" stroke-dasharray="3 6"/>
+          <g font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="600" fill="#16202F" text-anchor="middle">
+            <g><rect x="160" y="36" width="120" height="44" rx="4" fill="#FFFFFF" style="stroke: var(--line)"/><text x="220" y="63">CPA</text></g>
+            <g><rect x="296" y="117" width="128" height="44" rx="4" fill="#FFFFFF" style="stroke: var(--line)"/><text x="360" y="144">Attorney</text></g>
+            <g><rect x="296" y="279" width="128" height="44" rx="4" fill="#FFFFFF" style="stroke: var(--line)"/><text x="360" y="306">Wealth advisor</text></g>
+            <g><rect x="156" y="360" width="128" height="44" rx="4" fill="#FFFFFF" style="stroke: var(--line)"/><text x="220" y="387">Banker / broker</text></g>
+            <g><rect x="16" y="279" width="128" height="44" rx="4" fill="#FFFFFF" style="stroke: var(--line)"/><text x="80" y="306">Insurance</text></g>
+            <g><rect x="16" y="117" width="128" height="44" rx="4" fill="#FFFFFF" style="stroke: var(--line)"/><text x="80" y="144">Family</text></g>
+          </g>
+          <circle cx="220" cy="220" r="66" fill="#15253F"/>
+          <circle cx="220" cy="220" r="59" fill="none" stroke="#C5A869" stroke-opacity=".5"/>
+          <text x="220" y="216" text-anchor="middle" font-family="EB Garamond, Garamond, serif" font-size="24" fill="#EEF1F6">You + Ron</text>
+          <text x="220" y="240" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11" font-weight="700" fill="#C5A869" letter-spacing="1.6">ONE PLAN</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT RON (letter) -->
+<section class="section fog" id="ron" aria-labelledby="ron-title">
+  <div class="wrap letter-grid">
+    <article class="letter">
+      <div class="letter-top">
+        <div class="avatar"><img src="ron.webp" alt="" width="64" height="64"></div>
+        <div><strong>A note from Ron DeLyons</strong><span>Founder, Intelligent Value Advisors</span></div>
+      </div>
+      <h2 class="h2" id="ron-title">I've sat where you're sitting.</h2>
+      <p>Over the last forty years, I've founded, grown, and exited three businesses. Along the way I faced the same challenges you're facing: growth, leadership, succession, building real value, and finally letting go.</p>
+      <p>Like most entrepreneurs, I learned many of those lessons the hard way. I didn't always have someone beside me who had already walked the path.</p>
+      <p>That's why I started Intelligent Value Advisors. I believe every owner deserves an experienced guide, one who understands the numbers <em>and</em> what this business means to you, your family, and your people.</p>
+      <p>If you're wondering what your company is really worth, or what you'd do without it, let's talk. No pitch, no pressure. Just a conversation between owners.</p>
+      <p class="sign">Ron DeLyons</p>
+    </article>
+    <aside class="facts" aria-label="Ron's background">
+      <div class="fact-cepa"><img src="cepa.webp" alt="CEPA seal" width="40" height="42"><div><strong>Certified Exit Planning Advisor (CEPA®)</strong><span>Trained in the Value Acceleration Methodology</span></div></div>
+      <div class="fact"><strong>Three-time founder</strong><span>Built, grew, and exited three businesses over 40 years</span></div>
+      <div class="fact"><strong>Life after ownership</strong><span>Guided by the principles of Christopher Snider's <em>Walking to Destiny</em></span></div>
+      <div class="fact"><strong>Middle-market focus</strong><span>Founders, family businesses, and private owners of middle-market companies</span></div>
+      <a class="btn btn-navy" href="#contact">Schedule time with Ron</a>
+    </aside>
+  </div>
+</section>
+
+<!-- FEES -->
+<section class="section" id="fees" aria-labelledby="fees-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How Ron is paid</span>
+      <h2 class="h2" id="fees-title">Simple fees, tied to your results.</h2>
+      <p class="lede">Most advisors get paid whether your business grows or not. Our biggest fee depends on the value we help you create, so we only do well when you do.</p>
+    </div>
+    <div class="fee-cards">
+      <div class="fee"><span class="num">1</span><h3>Discovery</h3><div class="how">One fixed fee</div><p>Valuation, your 3 Core Scores, and your value acceleration blueprint. Quoted up front, before any work begins.</p></div>
+      <div class="fee"><span class="num">2</span><h3>Ongoing advisory</h3><div class="how">Monthly fee</div><p>Monthly sessions, quarterly reviews, intelligence reports, and accountability to keep the plan moving.</p></div>
+      <div class="fee"><span class="num">3</span><h3>Value Acceleration Fee™</h3><div class="how">2.5%–5% of value created</div><p>A share of the growth only, calculated on the increase in your company's value, never on what it was already worth.</p></div>
+    </div>
+    <div class="calc">
+      <div>
+        <h3>See it with your own numbers.</h3>
+        <p class="muted">Move the sliders to estimate the performance fee. You'll see most of the value created stays with you.</p>
+        <div class="field">
+          <label for="c-start">Value today <output id="o-start" for="c-start">$5.0M</output></label>
+          <input type="range" id="c-start" min="2" max="100" step="0.5" value="5">
+        </div>
+        <div class="field">
+          <label for="c-end">Value after 36 months <output id="o-end" for="c-end">$15.0M</output></label>
+          <input type="range" id="c-end" min="2" max="200" step="0.5" value="15">
+        </div>
+      </div>
+      <div class="calc-out" aria-live="polite">
+        <div class="calc-row"><span>Value created</span><b id="r-created">$10M</b></div>
+        <div class="calc-row"><span>Performance fee (2.5%–5%)</span><b id="r-fee">$250K–$500K</b></div>
+        <div class="calc-row big"><span>You keep</span><b id="r-keep">$9.5M–$9.75M</b></div>
+        <div class="split" aria-hidden="true"><div class="keep" style="width:95%"></div><div class="fee-part" style="width:5%"></div></div>
+        <div class="legend"><span><i style="background:var(--navy)"></i>Yours (95%+)</span><span><i style="background:var(--gold)"></i>Fee, at most 5%</span></div>
+        <p class="calc-fine">Illustration of the performance fee only, at the high and low end of the range. Discovery and monthly advisory fees are separate. Exact terms are agreed in writing before an engagement begins.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section fog" id="faq" aria-labelledby="faq-title">
+  <div class="wrap faq-grid">
+    <div class="faq-side">
+      <span class="eyebrow">Questions owners ask</span>
+      <h2 class="h2" id="faq-title">Good questions deserve plain answers.</h2>
+      <p class="muted">Don't see yours? Ask Ron directly. That's what the first conversation is for.</p>
+      <a class="link-arrow" href="#contact">Ask a question <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>What is the 5-4-3-2-1 methodology?</summary>
+        <div class="ans"><p>It's the structure of Intelligent Value Acceleration™. We look at your business through 5 Dimensions of Intelligence, work toward 4 Strategic Outcomes, track progress with 3 Core Scores, and care for the 2 Assets you manage, your company and your life, toward 1 Goal: transforming enterprise value into life value.</p></div>
+      </details>
+      <details>
+        <summary>Do I have to be planning to sell?</summary>
+        <div class="ans"><p>No. Many clients have no plans to sell for years. They want a more valuable company with more options. Everything that makes a business easier to sell also makes it better to own.</p></div>
+      </details>
+      <details>
+        <summary>Is it too late if I want to transition within a year?</summary>
+        <div class="ans"><p>It's not too late. A shorter timeline changes the focus. We concentrate on the improvements that matter most to a buyer, on protecting your people, and on preparing you personally for what comes after.</p></div>
+      </details>
+      <details>
+        <summary>Will you work with my CPA, attorney, and wealth advisor?</summary>
+        <div class="ans"><p>Yes, and that's a big part of the value. Ron coordinates your existing advisors around one plan, so you stop getting conflicting advice. You don't need to replace anyone.</p></div>
+      </details>
+      <details>
+        <summary>What does "AI-powered" actually mean here?</summary>
+        <div class="ans"><p>We use modern analytical tools to gather benchmarks, track market changes, and spot risks and opportunities faster than manual research allows. Ron reviews it all and turns it into clear recommendations in your quarterly reports.</p></div>
+      </details>
+      <details>
+        <summary>How does the performance fee work if value doesn't grow?</summary>
+        <div class="ans"><p>The Value Acceleration Fee™ is a percentage of the <em>increase</em> in your company's value, so it's tied directly to growth. The fixed Discovery fee and monthly advisory fee are agreed up front, so you'll know every cost before you begin.</p></div>
+      </details>
+      <details>
+        <summary>Is our conversation confidential?</summary>
+        <div class="ans"><p>Completely. Your employees, customers, and competitors won't know we've spoken. Discretion is the starting point for every conversation.</p></div>
+      </details>
+      <details>
+        <summary>What size businesses do you work with?</summary>
+        <div class="ans"><p>Founders, family-owned businesses, and private company owners in the middle market.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="eyebrow">Start with a conversation</span>
+      <h2 class="display" id="contact-title">What is your business really worth?</h2>
+      <h2 class="display" aria-hidden="true">More importantly, what could it become?</h2>
+      <p>Schedule a confidential conversation with Ron. There's no cost, no obligation, and no sales pitch, just an honest look at where you stand.</p>
+      <ul class="expect" aria-label="What happens next">
+        <li><span class="n">1</span><div><strong>Tell us a little about you</strong><span>Two minutes. Only what you're comfortable sharing.</span></div></li>
+        <li><span class="n">2</span><div><strong>Ron reaches out personally</strong><span>To find a time that works for you.</span></div></li>
+        <li><span class="n">3</span><div><strong>A straightforward conversation</strong><span>About your business, your goals, and whether we're a good fit.</span></div></li>
+      </ul>
+    </div>
+    <form class="card-form" id="contact-form" novalidate>
+      <div id="form-fields">
+        <h3>Request a conversation</h3>
+        <p class="muted">Everything you share stays between you and Ron.</p>
+        <div class="f-row">
+          <div class="f"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
+          <div class="f"><label for="f-company">Company</label><input id="f-company" name="company" autocomplete="organization"></div>
+        </div>
+        <div class="f-row">
+          <div class="f"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="f"><label for="f-phone">Phone <span class="opt">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="f">
+          <label for="f-topic">What's on your mind?</label>
+          <select id="f-topic" name="topic">
+            <option>What my business is worth</option>
+            <option>Growing the value of my business</option>
+            <option>Responding to an offer or buyer interest</option>
+            <option>Passing the business to family or my team</option>
+            <option>Life after ownership</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="f"><label for="f-msg">Anything else? <span class="opt">(optional)</span></label><textarea id="f-msg" name="message" rows="3" placeholder="e.g. We're a 60-person manufacturer and I'm thinking about the next five years."></textarea></div>
+        <button class="btn btn-primary" type="submit">Request my conversation</button>
+        <p class="privacy"><svg aria-hidden="true"><use href="#i-lock"/></svg>Confidential. We never share or sell your information.</p>
+      </div>
+      <div class="thanks" id="form-thanks" hidden tabindex="-1">
+        <span class="check"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
+        <h3>Thank you. Ron will be in touch.</h3>
+        <p>He'll reach out personally to find a time that suits you. In the meantime, there's nothing you need to prepare.</p>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top"><svg class="brand-mark" aria-hidden="true"><use href="#i-mark"/></svg><span class="brand-name">Intelligent Value Advisors®<small>Creators of Intelligent Value Acceleration™</small></span></a>
+        <p class="foot-tag">Transform Enterprise Value Into Life Value™</p>
+        <p>Value growth and exit planning for middle-market business owners. Cincinnati, Ohio.</p>
+        <div class="foot-cepa"><img src="cepa.webp" alt="" width="32" height="34"><span>Ron DeLyons is a Certified Exit Planning Advisor (CEPA®)</span></div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#philosophy">Our philosophy</a></li>
+          <li><a href="#framework">The 5-4-3-2-1 framework</a></li>
+          <li><a href="#how">How an engagement unfolds</a></li>
+          <li><a href="#ron">About Ron</a></li>
+          <li><a href="#fees">Fees</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get started</h4>
+        <ul>
+          <li><a href="#contact">Schedule a confidential conversation</a></li>
+          <li><a href="#situation">Find where you are</a></li>
+          <li><a href="#faq">Questions owners ask</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Intelligent Value Advisors. All rights reserved.</span>
+      <span>CEPA® is a registered mark of the Exit Planning Institute.</span>
+    </div>
+  </div>
+</footer>
+
+
+<div class="opt-switch" role="group" aria-label="Framework intro options"><button type="button" data-fw="current" aria-pressed="false">Current</button><button type="button" data-fw="ladder" aria-pressed="false">A · Ladder</button><button type="button" data-fw="pills" aria-pressed="false">B · Pills</button><button type="button" data-fw="band" aria-pressed="false">C · In philosophy</button><button type="button" data-fw="reveal" aria-pressed="false">D · Tap to reveal</button><button type="button" data-fw="sentence" aria-pressed="false">E · One sentence</button></div>
+<script>
+(function () {
+  var root = document.documentElement, keys = ["current", "ladder", "pills", "band", "reveal", "sentence"];
+  var path = document.querySelector('.iva-path'), home = path.parentNode, homeNext = path.nextSibling;
+  var band = document.querySelector('.iva-band'), bandLink = band.querySelector('a');
+  var narrow = window.matchMedia('(max-width: 760px)');
+  var toggle = path.querySelector('.iva-toggle');
+  toggle.addEventListener('click', function () {
+    var open = path.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.textContent = open ? 'What the framework helps owners do ↑' : 'What the framework helps owners do ↓';
+  });
+  function place() {
+    if (root.getAttribute('data-fw') === 'band' && narrow.matches) band.insertBefore(path, bandLink);
+    else if (path.parentNode !== home) home.insertBefore(path, homeNext);
+  }
+  function set(k) {
+    if (keys.indexOf(k) < 0) k = keys[0];
+    root.setAttribute('data-fw', k);
+    document.querySelectorAll('.opt-switch button').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-fw') === k); });
+    var u = new URL(location.href); u.searchParams.set('fw', k); history.replaceState(history.state, '', u);
+    place();
+  }
+  narrow.addEventListener('change', place);
+  document.querySelectorAll('.opt-switch button').forEach(function (b) { b.addEventListener('click', function () { set(b.getAttribute('data-fw')); }); });
+  set(new URL(location.href).searchParams.get('fw'));
+})();
+</script>
+<script>
+(function () {
+  // In-page links: land each section's first content just below the sticky header, measured live so it holds at every screen size
+  var header = document.querySelector('header.site');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function headerH() { return header.getBoundingClientRect().bottom; }
+  function setHeaderVar() { document.documentElement.style.setProperty('--header-h', Math.round(headerH()) + 'px'); }
+  setHeaderVar();
+  window.addEventListener('resize', setHeaderVar);
+  // The section's container, not its first child: children may be mid fade-in, and transforms would skew the measurement
+  function landingEl(t) {
+    if (t.tagName !== 'SECTION') return t;
+    return t.querySelector('.wrap') || t;
+  }
+  function targetY(t) {
+    if (t === header) return 0;
+    var gap = window.innerWidth < 600 || window.innerHeight < 500 ? 16 : 28;
+    var maxY = document.documentElement.scrollHeight - window.innerHeight;
+    return Math.round(Math.min(maxY, Math.max(0, landingEl(t).getBoundingClientRect().top + window.scrollY - headerH() - gap)));
+  }
+  // 'auto' would inherit the stylesheet's smooth scrolling, so jumps ask for 'instant' explicitly
+  // Late font swaps or content resizing during a smooth scroll can move the target; once the scroll finishes, re-measure and correct
+  var hasScrollEnd = 'onscrollend' in window;
+  var settleTarget = null, settleTimer, settleExpiry;
+  function cancelSettle() { settleTarget = null; clearTimeout(settleTimer); clearTimeout(settleExpiry); }
+  function scrollToTarget(t, instant) {
+    cancelSettle();
+    var y = targetY(t);
+    if (Math.abs(window.scrollY - y) <= 2) return;
+    window.scrollTo({ top: y, behavior: instant || reduceMotion.matches ? 'instant' : 'smooth' });
+    settleTarget = t;
+    if (!hasScrollEnd) settleTimer = setTimeout(settle, 300);
+    settleExpiry = setTimeout(cancelSettle, 4000);
+  }
+  function settle() {
+    if (!settleTarget) return;
+    var y = targetY(settleTarget);
+    cancelSettle();
+    if (Math.abs(window.scrollY - y) > 2) window.scrollTo({ top: y, behavior: 'instant' });
+  }
+  if (hasScrollEnd) window.addEventListener('scrollend', settle);
+  else window.addEventListener('scroll', function () {
+    if (!settleTarget) return;
+    clearTimeout(settleTimer);
+    settleTimer = setTimeout(settle, 300);
+  }, { passive: true });
+  // The reader taking over the scroll cancels any pending correction
+  ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach(function (ev) {
+    window.addEventListener(ev, cancelSettle, { passive: true });
+  });
+
+  var menuBtn = document.querySelector('.menu-btn'), nav = document.getElementById('nav-links');
+  menuBtn.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  nav.addEventListener('click', function (e) {
+    if (e.target.closest('a')) { nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); }
+  });
+
+  function edgeFades(strip) {
+    function update() {
+      var max = strip.scrollWidth - strip.clientWidth;
+      strip.classList.toggle('more-left', max > 2 && strip.scrollLeft > 2);
+      strip.classList.toggle('more-right', max > 2 && strip.scrollLeft < max - 2);
+    }
+    strip.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+  function revealInStrip(strip, el) {
+    if (strip.scrollWidth <= strip.clientWidth) return;
+    var left = el.getBoundingClientRect().left - strip.getBoundingClientRect().left + strip.scrollLeft, right = left + el.offsetWidth;
+    var target = left < strip.scrollLeft + 16 ? left - 16 : right > strip.scrollLeft + strip.clientWidth - 48 ? right - strip.clientWidth + 48 : null;
+    if (target !== null) strip.scrollTo({ left: target, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+  }
+
+  // Replays the entrance animation; dir -1/1 slides in from the left/right, 0 rises in. Off until the page has set itself up.
+  var animReady = false;
+  function animateIn(el, dir) {
+    if (!animReady || reduceMotion.matches) return;
+    el.style.setProperty('--dx', (dir || 0) * 18 + 'px');
+    el.style.setProperty('--dy', dir ? '0px' : '8px');
+    el.classList.remove('anim-in');
+    void el.offsetWidth;
+    el.classList.add('anim-in');
+  }
+  document.addEventListener('animationend', function (e) { if (e.target.classList) e.target.classList.remove('anim-in'); });
+
+  function wireTabs(tabs, select, vertical) {
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(i); });
+      t.addEventListener('keydown', function (e) {
+        var next = vertical ? ['ArrowDown', 'ArrowRight'] : ['ArrowRight', 'ArrowDown'];
+        var prev = vertical ? ['ArrowUp', 'ArrowLeft'] : ['ArrowLeft', 'ArrowUp'];
+        var j = null;
+        if (next.indexOf(e.key) > -1) j = (i + 1) % tabs.length;
+        if (prev.indexOf(e.key) > -1) j = (i - 1 + tabs.length) % tabs.length;
+        if (e.key === 'Home') j = 0;
+        if (e.key === 'End') j = tabs.length - 1;
+        if (j !== null) { e.preventDefault(); select(j); tabs[j].focus(); }
+      });
+    });
+  }
+
+  // Situation picker
+  var picks = Array.prototype.slice.call(document.querySelectorAll('.pick'));
+  function selectPick(i) {
+    var changed = picks[i].getAttribute('aria-selected') !== 'true';
+    // Phones: the old answer folds away where it was while the new one unfolds under the tapped choice
+    var fold = changed && animReady && !reduceMotion.matches && narrow.matches && answers.parentNode !== pickerEl;
+    var ghost = null;
+    if (fold) {
+      ghost = answers.cloneNode(true);
+      ghost.className = 'answers-ghost';
+      ghost.setAttribute('aria-hidden', 'true');
+      ghost.inert = true;
+      ghost.querySelectorAll('[id]').forEach(function (el) { el.removeAttribute('id'); });
+      ghost.querySelectorAll('.anim-in').forEach(function (el) { el.classList.remove('anim-in'); });
+      ghost.style.height = answers.offsetHeight + 'px';
+      answers.parentNode.insertBefore(ghost, answers);
+    }
+    picks.forEach(function (p, k) {
+      var on = k === i;
+      p.setAttribute('aria-selected', on);
+      p.tabIndex = on ? 0 : -1;
+      document.getElementById(p.getAttribute('aria-controls')).hidden = !on;
+    });
+    var panel = document.getElementById(picks[i].getAttribute('aria-controls'));
+    if (!fold) { if (changed) animateIn(panel, 0); return; }
+    picks[i].insertAdjacentElement('afterend', answers);
+    var h = answers.offsetHeight;
+    answers.classList.add('unfolding');
+    answers.style.height = '0px';
+    answers.style.marginBottom = '-10px';
+    animateIn(panel, 0);
+    void answers.offsetHeight;
+    ghost.classList.add('folding');
+    answers.style.height = h + 'px';
+    answers.style.marginBottom = '0px';
+    var done = false;
+    function finish() {
+      if (done) return;
+      done = true;
+      if (ghost.parentNode) ghost.parentNode.removeChild(ghost);
+      answers.classList.remove('unfolding');
+      answers.style.height = '';
+      answers.style.marginBottom = '';
+      // Keep the tapped choice in view once the motion settles
+      var top = picks[i].getBoundingClientRect().top;
+      if (top < headerH() + 8) scrollToTarget(picks[i]);
+    }
+    answers.addEventListener('transitionend', function te(e) { if (e.target === answers && e.propertyName === 'height') { answers.removeEventListener('transitionend', te); finish(); } });
+    setTimeout(finish, 700);
+  }
+  wireTabs(picks, selectPick, true);
+  // On phones the selected answer opens directly under its choice instead of after the whole list
+  var answers = document.querySelector('.answers'), pickerEl = document.querySelector('.picker');
+  var narrow = window.matchMedia('(max-width: 900px)');
+  function placeAnswer() {
+    var sel = picks.find(function (p) { return p.getAttribute('aria-selected') === 'true'; }) || picks[0];
+    if (narrow.matches) { if (sel.nextElementSibling !== answers) sel.insertAdjacentElement('afterend', answers); }
+    else if (answers.parentNode !== pickerEl) pickerEl.appendChild(answers);
+  }
+  picks.forEach(function (p) { p.addEventListener('click', placeAnswer); p.addEventListener('keyup', placeAnswer); });
+  narrow.addEventListener('change', placeAnswer);
+  placeAnswer();
+
+  var cmpBtn = document.querySelector('.compare-toggle'), cmpFull = document.getElementById('compare-full');
+  cmpBtn.addEventListener('click', function () {
+    var open = cmpFull.classList.toggle('show');
+    cmpBtn.setAttribute('aria-expanded', open);
+    if (open) animateIn(cmpFull, 0);
+  });
+
+  // Engagement stepper
+  var steps = [
+    { title: "Understand where you stand today.", head: "What you walk away with",
+      body: "We start with an honest picture of the business and of you: what it's worth, what drives and suppresses that value, how dependent it is on you, and what you want from the years ahead.",
+      items: ["Baseline valuation", "Starting Intelligent Value Score™", "Starting Owner Freedom Index™", "Starting Destiny Readiness Score™"] },
+    { title: "Build a roadmap you believe in.", head: "What you walk away with",
+      body: "Together we turn what we learned into a focused plan: the few priorities that will raise value the most, a path to make the business less dependent on you, and a clear picture of the future you're working toward.",
+      items: ["36-month value acceleration plan", "Priorities tied to the 4 Strategic Outcomes", "Freedom roadmap", "Future vision framework"] },
+    { title: "Do the work, and watch the numbers move.", head: "What you get along the way",
+      body: "This is where value gets built. Ron meets with you monthly, reviews progress quarterly, and keeps your advisors coordinated, so the plan doesn't sit in a drawer.",
+      items: ["Monthly advisory sessions", "Quarterly strategic reviews", "AI-assisted intelligence reports", "Updated 3 Core Scores each quarter"] },
+    { title: "Turn value into real options.", head: "Paths we prepare you for",
+      body: "When the time is right, on your schedule, we prepare for the transition that fits your goals. A sale is one option, not the only one. Ron works alongside your bankers, attorneys, and CPA so you go in prepared.",
+      chips: ["Sale", "Family transfer", "ESOP", "Recapitalization", "Management buyout"] },
+    { title: "Design what comes next.", head: "What we focus on",
+      body: "The deal isn't the finish line. We help you plan a next chapter that is as intentional as the company you built, so you leave excited about where you're going.",
+      chips: ["Identity", "Purpose", "Legacy", "Family", "Impact", "Contribution"] }
+  ];
+  var words = ['one', 'two', 'three', 'four', 'five'];
+  var stepTabs = Array.prototype.slice.call(document.querySelectorAll('.step-tab'));
+  var cur = 0;
+  var check = '<svg aria-hidden="true"><use href="#i-check"/></svg>';
+  function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  function selectStep(i) {
+    if (i !== cur) animateIn(document.getElementById('step-panel'), i > cur ? 1 : -1);
+    cur = i;
+    var s = steps[i];
+    stepTabs.forEach(function (t, k) { t.setAttribute('aria-selected', k === i); t.tabIndex = k === i ? 0 : -1; });
+    document.getElementById('progress-bar').style.width = ((i + 1) / steps.length * 100) + '%';
+    document.getElementById('sp-num').textContent = i + 1;
+    document.getElementById('sp-count').textContent = 'Stage ' + words[i] + ' of five';
+    document.getElementById('sp-title').textContent = s.title;
+    document.getElementById('sp-body').textContent = s.body;
+    document.getElementById('sp-dhead').textContent = s.head;
+    document.getElementById('sp-list').innerHTML = s.items
+      ? '<ul>' + s.items.map(function (x) { return '<li>' + check + esc(x) + '</li>'; }).join('') + '</ul>'
+      : '<div class="chips">' + s.chips.map(function (x) { return '<span class="chip">' + esc(x) + '</span>'; }).join('') + '</div>';
+    document.getElementById('step-prev').disabled = i === 0;
+    document.getElementById('step-next').disabled = i === steps.length - 1;
+    revealInStrip(stepsStrip, stepTabs[i]);
+  }
+  var stepsStrip = document.querySelector('.steps-scroll');
+  edgeFades(stepsStrip);
+  wireTabs(stepTabs, selectStep, false);
+  document.getElementById('step-prev').addEventListener('click', function () { if (cur > 0) selectStep(cur - 1); });
+  document.getElementById('step-next').addEventListener('click', function () { if (cur < steps.length - 1) selectStep(cur + 1); });
+  selectStep(0);
+  document.querySelectorAll('[data-step]').forEach(function (a) {
+    a.addEventListener('click', function () { selectStep(+a.getAttribute('data-step')); });
+  });
+
+
+  // Framework: the 5-4-3-2-1 ladder becomes tabs; one level shows at a time
+  var fwSec = document.getElementById('framework');
+  var ladder = fwSec.querySelector('.ladder');
+  var fwTabs = Array.prototype.slice.call(ladder.querySelectorAll('a'));
+  var fwPanels = fwTabs.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  fwSec.classList.add('fw-tabs');
+  ladder.setAttribute('role', 'tablist');
+  fwTabs.forEach(function (t, i) {
+    var pnl = fwPanels[i];
+    t.setAttribute('role', 'tab'); t.id = 'fwt-' + pnl.id; t.setAttribute('aria-controls', pnl.id);
+    pnl.setAttribute('role', 'tabpanel'); pnl.setAttribute('aria-labelledby', t.id); pnl.tabIndex = -1;
+    var label = function (k) { return fwTabs[k].querySelector('.n').textContent + ' ' + fwTabs[k].querySelector('.t').textContent; };
+    var step = document.createElement('div');
+    step.className = 'fw-step';
+    step.innerHTML = (i > 0 ? '<button type="button" data-dir="prev">← ' + esc(label(i - 1)) + '</button>' : '<span></span>') +
+      '<span class="sp"></span>' +
+      (i < fwTabs.length - 1 ? '<button type="button" data-dir="next">Next: ' + esc(label(i + 1)) + ' →</button>' : '<button type="button" data-dir="first">Back to 5 Dimensions ↑</button>');
+    (pnl.querySelector(':scope > div:last-child') || pnl).appendChild(step);
+  });
+  function selectFw(i) {
+    var prevFw = fwTabs.findIndex(function (t) { return t.getAttribute('aria-selected') === 'true'; });
+    if (prevFw > -1 && prevFw !== i) animateIn(fwPanels[i], i > prevFw ? 1 : -1);
+    fwTabs.forEach(function (t, k) {
+      var on = k === i;
+      t.setAttribute('aria-selected', on);
+      t.tabIndex = on ? 0 : -1;
+      fwPanels[k].hidden = !on;
+    });
+    fwCaption.textContent = fwTabs[i].querySelector('.t').textContent;
+  }
+  // Phones show short tab labels, so the selected level's full name is spelled out under the tabs (tabs keep their full accessible names)
+  var fwCaption = document.createElement('p');
+  fwCaption.className = 'fw-caption';
+  fwCaption.setAttribute('aria-hidden', 'true');
+  ladder.insertAdjacentElement('afterend', fwCaption);
+  function showFw(i) { selectFw(i); scrollToTarget(ladder); }
+  fwSec.addEventListener('click', function (e) {
+    var b = e.target.closest('.fw-step button'); if (!b) return;
+    var cur = fwTabs.findIndex(function (t) { return t.getAttribute('aria-selected') === 'true'; });
+    var d = b.getAttribute('data-dir');
+    showFw(d === 'first' ? 0 : cur + (d === 'next' ? 1 : -1));
+    fwTabs[d === 'first' ? 0 : cur + (d === 'next' ? 1 : -1)].focus({ preventScroll: true });
+  });
+  fwTabs.forEach(function (t, i) {
+    t.addEventListener('keydown', function (e) {
+      var j = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') j = (i + 1) % fwTabs.length;
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') j = (i - 1 + fwTabs.length) % fwTabs.length;
+      if (e.key === 'Home') j = 0;
+      if (e.key === 'End') j = fwTabs.length - 1;
+      if (j !== null) { e.preventDefault(); selectFw(j); fwTabs[j].focus(); }
+    });
+  });
+  // Any link to a framework level (tabs, situation answers, FAQ) opens that tab
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="#"]'); if (!a) return;
+    var idx = fwPanels.findIndex(function (p) { return '#' + p.id === a.getAttribute('href'); });
+    if (idx < 0) return;
+    e.preventDefault();
+    if (ladder.contains(a)) {
+      selectFw(idx);
+      // On short screens the opened panel can sit below the fold; bring the tabs and panel into view
+      var pTop = fwPanels[idx].getBoundingClientRect().top;
+      if (pTop > window.innerHeight * 0.6 || pTop < headerH()) scrollToTarget(ladder);
+    } else showFw(idx);
+    history.replaceState(null, '', a.getAttribute('href'));
+  });
+  var startFw = fwPanels.findIndex(function (p) { return '#' + p.id === location.hash; });
+  selectFw(startFw > -1 ? startFw : 0);
+
+  // Every other in-page link (nav, buttons, footer) uses the same landing rule; framework links are handled above
+  document.addEventListener('click', function (e) {
+    if (e.defaultPrevented) return;
+    var a = e.target.closest('a[href^="#"]');
+    if (!a || a.classList.contains('skip')) return;
+    var t = document.getElementById(a.getAttribute('href').slice(1));
+    if (!t) return;
+    e.preventDefault();
+    scrollToTarget(t);
+    history.pushState(null, '', a.getAttribute('href'));
+  });
+  // Hash changes the click handlers never see (back/forward, an edited address bar) go through the same landing rule
+  function goToHash(instant) {
+    var id = decodeURIComponent(location.hash.slice(1));
+    var t = id && document.getElementById(id);
+    if (!t || t.id === 'main') return false;
+    var idx = fwPanels.indexOf(t);
+    if (idx > -1) selectFw(idx);
+    scrollToTarget(idx > -1 ? ladder : t, instant);
+    return true;
+  }
+  window.addEventListener('popstate', function () {
+    nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false');
+    // Run after the browser's own fragment scroll or scroll restoration so ours has the last word
+    requestAnimationFrame(function () { goToHash(true); });
+  });
+  // Arriving with a #link: re-land once fonts and images have settled the layout
+  window.addEventListener('load', function () { goToHash(true); });
+
+  animReady = true;
+
+  var revealSel = 'main .section-head, .proof-grid, .picker, .chapter > *, .philo, .intel-q, .iva-band, .how-intel, .steps-scroll, .step-panel, .compare-simple, .compare-wrap, .team > *, .letter-grid > *, .fee-cards, .calc, .faq-grid > *, .contact-grid > *';
+  var pending = reduceMotion.matches ? [] : Array.prototype.slice.call(document.querySelectorAll(revealSel));
+  var revealQueued = false;
+  function reveal() {
+    revealQueued = false;
+    var limit = window.innerHeight * .92;
+    pending = pending.filter(function (el) {
+      if (el.getBoundingClientRect().top < limit) { el.classList.add('in'); return false; }
+      return true;
+    });
+    if (!pending.length) window.removeEventListener('scroll', queueReveal);
+  }
+  function queueReveal() { if (!revealQueued) { revealQueued = true; requestAnimationFrame(reveal); } }
+  pending.forEach(function (el) { el.classList.add('reveal'); });
+  if (pending.length) {
+    window.addEventListener('scroll', queueReveal, { passive: true });
+    window.addEventListener('resize', queueReveal);
+    requestAnimationFrame(reveal);
+  }
+
+  // Fee calculator
+  var cStart = document.getElementById('c-start'), cEnd = document.getElementById('c-end');
+  function money(m) {
+    if (m >= 1) return '$' + (m >= 100 ? Math.round(m) : m.toFixed(m >= 10 ? 1 : 2).replace(/\.?0+$/, '')) + 'M';
+    return '$' + Math.round(m * 1000) + 'K';
+  }
+  function calc(e) {
+    var s = +cStart.value, v = +cEnd.value;
+    if (v < s) { if (e && e.target === cStart) { cEnd.value = s; v = s; } else { cStart.value = v; s = v; } }
+    var created = v - s, lo = created * 0.025, hi = created * 0.05;
+    document.getElementById('o-start').textContent = '$' + s.toFixed(1) + 'M';
+    document.getElementById('o-end').textContent = '$' + v.toFixed(1) + 'M';
+    document.getElementById('r-created').textContent = created > 0 ? money(created) : '$0';
+    document.getElementById('r-fee').textContent = created > 0 ? money(lo) + '–' + money(hi) : '$0';
+    document.getElementById('r-keep').textContent = created > 0 ? money(created - hi) + '–' + money(created - lo) : '$0';
+  }
+  cStart.addEventListener('input', calc); cEnd.addEventListener('input', calc); calc();
+
+  // Contact form (front-end only; connect to a form service before launch)
+  var form = document.getElementById('contact-form');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ok = true;
+    [document.getElementById('f-name'), document.getElementById('f-email')].forEach(function (el) {
+      var valid = el.value.trim() && (el.type !== 'email' || /.+@.+\..+/.test(el.value));
+      el.setAttribute('aria-invalid', !valid);
+      if (!valid && ok) { el.focus(); ok = false; }
+    });
+    if (!ok) return;
+    document.getElementById('form-fields').hidden = true;
+    var t = document.getElementById('form-thanks'); t.hidden = false; t.focus();
+  });
+})();
+</script>
