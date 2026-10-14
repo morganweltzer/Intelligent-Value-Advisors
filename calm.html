@@ -1488,14 +1488,58 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
     });
   }
 
-  // Situation picker
+  // Situation picker. Desktop: the answer sits beside the choices. Phones: nothing is open at first, so the five
+  // choices read as a question; a tapped choice unfolds its answer right beneath it, and tapping it again folds it away.
   var picks = Array.prototype.slice.call(document.querySelectorAll('.pick'));
+  var answers = document.querySelector('.answers'), pickerEl = document.querySelector('.picker');
+  var narrow = window.matchMedia('(max-width: 900px)');
+  function current() { return picks.findIndex(function (p) { return p.getAttribute('aria-selected') === 'true'; }); }
+  function mark(i) {
+    picks.forEach(function (p, k) {
+      var on = k === i;
+      p.setAttribute('aria-selected', on);
+      p.tabIndex = on || (i < 0 && k === 0) ? 0 : -1;
+      document.getElementById(p.getAttribute('aria-controls')).hidden = !on;
+    });
+    answers.hidden = i < 0;
+  }
+  function animating() { return animReady && !reduceMotion.matches; }
+  // Eases an element's height (and the list gap above it) between two values, then calls done
+  function slide(el, from, to, done) {
+    el.classList.add('unfolding');
+    el.style.height = from + 'px';
+    el.style.marginBottom = (from === 0 ? -10 : 0) + 'px';
+    void el.offsetHeight;
+    el.style.height = to + 'px';
+    el.style.marginBottom = (to === 0 ? -10 : 0) + 'px';
+    var finished = false;
+    function end() {
+      if (finished) return;
+      finished = true;
+      el.classList.remove('unfolding');
+      el.style.height = '';
+      el.style.marginBottom = '';
+      if (done) done();
+    }
+    el.addEventListener('transitionend', function te(e) { if (e.target === el && e.propertyName === 'height') { el.removeEventListener('transitionend', te); end(); } });
+    setTimeout(end, 700);
+  }
+  function keepInView(p) { if (p.getBoundingClientRect().top < headerH() + 8) scrollToTarget(p); }
   function selectPick(i) {
-    var changed = picks[i].getAttribute('aria-selected') !== 'true';
-    // Phones: the old answer folds away where it was while the new one unfolds under the tapped choice
-    var fold = changed && animReady && !reduceMotion.matches && narrow.matches && answers.parentNode !== pickerEl;
+    var prev = current();
+    var panel = document.getElementById(picks[i].getAttribute('aria-controls'));
+    if (!narrow.matches) {
+      if (i !== prev) { mark(i); animateIn(panel, 0); }
+      return;
+    }
+    if (i === prev) {
+      if (!animating()) { mark(-1); return; }
+      slide(answers, answers.offsetHeight, 0, function () { mark(-1); });
+      return;
+    }
+    // The old answer folds away where it was while the new one unfolds under the tapped choice
     var ghost = null;
-    if (fold) {
+    if (prev > -1 && animating()) {
       ghost = answers.cloneNode(true);
       ghost.className = 'answers-ghost';
       ghost.setAttribute('aria-hidden', 'true');
@@ -1505,51 +1549,31 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
       ghost.style.height = answers.offsetHeight + 'px';
       answers.parentNode.insertBefore(ghost, answers);
     }
-    picks.forEach(function (p, k) {
-      var on = k === i;
-      p.setAttribute('aria-selected', on);
-      p.tabIndex = on ? 0 : -1;
-      document.getElementById(p.getAttribute('aria-controls')).hidden = !on;
-    });
-    var panel = document.getElementById(picks[i].getAttribute('aria-controls'));
-    if (!fold) { if (changed) animateIn(panel, 0); return; }
+    mark(i);
     picks[i].insertAdjacentElement('afterend', answers);
+    if (!animating()) return;
     var h = answers.offsetHeight;
-    answers.classList.add('unfolding');
-    answers.style.height = '0px';
-    answers.style.marginBottom = '-10px';
     animateIn(panel, 0);
-    void answers.offsetHeight;
-    ghost.classList.add('folding');
-    answers.style.height = h + 'px';
-    answers.style.marginBottom = '0px';
-    var done = false;
-    function finish() {
-      if (done) return;
-      done = true;
-      if (ghost.parentNode) ghost.parentNode.removeChild(ghost);
-      answers.classList.remove('unfolding');
-      answers.style.height = '';
-      answers.style.marginBottom = '';
-      // Keep the tapped choice in view once the motion settles
-      var top = picks[i].getBoundingClientRect().top;
-      if (top < headerH() + 8) scrollToTarget(picks[i]);
+    if (ghost) {
+      void ghost.offsetHeight;
+      ghost.classList.add('folding');
+      setTimeout(function () { if (ghost.parentNode) ghost.parentNode.removeChild(ghost); }, 650);
     }
-    answers.addEventListener('transitionend', function te(e) { if (e.target === answers && e.propertyName === 'height') { answers.removeEventListener('transitionend', te); finish(); } });
-    setTimeout(finish, 700);
+    slide(answers, 0, h, function () { keepInView(picks[i]); });
   }
   wireTabs(picks, selectPick, true);
-  // On phones the selected answer opens directly under its choice instead of after the whole list
-  var answers = document.querySelector('.answers'), pickerEl = document.querySelector('.picker');
-  var narrow = window.matchMedia('(max-width: 900px)');
-  function placeAnswer() {
-    var sel = picks.find(function (p) { return p.getAttribute('aria-selected') === 'true'; }) || picks[0];
-    if (narrow.matches) { if (sel.nextElementSibling !== answers) sel.insertAdjacentElement('afterend', answers); }
-    else if (answers.parentNode !== pickerEl) pickerEl.appendChild(answers);
+  function layout() {
+    if (narrow.matches) {
+      var i = current();
+      if (i > -1 && picks[i].nextElementSibling !== answers) picks[i].insertAdjacentElement('afterend', answers);
+    } else {
+      if (answers.parentNode !== pickerEl) pickerEl.appendChild(answers);
+      if (current() < 0) mark(0);
+    }
   }
-  picks.forEach(function (p) { p.addEventListener('click', placeAnswer); p.addEventListener('keyup', placeAnswer); });
-  narrow.addEventListener('change', placeAnswer);
-  placeAnswer();
+  narrow.addEventListener('change', layout);
+  if (narrow.matches) mark(-1);
+  layout();
 
   var cmpBtn = document.querySelector('.compare-toggle'), cmpFull = document.getElementById('compare-full');
   cmpBtn.addEventListener('click', function () {
