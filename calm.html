@@ -648,20 +648,28 @@ main > .section + .section { border-top: 1px solid var(--line); }
   .letter-more { display: inline-block; background: none; border: 0; padding: 8px 0; font: inherit; font-size: var(--fs-small); font-weight: 700; color: var(--navy); cursor: pointer; }
   .letter:not(.clamped) .letter-more { display: none; }
 }
-/* ===== Navy-led palette: navy, its pale tints, white, and a touch of gold ===== */
+/* ===== Navy-led palette: navy, warm stone neutrals, white, and a touch of gold ===== */
 :root {
-  --fog: #F2F5F9;
-  --sand-soft: #E8EDF5;
-  --sand: #D9E0EB;
-  --line: #DEE3EB;
-  --field: #B9C2D0;
-  --head: #DFE5EE;
-  --head-line: #C3CCDA;
+  --fog: #F5F4F1;
+  --sand-soft: #ECEAE5;
+  --sand: #DDDAD3;
+  --line: #E4E2DD;
+  --field: #C4C0B8;
+  --head: #E8E6E0;
+  --head-line: #CFCBC2;
 }
 /* Light sections alternate white and pale navy mist; navy anchors the page at the hero, the next chapter, and contact */
 main > .section + .section { border-top: 0; }
 #situation, #philosophy, #how, #advisors, #fees { background: var(--white); }
 #framework, #team, #ron, #faq { background: var(--fog); }
+
+/* Tucked sheets: white and navy sections are raised sheets resting over the recessed stone sections */
+:root { --sheet-r: 32px; }
+main > section.section, main > section.contact { position: relative; --pad: 104px; }
+@media (max-width: 900px) { main > section.contact { --pad: 72px; } }
+@media (max-width: 760px) { :root { --sheet-r: 24px; } main > section.section, main > section.contact { --pad: 56px; } }
+#framework, #team, #ron, #faq { box-shadow: inset 0 14px 18px -14px rgba(21,37,63,.16), inset 0 -14px 18px -14px rgba(21,37,63,.16); }
+#chapter, #philosophy, #how, #advisors, #fees, main > section.contact { margin-top: calc(-1 * var(--sheet-r)); padding-top: calc(var(--pad) + var(--sheet-r)); border-radius: var(--sheet-r) var(--sheet-r) 0 0; box-shadow: 0 -14px 30px -18px rgba(12,22,38,.38); }
 
 #chapter.section { background: var(--navy); color: var(--on-navy-soft); }
 #chapter .eyebrow { color: var(--gold); }
