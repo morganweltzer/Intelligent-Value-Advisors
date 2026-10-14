@@ -670,6 +670,38 @@ input[type=range]::-moz-range-track { background: var(--sand); }
   .letter-more { display: inline-block; background: none; border: 0; padding: 8px 0; font: inherit; font-size: var(--fs-small); font-weight: 700; color: var(--navy); cursor: pointer; }
   .letter:not(.clamped) .letter-more { display: none; }
 }
+/* ===== Navy-led palette: navy, its pale tints, white, and a touch of gold ===== */
+:root {
+  --fog: #F2F5F9;
+  --sand-soft: #E8EDF5;
+  --sand: #D9E0EB;
+  --line: #DEE3EB;
+  --field: #B9C2D0;
+}
+/* Light sections alternate white and pale navy mist; navy anchors the page at the hero, the next chapter, and contact */
+main > .section + .section { border-top: 0; }
+#situation, #philosophy, #how, #ron, #faq { background: var(--white); }
+#framework, #team, #fees { background: var(--fog); }
+
+#chapter.section { background: var(--navy); color: var(--on-navy-soft); }
+#chapter .eyebrow { color: var(--gold); }
+#chapter .h2 { color: var(--white); }
+#chapter blockquote { color: var(--gold); }
+#chapter .lede, #chapter .muted { color: var(--on-navy-soft); }
+#chapter .muted strong { color: var(--white); font-weight: 600; }
+#chapter .focus { background: rgba(255,255,255,.04); border-color: var(--navy-line); }
+#chapter .focus strong { color: var(--white); }
+#chapter .focus span { color: var(--on-navy-soft); }
+@media (max-width: 760px) { #chapter .focus { background: none; border-top-color: var(--navy-line); } }
+
+/* The fee calculator returns to a navy card: the one interactive tool on the page */
+.calc { background: var(--navy); color: var(--white); }
+.calc h3 { color: var(--white); }
+.calc .muted { color: var(--on-navy-soft); }
+.field label { color: var(--white); }
+.field output { color: var(--gold); }
+input[type=range]::-webkit-slider-runnable-track { background: rgba(255,255,255,.22); }
+input[type=range]::-moz-range-track { background: rgba(255,255,255,.22); }
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -827,7 +859,7 @@ input[type=range]::-moz-range-track { background: var(--sand); }
       <h2 class="h2" id="chapter-title">Life after ownership deserves a plan, too.</h2>
       <blockquote>"The business is not the destination. It's the vehicle."</blockquote>
       <p class="lede">Many owners close a great deal and then find that money alone doesn't bring purpose or direction. A good transition isn't just leaving something behind. It's moving deliberately toward something new.</p>
-      <p class="muted">Whatever path you choose, it's on the table: <strong style="color:var(--ink)">a sale, family transfer, ESOP, recapitalization, or management buyout.</strong></p>
+      <p class="muted">Whatever path you choose, it's on the table: <strong>a sale, family transfer, ESOP, recapitalization, or management buyout.</strong></p>
     </div>
     <div class="focus-grid">
       <div class="focus"><strong>Identity</strong><span>Who you are beyond "the owner"</span></div>
