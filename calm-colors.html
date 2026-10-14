@@ -708,21 +708,38 @@ main > .section + .section { border-top: 0; }
   .compare-simple dd { padding-left: 28px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='10' fill='%23C5A869'/%3E%3Cpath d='M5.5 10.4l3 3 6-6.4' fill='none' stroke='%2315253F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat 0 3px / 18px 18px; color: var(--white); }
 }
 
-/* ===== Review only: background tint options ===== */
+/* ===== Review only: tint and section-break options ===== */
 html[data-tint="mist"] { --fog: #F2F5F9; --sand-soft: #E8EDF5; --sand: #D9E0EB; --line: #DEE3EB; --field: #B9C2D0; --head: #DFE5EE; --head-line: #C3CCDA; }
-html[data-tint="pearl"] { --fog: #F5F5F6; --sand-soft: #ECECEF; --sand: #DCDCE1; --line: #E4E4E8; --field: #C3C3CA; --head: #E8E8EC; --head-line: #CDCDD4; }
+html[data-tint="mist2"] { --fog: #ECF0F6; --sand-soft: #E2E8F1; --sand: #D2DAE6; --line: #D8DEE8; --field: #B3BDCC; --head: #D9E0EA; --head-line: #BCC6D5; }
+html[data-tint="mist3"] { --fog: #E6EBF2; --sand-soft: #DBE2EC; --sand: #CBD4E1; --line: #D2D9E4; --field: #ABB6C7; --head: #D2DAE6; --head-line: #B4BFD0; }
+html[data-tint="slate"] { --fog: #E8EBEF; --sand-soft: #DDE1E7; --sand: #CCD2DB; --line: #D5DAE1; --field: #AEB5C0; --head: #D5DAE1; --head-line: #B7BFCA; }
 html[data-tint="stone"] { --fog: #F5F4F1; --sand-soft: #ECEAE5; --sand: #DDDAD3; --line: #E4E2DD; --field: #C4C0B8; --head: #E8E6E0; --head-line: #CFCBC2; }
-html[data-tint="ivory"] { --fog: #F8F6F0; --sand-soft: #F0ECE2; --sand: #E2DBCC; --line: #E7E2D7; --field: #C9C1B2; --head: #EDE8DC; --head-line: #D6CDBC; }
-html[data-tint="champagne"] { --fog: #FBF7EC; --sand-soft: #F4ECD8; --sand: #E8DAB8; --line: #EBE3CF; --field: #CFC2A0; --head: #F0E6CC; --head-line: #DCCDA6; }
-.tint-switch { position: fixed; z-index: 90; left: 50%; bottom: 16px; transform: translateX(-50%); display: flex; align-items: center; gap: 6px; max-width: calc(100vw - 24px); padding: 8px 10px; border-radius: 999px; background: rgba(12,22,38,.92); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 12px 30px -10px rgba(0,0,0,.5); overflow-x: auto; scrollbar-width: none; font-family: var(--sans); }
-.tint-switch::-webkit-scrollbar { display: none; }
-.tint-switch .lbl { flex: none; padding: 0 6px 0 8px; font-size: var(--fs-micro); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--on-navy-soft); }
-.tint-switch button { flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px 7px 8px; border: 1px solid transparent; border-radius: 999px; background: none; color: var(--white); font: inherit; font-size: var(--fs-label); font-weight: 600; cursor: pointer; }
-.tint-switch button i { width: 18px; height: 18px; border-radius: 50%; border: 1px solid rgba(255,255,255,.4); }
-.tint-switch button[aria-pressed="true"] { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.3); }
-.tint-switch button:hover { background: rgba(255,255,255,.08); }
-footer { padding-bottom: 96px; }
-@media (max-width: 600px) { .tint-switch { left: 12px; right: 12px; transform: none; border-radius: 16px; } .tint-switch .lbl { display: none; } }
+
+html[data-break] main > section.section, html[data-break] main > section.contact { position: relative; }
+/* Gold accent: a short centered gold line at the top of each section */
+html[data-break="gold"] main > section.section::before, html[data-break="gold"] main > section.contact::before { content: ""; position: absolute; z-index: 3; top: 0; left: 50%; width: 56px; height: 3px; transform: translateX(-50%); background: var(--gold); border-radius: 0 0 2px 2px; }
+/* Ornament: a fine rule with a gold diamond at its center, sitting on the seam */
+html[data-break="ornament"] main > section.section::before, html[data-break="ornament"] main > section.contact::before { content: ""; position: absolute; z-index: 3; top: -.5px; left: 50%; width: min(1132px, calc(100% - 32px)); height: 1px; transform: translateX(-50%); background: linear-gradient(90deg, transparent, rgba(21,37,63,.22) 18%, rgba(21,37,63,.22) 47%, transparent 47%, transparent 53%, rgba(21,37,63,.22) 53%, rgba(21,37,63,.22) 82%, transparent); }
+html[data-break="ornament"] main > section.section::after, html[data-break="ornament"] main > section.contact::after { content: ""; position: absolute; z-index: 3; top: -5px; left: 50%; width: 10px; height: 10px; transform: translateX(-50%) rotate(45deg); background: var(--gold); }
+html[data-break="ornament"] #chapter::before, html[data-break="ornament"] main > section.contact::before { background: linear-gradient(90deg, transparent, rgba(197,168,105,.45) 18%, rgba(197,168,105,.45) 47%, transparent 47%, transparent 53%, rgba(197,168,105,.45) 53%, rgba(197,168,105,.45) 82%, transparent); }
+/* Soft shadow: tinted sections read as a gently recessed band */
+html[data-break="shadow"] #framework, html[data-break="shadow"] #team, html[data-break="shadow"] #ron, html[data-break="shadow"] #faq { box-shadow: inset 0 14px 18px -14px rgba(21,37,63,.16), inset 0 -14px 18px -14px rgba(21,37,63,.16); }
+html[data-break="shadow"] #chapter, html[data-break="shadow"] main > section.contact { box-shadow: inset 0 14px 18px -14px rgba(0,0,0,.45); }
+/* Stacked sheets: each section's rounded top edge rests over the one above */
+html[data-break="sheets"] main > section.section, html[data-break="sheets"] main > section.contact { margin-top: -32px; padding-top: calc(var(--sheet-pad, 104px) + 32px); border-radius: 32px 32px 0 0; box-shadow: 0 -12px 28px -20px rgba(12,22,38,.35); }
+html[data-break="sheets"] #situation { margin-top: 0; border-radius: 0; box-shadow: none; padding-top: var(--sheet-pad, 104px); }
+@media (max-width: 760px) { html[data-break="sheets"] { --sheet-pad: 56px; } html[data-break="sheets"] main > section.section, html[data-break="sheets"] main > section.contact { margin-top: -24px; padding-top: calc(var(--sheet-pad) + 24px); border-radius: 24px 24px 0 0; } html[data-break="sheets"] #situation { margin-top: 0; padding-top: var(--sheet-pad); } }
+
+.opt-switch { position: fixed; z-index: 90; left: 50%; bottom: 14px; transform: translateX(-50%); display: grid; gap: 6px; width: max-content; max-width: calc(100vw - 24px); padding: 10px 12px; border-radius: 18px; background: rgba(12,22,38,.93); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 12px 30px -10px rgba(0,0,0,.5); font-family: var(--sans); }
+.opt-row { display: flex; align-items: center; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+.opt-row::-webkit-scrollbar { display: none; }
+.opt-row .lbl { flex: none; width: 64px; font-size: var(--fs-micro); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--on-navy-soft); }
+.opt-row button { flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border: 1px solid transparent; border-radius: 999px; background: none; color: var(--white); font: inherit; font-size: var(--fs-label); font-weight: 600; cursor: pointer; }
+.opt-row button i { width: 16px; height: 16px; border-radius: 50%; border: 1px solid rgba(255,255,255,.4); }
+.opt-row button[aria-pressed="true"] { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.32); }
+.opt-row button:hover { background: rgba(255,255,255,.08); }
+footer { padding-bottom: 130px; }
+@media (max-width: 600px) { .opt-switch { left: 10px; right: 10px; transform: none; width: auto; } .opt-row .lbl { width: 52px; } }
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1369,19 +1386,24 @@ footer { padding-bottom: 96px; }
 </footer>
 
 
-<div class="tint-switch" role="group" aria-label="Background tint options"><span class="lbl">Tint</span><button type="button" data-tint="mist" title="Current cool blue-gray" aria-pressed="false"><i style="background:#F2F5F9"></i>Mist</button><button type="button" data-tint="pearl" title="Neutral gray" aria-pressed="false"><i style="background:#F5F5F6"></i>Pearl</button><button type="button" data-tint="stone" title="Warm gray" aria-pressed="false"><i style="background:#F5F4F1"></i>Stone</button><button type="button" data-tint="ivory" title="Soft cream" aria-pressed="false"><i style="background:#F8F6F0"></i>Ivory</button><button type="button" data-tint="champagne" title="Cream leaning gold" aria-pressed="false"><i style="background:#FBF7EC"></i>Champagne</button></div>
+<div class="opt-switch" role="group" aria-label="Design options"><div class="opt-row"><span class="lbl">Tint</span><button type="button" data-tint="mist" aria-pressed="false"><i style="background:#F2F5F9"></i>Mist</button><button type="button" data-tint="mist2" aria-pressed="false"><i style="background:#ECF0F6"></i>Mist+</button><button type="button" data-tint="mist3" aria-pressed="false"><i style="background:#E6EBF2"></i>Mist++</button><button type="button" data-tint="slate" aria-pressed="false"><i style="background:#E8EBEF"></i>Slate</button><button type="button" data-tint="stone" aria-pressed="false"><i style="background:#F5F4F1"></i>Stone</button></div><div class="opt-row"><span class="lbl">Breaks</span><button type="button" data-break="none" aria-pressed="false">None</button><button type="button" data-break="gold" aria-pressed="false">Gold accent</button><button type="button" data-break="ornament" aria-pressed="false">Ornament</button><button type="button" data-break="shadow" aria-pressed="false">Soft shadow</button><button type="button" data-break="sheets" aria-pressed="false">Stacked sheets</button></div></div>
 <script>
 (function () {
-  var keys = ["mist", "pearl", "stone", "ivory", "champagne"];
-  var root = document.documentElement, btns = document.querySelectorAll('.tint-switch button');
-  function set(k) {
-    if (keys.indexOf(k) < 0) k = 'mist';
-    root.setAttribute('data-tint', k);
-    btns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-tint') === k); });
-    var u = new URL(location.href); u.searchParams.set('tint', k); history.replaceState(history.state, '', u);
+  var root = document.documentElement;
+  var groups = { tint: ["mist", "mist2", "mist3", "slate", "stone"], break: ["none", "gold", "ornament", "shadow", "sheets"] };
+  // Later sections stack above earlier ones (used by the stacked-sheets option)
+  Array.prototype.forEach.call(document.querySelectorAll('main > section'), function (sec, i) { sec.style.zIndex = i + 1; });
+  function set(group, k) {
+    if (groups[group].indexOf(k) < 0) k = groups[group][0];
+    root.setAttribute('data-' + group, k);
+    document.querySelectorAll('.opt-switch [data-' + group + ']').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-' + group) === k); });
+    var u = new URL(location.href); u.searchParams.set(group, k); history.replaceState(history.state, '', u);
   }
-  btns.forEach(function (b) { b.addEventListener('click', function () { set(b.getAttribute('data-tint')); }); });
-  set(new URL(location.href).searchParams.get('tint'));
+  document.querySelectorAll('.opt-switch button').forEach(function (b) {
+    b.addEventListener('click', function () { b.hasAttribute('data-tint') ? set('tint', b.getAttribute('data-tint')) : set('break', b.getAttribute('data-break')); });
+  });
+  var q = new URL(location.href).searchParams;
+  set('tint', q.get('tint')); set('break', q.get('break'));
 })();
 </script>
 <script>
