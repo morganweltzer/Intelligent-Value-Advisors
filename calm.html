@@ -563,27 +563,6 @@ main > .section + .section { border-top: 1px solid var(--line); }
 #chapter.section { background: var(--fog); border-top: 0; }
 #chapter + .section { border-top: 0; }
 
-/* Navy is kept for the hero, the selected answer, and contact; other navy blocks go light */
-.iva-band { background: none; border-block: 1px solid var(--line); border-radius: 0; padding: 22px 0; }
-.iva-band .k { color: var(--accent); }
-.iva-band strong { color: var(--navy); }
-.iva-band a { color: var(--navy); }
-.goal { background: var(--fog); }
-.goal .eyebrow { color: var(--accent); }
-.goal h3 { color: var(--navy); }
-.goal h3 em { color: var(--accent); }
-.goal p { color: var(--pewter); }
-.goal .fw-step button { color: var(--navy); }
-.goal .fw-step button[data-dir="prev"] { color: var(--pewter); }
-.fw-row.goal-row .fw-step { border-top-color: var(--line); }
-.calc { background: var(--fog); color: var(--ink); }
-.calc h3 { color: var(--navy); }
-.calc .muted { color: var(--pewter); }
-.field label { color: var(--ink); }
-.field output { color: var(--accent); }
-input[type=range]::-webkit-slider-runnable-track { background: var(--sand); }
-input[type=range]::-moz-range-track { background: var(--sand); }
-
 /* In-panel labels that repeat what the heading or tabs already say */
 .answer > .eyebrow, .step-panel .label, .two-card .tag { display: none; }
 
@@ -693,14 +672,23 @@ main > .section + .section { border-top: 0; }
 #chapter .focus span { color: var(--on-navy-soft); }
 @media (max-width: 760px) { #chapter .focus { background: none; border-top-color: var(--navy-line); } }
 
-/* The fee calculator returns to a navy card: the one interactive tool on the page */
-.calc { background: var(--navy); color: var(--white); }
-.calc h3 { color: var(--white); }
-.calc .muted { color: var(--on-navy-soft); }
-.field label { color: var(--white); }
-.field output { color: var(--gold); }
-input[type=range]::-webkit-slider-runnable-track { background: rgba(255,255,255,.22); }
-input[type=range]::-moz-range-track { background: rgba(255,255,255,.22); }
+/* Navy focal points: one per light section, each on something worth noticing */
+.deliver { background: var(--navy); color: var(--on-navy); }
+.deliver h4 { color: var(--gold); }
+.deliver li svg { color: var(--gold); }
+.deliver .chip { background: rgba(255,255,255,.08); color: var(--white); }
+.faq-side .link-arrow { margin-top: 6px; padding: 12px 20px; border-radius: var(--radius-sm); background: var(--navy); color: var(--white); font-size: var(--fs-small); transition: background-color .15s, transform .2s var(--ease-out), box-shadow .2s var(--ease-out); }
+.faq-side .link-arrow:hover { background: var(--navy-2); text-decoration: none; }
+@media (hover: hover) { .faq-side .link-arrow:hover { transform: translateY(-1px); box-shadow: 0 8px 18px -10px rgba(12,22,38,.45); } }
+@media (max-width: 760px) {
+  .deliver { background: var(--navy); border-top: 0; border-radius: var(--radius); padding: 22px 20px; }
+  .compare-simple { background: var(--navy); color: var(--on-navy); border-radius: var(--radius); padding: 22px 20px 8px; }
+  .compare-simple h3 { color: var(--white); }
+  .compare-simple dl > div { border-bottom-color: var(--navy-line); }
+  .compare-simple dl > div:last-child { border-bottom: 0; }
+  .compare-simple dt { color: var(--gold); }
+  .compare-toggle { color: var(--gold); }
+}
 
 /* Comparison table: the header row reads as a header, not as the section background */
 .compare thead th { background: #DFE5EE; color: var(--navy); border-bottom: 1px solid #C3CCDA; }
