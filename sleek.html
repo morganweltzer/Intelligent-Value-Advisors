@@ -576,7 +576,7 @@ footer li a:hover { color: var(--white); }
       <h2 class="title" id="sit-title">Which of these sounds most like you?</h2>
       <p class="lead">Every owner arrives with a different question. Pick the one closest to yours, and you'll see where we'd begin.</p>
     </div>
-    <div class="md" data-md>
+    <div class="md" data-md data-md-closable>
       <div class="md-list">
         <button class="md-item" aria-expanded="true" aria-controls="p-worth"><span class="dot" aria-hidden="true"></span><span class="q">"Honestly, I don't know what my business is worth."</span></button>
         <button class="md-item" aria-expanded="false" aria-controls="p-offers"><span class="dot" aria-hidden="true"></span><span class="q">"Buyers keep calling, and I can't tell if the offers are any good."</span></button>
@@ -1158,18 +1158,27 @@ footer li a:hover { color: var(--white); }
   document.querySelectorAll('[data-md]').forEach(function (md) {
     var items = Array.prototype.slice.call(md.querySelectorAll('.md-item'));
     var host = md.querySelector('.md-host');
+    // Closable lists (the situations) start with nothing open on phones, so the choices read as a question
+    var closable = md.hasAttribute('data-md-closable');
     var cur = 0;
-    function place() {
-      if (narrow.matches) items[cur].insertAdjacentElement('afterend', host);
-      else if (host.parentNode !== md) md.appendChild(host);
-    }
-    function select(i, scroll) {
-      if (i === cur) { place(); return; }
-      var dir = i > cur ? 1 : -1;
+    function show(i) {
       items.forEach(function (b, k) {
         b.setAttribute('aria-expanded', k === i);
         document.getElementById(b.getAttribute('aria-controls')).hidden = k !== i;
       });
+      host.hidden = i < 0;
+    }
+    function place() {
+      if (!narrow.matches && cur < 0) { cur = 0; show(0); }
+      if (cur < 0) return;
+      if (narrow.matches) items[cur].insertAdjacentElement('afterend', host);
+      else if (host.parentNode !== md) md.appendChild(host);
+    }
+    function select(i, scroll) {
+      if (i === cur && closable && narrow.matches) { cur = -1; show(-1); return; }
+      if (i === cur) { place(); return; }
+      var dir = cur < 0 ? 0 : i > cur ? 1 : -1;
+      show(i);
       cur = i;
       place();
       var panel = document.getElementById(items[i].getAttribute('aria-controls'));
@@ -1190,6 +1199,7 @@ footer li a:hover { color: var(--white); }
       });
     });
     narrow.addEventListener('change', place);
+    if (closable && narrow.matches) { cur = -1; show(-1); }
     place();
     mdSelectors.push({ el: md, select: select });
   });

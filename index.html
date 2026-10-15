@@ -183,8 +183,8 @@ header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
 .pick { text-align: left; width: 100%; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px 18px 52px; font-family: var(--serif); font-size: var(--fs-serif-sm); line-height: 1.35; color: var(--ink); cursor: pointer; position: relative; transition: border-color .15s, background .15s; }
 .pick::before { content: ""; position: absolute; left: 20px; top: 24px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--line); background: var(--white); transition: background-color .2s var(--ease-out), border-color .2s var(--ease-out), box-shadow .2s var(--ease-out); }
 .pick:hover { border-color: var(--navy); }
-.pick[aria-selected="true"] { border-color: var(--navy); background: var(--sand-soft); }
-.pick[aria-selected="true"]::before { border-color: var(--navy); background: var(--navy); box-shadow: inset 0 0 0 3px var(--sand-soft); }
+.pick[aria-selected="true"], .pick[aria-expanded="true"] { border-color: var(--navy); background: var(--sand-soft); }
+.pick[aria-selected="true"]::before, .pick[aria-expanded="true"]::before { border-color: var(--navy); background: var(--navy); box-shadow: inset 0 0 0 3px var(--sand-soft); }
 .answer { background: var(--navy); color: var(--white); border-radius: var(--radius); padding: 40px; position: sticky; top: 100px; }
 .answer .eyebrow { color: var(--gold); }
 .answer h3 { color: var(--white); font-family: var(--serif); font-weight: 500; font-size: var(--fs-h3); line-height: 1.15; margin-bottom: 16px; }
@@ -558,6 +558,13 @@ footer a { color: var(--on-navy-soft); text-decoration: none; }
 footer a:hover { color: var(--white); text-decoration: underline; }
 .legal { padding-top: 24px; font-size: var(--fs-label); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 @media (max-width: 800px) { .foot-grid { grid-template-columns: 1fr; gap: 32px; } }
+/* Phones: choosing a situation folds the old answer closed and unfolds the new one, both over half a second */
+@media (max-width: 900px) {
+  .answers.unfolding { overflow: hidden; transition: height .5s cubic-bezier(.4, 0, .2, 1), margin-bottom .5s cubic-bezier(.4, 0, .2, 1); }
+  .answers.unfolding .anim-in { animation-duration: .55s; animation-delay: .08s; }
+  .answers-ghost { overflow: hidden; pointer-events: none; transition: height .5s cubic-bezier(.4, 0, .2, 1), margin-bottom .5s cubic-bezier(.4, 0, .2, 1), opacity .3s ease; }
+  .answers-ghost.folding { height: 0 !important; margin-bottom: -10px; opacity: 0; }
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -649,7 +656,7 @@ footer a:hover { color: var(--white); text-decoration: underline; }
         <button class="pick" role="tab" id="t-family" aria-controls="p-family" aria-selected="false" tabindex="-1">"We want to pass it to the next generation without dividing the family."</button>
         <button class="pick" role="tab" id="t-after" aria-controls="p-after" aria-selected="false" tabindex="-1">"The money's fine. I'm just not sure who I'll be after."</button>
       </div>
-      <div>
+      <div class="answers">
         <div class="answer" role="tabpanel" id="p-worth" aria-labelledby="t-worth">
           <span class="eyebrow">Where we'd start</span>
           <h3>Get a straight, defensible number first.</h3>
@@ -1304,19 +1311,108 @@ footer a:hover { color: var(--white); text-decoration: underline; }
     });
   }
 
-  // Situation picker
+  // Situation picker. Desktop: the answer sits beside the choices. Phones: nothing is open at first, so the five
+  // choices read as a question; a tapped choice unfolds its answer right beneath it, and tapping it again folds it away.
   var picks = Array.prototype.slice.call(document.querySelectorAll('.pick'));
-  function selectPick(i) {
-    var changed = picks[i].getAttribute('aria-selected') !== 'true';
+  var answers = document.querySelector('.answers'), pickerEl = document.querySelector('.picker');
+  var narrow = window.matchMedia('(max-width: 900px)');
+  // Which choice is open; announced as a selected tab on desktop and as an expanded button on phones
+  picks.forEach(function (p) { p.dataset.on = p.getAttribute('aria-selected') === 'true'; });
+  function current() { return picks.findIndex(function (p) { return p.dataset.on === 'true'; }); }
+  function mark(i) {
+    var acc = narrow.matches;
     picks.forEach(function (p, k) {
       var on = k === i;
-      p.setAttribute('aria-selected', on);
-      p.tabIndex = on ? 0 : -1;
+      p.dataset.on = on;
+      if (acc) { p.removeAttribute('aria-selected'); p.setAttribute('aria-expanded', on); p.tabIndex = 0; }
+      else { p.removeAttribute('aria-expanded'); p.setAttribute('aria-selected', on); p.tabIndex = on || (i < 0 && k === 0) ? 0 : -1; }
       document.getElementById(p.getAttribute('aria-controls')).hidden = !on;
     });
-    if (changed) animateIn(document.getElementById(picks[i].getAttribute('aria-controls')), 0);
+    answers.hidden = i < 0;
+  }
+  function animating() { return animReady && !reduceMotion.matches; }
+  // Eases an element's height (and the list gap above it) between two values, then calls done
+  function slide(el, from, to, done) {
+    el.classList.add('unfolding');
+    el.style.height = from + 'px';
+    el.style.marginBottom = (from === 0 ? -10 : 0) + 'px';
+    void el.offsetHeight;
+    el.style.height = to + 'px';
+    el.style.marginBottom = (to === 0 ? -10 : 0) + 'px';
+    var finished = false;
+    function end() {
+      if (finished) return;
+      finished = true;
+      el.classList.remove('unfolding');
+      el.style.height = '';
+      el.style.marginBottom = '';
+      if (done) done();
+    }
+    el.addEventListener('transitionend', function te(e) { if (e.target === el && e.propertyName === 'height') { el.removeEventListener('transitionend', te); end(); } });
+    setTimeout(end, 700);
+  }
+  function keepInView(p) { if (p.getBoundingClientRect().top < headerH() + 8) scrollToTarget(p); }
+  function selectPick(i) {
+    var prev = current();
+    var panel = document.getElementById(picks[i].getAttribute('aria-controls'));
+    if (!narrow.matches) {
+      if (i !== prev) { mark(i); animateIn(panel, 0); }
+      return;
+    }
+    if (i === prev) {
+      if (!animating()) { mark(-1); return; }
+      slide(answers, answers.offsetHeight, 0, function () { mark(-1); });
+      return;
+    }
+    // The old answer folds away where it was while the new one unfolds under the tapped choice
+    var ghost = null;
+    if (prev > -1 && animating()) {
+      ghost = answers.cloneNode(true);
+      ghost.className = 'answers-ghost';
+      ghost.setAttribute('aria-hidden', 'true');
+      ghost.inert = true;
+      ghost.querySelectorAll('[id]').forEach(function (el) { el.removeAttribute('id'); });
+      ghost.querySelectorAll('.anim-in').forEach(function (el) { el.classList.remove('anim-in'); });
+      ghost.style.height = answers.offsetHeight + 'px';
+      answers.parentNode.insertBefore(ghost, answers);
+    }
+    mark(i);
+    picks[i].insertAdjacentElement('afterend', answers);
+    if (!animating()) return;
+    var h = answers.offsetHeight;
+    animateIn(panel, 0);
+    if (ghost) {
+      void ghost.offsetHeight;
+      ghost.classList.add('folding');
+      setTimeout(function () { if (ghost.parentNode) ghost.parentNode.removeChild(ghost); }, 650);
+    }
+    slide(answers, 0, h, function () { keepInView(picks[i]); });
   }
   wireTabs(picks, selectPick, true);
+  var tabList = pickerEl.querySelector('.picker-list');
+  function semantics() {
+    var acc = narrow.matches;
+    if (acc) tabList.removeAttribute('role'); else tabList.setAttribute('role', 'tablist');
+    picks.forEach(function (p) {
+      var panel = document.getElementById(p.getAttribute('aria-controls'));
+      if (acc) { p.removeAttribute('role'); panel.setAttribute('role', 'region'); }
+      else { p.setAttribute('role', 'tab'); panel.setAttribute('role', 'tabpanel'); }
+    });
+    mark(current());
+  }
+  function layout() {
+    if (narrow.matches) {
+      var i = current();
+      if (i > -1 && picks[i].nextElementSibling !== answers) picks[i].insertAdjacentElement('afterend', answers);
+    } else {
+      if (answers.parentNode !== pickerEl) pickerEl.appendChild(answers);
+      if (current() < 0) mark(0);
+    }
+    semantics();
+  }
+  narrow.addEventListener('change', layout);
+  if (narrow.matches) mark(-1);
+  layout();
 
   // Engagement stepper
   var steps = [
