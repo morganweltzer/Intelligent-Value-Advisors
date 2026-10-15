@@ -48,8 +48,8 @@
   --error: #B5482A;
   --serif: "EB Garamond", Garamond, "Times New Roman", serif;
   --sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --radius: 8px;
-  --radius-sm: 6px;
+  --radius: 16px;
+  --radius-sm: 8px;
   --wrap: 1180px;
   /* Type scale: every font size on the page uses one of these */
   --fs-micro: 11px;
@@ -124,7 +124,8 @@ header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
 .nav-links { display: flex; align-items: center; gap: 28px; }
 .nav-links a { text-decoration: none; color: var(--ink); font-weight: 500; font-size: var(--fs-small); }
 .nav-links a:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 6px; }
-.nav-links .btn { color: var(--white); }
+.nav-links .btn { color: var(--white); white-space: nowrap; }
+@media (min-width: 981px) and (max-width: 1120px) { .nav-links { gap: 20px; } .brand-name { font-size: var(--fs-lead); } }
 .nav-links .btn:hover { text-decoration: none; }
 .menu-btn { display: none; background: none; border: 1px solid var(--line); border-radius: var(--radius-sm); width: 44px; height: 44px; cursor: pointer; color: var(--navy); }
 @media (max-width: 980px) {
@@ -211,8 +212,8 @@ header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
 .pick { text-align: left; width: 100%; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px 18px 52px; font-family: var(--serif); font-size: var(--fs-serif-sm); line-height: 1.35; color: var(--ink); cursor: pointer; position: relative; transition: border-color .15s, background .15s; }
 .pick::before { content: ""; position: absolute; left: 20px; top: 24px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--line); background: var(--white); transition: background-color .2s var(--ease-out), border-color .2s var(--ease-out), box-shadow .2s var(--ease-out); }
 .pick:hover { border-color: var(--navy); }
-.pick[aria-selected="true"] { border-color: var(--navy); background: var(--sand-soft); }
-.pick[aria-selected="true"]::before { border-color: var(--navy); background: var(--navy); box-shadow: inset 0 0 0 3px var(--sand-soft); }
+.pick[aria-selected="true"], .pick[aria-expanded="true"] { border-color: var(--navy); background: var(--sand-soft); }
+.pick[aria-selected="true"]::before, .pick[aria-expanded="true"]::before { border-color: var(--navy); background: var(--navy); box-shadow: inset 0 0 0 3px var(--sand-soft); }
 .answer { background: var(--navy); color: var(--white); border-radius: var(--radius); padding: 40px; position: sticky; top: 100px; }
 .answer .eyebrow { color: var(--gold); }
 .answer h3 { color: var(--white); font-family: var(--serif); font-weight: 500; font-size: var(--fs-h3); line-height: 1.15; margin-bottom: 16px; }
@@ -264,7 +265,7 @@ header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
 
 /* Framework: 5-4-3-2-1 */
 .ladder { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-bottom: 24px; }
-.ladder a { display: block; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 18px 16px; text-decoration: none; color: var(--ink); transition: background-color .25s var(--ease-out), border-color .25s var(--ease-out), color .25s var(--ease-out); }
+.ladder a { display: block; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 18px 18px 16px; text-decoration: none; color: var(--ink); transition: background-color .25s var(--ease-out), border-color .25s var(--ease-out), color .25s var(--ease-out); }
 .ladder .n, .ladder .t, .ladder .s { transition: color .25s var(--ease-out); }
 .ladder a:hover { border-color: var(--navy); }
 .ladder .n { display: block; font-family: var(--serif); font-size: 58px; line-height: .9; color: var(--navy); }
@@ -353,7 +354,7 @@ header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
 .report { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin: 0; }
 .report-head { background: var(--navy); color: var(--white); padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .report-head strong { font-size: var(--fs-small); font-weight: 600; }
-.report-head span { font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 5px 9px; border-radius: 4px; white-space: nowrap; }
+.report-head span { font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 5px 9px; border-radius: var(--radius-sm); white-space: nowrap; }
 .report-body { padding: 4px 24px 20px; }
 .meter { padding: 18px 0; border-bottom: 1px solid var(--line); }
 .meter-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 10px; }
@@ -374,7 +375,7 @@ header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
 /* 2 Assets */
 .two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 26px; }
 .two-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; background: var(--white); }
-.two-card .tag { display: inline-block; font-size: var(--fs-label); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; background: var(--sand-soft); color: var(--accent); padding: 6px 10px; border-radius: 4px; margin-bottom: 16px; }
+.two-card .tag { display: inline-block; font-size: var(--fs-label); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; background: var(--sand-soft); color: var(--accent); padding: 6px 10px; border-radius: var(--radius-sm); margin-bottom: 16px; }
 .two-card h3 { font-family: var(--serif); font-weight: 500; font-size: var(--fs-h3); margin-bottom: 6px; }
 .two-card .muted { font-family: var(--serif); font-style: italic; font-size: var(--fs-serif-sm); margin: 0; }
 .two-card ul { margin-top: 18px; display: grid; gap: 10px; }
@@ -412,7 +413,7 @@ header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
 .deliver li { display: flex; gap: 10px; font-weight: 500; }
 .deliver li svg { flex: none; width: 16px; height: 16px; margin-top: 5px; color: var(--navy); }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { font-size: var(--fs-small); font-weight: 600; background: var(--sand-soft); color: var(--navy); padding: 7px 12px; border-radius: 4px; }
+.chip { font-size: var(--fs-small); font-weight: 600; background: var(--sand-soft); color: var(--navy); padding: 7px 12px; border-radius: var(--radius-sm); }
 .step-controls { display: flex; justify-content: space-between; margin-top: 20px; }
 .step-controls button { background: none; border: 0; font-family: var(--sans); font-weight: 700; color: var(--navy); cursor: pointer; font-size: var(--fs-small); padding: 8px 0; }
 .step-controls button:disabled { color: var(--field); cursor: default; }
@@ -762,6 +763,45 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
   .answers-ghost.folding { height: 0 !important; margin-bottom: -10px; opacity: 0; }
 }
 
+/* ===== Consistency pass ===== */
+/* The five questions live with their Dimensions */
+.card .card-q { display: block; margin-top: 6px; font-family: var(--serif); font-style: italic; font-size: var(--fs-body); line-height: 1.35; color: var(--navy); quotes: "\201C" "\201D"; }
+.card .card-q + span { margin-top: 6px; }
+
+/* With the five questions moved to the framework, the band follows the statement directly */
+.philo + .iva-band { margin-top: clamp(32px, 4vw, 52px); }
+
+/* One depth idea per section: content inside raised and recessed sections sits flat, separated by hairlines */
+.how-intel { gap: 0 32px; }
+.how-intel li { background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 20px 0 0; }
+.fee-cards { gap: 0 32px; }
+.fee { background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 24px 0 0; }
+.focus-grid { gap: 0 24px; }
+.focus { background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 16px 0; }
+#chapter .focus { background: none; border-top-color: var(--navy-line); }
+.cards { gap: 0 24px; }
+.card { background: none; border-top: 1px solid var(--line); border-radius: 0; padding: 16px 0; }
+.fact-cepa { background: none; border: 0; padding: 0; }
+
+/* Small labels in navy-gray; gold stays for icons, rules, and text on navy */
+:root { --accent: #4F5D75; }
+
+/* Phones: engagement stages use the same tile row as the framework, all five in view */
+@media (max-width: 800px) {
+  .steps-scroll { overflow: visible; -webkit-mask-image: none; mask-image: none; }
+  .steps-nav { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; margin-bottom: 14px; }
+  .step-tab { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; min-height: 66px; padding: 10px 0 9px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--white); text-align: center; transition: background-color .25s var(--ease-out), border-color .25s var(--ease-out); }
+  .step-tab .num { margin: 0; width: 26px; height: 26px; }
+  .step-tab .nm { font-family: var(--sans); font-size: var(--fs-micro); font-weight: 600; line-height: 1.1; white-space: nowrap; color: var(--pewter); }
+  .step-tab[aria-selected="true"] { background: var(--navy); border-color: var(--navy); }
+  .step-tab[aria-selected="true"] .num { background: var(--gold); color: var(--navy); }
+  .step-tab[aria-selected="true"] .nm, .step-tab:hover .nm { color: var(--white); }
+  .step-tab:not([aria-selected="true"]):hover .nm { color: var(--navy); }
+  .progress { display: none; }
+}
+@media (max-width: 369px) { .step-tab .nm { display: none; } }
+.deliver .deliver-link { color: var(--gold); }
+
 /* Comparison table: the header row reads as a header, not as the section background */
 .compare thead th { background: var(--navy); color: var(--on-navy); border-bottom: 1px solid var(--navy); }
 .compare thead th.us { background: var(--navy-2); color: var(--gold); border-bottom-color: var(--navy-2); }
@@ -803,7 +843,7 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
       <li><a href="#ron">About Ron</a></li>
       <li><a href="#fees">Fees</a></li>
       <li><a href="#faq">Questions</a></li>
-      <li><a class="btn btn-navy btn-sm" href="#contact">Talk with Ron</a></li>
+      <li><a class="btn btn-navy btn-sm" href="#contact">Schedule a conversation</a></li>
     </ul>
   </div>
 </header>
@@ -826,7 +866,7 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
     <aside class="cred-card" aria-label="About Ron DeLyons">
       <div class="cred-body">
         <blockquote class="cred-quote">I've founded, grown, and exited three businesses. I've sat where you're sitting.</blockquote>
-        <h2>Ron DeLyons, CEPA®</h2>
+        <h2>Ron DeLyons, CEPA</h2>
         <p class="role">Founder, Intelligent Value Advisors</p>
         <div class="cred-seal">
           <img src="cepa.webp" alt="Certified Exit Planning Advisor (CEPA) seal" width="34" height="36">
@@ -844,7 +884,7 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
   <div class="wrap proof-grid">
     <div class="proof-item"><div class="proof-num">40</div><div class="proof-label">years as a business owner and entrepreneur</div></div>
     <div class="proof-item"><div class="proof-num">3</div><div class="proof-label">businesses founded, grown, and exited by Ron</div></div>
-    <div class="proof-item"><div class="proof-num">CEPA<span class="tm">®</span></div><div class="proof-label">Certified Exit Planning Advisor, Value Acceleration Methodology</div></div>
+    <div class="proof-item"><div class="proof-num">CEPA</div><div class="proof-label">Certified Exit Planning Advisor, Value Acceleration Methodology</div></div>
     <div class="proof-item"><div class="proof-num">5-4-3-2-1</div><div class="proof-label">our proprietary Intelligent Value Acceleration™ framework</div></div>
   </div>
 </section>
@@ -875,7 +915,7 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>The handful of factors holding your value down</li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>Your Owner Freedom Index™: how much the business depends on you</li>
           </ul>
-          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Find out what it's worth</a><a class="text" href="#scores">See the 3 Core Scores →</a></div>
+          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Schedule a conversation</a><a class="text" href="#scores">See the 3 Core Scores →</a></div>
         </div>
         <div class="answer" role="tabpanel" id="p-offers" aria-labelledby="t-offers" hidden>
           <span class="eyebrow">Where we'd start</span>
@@ -886,7 +926,7 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>Your options side by side: sell, recapitalize, or keep growing</li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>Fixes for key-person or partner risks before they cost you</li>
           </ul>
-          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Talk through an offer</a><a class="text" href="#how" data-step="3">See stage 4: Realize →</a></div>
+          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Schedule a conversation</a><a class="text" href="#how" data-step="3">See stage 4: Realize →</a></div>
         </div>
         <div class="answer" role="tabpanel" id="p-grow" aria-labelledby="t-grow" hidden>
           <span class="eyebrow">Where we'd start</span>
@@ -897,7 +937,7 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>Scorecards that show whether value is actually moving</li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>A leadership team that doesn't need you in every meeting</li>
           </ul>
-          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Build a growth plan</a><a class="text" href="#outcomes">See the 4 Strategic Outcomes →</a></div>
+          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Schedule a conversation</a><a class="text" href="#outcomes">See the 4 Strategic Outcomes →</a></div>
         </div>
         <div class="answer" role="tabpanel" id="p-family" aria-labelledby="t-family" hidden>
           <span class="eyebrow">Where we'd start</span>
@@ -908,7 +948,7 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>Leadership and succession planning for the next generation</li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>One coordinated plan instead of conflicting advice</li>
           </ul>
-          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Plan a family transition</a><a class="text" href="#advisors">How we coordinate advisors →</a></div>
+          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Schedule a conversation</a><a class="text" href="#advisors">How we coordinate advisors →</a></div>
         </div>
         <div class="answer" role="tabpanel" id="p-after" aria-labelledby="t-after" hidden>
           <span class="eyebrow">Where we'd start</span>
@@ -919,7 +959,7 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>Making sure your people and culture are protected</li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>A transition that moves you toward something new</li>
           </ul>
-          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Start that conversation</a><a class="text" href="#goal">See the 1 Goal →</a></div>
+          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Schedule a conversation</a><a class="text" href="#goal">See the 1 Goal →</a></div>
         </div>
       </div>
     </div>
@@ -960,19 +1000,8 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
         <p class="big">They lack the time, perspective, and strategic intelligence necessary to consistently make the best decisions.</p>
       </div>
     </div>
-    <p class="leverages" id="iq-label">Five questions behind every decision we make</p>
-    <ol class="intel-q" aria-labelledby="iq-label">
-      <li><span class="iq-k"><b>1</b>Enterprise</span><q>What is my business really worth, and why?</q></li>
-      <li><span class="iq-k"><b>2</b>Market</span><q>What's changing around me?</q></li>
-      <li><span class="iq-k"><b>3</b>Decision</span><q>What are my real options?</q></li>
-      <li><span class="iq-k"><b>4</b>Owner</span><q>What do I actually want?</q></li>
-      <li><span class="iq-k"><b>5</b>Future</span><q>Where do today's choices lead?</q></li>
-    </ol>
-    <svg class="converge" viewBox="0 0 1000 56" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M100 0 C100 34 440 26 440 56"/><path d="M300 0 C300 34 470 26 470 56"/><path d="M500 0 L500 56"/><path d="M700 0 C700 34 530 26 530 56"/><path d="M900 0 C900 34 560 26 560 56"/>
-    </svg>
     <div class="iva-band">
-      <div><span class="k">Together, they create</span><strong>Intelligent Value Acceleration™</strong></div>
+      <div><span class="k">How we put it into practice</span><strong>Intelligent Value Acceleration</strong></div>
       <a href="#dimensions">See the 5 Dimensions in our framework →</a>
     </div>
     <ul class="how-intel" aria-label="How the intelligence reaches you">
@@ -988,7 +1017,7 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Our process · The 5-4-3-2-1 methodology</span>
-      <h2 class="h2" id="fw-title">The Intelligent Value Acceleration™ Framework</h2>
+      <h2 class="h2" id="fw-title">The Intelligent Value Acceleration Framework</h2>
       <p class="lede">Five dimensions of intelligence lead to four strategic outcomes, measured by three core scores, across the two assets every owner manages, all in service of one goal.</p>
       <div class="iva-path">
         <p class="iva-path-k" id="iva-path-k">Our proprietary framework for helping business owners</p>
@@ -1015,11 +1044,11 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
       <div>
         <p class="fw-intro">We begin by understanding five critical areas that influence both enterprise value and personal outcomes.</p>
         <div class="cards c5">
-          <div class="card"><strong>Enterprise Intelligence™</strong><span>Understanding the business.</span></div>
-          <div class="card"><strong>Market Intelligence™</strong><span>Understanding the marketplace.</span></div>
-          <div class="card"><strong>Decision Intelligence™</strong><span>Improving decision quality.</span></div>
-          <div class="card"><strong>Owner Intelligence™</strong><span>Understanding goals, motivations, and aspirations.</span></div>
-          <div class="card"><strong>Future Intelligence™</strong><span>Creating greater future opportunities.</span></div>
+          <div class="card"><strong>Enterprise Intelligence™</strong><q class="card-q">What is my business really worth, and why?</q><span>Understanding the business.</span></div>
+          <div class="card"><strong>Market Intelligence™</strong><q class="card-q">What's changing around me?</q><span>Understanding the marketplace.</span></div>
+          <div class="card"><strong>Decision Intelligence™</strong><q class="card-q">What are my real options?</q><span>Improving decision quality.</span></div>
+          <div class="card"><strong>Owner Intelligence™</strong><q class="card-q">What do I actually want?</q><span>Understanding goals, motivations, and aspirations.</span></div>
+          <div class="card"><strong>Future Intelligence™</strong><q class="card-q">Where do today's choices lead?</q><span>Creating greater future opportunities.</span></div>
         </div>
       </div>
     </div>
@@ -1045,23 +1074,23 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
         <p class="fw-intro">Our assessments continuously measure progress.</p>
         <div class="scores-pair">
           <div class="score-defs">
-            <div class="card"><strong>Intelligent Value Score™</strong><span>How valuable is the business?</span></div>
-            <div class="card"><strong>Owner Freedom Index™</strong><span>How dependent is the owner?</span></div>
-            <div class="card"><strong>Destiny Readiness Score™</strong><span>How prepared is the owner for the next chapter?</span></div>
+            <div class="card"><strong>Intelligent Value Score</strong><span>How valuable is the business?</span></div>
+            <div class="card"><strong>Owner Freedom Index</strong><span>How dependent is the owner?</span></div>
+            <div class="card"><strong>Destiny Readiness Score</strong><span>How prepared is the owner for the next chapter?</span></div>
           </div>
           <figure class="report" aria-label="Sample owner scorecard">
             <div class="report-head"><strong>Owner Scorecard · Baseline</strong><span>Sample only</span></div>
             <div class="report-body">
               <div class="meter">
-                <div class="meter-top"><span class="meter-name">Intelligent Value Score™</span><span class="meter-val">64<small> /100</small></span></div>
+                <div class="meter-top"><span class="meter-name">Intelligent Value Score</span><span class="meter-val">64<small> /100</small></span></div>
                 <div class="bar"><span style="width:64%"></span></div>
               </div>
               <div class="meter">
-                <div class="meter-top"><span class="meter-name">Owner Freedom Index™</span><span class="meter-val">31<small> /100</small></span></div>
+                <div class="meter-top"><span class="meter-name">Owner Freedom Index</span><span class="meter-val">31<small> /100</small></span></div>
                 <div class="bar"><span style="width:31%"></span></div>
               </div>
               <div class="meter">
-                <div class="meter-top"><span class="meter-name">Destiny Readiness Score™</span><span class="meter-val">42<small> /100</small></span></div>
+                <div class="meter-top"><span class="meter-name">Destiny Readiness Score</span><span class="meter-val">42<small> /100</small></span></div>
                 <div class="bar"><span style="width:42%"></span></div>
               </div>
               <div class="flags">
@@ -1126,7 +1155,7 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
     <div class="section-head">
       <span class="eyebrow">How an engagement unfolds</span>
       <h2 class="h2" id="how-title">From first conversation to next chapter.</h2>
-      <p class="lede">The 5-4-3-2-1 framework defines what we measure and what we aim for. These five stages are how the work happens, built on the CEPA® Value Acceleration Methodology, so you always know where you are and what comes next.</p>
+      <p class="lede">The 5-4-3-2-1 framework defines what we measure and what we aim for. These five stages are how the work happens, built on the CEPA Value Acceleration Methodology, so you always know where you are and what comes next.</p>
     </div>
     <div class="steps-scroll">
       <div class="steps-nav" role="tablist" aria-label="Engagement stages">
@@ -1243,11 +1272,11 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
       <p class="sign">Ron DeLyons</p>
     </article>
     <aside class="facts" aria-label="Ron's background">
-      <div class="fact-cepa"><img src="cepa.webp" alt="CEPA seal" width="40" height="42"><div><strong>Certified Exit Planning Advisor (CEPA®)</strong><span>Trained in the Value Acceleration Methodology</span></div></div>
+      <div class="fact-cepa"><img src="cepa.webp" alt="CEPA seal" width="40" height="42"><div><strong>Certified Exit Planning Advisor (CEPA)</strong><span>Trained in the Value Acceleration Methodology</span></div></div>
       <div class="fact"><strong>Three-time founder</strong><span>Built, grew, and exited three businesses over 40 years</span></div>
       <div class="fact"><strong>Life after ownership</strong><span>Guided by the principles of Christopher Snider's <em>Walking to Destiny</em></span></div>
       <div class="fact"><strong>Middle-market focus</strong><span>Founders, family businesses, and private owners of middle-market companies</span></div>
-      <a class="btn btn-navy" href="#contact">Schedule time with Ron</a>
+      <a class="btn btn-navy" href="#contact">Schedule a conversation</a>
     </aside>
   </div>
 </section>
@@ -1270,21 +1299,21 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
         <h3>See it with your own numbers.</h3>
         <p class="muted">Move the sliders to estimate the performance fee. You'll see most of the value created stays with you.</p>
         <div class="field">
-          <label for="c-start">Value today <output id="o-start" for="c-start">$5.0M</output></label>
-          <input type="range" id="c-start" min="2" max="100" step="0.5" value="5">
+          <label for="c-start">Value today <output id="o-start" for="c-start">$8.0M</output></label>
+          <input type="range" id="c-start" min="2" max="100" step="0.5" value="8">
         </div>
         <div class="field">
-          <label for="c-end">Value after 36 months <output id="o-end" for="c-end">$15.0M</output></label>
-          <input type="range" id="c-end" min="2" max="200" step="0.5" value="15">
+          <label for="c-end">Value after 36 months <output id="o-end" for="c-end">$11.0M</output></label>
+          <input type="range" id="c-end" min="2" max="200" step="0.5" value="11">
         </div>
       </div>
       <div class="calc-out" aria-live="polite">
-        <div class="calc-row"><span>Value created</span><b id="r-created">$10M</b></div>
-        <div class="calc-row"><span>Performance fee (2.5%–5%)</span><b id="r-fee">$250K–$500K</b></div>
-        <div class="calc-row big"><span>You keep</span><b id="r-keep">$9.5M–$9.75M</b></div>
+        <div class="calc-row"><span>Value created</span><b id="r-created">$3M</b></div>
+        <div class="calc-row"><span>Performance fee (2.5%–5%)</span><b id="r-fee">$75K–$150K</b></div>
+        <div class="calc-row big"><span>You keep</span><b id="r-keep">$2.85M–$2.92M</b></div>
         <div class="split" aria-hidden="true"><div class="keep" style="width:95%"></div><div class="fee-part" style="width:5%"></div></div>
         <div class="legend"><span><i style="background:var(--navy)"></i>Yours (95%+)</span><span><i style="background:var(--gold)"></i>Fee, at most 5%</span></div>
-        <p class="calc-fine">Illustration of the performance fee only, at the high and low end of the range. Discovery and monthly advisory fees are separate. Exact terms are agreed in writing before an engagement begins.</p>
+        <p class="calc-fine">Illustration of the performance fee only, at the high and low end of the range. Discovery and monthly advisory fees are separate. Exact terms are agreed in writing before an engagement begins. How value created is measured, and when, is set out in your engagement agreement.</p>
       </div>
     </div>
   </div>
@@ -1302,7 +1331,11 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
     <div class="faq">
       <details>
         <summary>What is the 5-4-3-2-1 methodology?</summary>
-        <div class="ans"><p>It's the structure of Intelligent Value Acceleration™. We look at your business through 5 Dimensions of Intelligence, work toward 4 Strategic Outcomes, track progress with 3 Core Scores, and care for the 2 Assets you manage, your company and your life, toward 1 Goal: transforming enterprise value into life value.</p></div>
+        <div class="ans"><p>It's the structure of Intelligent Value Acceleration. We look at your business through 5 Dimensions of Intelligence, work toward 4 Strategic Outcomes, track progress with 3 Core Scores, and care for the 2 Assets you manage, your company and your life, toward 1 Goal: transforming enterprise value into life value.</p></div>
+      </details>
+      <details>
+        <summary>How do I know if I'll have enough to step away?</summary>
+        <div class="ans"><p>That's the financial side of exit readiness, and it matters as much as the business side. Working with your wealth advisor, we estimate what the life you want after ownership will cost, compare it with what the business is realistically worth, and show you any gap. Then your plan is built to close it.</p></div>
       </details>
       <details>
         <summary>Do I have to be planning to sell?</summary>
@@ -1317,12 +1350,12 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
         <div class="ans"><p>Yes, and that's a big part of the value. Ron coordinates your existing advisors around one plan, so you stop getting conflicting advice. You don't need to replace anyone.</p></div>
       </details>
       <details>
-        <summary>What does "AI-powered" actually mean here?</summary>
+        <summary>What does "AI-assisted" actually mean here?</summary>
         <div class="ans"><p>We use modern analytical tools to gather benchmarks, track market changes, and spot risks and opportunities faster than manual research allows. Ron reviews it all and turns it into clear recommendations in your quarterly reports.</p></div>
       </details>
       <details>
         <summary>How does the performance fee work if value doesn't grow?</summary>
-        <div class="ans"><p>The Value Acceleration Fee™ is a percentage of the <em>increase</em> in your company's value, so it's tied directly to growth. The fixed Discovery fee and monthly advisory fee are agreed up front, so you'll know every cost before you begin.</p></div>
+        <div class="ans"><p>The Value Acceleration Fee is a percentage of the <em>increase</em> in your company's value, so it's tied directly to growth. The fixed Discovery fee and monthly advisory fee are agreed up front, so you'll know every cost before you begin.</p></div>
       </details>
       <details>
         <summary>Is our conversation confidential?</summary>
@@ -1382,7 +1415,7 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
         <div class="f"><label for="f-msg">Anything else? <span class="opt">(optional)</span></label><textarea id="f-msg" name="message" rows="3" placeholder="e.g. We're a 60-person manufacturer and I'm thinking about the next five years."></textarea></div>
         <div class="hp" aria-hidden="true"><label for="f-website">Leave this field empty</label><input id="f-website" name="_gotcha" tabindex="-1" autocomplete="off"></div>
         <input type="hidden" name="_subject" value="New conversation request from the website">
-        <button class="btn btn-primary" type="submit">Request my conversation</button>
+        <button class="btn btn-primary" type="submit">Request a conversation</button>
         <p class="form-status" id="form-status" role="status" hidden></p>
         <p class="privacy"><svg aria-hidden="true"><use href="#i-lock"/></svg><span>Confidential. We never share or sell your information. <a href="privacy.html">Privacy policy</a></span></p>
       </div>
@@ -1400,11 +1433,11 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a class="brand" href="#top"><svg class="brand-mark" aria-hidden="true"><use href="#i-mark"/></svg><span class="brand-name">Intelligent Value Advisors®<small>Creators of Intelligent Value Acceleration™</small></span></a>
-        <p class="foot-tag">Transform Enterprise Value Into Life Value™</p>
+        <a class="brand" href="#top"><svg class="brand-mark" aria-hidden="true"><use href="#i-mark"/></svg><span class="brand-name">Intelligent Value Advisors®<small>Creators of Intelligent Value Acceleration</small></span></a>
+        <p class="foot-tag">Transform Enterprise Value Into Life Value</p>
         <p>Value growth and exit planning for middle-market business owners. Cincinnati, Ohio.</p>
         <p class="foot-contact"><a href="tel:+15133482900">(513) 348-2900</a><span aria-hidden="true"> · </span><a href="mailto:ron@intelligent-value.com">ron@intelligent-value.com</a></p>
-        <div class="foot-cepa"><img src="cepa.webp" alt="" width="32" height="34"><span>Ron DeLyons is a Certified Exit Planning Advisor (CEPA®)</span></div>
+        <div class="foot-cepa"><img src="cepa.webp" alt="" width="32" height="34"><span>Ron DeLyons is a Certified Exit Planning Advisor (CEPA)</span></div>
       </div>
       <div>
         <h4>Explore</h4>
@@ -1542,12 +1575,16 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
   var picks = Array.prototype.slice.call(document.querySelectorAll('.pick'));
   var answers = document.querySelector('.answers'), pickerEl = document.querySelector('.picker');
   var narrow = window.matchMedia('(max-width: 900px)');
-  function current() { return picks.findIndex(function (p) { return p.getAttribute('aria-selected') === 'true'; }); }
+  // Which choice is open; announced as a selected tab on desktop and as an expanded button on phones
+  picks.forEach(function (p) { p.dataset.on = p.getAttribute('aria-selected') === 'true'; });
+  function current() { return picks.findIndex(function (p) { return p.dataset.on === 'true'; }); }
   function mark(i) {
+    var acc = narrow.matches;
     picks.forEach(function (p, k) {
       var on = k === i;
-      p.setAttribute('aria-selected', on);
-      p.tabIndex = on || (i < 0 && k === 0) ? 0 : -1;
+      p.dataset.on = on;
+      if (acc) { p.removeAttribute('aria-selected'); p.setAttribute('aria-expanded', on); p.tabIndex = 0; }
+      else { p.removeAttribute('aria-expanded'); p.setAttribute('aria-selected', on); p.tabIndex = on || (i < 0 && k === 0) ? 0 : -1; }
       document.getElementById(p.getAttribute('aria-controls')).hidden = !on;
     });
     answers.hidden = i < 0;
@@ -1611,6 +1648,17 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
     slide(answers, 0, h, function () { keepInView(picks[i]); });
   }
   wireTabs(picks, selectPick, true);
+  var tabList = pickerEl.querySelector('.picker-list');
+  function semantics() {
+    var acc = narrow.matches;
+    if (acc) tabList.removeAttribute('role'); else tabList.setAttribute('role', 'tablist');
+    picks.forEach(function (p) {
+      var panel = document.getElementById(p.getAttribute('aria-controls'));
+      if (acc) { p.removeAttribute('role'); panel.setAttribute('role', 'region'); }
+      else { p.setAttribute('role', 'tab'); panel.setAttribute('role', 'tabpanel'); }
+    });
+    mark(current());
+  }
   function layout() {
     if (narrow.matches) {
       var i = current();
@@ -1619,6 +1667,7 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
       if (answers.parentNode !== pickerEl) pickerEl.appendChild(answers);
       if (current() < 0) mark(0);
     }
+    semantics();
   }
   narrow.addEventListener('change', layout);
   if (narrow.matches) mark(-1);
@@ -1635,7 +1684,7 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
   var steps = [
     { title: "Understand where you stand today.", head: "What you walk away with",
       body: "We start with an honest picture of the business and of you: what it's worth, what drives and suppresses that value, how dependent it is on you, and what you want from the years ahead.",
-      items: ["Baseline valuation", "Starting Intelligent Value Score™", "Starting Owner Freedom Index™", "Starting Destiny Readiness Score™"] },
+      items: ["Baseline valuation", "A first look at your financial readiness, with your wealth advisor", "Starting Intelligent Value Score", "Starting Owner Freedom Index", "Starting Destiny Readiness Score"] },
     { title: "Build a roadmap you believe in.", head: "What you walk away with",
       body: "Together we turn what we learned into a focused plan: the few priorities that will raise value the most, a path to make the business less dependent on you, and a clear picture of the future you're working toward.",
       items: ["36-month value acceleration plan", "Priorities tied to the 4 Strategic Outcomes", "Freedom roadmap", "Future vision framework"] },
@@ -1647,7 +1696,7 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
       chips: ["Sale", "Family transfer", "ESOP", "Recapitalization", "Management buyout"] },
     { title: "Design what comes next.", head: "What we focus on",
       body: "The deal isn't the finish line. We help you plan a next chapter that is as intentional as the company you built, so you leave excited about where you're going.",
-      chips: ["Identity", "Purpose", "Legacy", "Family", "Impact", "Contribution"] }
+      link: { text: "Explore them in Life after ownership", href: "#chapter" } }
   ];
   var words = ['one', 'two', 'three', 'four', 'five'];
   var stepTabs = Array.prototype.slice.call(document.querySelectorAll('.step-tab'));
@@ -1667,7 +1716,8 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
     document.getElementById('sp-dhead').textContent = s.head;
     document.getElementById('sp-list').innerHTML = s.items
       ? '<ul>' + s.items.map(function (x) { return '<li>' + check + esc(x) + '</li>'; }).join('') + '</ul>'
-      : '<div class="chips">' + s.chips.map(function (x) { return '<span class="chip">' + esc(x) + '</span>'; }).join('') + '</div>';
+      : s.chips ? '<div class="chips">' + s.chips.map(function (x) { return '<span class="chip">' + esc(x) + '</span>'; }).join('') + '</div>'
+      : '<a class="link-arrow deliver-link" href="' + s.link.href + '">' + esc(s.link.text) + ' →</a>';
     document.getElementById('step-prev').disabled = i === 0;
     document.getElementById('step-next').disabled = i === steps.length - 1;
     revealInStrip(stepsStrip, stepTabs[i]);
@@ -1816,6 +1866,8 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
     var created = v - s, lo = created * 0.025, hi = created * 0.05;
     document.getElementById('o-start').textContent = '$' + s.toFixed(1) + 'M';
     document.getElementById('o-end').textContent = '$' + v.toFixed(1) + 'M';
+    cStart.setAttribute('aria-valuetext', '$' + s.toFixed(1) + ' million');
+    cEnd.setAttribute('aria-valuetext', '$' + v.toFixed(1) + ' million');
     document.getElementById('r-created').textContent = created > 0 ? money(created) : '$0';
     document.getElementById('r-fee').textContent = created > 0 ? money(lo) + '–' + money(hi) : '$0';
     document.getElementById('r-keep').textContent = created > 0 ? money(created - hi) + '–' + money(created - lo) : '$0';
