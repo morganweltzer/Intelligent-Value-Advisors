@@ -964,6 +964,18 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
       </div>
     </div>
   </div>
+<script>
+  // Phones open with every situation closed, before anything else on the page runs
+  (function () {
+    if (!window.matchMedia || !window.matchMedia('(max-width: 900px)').matches) return;
+    var picks = document.querySelectorAll('.pick'), answers = document.querySelector('.answers');
+    for (var i = 0; i < picks.length; i++) {
+      picks[i].setAttribute('aria-selected', 'false');
+      document.getElementById(picks[i].getAttribute('aria-controls')).hidden = true;
+    }
+    if (answers) answers.hidden = true;
+  })();
+</script>
 </section>
 
 <!-- NEXT CHAPTER -->
@@ -1479,13 +1491,21 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
     if (t.tagName !== 'SECTION') return t;
     return t.querySelector('.wrap') || t;
   }
+  // Jumps without animation in every browser; older Safari rejects behavior: 'instant'
+  function jump(y) {
+    var root = document.documentElement, prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, y);
+    root.style.scrollBehavior = prev;
+  }
+  // Older Safari only offers addListener for media-query changes
+  function onMediaChange(mq, fn) { if (mq.addEventListener) mq.addEventListener('change', fn); else if (mq.addListener) mq.addListener(fn); }
   function targetY(t) {
     if (t === header) return 0;
     var gap = window.innerWidth < 600 || window.innerHeight < 500 ? 16 : 28;
     var maxY = document.documentElement.scrollHeight - window.innerHeight;
     return Math.round(Math.min(maxY, Math.max(0, landingEl(t).getBoundingClientRect().top + window.scrollY - headerH() - gap)));
   }
-  // 'auto' would inherit the stylesheet's smooth scrolling, so jumps ask for 'instant' explicitly
   // Late font swaps or content resizing during a smooth scroll can move the target; once the scroll finishes, re-measure and correct
   var hasScrollEnd = 'onscrollend' in window;
   var settleTarget = null, settleTimer, settleExpiry;
@@ -1494,7 +1514,7 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
     cancelSettle();
     var y = targetY(t);
     if (Math.abs(window.scrollY - y) <= 2) return;
-    window.scrollTo({ top: y, behavior: instant || reduceMotion.matches ? 'instant' : 'smooth' });
+    if (instant || reduceMotion.matches) jump(y); else window.scrollTo({ top: y, behavior: 'smooth' });
     settleTarget = t;
     if (!hasScrollEnd) settleTimer = setTimeout(settle, 300);
     settleExpiry = setTimeout(cancelSettle, 4000);
@@ -1503,7 +1523,7 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
     if (!settleTarget) return;
     var y = targetY(settleTarget);
     cancelSettle();
-    if (Math.abs(window.scrollY - y) > 2) window.scrollTo({ top: y, behavior: 'instant' });
+    if (Math.abs(window.scrollY - y) > 2) jump(y);
   }
   if (hasScrollEnd) window.addEventListener('scrollend', settle);
   else window.addEventListener('scroll', function () {
@@ -1669,7 +1689,7 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
     }
     semantics();
   }
-  narrow.addEventListener('change', layout);
+  onMediaChange(narrow, layout);
   if (narrow.matches) mark(-1);
   layout();
 

@@ -638,6 +638,20 @@ footer li a:hover { color: var(--white); }
       </div>
     </div>
   </div>
+<script>
+  // Phones open with every situation closed, before anything else on the page runs
+  (function () {
+    if (!window.matchMedia || !window.matchMedia('(max-width: 959px)').matches) return;
+    var md = document.querySelector('[data-md-closable]');
+    if (!md) return;
+    var items = md.querySelectorAll('.md-item');
+    for (var i = 0; i < items.length; i++) {
+      items[i].setAttribute('aria-expanded', 'false');
+      document.getElementById(items[i].getAttribute('aria-controls')).hidden = true;
+    }
+    md.querySelector('.md-host').hidden = true;
+  })();
+</script>
 </section>
 
 <!-- THE PART MOST ADVISORS SKIP -->
@@ -1107,6 +1121,15 @@ footer li a:hover { color: var(--white); }
     if (t.tagName !== 'SECTION') return t;
     return t.querySelector('.container') || t;
   }
+  // Jumps without animation in every browser; older Safari rejects behavior: 'instant'
+  function jump(y) {
+    var root = document.documentElement, prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, y);
+    root.style.scrollBehavior = prev;
+  }
+  // Older Safari only offers addListener for media-query changes
+  function onMediaChange(mq, fn) { if (mq.addEventListener) mq.addEventListener('change', fn); else if (mq.addListener) mq.addListener(fn); }
   function targetY(t) {
     if (t === header) return 0;
     var gap = window.innerWidth < 600 || window.innerHeight < 500 ? 16 : 28;
@@ -1121,7 +1144,7 @@ footer li a:hover { color: var(--white); }
     cancelSettle();
     var y = targetY(t);
     if (Math.abs(window.scrollY - y) <= 2) return;
-    window.scrollTo({ top: y, behavior: instant || reduceMotion.matches ? 'instant' : 'smooth' });
+    if (instant || reduceMotion.matches) jump(y); else window.scrollTo({ top: y, behavior: 'smooth' });
     settleTarget = t;
     if (!hasScrollEnd) settleTimer = setTimeout(settle, 300);
     settleExpiry = setTimeout(cancelSettle, 4000);
@@ -1130,7 +1153,7 @@ footer li a:hover { color: var(--white); }
     if (!settleTarget) return;
     var y = targetY(settleTarget);
     cancelSettle();
-    if (Math.abs(window.scrollY - y) > 2) window.scrollTo({ top: y, behavior: 'instant' });
+    if (Math.abs(window.scrollY - y) > 2) jump(y);
   }
   if (hasScrollEnd) window.addEventListener('scrollend', settle);
   else window.addEventListener('scroll', function () { if (!settleTarget) return; clearTimeout(settleTimer); settleTimer = setTimeout(settle, 300); }, { passive: true });
@@ -1198,7 +1221,7 @@ footer li a:hover { color: var(--white); }
         if (j !== null) { e.preventDefault(); items[j].focus(); }
       });
     });
-    narrow.addEventListener('change', place);
+    onMediaChange(narrow, place);
     if (closable && narrow.matches) { cur = -1; show(-1); }
     place();
     mdSelectors.push({ el: md, select: select });
