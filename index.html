@@ -1,4 +1,23 @@
-<title>Intelligent Value Advisors Cincinnati</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Intelligent Value Advisors | Value Growth &amp; Exit Planning in Cincinnati</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#15253F">
+<!-- Link previews need absolute URLs: update these to the real domain at launch -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Intelligent Value Advisors">
+<meta property="og:title" content="Intelligent Value Advisors | Value Growth &amp; Exit Planning in Cincinnati">
+<meta property="og:description" content="Value growth and exit planning for middle-market business owners. Ron DeLyons, CEPA®, helps you build a more valuable business and the freedom it should give you.">
+<meta property="og:url" content="https://morganweltzer.github.io/Intelligent-Value-Advisors/">
+<meta property="og:image" content="https://morganweltzer.github.io/Intelligent-Value-Advisors/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Intelligent Value Advisors over the Cincinnati skyline: Build a more valuable business and the freedom it should give you.">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="Intelligent Value Advisors helps middle-market business owners build, protect, accelerate, and monetize value through Intelligent Value Acceleration™, the 5-4-3-2-1 framework.">
@@ -29,8 +48,8 @@
   --error: #B5482A;
   --serif: "EB Garamond", Garamond, "Times New Roman", serif;
   --sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --radius: 8px;
-  --radius-sm: 6px;
+  --radius: 16px;
+  --radius-sm: 8px;
   --wrap: 1180px;
   /* Type scale: every font size on the page uses one of these */
   --fs-micro: 11px;
@@ -82,7 +101,9 @@ h1, h2, h3, h4 { margin: 0; color: var(--navy); text-wrap: balance; }
 @media (max-width: 700px) { .section { padding-block: 72px; } .section-head { margin-bottom: 36px; } }
 
 /* Buttons */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--sans); font-weight: 700; font-size: var(--fs-body); line-height: 1.2; padding: 16px 26px; border-radius: var(--radius-sm); text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: background .15s, border-color .15s, color .15s; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--sans); font-weight: 700; font-size: var(--fs-body); line-height: 1.2; padding: 16px 26px; border-radius: var(--radius-sm); text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: background .15s, border-color .15s, color .15s, transform .2s var(--ease-out), box-shadow .2s var(--ease-out); }
+@media (hover: hover) { .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 18px -10px rgba(12,22,38,.45); } }
+.btn:active { transform: none; box-shadow: none; }
 .btn-primary { background: var(--gold); color: var(--navy); }
 .btn-primary:hover { background: var(--gold-hover); }
 .btn-navy { background: var(--navy); color: var(--white); }
@@ -103,7 +124,8 @@ header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
 .nav-links { display: flex; align-items: center; gap: 28px; }
 .nav-links a { text-decoration: none; color: var(--ink); font-weight: 500; font-size: var(--fs-small); }
 .nav-links a:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 6px; }
-.nav-links .btn { color: var(--white); }
+.nav-links .btn { color: var(--white); white-space: nowrap; }
+@media (min-width: 981px) and (max-width: 1120px) { .nav-links { gap: 20px; } .brand-name { font-size: var(--fs-lead); } }
 .nav-links .btn:hover { text-decoration: none; }
 .menu-btn { display: none; background: none; border: 1px solid var(--line); border-radius: var(--radius-sm); width: 44px; height: 44px; cursor: pointer; color: var(--navy); }
 @media (max-width: 980px) {
@@ -114,10 +136,19 @@ header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
   .nav-links li:last-child a { border: 0; margin-top: 12px; text-align: center; }
 }
 
-/* Hero: Mock-up #1 two-column grid on the Cincinnati navy + skyline */
-.hero { --sky-h: clamp(140px, 17vw, 280px); position: relative; background: var(--navy); color: var(--on-navy); padding-block: clamp(56px, 7vw, 88px) calc(var(--sky-h) * .55); overflow: hidden; }
-.skyline { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; height: var(--sky-h); pointer-events: none; }
-.skyline svg { display: block; width: 100%; height: 100%; }
+/* Hero: Mock-up #1 two-column grid over the Cincinnati photo */
+.hero { position: relative; background: var(--navy); color: var(--on-navy); padding-block: clamp(64px, 8vw, 112px); overflow: hidden; }
+/* Cincinnati photo under a navy wash: heavier behind the headline, lighter toward the skyline side */
+.hero-bg { position: absolute; inset: 0; z-index: 0; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 58%; }
+.hero-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(21,37,63,.94) 0%, rgba(21,37,63,.9) 52%, rgba(21,37,63,.74) 64%, rgba(21,37,63,.5) 82%, rgba(21,37,63,.4) 100%), linear-gradient(0deg, rgba(12,22,38,.45), rgba(12,22,38,0) 40%); }
+/* Phones and tablets: the panorama runs as a wide band across the top, close to its natural shape, so it is shown sharp rather than cropped to a sliver and magnified */
+@media (max-width: 900px) {
+  .hero { --band: clamp(260px, 84vw, 520px); padding-top: calc(var(--band) * .74); }
+  .hero-bg { inset: 0 0 auto 0; height: var(--band); }
+  .hero-bg img { object-position: 50% 62%; }
+  .hero-bg::after { background: linear-gradient(180deg, rgba(21,37,63,.3) 0%, rgba(21,37,63,.38) 45%, rgba(21,37,63,.84) 74%, rgba(21,37,63,1) 100%); }
+}
 .hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.2fr .8fr; gap: 64px; align-items: center; }
 .hero .eyebrow { color: var(--gold); }
 .hero h1 { color: var(--white); font-size: var(--fs-display); margin-bottom: 26px; }
@@ -127,7 +158,7 @@ header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 18px; }
 .hero-note { font-size: var(--fs-small); color: var(--on-navy-soft); display: flex; align-items: center; gap: 8px; margin: 0; }
 .hero-note svg { flex: none; width: 16px; height: 16px; }
-.cred-card { background: #1A2D4B; border: 1px solid rgba(255,255,255,.12); box-shadow: 0 30px 60px -30px rgba(0,0,0,.6); border-radius: var(--radius); overflow: hidden; max-width: 360px; width: 100%; justify-self: end; color: var(--on-navy); }
+.cred-card { background: rgba(21,37,63,.82); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 30px 60px -30px rgba(0,0,0,.6); border-radius: var(--radius); overflow: hidden; max-width: 360px; width: 100%; justify-self: end; color: var(--on-navy); }
 .cred-body { padding: 34px 32px 28px; position: relative; }
 .cred-body::before { content: ""; position: absolute; top: 0; left: 32px; width: 48px; height: 3px; background: var(--gold); border-radius: 0 0 2px 2px; }
 .cred-quote { margin: 0 0 24px; font-family: var(--serif); font-style: italic; font-size: var(--fs-serif-md); line-height: 1.3; color: var(--white); }
@@ -147,6 +178,18 @@ header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
   .cred-body::before { left: 22px; }
 }
 
+/* Phones: a shorter band and tighter spacing so the first screen holds the skyline, headline, intro, and buttons */
+@media (max-width: 760px) {
+  .hero { --band: clamp(150px, 42vw, 220px); padding-top: calc(var(--band) * .64); padding-bottom: 44px; }
+  .hero-bg::after { background: linear-gradient(180deg, rgba(21,37,63,.28) 0%, rgba(21,37,63,.36) 40%, rgba(21,37,63,.86) 64%, rgba(21,37,63,1) 92%); }
+  .hero .eyebrow { margin-bottom: 10px; }
+  .hero h1 { font-size: var(--fs-h1); margin-bottom: 12px; }
+  .hero .lede { line-height: 1.55; margin-bottom: 18px; }
+  .hero-ctas { flex-direction: column; gap: 10px; margin-bottom: 14px; }
+  .hero-ctas .btn { width: 100%; padding: 15px 16px; font-size: var(--fs-small); }
+  .hero-grid { gap: 32px; }
+}
+
 /* Proof strip */
 .proof { border-bottom: 1px solid var(--line); background: var(--white); }
 .proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
@@ -162,20 +205,6 @@ header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
   .proof-item:nth-child(odd) { padding-left: 0; }
 }
 @media (max-width: 420px) { .proof-num { white-space: normal; } }
-
-/* Introducing IVA */
-.iva-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: center; }
-.iva-grid .h2 { margin-bottom: 18px; }
-.verbs { display: grid; gap: 10px; }
-.verbs li { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 16px; align-items: center; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 20px 14px 14px; }
-.verbs .ico { width: 44px; height: 44px; border-radius: var(--radius); background: var(--sand-soft); display: flex; align-items: center; justify-content: center; color: var(--navy); }
-.verbs .ico svg { width: 20px; height: 20px; }
-.verbs .v { font-family: var(--serif); font-size: var(--fs-statement); line-height: 1.15; color: var(--navy); }
-.verbs li.final { background: var(--navy); border-color: var(--navy); }
-.verbs li.final .ico { background: var(--gold); color: var(--navy); }
-.verbs li.final .v { color: var(--white); }
-.verbs li.final .v em { color: var(--gold); }
-@media (max-width: 900px) { .iva-grid { grid-template-columns: 1fr; gap: 36px; } }
 
 /* Situation picker */
 .picker { display: grid; grid-template-columns: .95fr 1.05fr; gap: 28px; align-items: start; }
@@ -236,7 +265,7 @@ header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
 
 /* Framework: 5-4-3-2-1 */
 .ladder { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-bottom: 24px; }
-.ladder a { display: block; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 18px 16px; text-decoration: none; color: var(--ink); transition: background-color .25s var(--ease-out), border-color .25s var(--ease-out), color .25s var(--ease-out); }
+.ladder a { display: block; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 18px 18px 16px; text-decoration: none; color: var(--ink); transition: background-color .25s var(--ease-out), border-color .25s var(--ease-out), color .25s var(--ease-out); }
 .ladder .n, .ladder .t, .ladder .s { transition: color .25s var(--ease-out); }
 .ladder a:hover { border-color: var(--navy); }
 .ladder .n { display: block; font-family: var(--serif); font-size: 58px; line-height: .9; color: var(--navy); }
@@ -325,7 +354,7 @@ header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
 .report { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin: 0; }
 .report-head { background: var(--navy); color: var(--white); padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .report-head strong { font-size: var(--fs-small); font-weight: 600; }
-.report-head span { font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 5px 9px; border-radius: 4px; white-space: nowrap; }
+.report-head span { font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 5px 9px; border-radius: var(--radius-sm); white-space: nowrap; }
 .report-body { padding: 4px 24px 20px; }
 .meter { padding: 18px 0; border-bottom: 1px solid var(--line); }
 .meter-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 10px; }
@@ -346,7 +375,7 @@ header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
 /* 2 Assets */
 .two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 26px; }
 .two-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; background: var(--white); }
-.two-card .tag { display: inline-block; font-size: var(--fs-label); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; background: var(--sand-soft); color: var(--accent); padding: 6px 10px; border-radius: 4px; margin-bottom: 16px; }
+.two-card .tag { display: inline-block; font-size: var(--fs-label); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; background: var(--sand-soft); color: var(--accent); padding: 6px 10px; border-radius: var(--radius-sm); margin-bottom: 16px; }
 .two-card h3 { font-family: var(--serif); font-weight: 500; font-size: var(--fs-h3); margin-bottom: 6px; }
 .two-card .muted { font-family: var(--serif); font-style: italic; font-size: var(--fs-serif-sm); margin: 0; }
 .two-card ul { margin-top: 18px; display: grid; gap: 10px; }
@@ -384,7 +413,7 @@ header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
 .deliver li { display: flex; gap: 10px; font-weight: 500; }
 .deliver li svg { flex: none; width: 16px; height: 16px; margin-top: 5px; color: var(--navy); }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { font-size: var(--fs-small); font-weight: 600; background: var(--sand-soft); color: var(--navy); padding: 7px 12px; border-radius: 4px; }
+.chip { font-size: var(--fs-small); font-weight: 600; background: var(--sand-soft); color: var(--navy); padding: 7px 12px; border-radius: var(--radius-sm); }
 .step-controls { display: flex; justify-content: space-between; margin-top: 20px; }
 .step-controls button { background: none; border: 0; font-family: var(--sans); font-weight: 700; color: var(--navy); cursor: pointer; font-size: var(--fs-small); padding: 8px 0; }
 .step-controls button:disabled { color: var(--field); cursor: default; }
@@ -417,18 +446,18 @@ header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
   .compare td::before { content: attr(data-label); display: block; font-size: var(--fs-label); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--pewter); margin-bottom: 2px; }
   .compare td:last-child { border-bottom: 0; }
 }
-.team { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-top: 88px; }
+.team { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
 .team .h2 { margin-bottom: 18px; }
 .team-diagram { aspect-ratio: 1 / 1; max-width: min(440px, 100%); width: 100%; margin: 0 auto; }
 .team-diagram svg { width: 100%; height: 100%; }
-@media (max-width: 900px) { .team { grid-template-columns: 1fr; gap: 32px; margin-top: 64px; } }
+@media (max-width: 900px) { .team { grid-template-columns: 1fr; gap: 32px; } }
 
 /* Letter from Ron */
 .letter-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 64px; align-items: start; }
 .letter { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 52px 56px; }
 .letter-top { display: flex; align-items: center; gap: 16px; margin-bottom: 30px; }
 .avatar { width: 64px; height: 64px; border-radius: 50%; overflow: hidden; background: var(--sand); flex: none; }
-.avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
 .letter-top strong { display: block; font-size: var(--fs-body); }
 .letter-top span { font-size: var(--fs-small); color: var(--pewter); }
 .letter h2 { font-size: var(--fs-h2); margin-bottom: 24px; }
@@ -516,6 +545,11 @@ input[type=range]:focus-visible { outline: 3px solid var(--gold); outline-offset
 .expect .n { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,.12); color: var(--white); font-weight: 700; font-size: var(--fs-label); display: flex; align-items: center; justify-content: center; }
 .expect strong { display: block; color: var(--white); }
 .expect span { color: var(--on-navy-soft); font-size: var(--fs-small); }
+.direct { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--navy-line); display: grid; justify-items: start; gap: 2px; }
+.contact .direct-k { margin: 0 0 6px; font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+.direct a { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; color: var(--white); font-size: var(--fs-body); font-weight: 600; text-decoration: none; overflow-wrap: anywhere; }
+.direct a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.direct svg { flex: none; width: 20px; height: 20px; color: var(--gold); }
 form.card-form { background: var(--white); color: var(--ink); border-radius: var(--radius); padding: 36px; }
 form.card-form h3 { font-family: var(--serif); font-weight: 500; font-size: var(--fs-h3); margin-bottom: 4px; }
 form.card-form .muted { font-size: var(--fs-small); margin-bottom: 18px; }
@@ -525,6 +559,18 @@ form.card-form .muted { font-size: var(--fs-small); margin-bottom: 18px; }
 .f input, .f select, .f textarea { width: 100%; font: inherit; font-size: var(--fs-body); color: var(--ink); padding: 13px 14px; border: 1px solid var(--field); border-radius: var(--radius-sm); background: var(--white); }
 .f input:focus, .f select:focus, .f textarea:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px var(--sand); }
 .f input[aria-invalid="true"] { border-color: var(--error); }
+.f-error { margin: 6px 0 0; font-size: var(--fs-label); font-weight: 600; color: var(--error); }
+.form-status { margin: 14px 0 0; padding: 10px 14px; border-radius: var(--radius-sm); background: #FBEDE8; color: #7A2E18; font-size: var(--fs-small); line-height: 1.5; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+form.card-form .btn[disabled] { opacity: .7; cursor: progress; }
+.privacy a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+/* Text inside the white form card: the contact section's light-on-navy paragraph style must not reach it */
+form.card-form .muted, form.card-form .privacy, form.card-form .thanks p { color: var(--pewter); }
+form.card-form .muted { font-size: var(--fs-small); }
+form.card-form .privacy { font-size: var(--fs-label); }
+form.card-form .thanks p { font-size: var(--fs-body); }
+form.card-form .f-error { color: var(--error); font-size: var(--fs-label); }
+form.card-form .form-status { color: #7A2E18; font-size: var(--fs-small); }
 .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 form.card-form .btn { width: 100%; margin-top: 6px; }
 .privacy { display: flex; gap: 8px; font-size: var(--fs-label); color: var(--pewter); margin: 14px 0 0; line-height: 1.5; }
@@ -547,6 +593,7 @@ footer .brand-name small { color: var(--on-navy-soft); }
 .foot-cepa img { width: 32px; height: auto; }
 footer h4 { font-family: var(--sans); color: var(--white); font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 14px; }
 footer ul { display: grid; gap: 8px; }
+.foot-contact a { color: var(--white); }
 @media (pointer: coarse) {
   footer ul { gap: 0; }
   footer li a { display: inline-block; padding-block: 11px; }
@@ -558,6 +605,156 @@ footer a { color: var(--on-navy-soft); text-decoration: none; }
 footer a:hover { color: var(--white); text-decoration: underline; }
 .legal { padding-top: 24px; font-size: var(--fs-label); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 @media (max-width: 800px) { .foot-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+/* ===== Calm variant: fewer boxes, labels, and color bands; compact phone layouts ===== */
+/* One quiet background for most sections, separated by hairlines; the next-chapter section stays warm as a single accent */
+.section.fog { background: var(--white); }
+main > .section + .section { border-top: 1px solid var(--line); }
+#chapter.section { background: var(--fog); border-top: 0; }
+#chapter + .section { border-top: 0; }
+
+/* In-panel labels that repeat what the heading or tabs already say */
+.answer > .eyebrow, .step-panel .label, .two-card .tag { display: none; }
+
+/* The value path (formerly its own "Introducing" section) introduces the framework */
+.iva-path { margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--line); }
+.iva-path-k { margin: 0 0 8px; font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.iva-steps { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 0; }
+.iva-steps li { font-family: var(--serif); font-size: var(--fs-serif-sm); line-height: 1.3; color: var(--navy); }
+.iva-steps li:not(:last-child)::after { content: "→"; margin: 0 12px; font-family: var(--sans); font-size: var(--fs-small); color: var(--gold); }
+.iva-steps li.final em { font-style: italic; color: var(--accent); }
+
+/* Phones: the five value steps read as a short vertical ladder; the heading already names the framework, so its label is for screen readers only */
+@media (max-width: 760px) {
+  .iva-path { margin-top: 22px; padding-top: 16px; }
+  .iva-path-k { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .iva-steps { display: block; position: relative; }
+  .iva-steps li { position: relative; padding: 5px 0 5px 26px; }
+  .iva-steps li:not(:last-child)::after { content: ""; position: absolute; left: 5px; top: calc(5px + .65em); bottom: calc(-5px - .65em); width: 1px; margin: 0; background: var(--gold); opacity: .6; }
+  .iva-steps li::before { content: ""; position: absolute; left: 1px; top: calc(5px + .65em - 4px); width: 9px; height: 9px; border-radius: 50%; background: var(--fog); border: 1.5px solid var(--gold); }
+  .iva-steps li.final::before { background: var(--gold); }
+}
+
+/* Quiet motion: blocks ease up once as they arrive; the hero settles on load. Reduced-motion turns all of it off. */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s var(--ease-out), transform .7s var(--ease-out); }
+.reveal.in { opacity: 1; transform: none; }
+@keyframes rise-in { from { opacity: 0; transform: translateY(12px); } }
+@keyframes photo-settle { from { transform: scale(1.06); } }
+.hero-bg img { animation: photo-settle 2.4s var(--ease-out) both; }
+.hero-grid > div > *, .cred-card { animation: rise-in .8s var(--ease-out) both; }
+.hero-grid > div > :nth-child(2) { animation-delay: .08s; }
+.hero-grid > div > :nth-child(3) { animation-delay: .16s; }
+.hero-grid > div > :nth-child(4) { animation-delay: .24s; }
+.hero-grid > div > :nth-child(5) { animation-delay: .3s; }
+.cred-card { animation-delay: .34s; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+
+/* Compact comparison summary, shown on phones in place of the full table */
+.compare-simple { display: none; }
+.compare-simple h3 { font-family: var(--sans); font-weight: 700; font-size: var(--fs-lead); color: var(--ink); margin-bottom: 4px; }
+.compare-simple dl { margin: 0; }
+.compare-simple dl > div { padding: 14px 0; border-bottom: 1px solid var(--line); }
+.compare-simple dt { font-size: var(--fs-label); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--pewter); }
+.compare-simple dd { margin: 2px 0 0; }
+.compare-toggle { margin-top: 16px; background: none; border: 0; padding: 10px 0; font: inherit; font-size: var(--fs-small); font-weight: 700; color: var(--navy); cursor: pointer; }
+.compare-toggle::after { content: " ↓"; }
+.compare-toggle[aria-expanded="true"]::after { content: " ↑"; }
+
+@media (max-width: 760px) {
+  /* Lists read as lists: dividers and whitespace instead of a box around every item */
+  .intel-q { gap: 0; }
+  .intel-q li { background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 14px 0; }
+  .focus-grid { gap: 0 20px; }
+  .focus { background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 14px 0; }
+  .fee-cards { gap: 0; margin-bottom: 28px; }
+  .fee { background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 22px 0; }
+  .fee .num { margin-bottom: 10px; }
+  .cards { gap: 0; }
+  .cards.c4 { grid-template-columns: 1fr; }
+  .card { background: none; border-top: 1px solid var(--line); border-radius: 0; padding: 14px 0; }
+  .two { gap: 0; }
+  .two-card { background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 20px 0; }
+
+  /* No boxes inside boxes */
+  .fw-tabs .fw-row:not(.goal-row) { background: none; border: 0; padding: 6px 0 0; }
+  .step-panel { background: none; border: 0; padding: 0; }
+  .deliver { background: none; border-top: 1px solid var(--line); border-radius: 0; padding: 18px 0 0; }
+  .letter { background: none; border: 0; padding: 0; }
+  .fact-cepa { background: none; border: 0; padding: 0; }
+
+  /* Supporting pieces the surrounding text already covers */
+  .how-intel, .team-diagram, .flags { display: none; }
+
+  /* Comparison: short summary first, full table on request */
+  .compare-simple { display: block; }
+  .compare-wrap { display: none; margin-top: 8px; }
+  .compare-wrap.show { display: block; }
+  .compare-note { margin-top: 20px; }
+
+  /* Tighter rhythm: hairlines already separate sections */
+  .section { padding-block: 56px; }
+  .section-head { margin-bottom: 28px; }
+  .contact { padding-block: 56px; }
+
+  /* Fee calculator: same controls, less padding */
+  .calc { padding: 24px 18px; gap: 20px; }
+  .field { margin-top: 18px; }
+  .field label { margin-bottom: 4px; }
+  .calc-out { padding: 16px; }
+  .calc-row { padding: 8px 0; }
+}
+/* ===== Navy-led palette: navy, warm stone neutrals, white, and a touch of gold ===== */
+:root {
+  --fog: #F5F4F1;
+  --sand-soft: #ECEAE5;
+  --sand: #DDDAD3;
+  --line: #E4E2DD;
+  --field: #C4C0B8;
+  --head: #E8E6E0;
+  --head-line: #CFCBC2;
+}
+/* Light sections alternate white and pale navy mist; navy anchors the page at the hero, the next chapter, and contact */
+main > .section + .section { border-top: 0; }
+#situation, #philosophy, #how, #advisors, #fees { background: var(--white); }
+#framework, #team, #ron, #faq { background: var(--fog); }
+
+/* Tucked sheets: white and navy sections are raised sheets resting over the recessed stone sections */
+:root { --sheet-r: 32px; }
+main > section.section, main > section.contact { position: relative; --pad: 104px; }
+@media (max-width: 900px) { main > section.contact { --pad: 72px; } }
+@media (max-width: 760px) { :root { --sheet-r: 24px; } main > section.section, main > section.contact { --pad: 56px; } }
+#framework, #team, #ron, #faq { box-shadow: inset 0 14px 18px -14px rgba(21,37,63,.16), inset 0 -14px 18px -14px rgba(21,37,63,.16); }
+#chapter, #philosophy, #how, #advisors, #fees, main > section.contact { margin-top: calc(-1 * var(--sheet-r)); padding-top: calc(var(--pad) + var(--sheet-r)); border-radius: var(--sheet-r) var(--sheet-r) 0 0; box-shadow: 0 -14px 30px -18px rgba(12,22,38,.38); }
+
+#chapter.section { background: var(--navy); color: var(--on-navy-soft); }
+#chapter .eyebrow { color: var(--gold); }
+#chapter .h2 { color: var(--white); }
+#chapter blockquote { color: var(--gold); }
+#chapter .lede, #chapter .muted { color: var(--on-navy-soft); }
+#chapter .muted strong { color: var(--white); font-weight: 600; }
+#chapter .focus { background: rgba(255,255,255,.04); border-color: var(--navy-line); }
+#chapter .focus strong { color: var(--white); }
+#chapter .focus span { color: var(--on-navy-soft); }
+@media (max-width: 760px) { #chapter .focus { background: none; border-top-color: var(--navy-line); } }
+
+/* Navy focal points: one per light section, each on something worth noticing */
+.deliver { background: var(--navy); color: var(--on-navy); }
+.deliver h4 { color: var(--gold); }
+.deliver li svg { color: var(--gold); }
+.deliver .chip { background: rgba(255,255,255,.08); color: var(--white); }
+.faq-side .link-arrow { margin-top: 6px; padding: 12px 20px; border-radius: var(--radius-sm); background: var(--navy); color: var(--white); font-size: var(--fs-small); transition: background-color .15s, transform .2s var(--ease-out), box-shadow .2s var(--ease-out); }
+.faq-side .link-arrow:hover { background: var(--navy-2); text-decoration: none; }
+@media (hover: hover) { .faq-side .link-arrow:hover { transform: translateY(-1px); box-shadow: 0 8px 18px -10px rgba(12,22,38,.45); } }
+@media (max-width: 760px) {
+  .deliver { background: var(--navy); border-top: 0; border-radius: var(--radius); padding: 22px 20px; }
+  .compare-simple { background: var(--navy); color: var(--on-navy); border-radius: var(--radius); padding: 22px 20px 8px; }
+  .compare-simple h3 { color: var(--white); }
+  .compare-simple dl > div { border-bottom-color: var(--navy-line); }
+  .compare-simple dl > div:last-child { border-bottom: 0; }
+  .compare-simple dt { color: var(--gold); }
+  .compare-toggle { color: var(--gold); }
+}
+
 /* Phones: choosing a situation folds the old answer closed and unfolds the new one, both over half a second */
 @media (max-width: 900px) {
   .answers.unfolding { overflow: hidden; transition: height .5s cubic-bezier(.4, 0, .2, 1), margin-bottom .5s cubic-bezier(.4, 0, .2, 1); }
@@ -565,13 +762,67 @@ footer a:hover { color: var(--white); text-decoration: underline; }
   .answers-ghost { overflow: hidden; pointer-events: none; transition: height .5s cubic-bezier(.4, 0, .2, 1), margin-bottom .5s cubic-bezier(.4, 0, .2, 1), opacity .3s ease; }
   .answers-ghost.folding { height: 0 !important; margin-bottom: -10px; opacity: 0; }
 }
+
+/* ===== Consistency pass ===== */
+/* The five questions live with their Dimensions */
+.card .card-q { display: block; margin-top: 6px; font-family: var(--serif); font-style: italic; font-size: var(--fs-body); line-height: 1.35; color: var(--navy); quotes: "\201C" "\201D"; }
+.card .card-q + span { margin-top: 6px; }
+
+/* With the five questions moved to the framework, the band follows the statement directly */
+.philo + .iva-band { margin-top: clamp(32px, 4vw, 52px); }
+
+/* One depth idea per section: content inside raised and recessed sections sits flat, separated by hairlines */
+.how-intel { gap: 0 32px; }
+.how-intel li { background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 20px 0 0; }
+.fee-cards { gap: 0 32px; }
+.fee { background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 24px 0 0; }
+.focus-grid { gap: 0 24px; }
+.focus { background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 16px 0; }
+#chapter .focus { background: none; border-top-color: var(--navy-line); }
+.cards { gap: 0 24px; }
+.card { background: none; border-top: 1px solid var(--line); border-radius: 0; padding: 16px 0; }
+.fact-cepa { background: none; border: 0; padding: 0; }
+
+/* Small labels in navy-gray; gold stays for icons, rules, and text on navy */
+:root { --accent: #4F5D75; }
+
+/* Phones: engagement stages use the same tile row as the framework, all five in view */
+@media (max-width: 800px) {
+  .steps-scroll { overflow: visible; -webkit-mask-image: none; mask-image: none; }
+  .steps-nav { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; margin-bottom: 14px; }
+  .step-tab { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; min-height: 66px; padding: 10px 0 9px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--white); text-align: center; transition: background-color .25s var(--ease-out), border-color .25s var(--ease-out); }
+  .step-tab .num { margin: 0; width: 26px; height: 26px; }
+  .step-tab .nm { font-family: var(--sans); font-size: var(--fs-micro); font-weight: 600; line-height: 1.1; white-space: nowrap; color: var(--pewter); }
+  .step-tab[aria-selected="true"] { background: var(--navy); border-color: var(--navy); }
+  .step-tab[aria-selected="true"] .num { background: var(--gold); color: var(--navy); }
+  .step-tab[aria-selected="true"] .nm, .step-tab:hover .nm { color: var(--white); }
+  .step-tab:not([aria-selected="true"]):hover .nm { color: var(--navy); }
+  .progress { display: none; }
+}
+@media (max-width: 369px) { .step-tab .nm { display: none; } }
+.deliver .deliver-link { color: var(--gold); }
+
+/* Comparison table: the header row reads as a header, not as the section background */
+.compare thead th { background: var(--navy); color: var(--on-navy); border-bottom: 1px solid var(--navy); }
+.compare thead th.us { background: var(--navy-2); color: var(--gold); border-bottom-color: var(--navy-2); }
+
+/* Straight answers: Ron's column reads as the clear choice */
+@media (min-width: 761px) {
+  .compare td.us { padding-left: 54px; color: var(--navy); font-weight: 600; background: var(--sand-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='10' fill='%23C5A869'/%3E%3Cpath d='M5.5 10.4l3 3 6-6.4' fill='none' stroke='%2315253F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat 22px 20px / 20px 20px; }
+  .compare tbody td:not(.us) { color: var(--pewter); }
+}
+.compare-note { padding: 4px 0 4px 16px; border-left: 3px solid var(--gold); color: var(--ink); }
+@media (max-width: 760px) {
+  .compare-simple dd { padding-left: 28px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='10' fill='%23C5A869'/%3E%3Cpath d='M5.5 10.4l3 3 6-6.4' fill='none' stroke='%2315253F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat 0 3px / 18px 18px; color: var(--white); }
+}
 </style>
 
+</head>
+<body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-lock" viewBox="0 0 20 20"><rect x="4" y="9" width="12" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M7 9V6.5a3 3 0 016 0V9" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 20 20"><path d="M4 10h11M11 5.5l4.5 4.5-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-up" viewBox="0 0 20 20"><path d="M4 14l4.5-4.5 3 3L16 8M12 8h4v4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-mark" viewBox="2 11 120 68"><path fill="currentColor" d="M23.24 54.98V56H4.85V54.98L9.49 53.6V17.59L4.85 16.24V15.21H23.24V16.24L18.6 17.59V53.6ZM31.29 17.69 26.83 16.23V15.21H46.17V16.23L41.12 17.63L54.78 48.91L53.24 49.35L64.47 17.66L59.45 16.21V15.21H71.53V16.21L67.12 17.72L52.92 56.33H48.5ZM83.75 41.64V39.25H103.96V41.64ZM114.58 53.51 119.04 54.98V56H99.84V54.98L104.86 53.57L91.35 22.29L92.79 21.86L80.51 53.55L85.63 55V56H73.39V55L77.83 53.49L93.19 14.87H97.61Z"/><rect x="5" y="64" width="114" height="6" fill="currentColor"/><rect x="5" y="74" width="114" height="2.5" fill="#C5A869"/></symbol>
 </svg>
 
@@ -592,14 +843,14 @@ footer a:hover { color: var(--white); text-decoration: underline; }
       <li><a href="#ron">About Ron</a></li>
       <li><a href="#fees">Fees</a></li>
       <li><a href="#faq">Questions</a></li>
-      <li><a class="btn btn-navy btn-sm" href="#contact">Talk with Ron</a></li>
+      <li><a class="btn btn-navy btn-sm" href="#contact">Schedule a conversation</a></li>
     </ul>
   </div>
 </header>
 
 <main id="main">
 
-<!-- HERO: Mock-up #1 layout, Cincinnati navy + skyline -->
+<!-- HERO: Mock-up #1 layout over the Cincinnati photo -->
 <section class="hero" aria-labelledby="hero-title">
   <div class="wrap hero-grid">
     <div>
@@ -615,7 +866,7 @@ footer a:hover { color: var(--white); text-decoration: underline; }
     <aside class="cred-card" aria-label="About Ron DeLyons">
       <div class="cred-body">
         <blockquote class="cred-quote">I've founded, grown, and exited three businesses. I've sat where you're sitting.</blockquote>
-        <h2>Ron DeLyons, CEPA®</h2>
+        <h2>Ron DeLyons, CEPA</h2>
         <p class="role">Founder, Intelligent Value Advisors</p>
         <div class="cred-seal">
           <img src="cepa.webp" alt="Certified Exit Planning Advisor (CEPA) seal" width="34" height="36">
@@ -625,9 +876,7 @@ footer a:hover { color: var(--white); text-decoration: underline; }
       </div>
     </aside>
   </div>
-  <div class="skyline" aria-hidden="true">
-    <svg viewBox="0 0 1440 260" preserveAspectRatio="xMinYMax slice"><defs><pattern id="win" width="6" height="7" patternUnits="userSpaceOnUse"><rect x="1.6" y="1.8" width="2.4" height="3.2" fill="#FFFFFF" fill-opacity=".07"/></pattern></defs><g fill="#172843"><rect x="90" y="178" width="34" height="34"/><rect x="124" y="143" width="28" height="69"/><rect x="152" y="122" width="22" height="90"/><rect x="174" y="124" width="46" height="88"/><rect x="220" y="155" width="34" height="57"/><rect x="254" y="176" width="22" height="36"/><rect x="276" y="131" width="46" height="81"/><rect x="322" y="123" width="22" height="89"/><rect x="344" y="144" width="40" height="68"/><rect x="384" y="133" width="22" height="79"/><rect x="406" y="153" width="22" height="59"/><rect x="428" y="121" width="40" height="91"/><rect x="468" y="125" width="46" height="87"/><rect x="514" y="136" width="28" height="76"/><rect x="542" y="99" width="46" height="113"/><rect x="588" y="121" width="46" height="91"/><rect x="634" y="98" width="22" height="114"/><rect x="656" y="104" width="46" height="108"/><rect x="702" y="144" width="34" height="68"/><rect x="736" y="152" width="28" height="60"/><rect x="764" y="154" width="22" height="58"/><rect x="786" y="153" width="34" height="59"/><rect x="820" y="124" width="28" height="88"/><rect x="848" y="154" width="46" height="58"/><rect x="894" y="141" width="28" height="71"/><rect x="922" y="153" width="22" height="59"/><rect x="944" y="154" width="22" height="58"/><rect x="966" y="157" width="22" height="55"/><rect x="988" y="149" width="28" height="63"/></g><polygon points="150,212 150,160 190,160 190,212" fill="#192C4A" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><polygon points="214,212 214,146 250,146 250,212" fill="#192C4A" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><polygon points="286,212 286,128 330,128 330,212" fill="#192C4A" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><polygon points="346,212 346,112 376,112 376,212" fill="#192C4A" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><polygon points="452,212 452,100 486,100 486,212" fill="#192C4A" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><polygon points="560,212 560,96 586,96 586,212" fill="#192C4A" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><polygon points="626,212 626,104 666,104 666,212" fill="#192C4A" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><polygon points="690,212 690,120 720,120 720,212" fill="#192C4A" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><polygon points="760,212 760,132 804,132 804,212" fill="#192C4A" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><polygon points="842,212 842,150 882,150 882,212" fill="#192C4A" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><polygon points="900,212 900,166 940,166 940,212" fill="#192C4A" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><polygon points="120,212 120,184 150,184 150,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="123" y="189" width="24" height="19" fill="url(#win)"/><polygon points="150,212 150,172 176,172 176,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="153" y="177" width="20" height="31" fill="url(#win)"/><polygon points="176,212 176,164 214,164 214,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="179" y="169" width="32" height="39" fill="url(#win)"/><polygon points="214,212 214,176 244,176 244,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="217" y="181" width="24" height="27" fill="url(#win)"/><polygon points="244,212 244,154 276,154 276,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="247" y="159" width="26" height="49" fill="url(#win)"/><polygon points="276,212 276,142 302,142 302,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="279" y="147" width="20" height="61" fill="url(#win)"/><polygon points="302,212 302,124 338,124 338,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="305" y="129" width="30" height="79" fill="url(#win)"/><polygon points="338,212 338,134 376,134 376,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="341" y="139" width="32" height="69" fill="url(#win)"/><polygon points="378,212 378,96 382,96 382,84 386,84 386,74 390,74 395,62 400,74 404,74 404,84 408,84 408,96 412,96 412,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="381" y="101" width="28" height="107" fill="url(#win)"/><line x1="395" y1="62" x2="395" y2="50" stroke="rgba(255,255,255,.16)" stroke-width="1.2"/><polygon points="418,212 418,92 440,68 462,92 462,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><line x1="440" y1="68" x2="440" y2="56" stroke="rgba(255,255,255,.16)" stroke-width="1.2"/><line x1="424" y1="96" x2="424" y2="212" stroke="rgba(255,255,255,.06)" stroke-width="1"/><line x1="430" y1="96" x2="430" y2="212" stroke="rgba(255,255,255,.06)" stroke-width="1"/><line x1="436" y1="96" x2="436" y2="212" stroke="rgba(255,255,255,.06)" stroke-width="1"/><line x1="442" y1="96" x2="442" y2="212" stroke="rgba(255,255,255,.06)" stroke-width="1"/><line x1="448" y1="96" x2="448" y2="212" stroke="rgba(255,255,255,.06)" stroke-width="1"/><line x1="454" y1="96" x2="454" y2="212" stroke="rgba(255,255,255,.06)" stroke-width="1"/><polygon points="466,212 466,128 492,128 492,70 497,70 497,58 502,58 502,48 507,48 507,40 512,40 512,34 517,34 517,40 522,40 522,48 527,48 527,58 532,58 532,70 537,70 537,128 560,128 560,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="469" y="133" width="20" height="75" fill="url(#win)"/><rect x="495" y="75" width="39" height="133" fill="url(#win)"/><rect x="540" y="133" width="17" height="75" fill="url(#win)"/><polygon points="568,212 568,60 572,52 612,52 616,60 616,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="571" y="65" width="42" height="143" fill="url(#win)"/><path d="M566 54 Q592 -6 618 54 L609 54 Q592 18 575 54 Z" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1"/><line x1="578" y1="40" x2="578" y2="49" stroke="#15253F" stroke-width="1.6"/><line x1="585" y1="30" x2="585" y2="39" stroke="#15253F" stroke-width="1.6"/><line x1="592" y1="26" x2="592" y2="35" stroke="#15253F" stroke-width="1.6"/><line x1="599" y1="30" x2="599" y2="39" stroke="#15253F" stroke-width="1.6"/><line x1="606" y1="40" x2="606" y2="49" stroke="#15253F" stroke-width="1.6"/><polygon points="622,212 622,88 640,82 660,88 660,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="625" y="95" width="32" height="113" fill="url(#win)"/><polygon points="662,212 662,94 700,94 700,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="665" y="99" width="32" height="109" fill="url(#win)"/><rect x="672" y="86" width="16" height="8" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1"/><polygon points="702,212 702,110 736,110 736,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="705" y="115" width="28" height="93" fill="url(#win)"/><polygon points="738,212 738,118 774,110 774,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="741" y="125" width="30" height="83" fill="url(#win)"/><polygon points="776,212 776,104 812,104 812,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="779" y="109" width="30" height="99" fill="url(#win)"/><polygon points="814,212 814,124 844,124 844,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="817" y="129" width="24" height="79" fill="url(#win)"/><polygon points="844,212 844,138 884,138 884,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="847" y="143" width="34" height="65" fill="url(#win)"/><polygon points="884,212 884,150 912,150 912,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="887" y="155" width="22" height="53" fill="url(#win)"/><polygon points="912,212 912,164 948,164 948,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="915" y="169" width="30" height="39" fill="url(#win)"/><polygon points="948,212 948,178 978,178 978,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="951" y="183" width="24" height="25" fill="url(#win)"/><polygon points="978,212 978,188 1018,188 1018,212" fill="#1F3456" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linejoin="round"/><rect x="981" y="193" width="34" height="15" fill="url(#win)"/><g fill="#FFFFFF" fill-opacity=".32"><rect x="142.6" y="197.8" width="2.4" height="3.2"/><rect x="160.6" y="199.8" width="2.4" height="3.2"/><rect x="192.6" y="184.8" width="2.4" height="3.2"/><rect x="224.6" y="182.8" width="2.4" height="3.2"/><rect x="254.6" y="160.8" width="2.4" height="3.2"/><rect x="292.6" y="176.8" width="2.4" height="3.2"/><rect x="330.6" y="179.8" width="2.4" height="3.2"/><rect x="354.6" y="189.8" width="2.4" height="3.2"/><rect x="394.6" y="165.8" width="2.4" height="3.2"/><rect x="382.6" y="109.8" width="2.4" height="3.2"/><rect x="482.6" y="176.8" width="2.4" height="3.2"/><rect x="502.6" y="146.8" width="2.4" height="3.2"/><rect x="502.6" y="181.8" width="2.4" height="3.2"/><rect x="514.6" y="83.8" width="2.4" height="3.2"/><rect x="526.6" y="90.8" width="2.4" height="3.2"/><rect x="547.6" y="169.8" width="2.4" height="3.2"/><rect x="602.6" y="143.8" width="2.4" height="3.2"/><rect x="596.6" y="171.8" width="2.4" height="3.2"/><rect x="596.6" y="164.8" width="2.4" height="3.2"/><rect x="572.6" y="80.8" width="2.4" height="3.2"/><rect x="584.6" y="171.8" width="2.4" height="3.2"/><rect x="626.6" y="103.8" width="2.4" height="3.2"/><rect x="638.6" y="194.8" width="2.4" height="3.2"/><rect x="678.6" y="177.8" width="2.4" height="3.2"/><rect x="684.6" y="198.8" width="2.4" height="3.2"/><rect x="718.6" y="116.8" width="2.4" height="3.2"/><rect x="760.6" y="161.8" width="2.4" height="3.2"/><rect x="786.6" y="173.8" width="2.4" height="3.2"/><rect x="780.6" y="159.8" width="2.4" height="3.2"/><rect x="818.6" y="151.8" width="2.4" height="3.2"/><rect x="860.6" y="158.8" width="2.4" height="3.2"/><rect x="900.6" y="163.8" width="2.4" height="3.2"/><rect x="934.6" y="191.8" width="2.4" height="3.2"/><rect x="970.6" y="184.8" width="2.4" height="3.2"/><rect x="988.6" y="201.8" width="2.4" height="3.2"/></g><rect x="0" y="212" width="1440" height="48" fill="#0E1A2E"/><line x1="0" y1="212" x2="1440" y2="212" stroke="rgba(255,255,255,.1)" stroke-width="1"/><g stroke="#2E4870" stroke-width=".8"><line x1="1081" y1="118" x2="1021" y2="188"/><line x1="1081" y1="118" x2="1041" y2="188"/><line x1="1081" y1="118" x2="1059" y2="188"/><line x1="1081" y1="118" x2="1103" y2="188"/><line x1="1081" y1="118" x2="1121" y2="188"/><line x1="1081" y1="118" x2="1141" y2="188"/><line x1="1299" y1="118" x2="1239" y2="188"/><line x1="1299" y1="118" x2="1259" y2="188"/><line x1="1299" y1="118" x2="1277" y2="188"/><line x1="1299" y1="118" x2="1321" y2="188"/><line x1="1299" y1="118" x2="1339" y2="188"/><line x1="1299" y1="118" x2="1359" y2="188"/></g><g stroke="#34507A" stroke-width=".7"><line x1="1090.1" y1="122.9" x2="1090.1" y2="188"/><line x1="1099.2" y1="129.1" x2="1099.2" y2="188"/><line x1="1108.2" y1="134.8" x2="1108.2" y2="188"/><line x1="1117.3" y1="139.9" x2="1117.3" y2="188"/><line x1="1126.4" y1="144.4" x2="1126.4" y2="188"/><line x1="1135.5" y1="148.2" x2="1135.5" y2="188"/><line x1="1144.6" y1="151.5" x2="1144.6" y2="188"/><line x1="1153.7" y1="154.2" x2="1153.7" y2="188"/><line x1="1162.8" y1="156.3" x2="1162.8" y2="188"/><line x1="1171.8" y1="157.8" x2="1171.8" y2="188"/><line x1="1180.9" y1="158.7" x2="1180.9" y2="188"/><line x1="1190.0" y1="159.0" x2="1190.0" y2="188"/><line x1="1199.1" y1="158.7" x2="1199.1" y2="188"/><line x1="1208.2" y1="157.8" x2="1208.2" y2="188"/><line x1="1217.2" y1="156.3" x2="1217.2" y2="188"/><line x1="1226.3" y1="154.2" x2="1226.3" y2="188"/><line x1="1235.4" y1="151.5" x2="1235.4" y2="188"/><line x1="1244.5" y1="148.2" x2="1244.5" y2="188"/><line x1="1253.6" y1="144.4" x2="1253.6" y2="188"/><line x1="1262.7" y1="139.9" x2="1262.7" y2="188"/><line x1="1271.8" y1="134.8" x2="1271.8" y2="188"/><line x1="1280.8" y1="129.1" x2="1280.8" y2="188"/><line x1="1289.9" y1="122.9" x2="1289.9" y2="188"/><line x1="986.0" y1="185.1" x2="986.0" y2="188"/><line x1="1313.2" y1="125.1" x2="1313.2" y2="188"/><line x1="999.8" y1="174.5" x2="999.8" y2="188"/><line x1="1327.4" y1="134.4" x2="1327.4" y2="188"/><line x1="1013.6" y1="164.1" x2="1013.6" y2="188"/><line x1="1341.6" y1="143.8" x2="1341.6" y2="188"/><line x1="1027.2" y1="154.0" x2="1027.2" y2="188"/><line x1="1355.8" y1="153.5" x2="1355.8" y2="188"/><line x1="1040.8" y1="144.1" x2="1040.8" y2="188"/><line x1="1369.9" y1="163.3" x2="1369.9" y2="188"/><line x1="1054.3" y1="134.5" x2="1054.3" y2="188"/><line x1="1383.9" y1="173.4" x2="1383.9" y2="188"/><line x1="1067.7" y1="125.1" x2="1067.7" y2="188"/><line x1="1398.0" y1="183.6" x2="1398.0" y2="188"/></g><path d="M972 194 Q1028 150 1081 114 Q1190 200 1299 114 Q1356 150 1412 192" fill="none" stroke="#3A5682" stroke-width="1.4"/><path d="M972 197 Q1028 153 1081 117 Q1190 203 1299 117 Q1356 153 1412 195" fill="none" stroke="#3A5682" stroke-width="1.4"/><rect x="962" y="187" width="474" height="5" fill="#2B4469"/><line x1="962" y1="187" x2="1436" y2="187" stroke="rgba(255,255,255,.16)" stroke-width="1"/><polygon points="1064,216 1067,124 1069,116 1075,116 1075,108 1087,108 1087,116 1093,116 1095,124 1098,216" fill="#2B4469" stroke="rgba(255,255,255,.16)" stroke-width="1"/><path d="M1073 182 V146 a2.5 2.5 0 0 1 5 0 V182 Z" fill="#15253F"/><path d="M1084 182 V146 a2.5 2.5 0 0 1 5 0 V182 Z" fill="#15253F"/><polygon points="1282,216 1285,124 1287,116 1293,116 1293,108 1305,108 1305,116 1311,116 1313,124 1316,216" fill="#2B4469" stroke="rgba(255,255,255,.16)" stroke-width="1"/><path d="M1291 182 V146 a2.5 2.5 0 0 1 5 0 V182 Z" fill="#15253F"/><path d="M1302 182 V146 a2.5 2.5 0 0 1 5 0 V182 Z" fill="#15253F"/><g stroke="#FFFFFF" stroke-opacity=".06" stroke-width="1.4"><line x1="381" y1="220" x2="408" y2="220" stroke-dasharray="6 4"/><line x1="384" y1="227" x2="409" y2="227" stroke-dasharray="10 7"/><line x1="380" y1="234" x2="407" y2="234" stroke-dasharray="7 5"/><line x1="383" y1="241" x2="409" y2="241" stroke-dasharray="5 4"/><line x1="378" y1="248" x2="411" y2="248" stroke-dasharray="5 4"/><line x1="383" y1="255" x2="411" y2="255" stroke-dasharray="4 6"/><line x1="424" y1="220" x2="458" y2="220" stroke-dasharray="5 5"/><line x1="420" y1="227" x2="462" y2="227" stroke-dasharray="5 6"/><line x1="422" y1="234" x2="460" y2="234" stroke-dasharray="8 7"/><line x1="420" y1="241" x2="461" y2="241" stroke-dasharray="9 7"/><line x1="422" y1="248" x2="457" y2="248" stroke-dasharray="9 3"/><line x1="421" y1="255" x2="456" y2="255" stroke-dasharray="10 7"/><line x1="495" y1="220" x2="534" y2="220" stroke-dasharray="7 6"/><line x1="492" y1="227" x2="534" y2="227" stroke-dasharray="9 6"/><line x1="492" y1="234" x2="536" y2="234" stroke-dasharray="4 4"/><line x1="495" y1="241" x2="536" y2="241" stroke-dasharray="4 5"/><line x1="496" y1="248" x2="537" y2="248" stroke-dasharray="4 3"/><line x1="496" y1="255" x2="536" y2="255" stroke-dasharray="8 3"/><line x1="570" y1="220" x2="612" y2="220" stroke-dasharray="4 3"/><line x1="574" y1="227" x2="615" y2="227" stroke-dasharray="8 6"/><line x1="569" y1="234" x2="611" y2="234" stroke-dasharray="6 5"/><line x1="572" y1="241" x2="614" y2="241" stroke-dasharray="7 3"/><line x1="568" y1="248" x2="610" y2="248" stroke-dasharray="7 6"/><line x1="571" y1="255" x2="613" y2="255" stroke-dasharray="6 3"/><line x1="623" y1="220" x2="660" y2="220" stroke-dasharray="9 5"/><line x1="627" y1="227" x2="658" y2="227" stroke-dasharray="7 4"/><line x1="626" y1="234" x2="660" y2="234" stroke-dasharray="5 7"/><line x1="624" y1="241" x2="659" y2="241" stroke-dasharray="9 7"/><line x1="622" y1="248" x2="654" y2="248" stroke-dasharray="8 5"/><line x1="627" y1="255" x2="654" y2="255" stroke-dasharray="4 5"/><line x1="1070" y1="220" x2="1094" y2="220" stroke-dasharray="5 5"/><line x1="1072" y1="227" x2="1095" y2="227" stroke-dasharray="8 7"/><line x1="1072" y1="234" x2="1092" y2="234" stroke-dasharray="6 4"/><line x1="1070" y1="241" x2="1090" y2="241" stroke-dasharray="10 4"/><line x1="1072" y1="248" x2="1095" y2="248" stroke-dasharray="10 6"/><line x1="1071" y1="255" x2="1090" y2="255" stroke-dasharray="5 4"/><line x1="1288" y1="220" x2="1311" y2="220" stroke-dasharray="6 3"/><line x1="1284" y1="227" x2="1308" y2="227" stroke-dasharray="6 6"/><line x1="1286" y1="234" x2="1313" y2="234" stroke-dasharray="9 7"/><line x1="1286" y1="241" x2="1311" y2="241" stroke-dasharray="10 5"/><line x1="1286" y1="248" x2="1314" y2="248" stroke-dasharray="5 3"/><line x1="1285" y1="255" x2="1311" y2="255" stroke-dasharray="5 5"/></g></svg>
-  </div>
+  <div class="hero-bg" aria-hidden="true"><img src="cincinnati-hd.webp" alt="" width="3328" height="1440" fetchpriority="high"></div>
 </section>
 
 <!-- PROOF STRIP -->
@@ -635,7 +884,7 @@ footer a:hover { color: var(--white); text-decoration: underline; }
   <div class="wrap proof-grid">
     <div class="proof-item"><div class="proof-num">40</div><div class="proof-label">years as a business owner and entrepreneur</div></div>
     <div class="proof-item"><div class="proof-num">3</div><div class="proof-label">businesses founded, grown, and exited by Ron</div></div>
-    <div class="proof-item"><div class="proof-num">CEPA<span class="tm">®</span></div><div class="proof-label">Certified Exit Planning Advisor, Value Acceleration Methodology</div></div>
+    <div class="proof-item"><div class="proof-num">CEPA</div><div class="proof-label">Certified Exit Planning Advisor, Value Acceleration Methodology</div></div>
     <div class="proof-item"><div class="proof-num">5-4-3-2-1</div><div class="proof-label">our proprietary Intelligent Value Acceleration™ framework</div></div>
   </div>
 </section>
@@ -666,7 +915,7 @@ footer a:hover { color: var(--white); text-decoration: underline; }
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>The handful of factors holding your value down</li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>Your Owner Freedom Index™: how much the business depends on you</li>
           </ul>
-          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Find out what it's worth</a><a class="text" href="#scores">See the 3 Core Scores →</a></div>
+          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Schedule a conversation</a><a class="text" href="#scores">See the 3 Core Scores →</a></div>
         </div>
         <div class="answer" role="tabpanel" id="p-offers" aria-labelledby="t-offers" hidden>
           <span class="eyebrow">Where we'd start</span>
@@ -677,7 +926,7 @@ footer a:hover { color: var(--white); text-decoration: underline; }
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>Your options side by side: sell, recapitalize, or keep growing</li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>Fixes for key-person or partner risks before they cost you</li>
           </ul>
-          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Talk through an offer</a><a class="text" href="#how" data-step="3">See stage 4: Realize →</a></div>
+          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Schedule a conversation</a><a class="text" href="#how" data-step="3">See stage 4: Realize →</a></div>
         </div>
         <div class="answer" role="tabpanel" id="p-grow" aria-labelledby="t-grow" hidden>
           <span class="eyebrow">Where we'd start</span>
@@ -688,7 +937,7 @@ footer a:hover { color: var(--white); text-decoration: underline; }
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>Scorecards that show whether value is actually moving</li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>A leadership team that doesn't need you in every meeting</li>
           </ul>
-          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Build a growth plan</a><a class="text" href="#outcomes">See the 4 Strategic Outcomes →</a></div>
+          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Schedule a conversation</a><a class="text" href="#outcomes">See the 4 Strategic Outcomes →</a></div>
         </div>
         <div class="answer" role="tabpanel" id="p-family" aria-labelledby="t-family" hidden>
           <span class="eyebrow">Where we'd start</span>
@@ -699,7 +948,7 @@ footer a:hover { color: var(--white); text-decoration: underline; }
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>Leadership and succession planning for the next generation</li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>One coordinated plan instead of conflicting advice</li>
           </ul>
-          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Plan a family transition</a><a class="text" href="#advisors">How we coordinate advisors →</a></div>
+          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Schedule a conversation</a><a class="text" href="#advisors">How we coordinate advisors →</a></div>
         </div>
         <div class="answer" role="tabpanel" id="p-after" aria-labelledby="t-after" hidden>
           <span class="eyebrow">Where we'd start</span>
@@ -710,7 +959,7 @@ footer a:hover { color: var(--white); text-decoration: underline; }
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>Making sure your people and culture are protected</li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>A transition that moves you toward something new</li>
           </ul>
-          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Start that conversation</a><a class="text" href="#goal">See the 1 Goal →</a></div>
+          <div class="answer-foot"><a class="btn btn-primary btn-sm" href="#contact">Schedule a conversation</a><a class="text" href="#goal">See the 1 Goal →</a></div>
         </div>
       </div>
     </div>
@@ -737,7 +986,7 @@ footer a:hover { color: var(--white); text-decoration: underline; }
       <h2 class="h2" id="chapter-title">Life after ownership deserves a plan, too.</h2>
       <blockquote>"The business is not the destination. It's the vehicle."</blockquote>
       <p class="lede">Many owners close a great deal and then find that money alone doesn't bring purpose or direction. A good transition isn't just leaving something behind. It's moving deliberately toward something new.</p>
-      <p class="muted">Whatever path you choose, it's on the table: <strong style="color:var(--ink)">a sale, family transfer, ESOP, recapitalization, or management buyout.</strong></p>
+      <p class="muted">Whatever path you choose, it's on the table: <strong>a sale, family transfer, ESOP, recapitalization, or management buyout.</strong></p>
     </div>
     <div class="focus-grid">
       <div class="focus"><strong>Identity</strong><span>Who you are beyond "the owner"</span></div>
@@ -763,19 +1012,8 @@ footer a:hover { color: var(--white); text-decoration: underline; }
         <p class="big">They lack the time, perspective, and strategic intelligence necessary to consistently make the best decisions.</p>
       </div>
     </div>
-    <p class="leverages" id="iq-label">Five questions behind every decision we make</p>
-    <ol class="intel-q" aria-labelledby="iq-label">
-      <li><span class="iq-k"><b>1</b>Enterprise</span><q>What is my business really worth, and why?</q></li>
-      <li><span class="iq-k"><b>2</b>Market</span><q>What's changing around me?</q></li>
-      <li><span class="iq-k"><b>3</b>Decision</span><q>What are my real options?</q></li>
-      <li><span class="iq-k"><b>4</b>Owner</span><q>What do I actually want?</q></li>
-      <li><span class="iq-k"><b>5</b>Future</span><q>Where do today's choices lead?</q></li>
-    </ol>
-    <svg class="converge" viewBox="0 0 1000 56" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M100 0 C100 34 440 26 440 56"/><path d="M300 0 C300 34 470 26 470 56"/><path d="M500 0 L500 56"/><path d="M700 0 C700 34 530 26 530 56"/><path d="M900 0 C900 34 560 26 560 56"/>
-    </svg>
     <div class="iva-band">
-      <div><span class="k">Together, they create</span><strong>Intelligent Value Acceleration™</strong></div>
+      <div><span class="k">How we put it into practice</span><strong>Intelligent Value Acceleration</strong></div>
       <a href="#dimensions">See the 5 Dimensions in our framework →</a>
     </div>
     <ul class="how-intel" aria-label="How the intelligence reaches you">
@@ -786,32 +1024,23 @@ footer a:hover { color: var(--white); text-decoration: underline; }
   </div>
 </section>
 
-<!-- INTRODUCING IVA -->
-<section class="section fog" id="iva" aria-labelledby="iva-title">
-  <div class="wrap iva-grid">
-    <div>
-      <span class="eyebrow">Introducing</span>
-      <h2 class="h2" id="iva-title">Intelligent Value Acceleration™</h2>
-      <p class="lede">Intelligent Value Acceleration™ is our proprietary framework for helping business owners:</p>
-      <a class="link-arrow" href="#framework">How the framework works <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-    </div>
-    <ul class="verbs" aria-label="What the framework helps owners do">
-      <li><span class="ico" aria-hidden="true"><svg><use href="#i-up"/></svg></span><span class="v">Build Value</span></li>
-      <li><span class="ico" aria-hidden="true"><svg><use href="#i-up"/></svg></span><span class="v">Protect Value</span></li>
-      <li><span class="ico" aria-hidden="true"><svg><use href="#i-up"/></svg></span><span class="v">Accelerate Value</span></li>
-      <li><span class="ico" aria-hidden="true"><svg><use href="#i-up"/></svg></span><span class="v">Monetize Value</span></li>
-      <li class="final"><span class="ico" aria-hidden="true"><svg><use href="#i-up"/></svg></span><span class="v">Transform Value <em>into Freedom and Opportunity</em></span></li>
-    </ul>
-  </div>
-</section>
-
 <!-- OUR PROCESS: 5-4-3-2-1 -->
 <section class="section" id="framework" aria-labelledby="fw-title">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Our process · The 5-4-3-2-1 methodology</span>
-      <h2 class="h2" id="fw-title">The Intelligent Value Acceleration™ Framework</h2>
+      <h2 class="h2" id="fw-title">The Intelligent Value Acceleration Framework</h2>
       <p class="lede">Five dimensions of intelligence lead to four strategic outcomes, measured by three core scores, across the two assets every owner manages, all in service of one goal.</p>
+      <div class="iva-path">
+        <p class="iva-path-k" id="iva-path-k">Our proprietary framework for helping business owners</p>
+        <ol class="iva-steps" aria-labelledby="iva-path-k">
+          <li>Build Value</li>
+          <li>Protect Value</li>
+          <li>Accelerate Value</li>
+          <li>Monetize Value</li>
+          <li class="final">Transform Value <em>into Freedom and Opportunity</em></li>
+        </ol>
+      </div>
     </div>
     <nav class="ladder" aria-label="Framework levels">
         <a href="#dimensions"><span class="n">5</span><span><span class="t">Dimensions of Intelligence</span><span class="s" aria-hidden="true">Dimensions</span><span class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></span></a>
@@ -827,11 +1056,11 @@ footer a:hover { color: var(--white); text-decoration: underline; }
       <div>
         <p class="fw-intro">We begin by understanding five critical areas that influence both enterprise value and personal outcomes.</p>
         <div class="cards c5">
-          <div class="card"><strong>Enterprise Intelligence™</strong><span>Understanding the business.</span></div>
-          <div class="card"><strong>Market Intelligence™</strong><span>Understanding the marketplace.</span></div>
-          <div class="card"><strong>Decision Intelligence™</strong><span>Improving decision quality.</span></div>
-          <div class="card"><strong>Owner Intelligence™</strong><span>Understanding goals, motivations, and aspirations.</span></div>
-          <div class="card"><strong>Future Intelligence™</strong><span>Creating greater future opportunities.</span></div>
+          <div class="card"><strong>Enterprise Intelligence™</strong><q class="card-q">What is my business really worth, and why?</q><span>Understanding the business.</span></div>
+          <div class="card"><strong>Market Intelligence™</strong><q class="card-q">What's changing around me?</q><span>Understanding the marketplace.</span></div>
+          <div class="card"><strong>Decision Intelligence™</strong><q class="card-q">What are my real options?</q><span>Improving decision quality.</span></div>
+          <div class="card"><strong>Owner Intelligence™</strong><q class="card-q">What do I actually want?</q><span>Understanding goals, motivations, and aspirations.</span></div>
+          <div class="card"><strong>Future Intelligence™</strong><q class="card-q">Where do today's choices lead?</q><span>Creating greater future opportunities.</span></div>
         </div>
       </div>
     </div>
@@ -857,23 +1086,23 @@ footer a:hover { color: var(--white); text-decoration: underline; }
         <p class="fw-intro">Our assessments continuously measure progress.</p>
         <div class="scores-pair">
           <div class="score-defs">
-            <div class="card"><strong>Intelligent Value Score™</strong><span>How valuable is the business?</span></div>
-            <div class="card"><strong>Owner Freedom Index™</strong><span>How dependent is the owner?</span></div>
-            <div class="card"><strong>Destiny Readiness Score™</strong><span>How prepared is the owner for the next chapter?</span></div>
+            <div class="card"><strong>Intelligent Value Score</strong><span>How valuable is the business?</span></div>
+            <div class="card"><strong>Owner Freedom Index</strong><span>How dependent is the owner?</span></div>
+            <div class="card"><strong>Destiny Readiness Score</strong><span>How prepared is the owner for the next chapter?</span></div>
           </div>
           <figure class="report" aria-label="Sample owner scorecard">
             <div class="report-head"><strong>Owner Scorecard · Baseline</strong><span>Sample only</span></div>
             <div class="report-body">
               <div class="meter">
-                <div class="meter-top"><span class="meter-name">Intelligent Value Score™</span><span class="meter-val">64<small> /100</small></span></div>
+                <div class="meter-top"><span class="meter-name">Intelligent Value Score</span><span class="meter-val">64<small> /100</small></span></div>
                 <div class="bar"><span style="width:64%"></span></div>
               </div>
               <div class="meter">
-                <div class="meter-top"><span class="meter-name">Owner Freedom Index™</span><span class="meter-val">31<small> /100</small></span></div>
+                <div class="meter-top"><span class="meter-name">Owner Freedom Index</span><span class="meter-val">31<small> /100</small></span></div>
                 <div class="bar"><span style="width:31%"></span></div>
               </div>
               <div class="meter">
-                <div class="meter-top"><span class="meter-name">Destiny Readiness Score™</span><span class="meter-val">42<small> /100</small></span></div>
+                <div class="meter-top"><span class="meter-name">Destiny Readiness Score</span><span class="meter-val">42<small> /100</small></span></div>
                 <div class="bar"><span style="width:42%"></span></div>
               </div>
               <div class="flags">
@@ -938,7 +1167,7 @@ footer a:hover { color: var(--white); text-decoration: underline; }
     <div class="section-head">
       <span class="eyebrow">How an engagement unfolds</span>
       <h2 class="h2" id="how-title">From first conversation to next chapter.</h2>
-      <p class="lede">The 5-4-3-2-1 framework defines what we measure and what we aim for. These five stages are how the work happens, built on the CEPA® Value Acceleration Methodology, so you always know where you are and what comes next.</p>
+      <p class="lede">The 5-4-3-2-1 framework defines what we measure and what we aim for. These five stages are how the work happens, built on the CEPA Value Acceleration Methodology, so you always know where you are and what comes next.</p>
     </div>
     <div class="steps-scroll">
       <div class="steps-nav" role="tablist" aria-label="Engagement stages">
@@ -976,7 +1205,17 @@ footer a:hover { color: var(--white); text-decoration: underline; }
       <h2 class="h2" id="compare-title">Broker, banker, or advisor? Here's the difference.</h2>
       <p class="lede">Owners are rarely told who does what. Each plays a role. What matters is knowing which one you need, and when.</p>
     </div>
-    <div class="compare-wrap">
+    <div class="compare-simple">
+      <h3>How an exit planning advisor is different</h3>
+      <dl>
+        <div><dt>Main job</dt><dd>Grow value, reduce owner dependence, and prepare you for every option</dd></div>
+        <div><dt>When they start</dt><dd>Ideally years before, while there's time to build value</dd></div>
+        <div><dt>Assumes a sale?</dt><dd>No. Family transfer, ESOP, recapitalization, or simply keep growing</dd></div>
+        <div><dt>Your life after</dt><dd>Part of the plan from day one</dd></div>
+      </dl>
+      <button type="button" class="compare-toggle" aria-expanded="false" aria-controls="compare-full">Compare with brokers and bankers</button>
+    </div>
+    <div class="compare-wrap" id="compare-full">
       <table class="compare">
         <thead>
           <tr><th scope="col">&nbsp;</th><th scope="col">Business broker</th><th scope="col">Investment banker</th><th scope="col" class="us">Exit planning advisor (Ron)</th></tr>
@@ -991,27 +1230,33 @@ footer a:hover { color: var(--white); text-decoration: underline; }
     </div>
     <p class="compare-note">When it's time to transact, Ron works alongside the right broker or banker for you, so you go into the deal prepared.</p>
 
-    <div class="team" id="advisors">
+  </div>
+</section>
+
+<!-- YOUR STRATEGIC QUARTERBACK -->
+<section class="section" id="advisors" aria-labelledby="advisors-title">
+  <div class="wrap">
+    <div class="team">
       <div>
         <span class="eyebrow">Your strategic quarterback</span>
-        <h2 class="h2">Your advisors, finally on the same page.</h2>
+        <h2 class="h2" id="advisors-title">Your advisors, finally on the same page.</h2>
         <p class="lede">Your CPA focuses on taxes. Your attorney on legal matters. Your wealth advisor on your portfolio. Each is good at their job, but nobody is connecting the dots.</p>
         <p class="muted">Ron keeps the whole picture in view and aligns your existing advisors around one plan built on your goals. You don't have to replace anyone.</p>
       </div>
       <div class="team-diagram">
         <svg viewBox="0 0 440 440" role="img" aria-label="Diagram: you and Ron at the center, connected to your CPA, attorney, wealth advisor, banker or broker, insurance advisor, and family">
-          <g stroke="#E0D8C8" stroke-width="1.5">
+          <g style="stroke: var(--line)" stroke-width="1.5">
             <line x1="220" y1="220" x2="220" y2="58"/><line x1="220" y1="220" x2="360" y2="139"/><line x1="220" y1="220" x2="360" y2="301"/>
             <line x1="220" y1="220" x2="220" y2="382"/><line x1="220" y1="220" x2="80" y2="301"/><line x1="220" y1="220" x2="80" y2="139"/>
           </g>
           <circle cx="220" cy="220" r="150" fill="none" stroke="#C5A869" stroke-opacity=".6" stroke-dasharray="3 6"/>
           <g font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="600" fill="#16202F" text-anchor="middle">
-            <g><rect x="160" y="36" width="120" height="44" rx="4" fill="#FFFFFF" stroke="#E0D8C8"/><text x="220" y="63">CPA</text></g>
-            <g><rect x="296" y="117" width="128" height="44" rx="4" fill="#FFFFFF" stroke="#E0D8C8"/><text x="360" y="144">Attorney</text></g>
-            <g><rect x="296" y="279" width="128" height="44" rx="4" fill="#FFFFFF" stroke="#E0D8C8"/><text x="360" y="306">Wealth advisor</text></g>
-            <g><rect x="156" y="360" width="128" height="44" rx="4" fill="#FFFFFF" stroke="#E0D8C8"/><text x="220" y="387">Banker / broker</text></g>
-            <g><rect x="16" y="279" width="128" height="44" rx="4" fill="#FFFFFF" stroke="#E0D8C8"/><text x="80" y="306">Insurance</text></g>
-            <g><rect x="16" y="117" width="128" height="44" rx="4" fill="#FFFFFF" stroke="#E0D8C8"/><text x="80" y="144">Family</text></g>
+            <g><rect x="160" y="36" width="120" height="44" rx="4" fill="#FFFFFF" style="stroke: var(--line)"/><text x="220" y="63">CPA</text></g>
+            <g><rect x="296" y="117" width="128" height="44" rx="4" fill="#FFFFFF" style="stroke: var(--line)"/><text x="360" y="144">Attorney</text></g>
+            <g><rect x="296" y="279" width="128" height="44" rx="4" fill="#FFFFFF" style="stroke: var(--line)"/><text x="360" y="306">Wealth advisor</text></g>
+            <g><rect x="156" y="360" width="128" height="44" rx="4" fill="#FFFFFF" style="stroke: var(--line)"/><text x="220" y="387">Banker / broker</text></g>
+            <g><rect x="16" y="279" width="128" height="44" rx="4" fill="#FFFFFF" style="stroke: var(--line)"/><text x="80" y="306">Insurance</text></g>
+            <g><rect x="16" y="117" width="128" height="44" rx="4" fill="#FFFFFF" style="stroke: var(--line)"/><text x="80" y="144">Family</text></g>
           </g>
           <circle cx="220" cy="220" r="66" fill="#15253F"/>
           <circle cx="220" cy="220" r="59" fill="none" stroke="#C5A869" stroke-opacity=".5"/>
@@ -1028,7 +1273,7 @@ footer a:hover { color: var(--white); text-decoration: underline; }
   <div class="wrap letter-grid">
     <article class="letter">
       <div class="letter-top">
-        <div class="avatar"><img src="ron.webp" alt="" width="64" height="64"></div>
+        <div class="avatar"><img src="ron-seated.webp" alt="" width="64" height="64"></div>
         <div><strong>A note from Ron DeLyons</strong><span>Founder, Intelligent Value Advisors</span></div>
       </div>
       <h2 class="h2" id="ron-title">I've sat where you're sitting.</h2>
@@ -1039,11 +1284,11 @@ footer a:hover { color: var(--white); text-decoration: underline; }
       <p class="sign">Ron DeLyons</p>
     </article>
     <aside class="facts" aria-label="Ron's background">
-      <div class="fact-cepa"><img src="cepa.webp" alt="CEPA seal" width="40" height="42"><div><strong>Certified Exit Planning Advisor (CEPA®)</strong><span>Trained in the Value Acceleration Methodology</span></div></div>
+      <div class="fact-cepa"><img src="cepa.webp" alt="CEPA seal" width="40" height="42"><div><strong>Certified Exit Planning Advisor (CEPA)</strong><span>Trained in the Value Acceleration Methodology</span></div></div>
       <div class="fact"><strong>Three-time founder</strong><span>Built, grew, and exited three businesses over 40 years</span></div>
       <div class="fact"><strong>Life after ownership</strong><span>Guided by the principles of Christopher Snider's <em>Walking to Destiny</em></span></div>
       <div class="fact"><strong>Middle-market focus</strong><span>Founders, family businesses, and private owners of middle-market companies</span></div>
-      <a class="btn btn-navy" href="#contact">Schedule time with Ron</a>
+      <a class="btn btn-navy" href="#contact">Schedule a conversation</a>
     </aside>
   </div>
 </section>
@@ -1066,21 +1311,21 @@ footer a:hover { color: var(--white); text-decoration: underline; }
         <h3>See it with your own numbers.</h3>
         <p class="muted">Move the sliders to estimate the performance fee. You'll see most of the value created stays with you.</p>
         <div class="field">
-          <label for="c-start">Value today <output id="o-start" for="c-start">$5.0M</output></label>
-          <input type="range" id="c-start" min="2" max="100" step="0.5" value="5">
+          <label for="c-start">Value today <output id="o-start" for="c-start">$8.0M</output></label>
+          <input type="range" id="c-start" min="2" max="100" step="0.5" value="8">
         </div>
         <div class="field">
-          <label for="c-end">Value after 36 months <output id="o-end" for="c-end">$15.0M</output></label>
-          <input type="range" id="c-end" min="2" max="200" step="0.5" value="15">
+          <label for="c-end">Value after 36 months <output id="o-end" for="c-end">$11.0M</output></label>
+          <input type="range" id="c-end" min="2" max="200" step="0.5" value="11">
         </div>
       </div>
       <div class="calc-out" aria-live="polite">
-        <div class="calc-row"><span>Value created</span><b id="r-created">$10M</b></div>
-        <div class="calc-row"><span>Performance fee (2.5%–5%)</span><b id="r-fee">$250K–$500K</b></div>
-        <div class="calc-row big"><span>You keep</span><b id="r-keep">$9.5M–$9.75M</b></div>
+        <div class="calc-row"><span>Value created</span><b id="r-created">$3M</b></div>
+        <div class="calc-row"><span>Performance fee (2.5%–5%)</span><b id="r-fee">$75K–$150K</b></div>
+        <div class="calc-row big"><span>You keep</span><b id="r-keep">$2.85M–$2.93M</b></div>
         <div class="split" aria-hidden="true"><div class="keep" style="width:95%"></div><div class="fee-part" style="width:5%"></div></div>
         <div class="legend"><span><i style="background:var(--navy)"></i>Yours (95%+)</span><span><i style="background:var(--gold)"></i>Fee, at most 5%</span></div>
-        <p class="calc-fine">Illustration of the performance fee only, at the high and low end of the range. Discovery and monthly advisory fees are separate. Exact terms are agreed in writing before an engagement begins.</p>
+        <p class="calc-fine">Illustration of the performance fee only, at the high and low end of the range. Discovery and monthly advisory fees are separate. Exact terms are agreed in writing before an engagement begins. How value created is measured, and when, is set out in your engagement agreement.</p>
       </div>
     </div>
   </div>
@@ -1096,9 +1341,13 @@ footer a:hover { color: var(--white); text-decoration: underline; }
       <a class="link-arrow" href="#contact">Ask a question <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
     <div class="faq">
-      <details open>
+      <details>
         <summary>What is the 5-4-3-2-1 methodology?</summary>
-        <div class="ans"><p>It's the structure of Intelligent Value Acceleration™. We look at your business through 5 Dimensions of Intelligence, work toward 4 Strategic Outcomes, track progress with 3 Core Scores, and care for the 2 Assets you manage, your company and your life, toward 1 Goal: transforming enterprise value into life value.</p></div>
+        <div class="ans"><p>It's the structure of Intelligent Value Acceleration. We look at your business through 5 Dimensions of Intelligence, work toward 4 Strategic Outcomes, track progress with 3 Core Scores, and care for the 2 Assets you manage, your company and your life, toward 1 Goal: transforming enterprise value into life value.</p></div>
+      </details>
+      <details>
+        <summary>How do I know if I'll have enough to step away?</summary>
+        <div class="ans"><p>That's the financial side of exit readiness, and it matters as much as the business side. Working with your wealth advisor, we estimate what the life you want after ownership will cost, compare it with what the business is realistically worth, and show you any gap. Then your plan is built to close it.</p></div>
       </details>
       <details>
         <summary>Do I have to be planning to sell?</summary>
@@ -1113,12 +1362,12 @@ footer a:hover { color: var(--white); text-decoration: underline; }
         <div class="ans"><p>Yes, and that's a big part of the value. Ron coordinates your existing advisors around one plan, so you stop getting conflicting advice. You don't need to replace anyone.</p></div>
       </details>
       <details>
-        <summary>What does "AI-powered" actually mean here?</summary>
+        <summary>What does "AI-assisted" actually mean here?</summary>
         <div class="ans"><p>We use modern analytical tools to gather benchmarks, track market changes, and spot risks and opportunities faster than manual research allows. Ron reviews it all and turns it into clear recommendations in your quarterly reports.</p></div>
       </details>
       <details>
         <summary>How does the performance fee work if value doesn't grow?</summary>
-        <div class="ans"><p>The Value Acceleration Fee™ is a percentage of the <em>increase</em> in your company's value, so it's tied directly to growth. The fixed Discovery fee and monthly advisory fee are agreed up front, so you'll know every cost before you begin.</p></div>
+        <div class="ans"><p>The Value Acceleration Fee is a percentage of the <em>increase</em> in your company's value, so it's tied directly to growth. The fixed Discovery fee and monthly advisory fee are agreed up front, so you'll know every cost before you begin.</p></div>
       </details>
       <details>
         <summary>Is our conversation confidential?</summary>
@@ -1145,17 +1394,23 @@ footer a:hover { color: var(--white); text-decoration: underline; }
         <li><span class="n">2</span><div><strong>Ron reaches out personally</strong><span>To find a time that works for you.</span></div></li>
         <li><span class="n">3</span><div><strong>A straightforward conversation</strong><span>About your business, your goals, and whether we're a good fit.</span></div></li>
       </ul>
+      <div class="direct">
+        <p class="direct-k">Prefer to reach Ron directly?</p>
+        <a href="tel:+15133482900"><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M6.6 3.5l2 3.2-1.4 1.6a9.5 9.5 0 004.5 4.5l1.6-1.4 3.2 2-1 2.6c-.3.6-.9 1-1.6.9C8.6 16.4 3.6 11.4 3.1 6.1c-.1-.7.3-1.3.9-1.6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>(513) 348-2900</a>
+        <a href="mailto:ron@intelligent-value.com"><svg aria-hidden="true" viewBox="0 0 20 20"><rect x="2.5" y="4.5" width="15" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 5.5l7 5.5 7-5.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>ron@intelligent-value.com</a>
+      </div>
     </div>
-    <form class="card-form" id="contact-form" novalidate>
+    <!-- To deliver requests, set data-endpoint to the form service URL (for example https://formspree.io/f/xxxxxxx) -->
+    <form class="card-form" id="contact-form" novalidate data-endpoint="">
       <div id="form-fields">
         <h3>Request a conversation</h3>
         <p class="muted">Everything you share stays between you and Ron.</p>
         <div class="f-row">
-          <div class="f"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
+          <div class="f"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required aria-required="true" aria-describedby="f-name-err"><p class="f-error" id="f-name-err" hidden>Please enter your name.</p></div>
           <div class="f"><label for="f-company">Company</label><input id="f-company" name="company" autocomplete="organization"></div>
         </div>
         <div class="f-row">
-          <div class="f"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="f"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required aria-required="true" aria-describedby="f-email-err"><p class="f-error" id="f-email-err" hidden>Please enter a valid email address.</p></div>
           <div class="f"><label for="f-phone">Phone <span class="opt">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
         </div>
         <div class="f">
@@ -1170,8 +1425,11 @@ footer a:hover { color: var(--white); text-decoration: underline; }
           </select>
         </div>
         <div class="f"><label for="f-msg">Anything else? <span class="opt">(optional)</span></label><textarea id="f-msg" name="message" rows="3" placeholder="e.g. We're a 60-person manufacturer and I'm thinking about the next five years."></textarea></div>
-        <button class="btn btn-primary" type="submit">Request my conversation</button>
-        <p class="privacy"><svg aria-hidden="true"><use href="#i-lock"/></svg>Confidential. We never share or sell your information.</p>
+        <div class="hp" aria-hidden="true"><label for="f-website">Leave this field empty</label><input id="f-website" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+        <input type="hidden" name="_subject" value="New conversation request from the website">
+        <button class="btn btn-primary" type="submit">Request a conversation</button>
+        <p class="form-status" id="form-status" role="status" hidden></p>
+        <p class="privacy"><svg aria-hidden="true"><use href="#i-lock"/></svg><span>Confidential. We never share or sell your information. <a href="privacy.html">Privacy policy</a></span></p>
       </div>
       <div class="thanks" id="form-thanks" hidden tabindex="-1">
         <span class="check"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
@@ -1187,10 +1445,11 @@ footer a:hover { color: var(--white); text-decoration: underline; }
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a class="brand" href="#top"><svg class="brand-mark" aria-hidden="true"><use href="#i-mark"/></svg><span class="brand-name">Intelligent Value Advisors®<small>Creators of Intelligent Value Acceleration™</small></span></a>
-        <p class="foot-tag">Transform Enterprise Value Into Life Value™</p>
+        <a class="brand" href="#top"><svg class="brand-mark" aria-hidden="true"><use href="#i-mark"/></svg><span class="brand-name">Intelligent Value Advisors®<small>Creators of Intelligent Value Acceleration</small></span></a>
+        <p class="foot-tag">Transform Enterprise Value Into Life Value</p>
         <p>Value growth and exit planning for middle-market business owners. Cincinnati, Ohio.</p>
-        <div class="foot-cepa"><img src="cepa.webp" alt="" width="32" height="34"><span>Ron DeLyons is a Certified Exit Planning Advisor (CEPA®)</span></div>
+        <p class="foot-contact"><a href="tel:+15133482900">(513) 348-2900</a><span aria-hidden="true"> · </span><a href="mailto:ron@intelligent-value.com">ron@intelligent-value.com</a></p>
+        <div class="foot-cepa"><img src="cepa.webp" alt="" width="32" height="34"><span>Ron DeLyons is a Certified Exit Planning Advisor (CEPA)</span></div>
       </div>
       <div>
         <h4>Explore</h4>
@@ -1213,7 +1472,7 @@ footer a:hover { color: var(--white); text-decoration: underline; }
     </div>
     <div class="legal">
       <span>© 2026 Intelligent Value Advisors. All rights reserved.</span>
-      <span>CEPA® is a registered mark of the Exit Planning Institute.</span>
+      <span>CEPA® is a registered mark of the Exit Planning Institute. · <a href="privacy.html">Privacy policy</a></span>
     </div>
   </div>
 </footer>
@@ -1227,10 +1486,10 @@ footer a:hover { color: var(--white); text-decoration: underline; }
   function setHeaderVar() { document.documentElement.style.setProperty('--header-h', Math.round(headerH()) + 'px'); }
   setHeaderVar();
   window.addEventListener('resize', setHeaderVar);
+  // The section's container, not its first child: children may be mid fade-in, and transforms would skew the measurement
   function landingEl(t) {
     if (t.tagName !== 'SECTION') return t;
-    var wrap = t.querySelector('.wrap');
-    return (wrap && wrap.firstElementChild) || t;
+    return t.querySelector('.wrap') || t;
   }
   // Jumps without animation in every browser; older Safari rejects behavior: 'instant'
   function jump(y) {
@@ -1434,11 +1693,18 @@ footer a:hover { color: var(--white); text-decoration: underline; }
   if (narrow.matches) mark(-1);
   layout();
 
+  var cmpBtn = document.querySelector('.compare-toggle'), cmpFull = document.getElementById('compare-full');
+  cmpBtn.addEventListener('click', function () {
+    var open = cmpFull.classList.toggle('show');
+    cmpBtn.setAttribute('aria-expanded', open);
+    if (open) animateIn(cmpFull, 0);
+  });
+
   // Engagement stepper
   var steps = [
     { title: "Understand where you stand today.", head: "What you walk away with",
       body: "We start with an honest picture of the business and of you: what it's worth, what drives and suppresses that value, how dependent it is on you, and what you want from the years ahead.",
-      items: ["Baseline valuation", "Starting Intelligent Value Score™", "Starting Owner Freedom Index™", "Starting Destiny Readiness Score™"] },
+      items: ["Baseline valuation", "A first look at your financial readiness, with your wealth advisor", "Starting Intelligent Value Score", "Starting Owner Freedom Index", "Starting Destiny Readiness Score"] },
     { title: "Build a roadmap you believe in.", head: "What you walk away with",
       body: "Together we turn what we learned into a focused plan: the few priorities that will raise value the most, a path to make the business less dependent on you, and a clear picture of the future you're working toward.",
       items: ["36-month value acceleration plan", "Priorities tied to the 4 Strategic Outcomes", "Freedom roadmap", "Future vision framework"] },
@@ -1450,7 +1716,7 @@ footer a:hover { color: var(--white); text-decoration: underline; }
       chips: ["Sale", "Family transfer", "ESOP", "Recapitalization", "Management buyout"] },
     { title: "Design what comes next.", head: "What we focus on",
       body: "The deal isn't the finish line. We help you plan a next chapter that is as intentional as the company you built, so you leave excited about where you're going.",
-      chips: ["Identity", "Purpose", "Legacy", "Family", "Impact", "Contribution"] }
+      link: { text: "Explore them in Life after ownership", href: "#chapter" } }
   ];
   var words = ['one', 'two', 'three', 'four', 'five'];
   var stepTabs = Array.prototype.slice.call(document.querySelectorAll('.step-tab'));
@@ -1470,7 +1736,8 @@ footer a:hover { color: var(--white); text-decoration: underline; }
     document.getElementById('sp-dhead').textContent = s.head;
     document.getElementById('sp-list').innerHTML = s.items
       ? '<ul>' + s.items.map(function (x) { return '<li>' + check + esc(x) + '</li>'; }).join('') + '</ul>'
-      : '<div class="chips">' + s.chips.map(function (x) { return '<span class="chip">' + esc(x) + '</span>'; }).join('') + '</div>';
+      : s.chips ? '<div class="chips">' + s.chips.map(function (x) { return '<span class="chip">' + esc(x) + '</span>'; }).join('') + '</div>'
+      : '<a class="link-arrow deliver-link" href="' + s.link.href + '">' + esc(s.link.text) + ' →</a>';
     document.getElementById('step-prev').disabled = i === 0;
     document.getElementById('step-next').disabled = i === steps.length - 1;
     revealInStrip(stepsStrip, stepTabs[i]);
@@ -1587,6 +1854,26 @@ footer a:hover { color: var(--white); text-decoration: underline; }
 
   animReady = true;
 
+  var revealSel = 'main .section-head, .proof-grid, .picker, .chapter > *, .philo, .intel-q, .iva-band, .how-intel, .steps-scroll, .step-panel, .compare-simple, .compare-wrap, .team > *, .letter-grid > *, .fee-cards, .calc, .faq-grid > *, .contact-grid > *';
+  var pending = reduceMotion.matches ? [] : Array.prototype.slice.call(document.querySelectorAll(revealSel));
+  var revealQueued = false;
+  function reveal() {
+    revealQueued = false;
+    var limit = window.innerHeight * .92;
+    pending = pending.filter(function (el) {
+      if (el.getBoundingClientRect().top < limit) { el.classList.add('in'); return false; }
+      return true;
+    });
+    if (!pending.length) window.removeEventListener('scroll', queueReveal);
+  }
+  function queueReveal() { if (!revealQueued) { revealQueued = true; requestAnimationFrame(reveal); } }
+  pending.forEach(function (el) { el.classList.add('reveal'); });
+  if (pending.length) {
+    window.addEventListener('scroll', queueReveal, { passive: true });
+    window.addEventListener('resize', queueReveal);
+    requestAnimationFrame(reveal);
+  }
+
   // Fee calculator
   var cStart = document.getElementById('c-start'), cEnd = document.getElementById('c-end');
   // Rounds in whole dollars, half up: decimal fractions like 2.925 are stored as 2.92499… in binary, so rounding the float drops a cent's worth
@@ -1602,25 +1889,54 @@ footer a:hover { color: var(--white); text-decoration: underline; }
     var created = v - s, lo = created * 0.025, hi = created * 0.05;
     document.getElementById('o-start').textContent = '$' + s.toFixed(1) + 'M';
     document.getElementById('o-end').textContent = '$' + v.toFixed(1) + 'M';
+    cStart.setAttribute('aria-valuetext', '$' + s.toFixed(1) + ' million');
+    cEnd.setAttribute('aria-valuetext', '$' + v.toFixed(1) + ' million');
     document.getElementById('r-created').textContent = created > 0 ? money(created) : '$0';
     document.getElementById('r-fee').textContent = created > 0 ? money(lo) + '–' + money(hi) : '$0';
     document.getElementById('r-keep').textContent = created > 0 ? money(created - hi) + '–' + money(created - lo) : '$0';
   }
   cStart.addEventListener('input', calc); cEnd.addEventListener('input', calc); calc();
 
-  // Contact form (front-end only; connect to a form service before launch)
+  // Contact form: validates, then posts to the form service named in data-endpoint. Until that is set, it says so plainly.
   var form = document.getElementById('contact-form');
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var ok = true;
-    [document.getElementById('f-name'), document.getElementById('f-email')].forEach(function (el) {
-      var valid = el.value.trim() && (el.type !== 'email' || /.+@.+\..+/.test(el.value));
-      el.setAttribute('aria-invalid', !valid);
-      if (!valid && ok) { el.focus(); ok = false; }
-    });
-    if (!ok) return;
+  var statusEl = document.getElementById('form-status');
+  var submitBtn = form.querySelector('[type="submit"]');
+  var checks = [
+    { el: document.getElementById('f-name'), test: function (v) { return v.trim().length > 0; } },
+    { el: document.getElementById('f-email'), test: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); } }
+  ];
+  function validate(c) {
+    var ok = c.test(c.el.value);
+    c.el.setAttribute('aria-invalid', !ok);
+    document.getElementById(c.el.id + '-err').hidden = ok;
+    return ok;
+  }
+  checks.forEach(function (c) {
+    c.el.addEventListener('blur', function () { if (c.el.value) validate(c); });
+    c.el.addEventListener('input', function () { if (c.el.getAttribute('aria-invalid') === 'true') validate(c); });
+  });
+  function showStatus(msg) { statusEl.textContent = msg; statusEl.hidden = !msg; }
+  function showThanks() {
     document.getElementById('form-fields').hidden = true;
     var t = document.getElementById('form-thanks'); t.hidden = false; t.focus();
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    showStatus('');
+    var bad = checks.filter(function (c) { return !validate(c); });
+    if (bad.length) { bad[0].el.focus(); return; }
+    if (document.getElementById('f-website').value) { showThanks(); return; }
+    var endpoint = form.getAttribute('data-endpoint');
+    if (!endpoint) { showStatus("This form isn't connected yet, so your request was not sent. Please call Ron at (513) 348-2900 or email ron@intelligent-value.com."); return; }
+    var label = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); showThanks(); })
+      .catch(function () { showStatus("Something went wrong and your request was not sent. Please try again, or call Ron at (513) 348-2900 or email ron@intelligent-value.com."); })
+      .then(function () { submitBtn.disabled = false; submitBtn.textContent = label; });
   });
 })();
 </script>
+</body>
+</html>
