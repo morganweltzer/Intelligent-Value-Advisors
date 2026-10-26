@@ -118,7 +118,7 @@ h1, h2, h3, h4 { margin: 0; color: var(--navy); text-wrap: balance; }
 header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: rgba(255,255,255,.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 24px; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--navy); }
-.brand-mark { width: 60px; height: 34px; flex: none; }
+.brand-mark { width: 44px; height: 44px; flex: none; object-fit: contain; }
 .brand-name { font-family: var(--serif); font-weight: 500; font-size: 21px; line-height: 1.1; }
 .brand-name small { display: block; font-family: var(--sans); font-size: var(--fs-micro); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--pewter); margin-top: 3px; }
 .nav-links { display: flex; align-items: center; gap: 28px; }
@@ -831,7 +831,7 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
 <header class="site" id="top">
   <div class="wrap nav">
     <a class="brand" href="#top" aria-label="Intelligent Value Advisors, home">
-      <svg class="brand-mark" aria-hidden="true"><use href="#i-mark"/></svg>
+      <img class="brand-mark" src="lion-mark.webp" alt="" width="44" height="44">
       <span class="brand-name">Intelligent Value Advisors<small>Ron DeLyons, CEPA®</small></span>
     </a>
     <button class="menu-btn" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
@@ -1447,7 +1447,7 @@ main > section.section, main > section.contact { position: relative; --pad: 104p
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a class="brand" href="#top"><svg class="brand-mark" aria-hidden="true"><use href="#i-mark"/></svg><span class="brand-name">Intelligent Value Advisors®<small>Creators of Intelligent Value Acceleration</small></span></a>
+        <a class="brand" href="#top"><img class="brand-mark" src="lion-mark.webp" alt="" width="44" height="44"><span class="brand-name">Intelligent Value Advisors®<small>Creators of Intelligent Value Acceleration</small></span></a>
         <p class="foot-tag">Transform Enterprise Value Into Life Value</p>
         <p>Value growth and exit planning for middle-market business owners. Cincinnati, Ohio.</p>
         <p class="foot-contact"><a href="tel:+15134480988">(513) 448-0988</a><span aria-hidden="true"> · </span><a href="mailto:ron@intelligent-value.com">ron@intelligent-value.com</a></p>
